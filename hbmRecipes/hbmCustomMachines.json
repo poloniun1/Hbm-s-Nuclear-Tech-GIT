@@ -1,0 +1,5371 @@
+{
+  "recipes": [
+    {
+      "recipeKey": "normalfactory",
+      "recipes": [
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock"]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,1,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,2]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,2,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,3]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,3,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,4,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,5]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,5,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,6]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,6,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,7,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,8,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,9]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,9,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,10]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,10,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,11]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,11,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,12]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,12,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,13,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,14]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,14,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,15]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,15,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,16]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,16,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,17]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,17,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,18]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,18,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,19]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,19,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,20]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,20,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,21]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,21,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,22]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,22,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,23]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,23,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,24]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,24,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,25]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,25,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,26]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,26,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,27]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,27,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,28]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,28,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,29]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,29,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,30]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,30,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,31]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,31,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,32]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,32,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,33]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,33,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,34]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,34,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,35]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,35,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,36]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,36,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,37]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,37,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,38]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,38,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,39]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,39,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,40]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,40,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,41]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,41,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,42]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,42,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,43]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,43,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,44]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,44,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["NITRIC_ACID",2000],
+            ["SOLVENT",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.ore_bedrock",1,45]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.ore_enriched",64,45,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+
+	
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreTitanium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalIron",1, 0.4],
+	  ["aobd:crystalTitanium",1, 1.0],
+	  ["aobd:crystalManganese",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreManganese",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalIron",1, 0.4],
+	  ["aobd:crystalTitanium",1, 0.1],
+	  ["aobd:crystalManganese",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreIron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTitanium",1, 0.3],
+	  ["aobd:crystalIron",1, 1.0],
+	  ["aobd:crystalManganese",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 400],
+	["ACID",250]
+          ],
+          "inputItems": [["dict","oreHematite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTitanium",1, 0.15],
+	  ["aobd:crystalIron",1, 0.5],
+	  ["aobd:crystalManganese",1, 0.15]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+		
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreCoal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSulfur",1, 0.2],
+	  ["aobd:crystalCoal",1, 1.0],
+	  ["aobd:crystalRedstone",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreRedstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalCoal",1, 0.4],
+	  ["aobd:crystalSulfur",1, 0.1],
+	  ["aobd:crystalRedstone",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreSulfur",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalRedstone",1, 0.2],
+	  ["aobd:crystalSulfur",1, 1.0],
+	  ["aobd:crystalCoal",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreBeryllium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalLithium",1, 0.2],
+	  ["aobd:crystalBeryllium",1, 1.0],
+	  ["aobd:crystalEmerald",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreLithium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalBeryllium",1, 0.2],
+	  ["aobd:crystalEmerald",1, 0.2],
+	  ["aobd:crystalLithium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreEmerald",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalBeryllium",1, 0.4],
+	  ["aobd:crystalEmerald",1, 1.0],
+	  ["aobd:crystalLithium",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreAsbestos",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalNetherQuartz",1, 0.3],
+	  ["aobd:crystalAsbestos",1, 1.0],
+	  ["aobd:crystalBoron",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreNetherQuartz",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAsbestos",1, 0.3],
+	  ["aobd:crystalBoron",1, 0.2],
+	  ["aobd:crystalNetherQuartz",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreBoron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAsbestos",1, 0.2],
+	  ["aobd:crystalBoron",1, 1.0],
+	  ["aobd:crystalNetherQuartz",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreBorax",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAsbestos",1, 0.2],
+	  ["aobd:crystalBoron",1, 1.0],
+	  ["aobd:crystalNetherQuartz",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreGold",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.crystal_cinnebar",1, 0.3],
+	  ["aobd:crystalGold",1, 1.0],
+	  ["aobd:crystalCopper",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreCopper",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.crystal_cinnebar",1, 0.3],
+	  ["aobd:crystalGold",1, 0.3],
+	  ["aobd:crystalCopper",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 400],
+	["ACID",250]
+          ],
+          "inputItems": [["dict","oreMalachite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.crystal_cinnebar",1, 0.15],
+	  ["aobd:crystalGold",1, 0.15],
+	  ["aobd:crystalCopper",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },		
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreCinnabar",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalGold",1, 0.4],
+	  ["hbm:item.crystal_cinnebar",1, 1.0],
+	  ["aobd:crystalCopper",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreVolcanic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalDiamond",1, 0.3],
+	  ["aobd:crystalVolcanic",1, 1.0],
+	  ["aobd:crystalAlexandrite",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreDiamond",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalVolcanic",1, 0.3],
+	  ["aobd:crystalAlexandrite",1, 0.2],
+	  ["aobd:crystalDiamond",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreAlexandrite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalVolcanic",1, 0.3],
+	  ["aobd:crystalAlexandrite",1, 1.0],
+	  ["aobd:crystalDiamond",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreAluminum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTungsten",1, 0.3],
+	  ["aobd:crystalAluminum",1, 1.0],
+	  ["aobd:crystalLead",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 400],
+	["ACID",250]
+          ],
+          "inputItems": [["dict","oreBauxite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTungsten",1, 0.15],
+	  ["aobd:crystalAluminum",1, 0.5],
+	  ["aobd:crystalLead",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },		
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreTungsten",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAluminum",1, 0.2],
+	  ["aobd:crystalLead",1, 0.4],
+	  ["aobd:crystalTungsten",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreLead",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAluminum",1, 0.2],
+	  ["aobd:crystalLead",1, 1.0],
+	  ["aobd:crystalTungsten",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreSaltpeter",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalArsenic",1, 0.2],
+	  ["aobd:crystalSaltpeter",1, 1.0],
+	  ["aobd:crystalWhitePhosphorus",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreArsenic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSaltpeter",1, 0.2],
+	  ["aobd:crystalWhitePhosphorus",1, 0.4],
+	  ["aobd:crystalArsenic",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreWhitePhosphorus",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalArsenic",1, 0.3],
+	  ["aobd:crystalWhitePhosphorus",1, 1.0],
+	  ["aobd:crystalSaltpeter",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreGlowstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalFluorite",1, 0.4],
+	  ["aobd:crystalGlowstone",1, 1.0],
+	  ["aobd:crystalCalcium",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreFluorite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalGlowstone",1, 0.3],
+	  ["aobd:crystalCalcium",1, 0.3],
+	  ["aobd:crystalFluorite",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreCalcium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalFluorite",1, 0.2],
+	  ["aobd:crystalCalcium",1, 1.0],
+	  ["aobd:crystalGlowstone",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreSodium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalNiobium",1, 0.2],
+	  ["aobd:crystalSodium",1, 1.0],
+	  ["aobd:crystalLapis",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreNiobium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSodium",1, 0.3],
+	  ["aobd:crystalLapis",1, 0.3],
+	  ["aobd:crystalNiobium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreLapis",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalNiobium",1, 0.2],
+	  ["aobd:crystalLapis",1, 1.0],
+	  ["aobd:crystalSodium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreZirconium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalNeodymium",1, 0.4],
+	  ["aobd:crystalZirconium",1, 1.0],
+	  ["aobd:crystalWorkersAlloy",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreWorkersAlloy",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalNeodymium",1, 0.4],
+	  ["aobd:crystalZirconium",1, 0.4],
+	  ["aobd:crystalWorkersAlloy",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreNeodymium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalWorkersAlloy",1, 0.4],
+ 	  ["aobd:crystalZirconium",1, 0.4],
+	  ["aobd:crystalNeodymium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreThorium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalUranium",1, 0.5],
+	  ["aobd:crystalThorium",1, 1.0],
+	  ["aobd:crystalPlutonium",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreUranium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalThorium",1, 0.4],
+	  ["aobd:crystalPlutonium",1, 0.3],
+	  ["aobd:crystalUranium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","orePlutonium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalThorium",1, 0.2],
+	  ["aobd:crystalPlutonium",1, 1.0],
+	  ["aobd:crystalUranium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreTikite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalStarmetal",1, 0.2],
+	  ["aobd:crystalTikite",1, 1.0],
+	  ["aobd:crystalCobalt",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreStarmetal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTikite",1, 0.2],
+	  ["aobd:crystalCobalt",1, 0.3],
+	  ["aobd:crystalStarmetal",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreCobalt",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalTikite",1, 0.1],
+	  ["aobd:crystalCobalt",1, 1.0],
+	  ["aobd:crystalStarmetal",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreOsmiridium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalAustralium",1, 0.1],
+	  ["aobd:crystalOsmiridium",1, 1.0],
+	  ["aobd:crystalColtan",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreAustralium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalOsmiridium",1, 0.2],
+	  ["aobd:crystalColtan",1, 0.2],
+	  ["aobd:crystalAustralium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreColtan",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalOsmiridium",1, 0.3],
+	  ["aobd:crystalColtan",1, 1.0],
+	  ["aobd:crystalAustralium",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreSchrabidium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalEuphemium",1, 0.3],
+	  ["aobd:crystalSchrabidium",1, 1.0],
+	  ["aobd:crystalBismuth",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreEuphemium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSchrabidium",1, 0.4],
+	  ["aobd:crystalBismuth",1, 0.1],
+	  ["aobd:crystalEuphemium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["ACID",200]
+          ],
+          "inputItems": [["dict","oreBismuth",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSchrabidium",1, 0.2],
+	  ["aobd:crystalBismuth",1, 1.0],
+	  ["aobd:crystalEuphemium",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalTitanium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_iron",1,0, 0.5],
+	  ["hbm:item.powder_titanium",6,0,1],
+	  ["shincolle:AbyssMetal",1,1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalManganese",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_iron",1,0, 0.5],
+	  ["hbm:item.powder_titanium",1,0, 0.5],
+	  ["shincolle:AbyssMetal",6,1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalIron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_titanium",1,0, 0.5],
+	  ["hbm:item.powder_iron",6,0, 1.0],
+	  ["shincolle:AbyssMetal",1,1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalCoal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.sulfur",2, 0.5],
+	  ["hbm:item.powder_coal",9, 1.0],
+	  ["minecraft:redstone",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalRedstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_coal",2, 0.5],
+	  ["hbm:item.sulfur",2, 0.5],
+	  ["minecraft:redstone",9, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalSulfur",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:redstone",2, 0.5],
+	  ["hbm:item.sulfur",9, 1.0],
+	  ["hbm:item.powder_coal",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalBeryllium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_lithium",1, 0.5],
+	  ["hbm:item.powder_beryllium",6, 1.0],
+	  ["hbm:item.powder_emerald",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalLithium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_beryllium",1, 0.5],
+	  ["hbm:item.powder_emerald",1, 0.5],
+	  ["hbm:item.powder_lithium",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalEmerald",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_beryllium",1, 0.5],
+	  ["hbm:item.powder_emerald",6, 1.0],
+	  ["hbm:item.powder_lithium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalAsbestos",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_quartz",1, 0.5],
+	  ["hbm:item.powder_asbestos",6, 1.0],
+	  ["hbm:item.powder_boron",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalNetherQuartz",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_asbestos",1, 0.5],
+	  ["hbm:item.powder_boron",1, 0.5],
+	  ["hbm:item.powder_quartz",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalBoron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_asbestos",1, 0.5],
+	  ["hbm:item.powder_boron",6, 1.0],
+	  ["hbm:item.powder_quartz",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalGold",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.3],
+	  ["hbm:item.powder_cadmium",1, 0.2],	  
+	  ["hbm:item.powder_gold",6, 1.0],
+	  ["hbm:item.powder_copper",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalCopper",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.3],
+	  ["hbm:item.powder_cadmium",1, 0.2],	  
+	  ["hbm:item.powder_gold",1, 0.5],
+	  ["hbm:item.powder_copper",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalCinnabar",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_gold",1, 0.5],
+	  ["hbm:item.nugget_mercury",4, 1.0],
+	  ["hbm:item.powder_cadmium",3, 1.0],	  
+	  ["hbm:item.powder_copper",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalVolcanic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_diamond",1, 0.5],
+	  ["hbm:item.gem_volcanic",6, 1.0],
+	  ["hbm:item.gem_alexandrite",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalDiamond",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_volcanic",1, 0.5],
+	  ["hbm:item.gem_alexandrite",1, 0.5],
+	  ["hbm:item.powder_diamond",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalAlexandrite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_volcanic",1, 0.5],
+	  ["hbm:item.gem_alexandrite",6, 1.0],
+	  ["hbm:item.powder_diamond",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalAluminum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_tungsten",1, 0.5],
+	  ["hbm:item.powder_aluminium",6, 1.0],
+	  ["hbm:item.powder_lead",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalTungsten",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_aluminium",1, 0.5],
+	  ["hbm:item.powder_lead",1, 0.5],
+	  ["hbm:item.powder_tungsten",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalLead",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_aluminium",1, 0.5],
+	  ["hbm:item.powder_lead",6, 1.0],
+	  ["hbm:item.powder_tungsten",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalSaltpeter",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_arsenic",1, 0.5],
+	  ["hbm:item.niter",9, 1.0],
+	  ["hbm:item.ingot_phosphorus",1, 0.2],
+	  ["hbm:item.powder_fire",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalArsenic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.niter",2, 0.5],
+	  ["hbm:item.ingot_phosphorus",1, 0.2],
+	  ["hbm:item.powder_fire",1, 0.3],
+	  ["hbm:item.ingot_arsenic",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalWhitePhosphorus",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_arsenic",1, 0.5],
+	  ["hbm:item.ingot_phosphorus",3, 1.0],
+	  ["hbm:item.powder_fire",4, 1.0],
+	  ["hbm:item.niter",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalGlowstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.fluorite",2, 0.5],
+	  ["minecraft:glowstone_dust",6, 1.0],
+	  ["hbm:item.powder_calcium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalFluorite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:glowstone_dust",1, 0.5],
+	  ["hbm:item.powder_calcium",1, 0.5],
+	  ["hbm:item.fluorite",9, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalCalcium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:glowstone_dust",1, 0.5],
+	  ["hbm:item.powder_calcium",6, 1.0],
+	  ["hbm:item.fluorite",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalSodium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_niobium",1, 0.5],
+	  ["hbm:item.gem_sodalite",6, 1.0],
+	  ["hbm:item.powder_lapis",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalNiobium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_sodalite",1, 0.5],
+	  ["hbm:item.powder_lapis",2, 0.5],
+	  ["hbm:item.powder_niobium",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalLapis",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_niobium",1, 0.5],
+	  ["hbm:item.powder_lapis",9, 1.0],
+	  ["hbm:item.gem_sodalite",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalZirconium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_neodymium",1, 0.5],
+	  ["hbm:item.powder_zirconium",6, 1.0],
+	  ["hbm:item.powder_desh",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalWorkersAlloy",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_neodymium", 1, 0.5],
+	  ["hbm:item.powder_zirconium", 1, 0.5],
+	  ["hbm:item.powder_desh", 6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalNeodymium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_desh",1, 0.5],
+	  ["hbm:item.powder_zirconium",1, 0.5],
+	  ["hbm:item.powder_neodymium",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalThorium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_plutonium",1, 0.3],
+	  ["hbm:item.powder_polonium",1, 0.2],		  
+	  ["hbm:item.powder_thorium",6, 1.0],
+	  ["hbm:item.powder_uranium",1, 0.3],	  
+	  ["hbm:item.powder_ra226",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalUranium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_plutonium",1, 0.3],
+	  ["hbm:item.powder_polonium",1, 0.2],		  
+	  ["hbm:item.powder_uranium",4, 1.0],
+	  ["hbm:item.powder_ra226",3, 1.0],	  
+	  ["hbm:item.powder_thorium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalPlutonium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_uranium",1, 0.3],
+	  ["hbm:item.powder_ra226",1, 0.2],		  
+	  ["hbm:item.powder_plutonium",4, 1.0],
+	  ["hbm:item.powder_polonium",3, 1.0],	  
+	  ["hbm:item.powder_thorium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalTikite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_starmetal",1, 0.3],
+	  ["hbm:item.powder_spark_mix",1, 0.2],		  
+	  ["hbm:item.powder_nitan_mix",4, 1.0],
+	  ["hbm:item.powder_astatine",3, 1.0],	  
+	  ["hbm:item.powder_cobalt",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalStarmetal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_nitan_mix",1, 0.3],
+	  ["hbm:item.powder_spark_mix",1, 0.2],	  
+	  ["hbm:item.powder_cobalt",1, 0.5],
+	  ["hbm:item.powder_astatine",3, 1.0],		  
+	  ["hbm:item.ingot_starmetal",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalCobalt",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_nitan_mix",1, 0.3],
+	  ["hbm:item.powder_spark_mix",1, 0.2],	  
+	  ["hbm:item.powder_cobalt",6, 1.0],
+	  ["hbm:item.powder_astatine",1, 0.2],		  
+	  ["hbm:item.ingot_starmetal",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalOsmiridium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_australium",1, 0.5],
+	  ["hbm:item.ingot_osmiridium",6, 1.0],
+	  ["hbm:item.powder_tantalium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalAustralium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_osmiridium",1, 0.5],
+	  ["hbm:item.powder_tantalium",1, 0.5],
+	  ["hbm:item.powder_australium",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalColtan",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_osmiridium",1, 0.5],
+	  ["hbm:item.powder_tantalium",6, 1.0],
+	  ["hbm:item.powder_australium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalSchrabidium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_euphemium",1, 0.5],
+	  ["hbm:item.powder_schrabidium",6, 1.0],
+	  ["hbm:item.powder_bismuth",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalEuphemium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_schrabidium",1, 0.5],
+	  ["hbm:item.powder_bismuth",1, 0.5],
+	  ["hbm:item.powder_euphemium",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",300]
+          ],
+          "inputItems": [["dict","crystalBismuth",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_schrabidium",1, 0.5],
+	  ["hbm:item.powder_bismuth",6, 1.0],
+	  ["hbm:item.powder_euphemium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+		
+		
+
+        {
+          "inputFluids": [
+            ["OIL_EXTRACT", 1000]
+          ],
+          "inputItems": [],
+          "outputFluids": [
+	["UNSATURATEDS",300],
+	["AROMATICS",300],
+ 	["PETROLEUM",300]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 500
+        },
+        {
+          "inputFluids": [
+            ["OIL_CHARGED", 1000]
+          ],
+          "inputItems": [],
+          "outputFluids": [
+	["KEROSENE",800],
+	["NITAN",30],
+	["BALEFIRE",10]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 500
+        },
+
+
+
+        {
+          "inputFluids": [		
+	["STEAM",2000]
+          ],
+          "inputItems": [["item","hbm:tile.ore_oil",1]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["KEROSENE",100],
+	["HELIUM",1]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["HOTSTEAM",2000],
+	["HELIUM4",4000]
+          ],
+          "inputItems": [
+	["item", "hbm:tile.ore_oil", 1]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["OIL_CHARGED",100],
+	["HELIUM",5]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["HOTSTEAM",2000],
+	["HELIUM4",4000]
+          ],
+          "inputItems": [
+	["item","tc:oreTC",1,2]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["OIL_CHARGED",100],
+	["HELIUM",5]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [		
+	["STEAM",2000]
+          ],
+          "inputItems": [["item","tc:oreTC",1,1]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["KEROSENE",100],
+	["HELIUM",1]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["HOTSTEAM",2000],
+	["HELIUM4",4000]
+          ],
+          "inputItems": [
+	["item","tc:oreTC",1,1]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["OIL_CHARGED",100],
+	["HELIUM",5]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["OIL",500]
+          ],
+          "inputItems": [],
+
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["OIL_CHARGED",100],
+	["HELIUM",5]
+          ],
+          "outputItems": [
+
+          ],
+		  "flux": 100000,
+          "duration": 1,
+          "consumptionPerTick": 0
+        },
+		        {
+          "inputFluids": [
+	["OIL",500]
+          ],
+          "inputItems": [],
+
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["KEROSENE",100],
+	["HELIUM",1]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+	["STEAM",2000]
+          ],
+          "inputItems": [["item","tc:oreTC",1,2]],
+          "outputFluids": [
+	["OIL_EXTRACT",400],		
+	["KEROSENE",100],
+	["HELIUM",1]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+
+		
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","ingotMagnetizedTungsten",2],
+	["dict","ingotU238",1]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.ingot_combine_steel",1, 1.0]
+          ],
+		  "flux":40000,
+          "duration": 1,
+          "consumptionPerTick": 100000
+        },		
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","hbm:item.coil_magnetized_tungsten",1],
+	["dict","ingotCMBSteel",4],
+	["dict","plateTripleAnyResistantAlloy",8],
+	["item","hbm:item.gear_large",1, 1]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.machine_stirling_cmb",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },	
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","hbm:tile.hadron_coil_magtung",2],
+	["item","hbm:item.battery_sc_lead",1],
+	["dict","plateCMBSteel",6]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.barrel_antimatter_ex",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },			
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","boltDuraSteel",8],
+	["item","hbm:item.motor_bismuth",1],
+	["dict","plateCMBSteel",8]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.silo_hatch_large",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },	
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","boltDuraSteel",4],
+	["item","hbm:item.motor_bismuth",1],
+	["dict","plateCMBSteel",4]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.silo_hatch_ex",1, 1.0]
+          ],
+          "duration": 300,
+          "consumptionPerTick": 4000
+        },			
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","hbm:tile.rbmk_heater",8],
+	["item","hbm:tile.machine_turbine",1]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.rbmk_turbine",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },			
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","ntmpipeCopper",4],
+	["dict","ingotAnyPlastic",4],
+	["dict","plateTripleAnyResistantAlloy",4],
+	["dict","shellCopper",1]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.heater_huge_heatex",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },	
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","nuggetOsmiridium",8],
+	["item","hbm:item.coil_magnetized_tungsten",16],
+	["item","hbm:tile.machine_dineutronium_battery",4]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.machine_dineutronium_battery_ex",1, 1.0]
+          ],
+          "duration": 200,
+          "consumptionPerTick": 2000
+        },
+	        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","hbm:item.ingot_electronium",8],
+	["item","ha:tile.machine_dineutronium_battery_ex",4]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.machine_electron_battery",1, 1.0]
+          ],
+          "duration": 400,
+          "consumptionPerTick": 5000
+        },	
+	        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","ha:tile.machine_electron_battery",4],
+	["dict","blockStarmetal",16],
+	["item","hbm:tile.machine_transformer_dnt",4],
+	["item","hbm:item.powder_magic",32],
+	["item","hbm:item.ingot_u238m2"],
+	["item","hbm:item.ingot_cft",32]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:tile.machine_fensu",1, 1.0]
+          ],
+          "duration": 500,
+          "consumptionPerTick": 10000
+        },	
+		
+		
+        {
+          "inputFluids": [
+	["HELIUM3",2000]
+          ],
+          "inputItems": [
+	["item","hbm:item.pellet_charged",1]],
+          "outputFluids": [
+	["HELIUM4",6000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [
+	["HELIUM",2000]
+          ],
+          "inputItems": [
+	["item","hbm:item.pellet_charged",1]],
+          "outputFluids": [
+	["HELIUM4",6000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+
+        {
+          "inputFluids": [
+	["HELIUM",100]
+          ],
+          "inputItems": [
+	],
+          "outputFluids": [
+	["SUPERCOOLANT",10]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+
+        {
+          "inputFluids": [		
+	["HELIUM4",2000]
+          ],
+          "inputItems": [["dict","oreIron"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_coltan",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",2000]
+          ],
+          "inputItems": [["dict","oreCoal"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["minecraft:diamond_ore",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",4000]
+          ],
+          "inputItems": [["dict","oreUranium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_nether_schrabidium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",4000]
+          ],
+          "inputItems": [["dict","orePlutonium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_nether_schrabidium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",12000]
+          ],
+          "inputItems": [["dict","oreSchrabidium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.block_euphemium_cluster",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",12000]
+          ],
+          "inputItems": [
+	["dict","oreColtan"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_tektite_osmiridium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",4000]
+          ],
+          "inputItems": [
+	["dict","oreGold"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_australium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",6000]
+          ],
+          "inputItems": [
+	["dict","oreAustralium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ore_enriched",1, 40, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",6000]
+          ],
+          "inputItems": [
+	["dict","oreCobalt"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_meteor_starmetal",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",6000]
+          ],
+          "inputItems": [
+	["dict","oreDiamond"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_basalt",1,3, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",8000]
+          ],
+          "inputItems": [
+	["dict","oreEmerald"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_alexandrite",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [		
+	["HELIUM4",2000]
+          ],
+          "inputItems": [
+	["dict","oreBeryllium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["minecraft:emerald_ore",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 5000
+        },
+
+
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [["dict","oreIron"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_coltan",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":400000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [["dict","oreCoal"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["minecraft:diamond_ore",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":200000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [["dict","oreUranium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_nether_schrabidium",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":800000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [["dict","orePlutonium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_nether_schrabidium",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":800000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [["dict","oreSchrabidium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.block_euphemium_cluster",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":1600000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreColtan"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_tektite_osmiridium",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":2400000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreGold"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_australium",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":320000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreAustralium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ore_enriched",1, 40, 1.0]
+          ],
+          "duration": 1,
+		  "flux":400000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreCobalt"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_meteor_starmetal",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":240000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreDiamond"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_basalt",1,3, 1.0]
+          ],
+          "duration": 1,
+		  "flux":240000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreEmerald"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:tile.ore_alexandrite",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":320000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","oreBeryllium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["minecraft:emerald_ore",1, 1.0]
+          ],
+          "duration": 1,
+		  "flux":200000,
+          "consumptionPerTick": 0
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pile_rod_plutonium", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_technetium",6, 1],
+            ["hbm:item.nugget_pu239", 9, 1],
+            ["hbm:item.nugget_bismuth", 3, 1],
+	        ["hbm:item.plate_iron", 2, 1]		
+],
+		  "flux":400000,
+          "duration": 1,
+          "consumptionPerTick": 0
+        },		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pile_rod_pu239", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.billet_u235",1, 1],
+            ["hbm:item.billet_pu239", 2, 1],
+	        ["hbm:item.plate_iron", 2, 1]		
+],
+          "duration": 10,
+          "consumptionPerTick": 0
+        },		
+
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [["item","hbm:tile.ore_gneiss_gas",1]
+],
+          "outputFluids": [
+	["he",100]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 100,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [		
+		["HYDROGEN",1500],
+		["NITROGEN",500]
+
+          ],
+          "inputItems": [
+["item","hbm:item.catalyst_clay",1]
+],
+          "outputFluids": [
+	["AMMONIA",1000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 40,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [		
+	["NITROGEN",2000]
+          ],
+          "inputItems": [
+],
+          "outputFluids": [
+	["CRYOGEL",2000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["CRYOGEL",200]
+          ],
+          "inputItems": [
+],
+          "outputFluids": [
+	["NITROGEN",2000],
+	["OXYGEN",400]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 50,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["OXYGEN",2500],
+	["WATER",1500]
+          ],
+          "inputItems": [
+	["dict","dustSulfur",2],
+	["item","hbm:item.catalyst_clay",1]
+],
+          "outputFluids": [
+	 ["SULFURIC_ACID",1500]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 50,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+
+          ],
+          "inputItems": [
+	["dict","gemCoal",10]
+],
+          "outputFluids": [
+	["HYDROGEN",1000],
+	["AROMATICS",1000]
+          ],
+          "outputItems": [
+	["hbm:item.coke",9]
+          ],
+          "duration": 50,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["DEUTERIUM",500],
+	["TRITIUM",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_DT_NEW",1000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 50000
+        },
+        {
+          "inputFluids": [
+	["DEUTERIUM",500],
+	["HELIUM",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_DH3_NEW",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 75000
+        },	
+        {
+          "inputFluids": [
+	["DEUTERIUM",500],
+	["HELIUM3",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_DH3_NEW",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 75000
+        },
+        {
+          "inputFluids": [
+	["OXYGEN",500],
+	["HELIUM4",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_XM_NEW",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 100000
+        },		
+        {
+          "inputFluids": [
+	["BALEFIRE",500],
+	["AMAT",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_BF_NEW",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 120000
+        },		
+		
+		
+        {
+          "inputFluids": [
+
+          ],
+          "inputItems": [
+	["dict","dustSulfur"],
+	["item","hbm:item.nugget_mercury"]
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.cinnebar",2, 1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+		["AMMONIA",1000],
+		["OXYGEN",2000]
+          ],
+          "inputItems": [
+	["item","hbm:item.catalyst_clay",1]
+],
+          "outputFluids": [
+		["WATER",100],
+		["NITRIC_ACID",100]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 40,
+          "consumptionPerTick": 2500
+        },
+		{
+          "inputFluids": [		
+		["HYDROGEN",1000],
+		["OXYGEN",1000],
+		["SOLVENT",100]
+          ],
+          "inputItems": [
+["item","hbm:item.catalyst_clay",1]
+],
+          "outputFluids": [
+	["ACID",1000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 40,
+          "consumptionPerTick": 2500
+        },
+		{
+          "inputFluids": [		
+		["AROMATICS",1000],
+		["ACID",100]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["SOLVENT",1000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 40,
+          "consumptionPerTick": 2500
+        },
+		{
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","gemSodalite",1]
+	],
+          "outputFluids": [
+	["CHLORINE",100],
+	["SODIUM",100]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 2,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [
+	["NITRIC_ACID",1500],
+	["AROMATICS",500],
+	["SULFURIC_ACID",500]
+          ],
+          "inputItems": [
+],
+          "outputFluids": [
+		["WATER",1500]
+          ],
+          "outputItems": [
+		["hbm:item.ball_tnt",4, 1.0]
+          ],
+          "duration": 40,
+          "consumptionPerTick": 2500
+        }
+
+  ]},
+   {
+      "recipeKey": "generator",
+      "recipes": [
+        {
+          "inputFluids": [["OIL_EXTRACT",1000]],
+          "inputItems": [
+
+          ],
+          "outputFluids": [
+	["NONE",0]
+	],
+          "outputItems": [
+          ],
+          "duration": 10,
+          "consumptionPerTick": 400000
+        },
+        {
+          "inputFluids": [["OIL_CHARGED",1000]],
+          "inputItems": [
+
+          ],
+          "outputFluids": [],
+          "outputItems": [
+	 ["hbm:item.powder_balefire",1, 0.01],
+	 ["hbm:item.powder_nitan_mix",1, 0.02]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 5000000
+        },
+
+		
+	
+        {
+          "inputFluids": [
+	["PLASMA_DT_NEW",1000]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",2, 1.0],
+	["hbm:item.pellet_charged",2, 0.6],
+	["hbm:item.pellet_charged",2, 0.2]
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 200000
+        },		
+        {
+          "inputFluids": [
+	["PLASMA_DH3_NEW",1000]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",2, 1.0],
+	["hbm:item.pellet_charged",2, 0.75],
+	["hbm:item.pellet_charged",2, 0.5],
+	["hbm:item.pellet_charged",2, 0.25]
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 375000
+        },		
+        {
+          "inputFluids": [
+	["PLASMA_XM_NEW",1000]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.powder_chlorophyte",2, 1.0],
+	["hbm:item.powder_chlorophyte",2, 0.5]
+
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 600000
+        },		
+        {
+          "inputFluids": [
+	["PLASMA_BF_NEW",1000]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.powder_balefire",2, 0.6],
+	["hbm:item.powder_balefire",2, 0.2]
+
+          ],
+          "duration": 20,
+          "consumptionPerTick": 750000
+        },
+
+	{
+          "inputFluids": [
+
+          ],
+          "inputItems": [["dict","dustAstatine"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.05]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 10000
+        },	
+	{	
+          "inputFluids": [
+
+          ],
+          "inputItems": [["dict","dustPolonium"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.04]
+          ],
+          "duration": 5,
+          "consumptionPerTick": 15000
+        },		
+	{	
+          "inputFluids": [
+
+          ],
+          "inputItems": [["dict","dustRa226"]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.04]
+          ],
+          "duration": 5,
+          "consumptionPerTick": 15000
+        },	
+
+		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_ra226be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",12, 0.8],
+            ["hbm:item.nugget_ra226", 12, 0.8],
+            ["hbm:item.nugget_beryllium", 12, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_ra226be", 8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",12, 0.8],
+            ["hbm:item.nugget_ra226", 12, 0.8],
+            ["hbm:item.nugget_beryllium", 12, 0.8],
+            ["hbm:item.nugget_polonium",12, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_ra226be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",3, 0.4],
+            ["hbm:item.nugget_ra226", 3, 0.4],
+            ["hbm:item.nugget_beryllium", 3, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_ra226be", 1,1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",3, 0.4],
+            ["hbm:item.nugget_ra226", 3, 0.4],
+            ["hbm:item.nugget_beryllium", 3, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 4000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_po210be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",15, 0.8],
+            ["hbm:item.nugget_beryllium", 15, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_po210be", 8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",15, 0.8],
+            ["hbm:item.nugget_beryllium", 15, 0.8],
+            ["hbm:item.nugget_bismuth",6, 0.5]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_heu233", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_u235", 9, 0.8],
+            ["hbm:item.nugget_neptunium", 12, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8],
+            ["hbm:item.nugget_pu239", 15, 0.8],
+            ["hbm:item.nugget_bismuth", 6, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 1500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_heu233", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_u235", 9, 0.8],
+            ["hbm:item.nugget_neptunium", 12, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8],
+            ["hbm:item.nugget_pu239", 15, 0.8],
+            ["hbm:item.nugget_bismuth", 6, 0.8],
+            ["hbm:item.nugget_u235", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 6]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.6],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 300000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_u233", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 6, 0.6],
+            ["hbm:item.nugget_technetium", 6, 0.6],
+            ["hbm:item.nugget_neptunium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u233", 3, 0.6],
+            ["hbm:item.nugget_u235", 2, 0.6],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 2, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 2, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 300000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u233", 3, 0.6],
+            ["hbm:item.nugget_u235", 2, 0.6],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 2, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 2, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 3000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_u233", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u233", 3, 0.4],
+            ["hbm:item.nugget_u235", 2, 0.4],
+            ["hbm:item.nugget_neptunium", 3, 0.4],
+            ["hbm:item.nugget_technetium", 2, 0.4],
+            ["hbm:item.nugget_pu239", 3, 0.4],
+            ["hbm:item.nugget_bismuth", 2, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 150000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_u233", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u233", 3, 0.4],
+            ["hbm:item.nugget_u235", 2, 0.4],
+            ["hbm:item.nugget_neptunium", 3, 0.4],
+            ["hbm:item.nugget_technetium", 2, 0.4],
+            ["hbm:item.nugget_pu239", 3, 0.4],
+            ["hbm:item.nugget_bismuth", 2, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 50000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_thmeu", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 12, 0.8],
+            ["hbm:item.nugget_thorium_fuel", 9, 0.8],
+            ["hbm:item.nugget_bismuth", 15, 0.8],
+            ["hbm:item.nugget_u233", 12, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 1000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_thmeu", 8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 12, 0.8],
+            ["hbm:item.nugget_thorium_fuel", 9, 0.8],
+            ["hbm:item.nugget_bismuth", 15, 0.8],
+            ["hbm:item.nugget_u233", 12, 0.8],
+            ["hbm:item.nugget_u233", 12, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 3]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_thorium_fuel", 3, 0.6],
+            ["hbm:item.nugget_bismuth", 4, 0.8],
+            ["hbm:item.nugget_u233", 3, 0.8],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 200000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_thorium", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_u235", 3, 0.6],
+            ["hbm:item.nugget_bismuth", 6, 0.8],
+            ["hbm:item.nugget_u233", 3, 0.8],
+            ["hbm:item.nugget_u233", 3, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_ueu", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 15, 0.8],
+            ["hbm:item.nugget_neptunium", 9, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8],
+            ["hbm:item.nugget_pu239", 15, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_ueu", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 15, 0.8],
+            ["hbm:item.nugget_neptunium", 9, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8],
+            ["hbm:item.nugget_pu239", 15, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.8],
+            ["hbm:item.nugget_u235", 9, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_neptunium", 3, 0.6],
+            ["hbm:item.nugget_technetium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 20000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_natural_uranium", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_u235", 6, 0.8],
+            ["hbm:item.nugget_technetium", 5, 0.6],
+			["hbm:item.nugget_neptunium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 5, 0.8],
+            ["hbm:item.nugget_bismuth", 5, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_heu235", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 12, 0.8],
+            ["hbm:item.nugget_neptunium", 12, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8],
+            ["hbm:item.nugget_pu239", 12, 0.8],
+            ["hbm:item.nugget_bismuth", 9, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 2500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_heu235", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 12, 0.8],
+            ["hbm:item.nugget_neptunium", 12, 0.8],
+            ["hbm:item.nugget_technetium", 12, 0.8],
+            ["hbm:item.nugget_pu239", 12, 0.8],
+            ["hbm:item.nugget_bismuth", 9, 0.8],
+            ["hbm:item.nugget_pu239", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_u235", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 6, 0.8],
+            ["hbm:item.nugget_pu239", 6, 0.8],
+            ["hbm:item.nugget_bismuth", 6, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 2]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 2]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.8],
+            ["hbm:item.nugget_neptunium", 3, 0.8],
+            ["hbm:item.nugget_technetium", 3, 0.6],
+            ["hbm:item.nugget_pu239", 3, 0.8],
+            ["hbm:item.nugget_bismuth", 3, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_u235", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.4],
+            ["hbm:item.nugget_neptunium", 3, 0.4],
+            ["hbm:item.nugget_technetium", 3, 0.4],
+            ["hbm:item.nugget_pu239", 3, 0.4],
+            ["hbm:item.nugget_bismuth", 3, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_u235", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 3, 0.4],
+            ["hbm:item.nugget_neptunium", 3, 0.4],
+            ["hbm:item.nugget_technetium", 3, 0.4],
+            ["hbm:item.nugget_pu239", 3, 0.4],
+            ["hbm:item.nugget_bismuth", 3, 0.4]
+],
+          "duration": 100,
+          "consumptionPerTick": 150000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_hen", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 18, 0.8],
+            ["hbm:item.nugget_technetium", 12, 0.8],
+            ["hbm:item.nugget_pu239", 18, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 2000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_hen", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 18, 0.8],
+            ["hbm:item.nugget_technetium", 12, 0.8],
+            ["hbm:item.nugget_pu239", 18, 0.8],
+            ["hbm:item.nugget_pu239", 6, 0.8]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 6, 0.6],
+            ["hbm:item.nugget_technetium", 3, 0.8],
+            ["hbm:item.nugget_pu239", 6, 0.6]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 200000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 6, 0.6],
+            ["hbm:item.nugget_technetium", 3, 0.8],
+            ["hbm:item.nugget_pu239", 6, 0.6]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 2000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 9, 0.8],
+            ["hbm:item.nugget_technetium", 6, 0.8],
+            ["hbm:item.nugget_pu239", 9, 0.8]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 400000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet_depleted", 1, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_neptunium", 9, 0.8],
+            ["hbm:item.nugget_technetium", 6, 0.8],
+            ["hbm:item.nugget_pu239", 9, 0.8]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 4000
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_hep", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 24, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 5000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_hep239", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 27, 0.8],
+            ["hbm:item.nugget_technetium", 9, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 1000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_pu239", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 3, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_pu239", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu239", 3, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 200000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_heaus", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_australium_greater", 6, 0.8],
+            ["hbm:item.nugget_au198", 24, 0.8],
+            ["minecraft:gold_nugget", 12, 0.8],
+            ["hbm:item.nugget_pb209", 12, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 7000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_heaus", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_au198", 24, 0.8],
+            ["hbm:item.nugget_au198", 9, 0.8],
+            ["minecraft:gold_nugget", 12, 0.8],
+            ["hbm:item.nugget_pb209", 12, 0.8],
+            ["hbm:item.nugget_pb209", 9, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_leaus", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_australium_lesser", 6, 0.8],
+            ["hbm:item.nugget_au198", 30, 0.8],
+            ["minecraft:gold_nugget", 12, 0.8],
+            ["hbm:item.nugget_pb209", 6, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 7000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_leaus", 8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_au198", 36, 0.8],
+            ["hbm:item.nugget_au198", 6, 0.8],
+            ["minecraft:gold_nugget", 12, 0.8],
+            ["hbm:item.nugget_pb209", 6, 0.8],
+            ["hbm:item.nugget_pb209", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_flashlead", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_bismuth", 15, 0.8],
+            ["hbm:item.nugget_au198", 12, 0.8],
+            ["hbm:item.nugget_gh336", 9, 0.8],
+            ["hbm:item.nugget_pb209", 12, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 9000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_flashlead", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_bismuth", 15, 0.8],
+            ["hbm:item.nugget_au198", 12, 0.8],
+            ["hbm:item.nugget_gh336", 9, 0.8],
+            ["hbm:item.nugget_pb209", 12, 0.8],
+            ["hbm:item.nugget_gh336", 3, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_hes", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_neptunium", 5, 0.8],
+            ["hbm:item.nugget_au198", 10, 0.8],
+            ["hbm:item.nugget_pb209", 10, 0.8],
+            ["hbm:item.nugget_gh336", 10, 0.8],
+            ["hbm:item.nugget_euphemium", 12, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 10000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_hes", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_au198", 10, 0.8],
+            ["hbm:item.nugget_pb209", 10, 0.8],
+            ["hbm:item.nugget_gh336", 10, 0.8],
+            ["hbm:item.nugget_euphemium", 12, 0.8],
+            ["hbm:item.nugget_gh336", 6, 0.8],
+            ["hbm:item.nugget_euphemium", 6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_sa326", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 3, 0.6],
+            ["hbm:item.nugget_au198", 3, 0.6],
+            ["hbm:item.nugget_pb209", 3, 0.6],
+            ["hbm:item.nugget_gh336", 3, 0.6],
+            ["hbm:item.nugget_euphemium", 4, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 2000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_sa326", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 3, 0.6],
+            ["hbm:item.nugget_au198", 3, 0.6],
+            ["hbm:item.nugget_pb209", 3, 0.6],
+            ["hbm:item.nugget_gh336", 3, 0.6],
+            ["hbm:item.nugget_euphemium", 4, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 800000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 11]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 3, 0.6],
+            ["hbm:item.nugget_au198", 3, 0.6],
+            ["hbm:item.nugget_pb209", 3, 0.6],
+            ["hbm:item.nugget_gh336", 3, 0.6],
+            ["hbm:item.nugget_euphemium", 4, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 2000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 11]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 3, 0.6],
+            ["hbm:item.nugget_au198", 3, 0.6],
+            ["hbm:item.nugget_pb209", 3, 0.6],
+            ["hbm:item.nugget_gh336", 3, 0.6],
+            ["hbm:item.nugget_euphemium", 4, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 20000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 6, 0.6],
+            ["hbm:item.nugget_au198", 6, 0.6],
+            ["hbm:item.nugget_pb209", 6, 0.6],
+            ["hbm:item.nugget_gh336", 6, 0.6],
+            ["hbm:item.nugget_euphemium", 8, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 4000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet_depleted", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 6, 0.6],
+            ["hbm:item.nugget_au198", 6, 0.6],
+            ["hbm:item.nugget_pb209", 6, 0.6],
+            ["hbm:item.nugget_gh336", 6, 0.6],
+            ["hbm:item.nugget_euphemium", 8, 0.6]
+],
+          "duration": 100,
+          "consumptionPerTick": 40000
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_balefire_gold", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_au198", 10, 0.8],
+            ["hbm:item.powder_balefire", 40, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+          ],
+          "duration": 100,
+          "consumptionPerTick": 90000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_balefire_gold", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_au198", 10, 0.8],
+            ["hbm:item.powder_balefire", 40, 0.8],
+            ["hbm:item.nugget_au198", 6, 0.8],
+            ["hbm:item.powder_balefire", 6, 0.8]
+          ],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_balefire", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.powder_balefire", 8, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+          ],
+          "duration": 100,
+          "consumptionPerTick": 100000000
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_balefire", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.powder_balefire", 12, 0.8]
+          ],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_drx", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.undefined",48, 1],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_drx", 8, 9]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.undefined",48, 1],
+            ["hbm:item.undefined",6, 0.8]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_fuel_pobi", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+			["hbm:item.powder_astatine",2, 0.3],
+			["hbm:item.powder_astatine",2, 1],
+			["hbm:item.powder_tennessine", 2, 0.7]
+			],
+          "duration": 100,
+          "consumptionPerTick": 8000000
+        },
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_pellet_pobi", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+			["hbm:item.powder_astatine",2, 0.3],
+			["hbm:item.powder_astatine",2, 1],
+			["hbm:item.powder_tennessine", 2, 0.7],
+			["hbm:item.powder_astatine",1, 0.3],
+			["hbm:item.powder_astatine",1, 1],
+			["hbm:item.powder_tennessine", 1, 0.7]
+			],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },		
+		
+{
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1, 7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma", 1, 0.4],
+            ["hbm:item.nugget_osmiridium",2, 0.6],
+			["hbm:item.nugget_dineutronium",4, 1]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 40000000
+        },
+{
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet_depleted", 1, 7]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma", 1, 0.4],
+            ["hbm:item.nugget_osmiridium",2, 0.6],
+			["hbm:item.nugget_dineutronium",4, 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 400000
+        },
+					
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_fuel_euph", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma",1, 0.5],
+            ["hbm:item.nugget_osmiridium",2, 0.8],
+			["hbm:item.nugget_dineutronium",5, 1],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 80000000
+        },
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_pellet_euph", 8, 9]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma",1, 0.8],
+            ["hbm:item.nugget_osmiridium",2, 0.8],
+			["hbm:item.nugget_dineutronium",5, 1],
+            ["hbm:item.particle_digamma",1, 0.5],
+            ["hbm:item.nugget_osmiridium",1, 0.5],
+			["hbm:item.nugget_dineutronium",4, 0.5]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma", 1, 0.1],
+            ["hbm:item.nugget_osmiridium",1, 0.3],
+			["hbm:item.nugget_dineutronium",1, 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 10000000
+        },
+		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel_hot", 1, 13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.particle_digamma", 1, 0.1],
+            ["hbm:item.nugget_osmiridium",1, 0.3],
+			["hbm:item.nugget_dineutronium",1, 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },
+		
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.plate_fuel_atbe", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_beryllium", 8, 0.5],
+            ["hbm:item.powder_tennessine", 1, 0.3],
+            ["hbm:item.powder_astatine", 1, 0.2]
+],
+          "duration": 100,
+          "consumptionPerTick": 1500000
+        },
+	        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.waste_plate_atbe", 1,1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_beryllium", 8, 0.5],
+            ["hbm:item.powder_tennessine", 1, 0.3],
+            ["hbm:item.powder_astatine", 1, 0.2]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+		{
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_fuel_dnt", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+			["hbm:item.ingot_electronium",1, 1],
+			["hbm:item.ingot_electronium",2, 0.6],
+			["hbm:item.ingot_u238m2",1, 0.8],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 150,
+          "consumptionPerTick": 100000000
+        },
+		{
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.rbmk_pellet_dnt", 8, 9]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+			["hbm:item.ingot_electronium",1, 1],
+			["hbm:item.ingot_electronium",2, 0.6],
+			["hbm:item.ingot_u238m2",1, 0.8],
+			["hbm:item.ingot_electronium",1, 0.6],
+			["hbm:item.ingot_electronium",1, 0.8],
+			["hbm:item.ingot_u238m2",1, 0.4]
+],
+          "duration": 150,
+          "consumptionPerTick": 0
+        }
+      ]
+    },
+	
+    {
+      "recipeKey": "simplefactory",
+      "recipes": [
+        {
+          "inputFluids": [
+	["OXYGEN",1000],
+	["WATER",600]
+          ],
+          "inputItems": [
+	["dict","dustSulfur"],
+	["item","hbm:item.catalyst_clay",1]
+],
+          "outputFluids": [
+	 ["SULFURIC_ACID",600]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 300,
+          "consumptionPerTick": 200
+        },
+        {
+          "inputFluids": [
+	["CRYOGEL",100]
+          ],
+          "inputItems": [
+],
+          "outputFluids": [
+	["NITROGEN",2000],
+	["OXYGEN",400]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 200,
+          "consumptionPerTick": 1000
+        },
+	          {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","oreTitanium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_iron",1,0, 0.5],
+	  ["hbm:item.powder_titanium",4,0,1],
+	  ["shincolle:AbyssMetal",1,1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreManganese",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_iron",1,0, 0.5],
+	  ["hbm:item.powder_titanium",1,0, 0.5],
+	  ["shincolle:AbyssMetal",4,1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreIron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_titanium",1,0, 0.5],
+	  ["hbm:item.powder_iron",4,0, 1.0],
+	  ["shincolle:AbyssMetal",1,1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreCoal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.sulfur",2, 0.5],
+	  ["hbm:item.powder_coal",6, 1.0],
+	  ["minecraft:redstone",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreRedstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_coal",2, 0.5],
+	  ["hbm:item.sulfur",2, 0.5],
+	  ["minecraft:redstone",6, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreSulfur",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:redstone",2, 0.5],
+	  ["hbm:item.sulfur",6, 1.0],
+	  ["hbm:item.powder_coal",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreBeryllium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_lithium",1, 0.5],
+	  ["hbm:item.powder_beryllium",4, 1.0],
+	  ["hbm:item.powder_emerald",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreLithium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_beryllium",1, 0.5],
+	  ["hbm:item.powder_emerald",1, 0.5],
+	  ["hbm:item.powder_lithium",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","oreEmerald",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_beryllium",1, 0.5],
+	  ["hbm:item.powder_emerald",5, 1.0],
+	  ["hbm:item.powder_lithium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreAsbestos",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_quartz",1, 0.5],
+	  ["hbm:item.powder_asbestos",5, 1.0],
+	  ["hbm:item.powder_boron",1, 0.15]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreNetherQuartz",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_asbestos",1, 0.5],
+	  ["hbm:item.powder_boron",1, 0.15],
+	  ["hbm:item.powder_quartz",5, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreBoron",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_asbestos",1, 0.5],
+	  ["hbm:item.powder_boron",2, 1.0],
+	  ["hbm:item.powder_quartz",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreGold",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.3],
+	  ["hbm:item.powder_cadmium",1, 0.1],	  
+	  ["hbm:item.powder_gold",4, 1.0],
+	  ["hbm:item.powder_copper",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreCopper",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.3],
+	  ["hbm:item.powder_cadmium",1, 0.05],	  
+	  ["hbm:item.powder_gold",1, 0.5],
+	  ["hbm:item.powder_copper",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreCinnabar",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_gold",1, 0.5],
+	  ["hbm:item.nugget_mercury",4, 1.0],
+	  ["hbm:item.powder_cadmium",1, 0.1],	  
+	  ["hbm:item.powder_copper",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreVolcanic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_diamond",1, 0.5],
+	  ["hbm:item.gem_volcanic",1, 1.0],
+	  ["hbm:item.gem_alexandrite",1, 0.05]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreDiamond",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_volcanic",1, 0.05],
+	  ["hbm:item.gem_alexandrite",1, 0.05],
+	  ["hbm:item.powder_diamond",5, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreAlexandrite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_volcanic",1, 0.05],
+	  ["hbm:item.gem_alexandrite",1, 1.0],
+	  ["hbm:item.powder_diamond",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreAluminum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_tungsten",1, 0.5],
+	  ["hbm:item.powder_aluminium",4, 1.0],
+	  ["hbm:item.powder_lead",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreTungsten",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_aluminium",1, 0.5],
+	  ["hbm:item.powder_lead",1, 0.5],
+	  ["hbm:item.powder_tungsten",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreLead",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_aluminium",1, 0.5],
+	  ["hbm:item.powder_lead",4, 1.0],
+	  ["hbm:item.powder_tungsten",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreSaltpeter",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_arsenic",1, 0.005],
+	  ["hbm:item.niter",9, 1.0],
+	  ["hbm:item.ingot_phosphorus",1, 0.2],
+	  ["hbm:item.powder_fire",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreArsenic",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.niter",2, 0.5],
+	  ["hbm:item.ingot_phosphorus",1, 0.2],
+	  ["hbm:item.powder_fire",1, 0.3],
+	  ["hbm:item.ingot_arsenic",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreWhitePhosphorus",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.ingot_arsenic",1, 0.005],
+	  ["hbm:item.ingot_phosphorus",3, 1.0],
+	  ["hbm:item.powder_fire",4, 1.0],
+	  ["hbm:item.niter",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreGlowstone",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.fluorite",2, 0.5],
+	  ["minecraft:glowstone_dust",5, 1.0],
+	  ["hbm:item.powder_calcium",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreFluorite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:glowstone_dust",1, 0.5],
+	  ["hbm:item.powder_calcium",1, 0.5],
+	  ["hbm:item.fluorite",9, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreCalcium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["minecraft:glowstone_dust",1, 0.5],
+	  ["hbm:item.powder_calcium",4, 1.0],
+	  ["hbm:item.fluorite",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreSodium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_niobium",1, 0.05],
+	  ["hbm:item.gem_sodalite",6, 1.0],
+	  ["hbm:item.powder_lapis",2, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreNiobium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.gem_sodalite",1, 0.5],
+	  ["hbm:item.powder_lapis",2, 0.5],
+	  ["hbm:item.powder_niobium",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreLapis",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_niobium",1, 0.05],
+	  ["hbm:item.powder_lapis",6, 1.0],
+	  ["hbm:item.gem_sodalite",1, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreZirconium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_neodymium",1, 0.5],
+	  ["hbm:item.powder_zirconium",4, 1.0],
+	  ["hbm:item.powder_desh",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreWorkersAlloy",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_neodymium", 1, 0.5],
+	  ["hbm:item.powder_zirconium", 1, 0.5],
+	  ["hbm:item.powder_desh", 1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreNeodymium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_desh",1, 0.1],
+	  ["hbm:item.powder_zirconium",1, 0.5],
+	  ["hbm:item.powder_neodymium",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreThorium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_polonium",1, 0.1],		  
+	  ["hbm:item.powder_thorium",4, 1.0],
+	  ["hbm:item.powder_uranium",1, 0.3],	  
+	  ["hbm:item.powder_ra226",1, 0.1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreUranium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_plutonium",1, 0.4],
+	  ["hbm:item.powder_polonium",1, 0.15],		  
+	  ["hbm:item.powder_uranium",4, 1.0],
+	  ["hbm:item.powder_ra226",1, 0.15],	  
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","orePlutonium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_uranium",1, 0.5],
+	  ["hbm:item.powder_ra226",1, 0.2],		  
+	  ["hbm:item.powder_plutonium",4, 1.0],
+	  ["hbm:item.powder_polonium",1, 0.2],	  
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreStarmetal",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+ 
+	  ["hbm:item.powder_cobalt",1, 0.5],	  
+	  ["hbm:item.ingot_starmetal",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreCobalt",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [ 
+	  ["hbm:item.powder_cobalt",4, 1.0],		  
+	  ["hbm:item.ingot_starmetal",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreAustralium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_australium",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+         {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+	
+          ],
+          "inputItems": [["dict","oreSchrabidium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_schrabidium",4, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pile_rod_pu239", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.billet_u235",1, 1],
+            ["hbm:item.billet_pu239", 1, 1],
+            ["hbm:item.billet_uranium", 1, 1],
+	        ["hbm:item.plate_iron", 2, 1]		
+],
+          "duration": 10,
+          "consumptionPerTick": 0
+        }
+		]
+	},
+{"recipeKey":"heatsink",
+"recipes":
+[
+        {
+          "inputFluids": [
+          ],
+          "inputItems": [
+],
+          "outputFluids": [
+	["NITROGEN",2000],
+	["OXYGEN",400]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 120,
+          "consumptionPerTick": 5000
+        }
+		]
+}
+  ]
+}
