@@ -24,16 +24,20 @@ public class TileEntityPileSource extends TileEntityPileBase {
 			for(int i = 0; i < 12; i++) {
 				this.castRay(n, 5);
 			}
-			if(n == 3 && ra <0.0003) {
+			if(ra< 0.00036 && n == 3) {
+				ItemStack out = ra > 0.0003 ? new ItemStack(ModItems.nugget_bismuth):new ItemStack(ModItems.nugget_technetium);
+				boolean canOutput = true;
 				live++;
-				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
+				here:
+					for (int i = -3 ; i <= 3 ; i++){
+					for (int j = -3 ; j <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord -1, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
-					ItemStack out =new ItemStack(ModItems.nugget_technetium);
-					boolean canOutput = true;
-						for(int j = 0; j < inv.getSizeInventory(); j++) {
+
+						for(int k = 0; k < inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -43,13 +47,13 @@ public class TileEntityPileSource extends TileEntityPileBase {
 							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
 								target.stackSize ++;
 								canOutput = false;
-								break;
+								break here;
 							}
 						}
 					if(canOutput){	
-						for(int j = 0; j <inv.getSizeInventory(); j++) {
+						for(int k = 0; k <inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -59,90 +63,48 @@ public class TileEntityPileSource extends TileEntityPileBase {
 								copy.stackSize = 1;
 								inv.setInventorySlotContents(slot, copy);
 								canOutput = false;
-								break;
+								break here;
 							}
 						}
 						}
 				}
-			
-				else{
+			}}
+				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
-				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.nugget_technetium));
+				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
 				dust.motionX = dir.offsetX * 0.25;
 				dust.motionY = dir.offsetY * 0.25;
 				dust.motionZ = dir.offsetZ * 0.25;
 				worldObj.spawnEntityInWorld(dust);
-				}	}
-			if(n == 3 && ra < 0.00036 && ra > 0.0003) {
-				live++;
-				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-				if(te0 instanceof IInventory) {
-					IInventory inv = (IInventory) te0;								
-					ItemStack out =new ItemStack(ModItems.nugget_bismuth);
-					boolean canOutput = true;
-						for(int j = 0; j < inv.getSizeInventory(); j++) {
-	
-							int slot = j;
-							
-							if(!inv.isItemValidForSlot(slot, out))
-								continue;
-								
-							ItemStack target = inv.getStackInSlot(slot);
-							
-							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
-								target.stackSize ++;
-								canOutput = false;
-								break;
-							}
-						}
-					if(canOutput){	
-						for(int j = 0; j <inv.getSizeInventory(); j++) {
-	
-							int slot = j;
-							
-							if(!inv.isItemValidForSlot(slot, out))
-								continue;
-							
-							if(inv.getStackInSlot(slot) == null ) {
-								ItemStack copy = out.copy();
-								copy.stackSize = 1;
-								inv.setInventorySlotContents(slot, copy);
-								canOutput = false;
-								break;
-							}
-						}
-						}
-				}
-			
-				else{
-				ForgeDirection dir = ForgeDirection.DOWN;
-				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.nugget_bismuth));
-				dust.motionX = dir.offsetX * 0.25;
-				dust.motionY = dir.offsetY * 0.25;
-				dust.motionZ = dir.offsetZ * 0.25;
-				worldObj.spawnEntityInWorld(dust);
-				}	}
-				if(live == 18) {			
-				TileEntity te1 = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
+				}	}		
+				if(live == 18) {
+				boolean canInput = true;
+				newthere:
+				for (int i = -3 ; i <= 3 ; i++){
+					for (int j = -3 ; j <= 3 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + 1, zCoord + j);				
+
 				if(te1 instanceof IInventory) {	
 					IInventory inv = (IInventory) te1;
 					int size = inv.getSizeInventory();	
-					for(int i = 0; i < size; i++) {
-						int index = i;
+					for(int k = 0; k < size; k++) {
+						int index = k;
 						ItemStack stack = inv.getStackInSlot(index);
 						if(stack != null &&stack.getItem()== ModItems.pile_rod_plutonium){
 							inv.decrStackSize(index, 1);
 							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_plutonium ,0, 3);
-							break;
+							canInput = false;
+							break newthere;
 						}
-						else if((index == size -1&& stack == null) || (index == size -1 && stack.getItem()!= ModItems.pile_rod_plutonium)){
-							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled ,0, 3);
-							break;
+						else if(stack != null &&stack.getItem()== ModItems.pile_rod_source){
+							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_source ,0, 3);
+							canInput = false;
+							break newthere;
 						}
 					}
 
-				}
-				else 	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
+				}}}
+				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 				}
 		}
 	}

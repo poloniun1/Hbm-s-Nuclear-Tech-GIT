@@ -26,13 +26,12 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutronReceiver {
-	public boolean canproduce1 = true;
-	public boolean canproduce2 = true;
 	public int heat;
 	public static final int maxHeat = 1000;
 	public int neutrons;
 	public int lastNeutrons;
 	public int progress;
+	public boolean canProduce = true;
 	public static final int maxProgress = GeneralConfig.enable528 ? 7500 : 5000; //might double to reduce compact setup's effectiveness
 	
 	@Override
@@ -57,18 +56,21 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 						new TargetPoint(worldObj.provider.dimensionId, xCoord + 0.5, yCoord + 1, zCoord + 0.5, 20));
 				MainRegistry.proxy.effectNT(data);
 			}
-			if(this.progress >= this.maxProgress-1000 && canproduce1) {				
-				canproduce1 = false;
-				if(ra <0.175){
-				canproduce2 = false;
-				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
+			if(this.progress >= this.maxProgress-500 && canProduce) {
+				canProduce = false ;
+				if(ra < 0.2){
+				ItemStack out = ra > 0.175 ? new ItemStack(ModItems.nugget_bismuth):new ItemStack(ModItems.nugget_technetium);
+				boolean canOutput = true;
+				here:
+					for (int i = -3 ; i <= 3 ; i++){
+					for (int j = -3 ; j <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - 1, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
-					ItemStack out =new ItemStack(ModItems.nugget_technetium);
-					boolean canOutput = true;
-						for(int j = 0; j < inv.getSizeInventory(); j++) {
+
+						for(int k = 0; k < inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -78,13 +80,13 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
 								target.stackSize ++;
 								canOutput = false;
-								break;
+								break here;
 							}
 						}
 					if(canOutput){	
-						for(int j = 0; j <inv.getSizeInventory(); j++) {
+						for(int k = 0; k <inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -94,81 +96,34 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 								copy.stackSize = 1;
 								inv.setInventorySlotContents(slot, copy);
 								canOutput = false;
-								break;
+								break here;
 							}
 						}
 						}
 				}
-			
-				else{
+			}}
+				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
-				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.nugget_technetium));
+				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
 				dust.motionX = dir.offsetX * 0.25;
 				dust.motionY = dir.offsetY * 0.25;
 				dust.motionZ = dir.offsetZ * 0.25;
 				worldObj.spawnEntityInWorld(dust);
-				}	}	}
-			if(this.progress >= this.maxProgress-500 && canproduce2) {
-				canproduce2 = false;
-				if(ra < 0.2 && ra > 0.175){
-				canproduce1 = false;				
-				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-				if(te0 instanceof IInventory) {
-					IInventory inv = (IInventory) te0;								
-					ItemStack out =new ItemStack(ModItems.nugget_bismuth);
-					boolean canOutput = true;
-						for(int j = 0; j < inv.getSizeInventory(); j++) {
-	
-							int slot = j;
-							
-							if(!inv.isItemValidForSlot(slot, out))
-								continue;
-								
-							ItemStack target = inv.getStackInSlot(slot);
-							
-							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
-								target.stackSize ++;
-								canOutput = false;
-								break;
-							}
-						}
-					if(canOutput){	
-						for(int j = 0; j <inv.getSizeInventory(); j++) {
-	
-							int slot = j;
-							
-							if(!inv.isItemValidForSlot(slot, out))
-								continue;
-							
-							if(inv.getStackInSlot(slot) == null ) {
-								ItemStack copy = out.copy();
-								copy.stackSize = 1;
-								inv.setInventorySlotContents(slot, copy);
-								canOutput = false;
-								break;
-							}
-						}
-						}
-				}
-			
-				else{
-				ForgeDirection dir = ForgeDirection.DOWN;
-				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.nugget_bismuth));
-				dust.motionX = dir.offsetX * 0.25;
-				dust.motionY = dir.offsetY * 0.25;
-				dust.motionZ = dir.offsetZ * 0.25;
-				worldObj.spawnEntityInWorld(dust);
-				}}	}		
+				}	}}		
 		
 			if(this.progress >= this.maxProgress) {
-				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
+				boolean canOutput = true;
+				boolean canInput = true;
+				there:
+					for (int i = -3 ; i <= 3 ; i++){
+					for (int j = -3 ; j <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - 1, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
 					ItemStack out =new ItemStack(ModItems.pile_rod_pu239);
-					boolean canOutput = true;
-						for(int j = 0; j < inv.getSizeInventory(); j++) {
+						for(int k = 0; k < inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -178,13 +133,13 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
 								target.stackSize ++;
 								canOutput = false;
-								break;
+								break there;
 							}
 						}
 					if(canOutput){	
-						for(int j = 0; j <inv.getSizeInventory(); j++) {
+						for(int k = 0; k <inv.getSizeInventory(); k++) {
 	
-							int slot = j;
+							int slot = k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -194,13 +149,13 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 								copy.stackSize = 1;
 								inv.setInventorySlotContents(slot, copy);
 								canOutput = false;
-								break;
+								break there;
 							}
 						}
 						}
 				}
-			
-				else{
+			}}
+				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
 				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.pile_rod_pu239));
 				dust.motionX = dir.offsetX * 0.25;
@@ -208,33 +163,34 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 				dust.motionZ = dir.offsetZ * 0.25;
 				worldObj.spawnEntityInWorld(dust);
 				}
-				TileEntity te1 = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
+				newthere:
+				for (int i = -3 ; i <= 3 ; i++){
+					for (int j = -3 ; j <= 3 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + 1, zCoord + j);				
 				if(te1 instanceof IInventory) {
 						
 					IInventory inv = (IInventory) te1;
 					int size = inv.getSizeInventory();
 						
-					for(int i = 0; i < size; i++) {
-						int index = i;
+					for(int k = 0; k < size; k++) {
+						int index = k;
 						ItemStack stack = inv.getStackInSlot(index);
 						if(stack != null &&stack.getItem()== ModItems.pile_rod_uranium){
 							inv.decrStackSize(index, 1);
 							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_fuel ,0, 3);
-							break;
+							canInput = false;
+							break newthere;
 						}
 						else if(stack != null &&stack.getItem()== ModItems.pile_rod_lithium){
 							inv.decrStackSize(index, 1);
 							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_lithium ,0, 3);
-							break;
-						}
-						else if((index == size -1&& stack == null) || (index == size -1 && stack.getItem()!= ModItems.pile_rod_uranium && stack.getItem()!= ModItems.pile_rod_lithium)){
-							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled ,0, 3);
-							break;
+							canInput = false;
+							break newthere;
 						}
 					}
 
-				}
-				else 	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
+				}}}
+				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 
 			}
 		}

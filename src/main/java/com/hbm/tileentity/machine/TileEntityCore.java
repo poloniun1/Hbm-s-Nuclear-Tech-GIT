@@ -247,8 +247,9 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		tanks[0].setFill(tanks[0].getFill() - demand);
 		tanks[1].setFill(tanks[1].getFill() - demand);
 		}
-		
-		return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()));
+	
+		if(slots[1].getItem() == ModItems.battery_creative)	return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()) * 15);
+		else return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()));
 	}
 	
 	public float getFuelEfficiency(FluidType type) {
@@ -257,7 +258,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		if(type == Fluids.DEUTERIUM)
 			return 1.5F;
 		if(type == Fluids.TRITIUM)
-			return 1.7F;
+			return 1.8F;
 		if(type == Fluids.OXYGEN)
 			return 1.2F;
 		if(type == Fluids.ACID)
@@ -267,11 +268,11 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		if(type == Fluids.SAS3)
 			return 2.0F;
 		if(type == Fluids.BALEFIRE)
-			return 3.5F;
+			return 2.5F;
 		if(type == Fluids.AMAT)
-			return 3.0F;
+			return 2.4F;
 		if(type == Fluids.ASCHRAB)
-			return 4.0F;
+			return 3.0F;
 		return 0;
 	}
 	
@@ -283,13 +284,19 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		}
 		
 		if(slots[1].getItem() == ModItems.ams_core_sing)
-			return 500;
+			return 800;
 		
 		if(slots[1].getItem() == ModItems.ams_core_wormhole)
-			return 650;
+			return 1000;
 		
 		if(slots[1].getItem() == ModItems.ams_core_eyeofharmony)
-			return 1500;
+			return 1600;
+
+		if(slots[1].getItem() == ModItems.cube_power)
+			return 62500;
+
+		if(slots[1].getItem() == ModItems.battery_creative)
+			return 1800000000;
 		
 		if(slots[1].getItem() == ModItems.ams_core_thingy)
 			return 2500;

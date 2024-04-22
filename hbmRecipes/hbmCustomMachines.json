@@ -2603,7 +2603,26 @@
           "duration": 500,
           "consumptionPerTick": 10000
         },	
-		
+	        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","ha:tile.machine_electron_battery",2],
+	["dict","blockStarmetal",6],
+	["item","hbm:tile.machine_transformer_dnt",2],
+	["item","hbm:item.powder_magic",12],
+	["item","hbm:item.ingot_u238m2"],
+	["item","hbm:item.ingot_cft",12]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.machine_electron_battery",1, 1.0]
+          ],
+          "duration": 450,
+          "consumptionPerTick": 8000
+        },			
 		
         {
           "inputFluids": [
