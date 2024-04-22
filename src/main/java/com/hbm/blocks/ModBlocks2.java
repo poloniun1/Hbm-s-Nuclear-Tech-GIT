@@ -64,7 +64,7 @@ public class ModBlocks2 {
 		machine_stirling_cmb = new MachineStirling().setBlockName("machine_stirling_cmb").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		machine_dineutronium_battery_ex = new MachineBattery(Material.iron, 100_000_000_000_000L).setBlockName("machine_dineutronium_battery_ex").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab);
 		machine_electron_battery = new MachineBattery(Material.iron, 50_000_000_000_000_000L).setBlockName("machine_electron_battery").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab);
-		machine_ex_battery = new MachineBattery(Material.iron, 9_220_000_000_000_000_000L).setBlockName("machine_ex_battery").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab);
+		machine_ex_battery = new MachineBattery(Material.iron, 4_600_000_000_000_000_000L).setBlockName("machine_ex_battery").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab);
 
 		rbmk_turbine = new RBMKTurbine(Material.iron).setBlockName("rbmk_turbine").setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab).setBlockTextureName(RefStrings.MODID + ":rbmk_turbine");
 
