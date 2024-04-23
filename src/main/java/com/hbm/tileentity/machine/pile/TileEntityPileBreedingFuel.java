@@ -37,7 +37,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 				here:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; j++){
+					for (int u = 1 ; u <= 3 ; u++){
 						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
 						if(te0 instanceof IInventory) {
 							IInventory inv = (IInventory) te0;								
@@ -86,7 +86,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 				there:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; j++){
+					for (int u = 1 ; u <= 3 ; u++){
 						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);					
 				if(te1 instanceof IInventory) {
 						
