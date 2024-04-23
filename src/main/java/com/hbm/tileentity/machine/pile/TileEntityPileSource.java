@@ -19,19 +19,20 @@ public class TileEntityPileSource extends TileEntityPileBase {
 
 		if(!worldObj.isRemote) {
 			float ra = worldObj.rand.nextFloat();			
-			int n = this.getBlockType() == ModBlocks.block_graphite_source ? 1 : 3;
+			int n = this.getBlockType() == ModBlocks.block_graphite_source ? 3 : 6;
 
 			for(int i = 0; i < 12; i++) {
 				this.castRay(n, 5);
 			}
-			if(ra< 0.00036 && n == 3) {
+			if(ra< 0.00036 && n == 5) {
 				ItemStack out = ra > 0.0003 ? new ItemStack(ModItems.nugget_bismuth):new ItemStack(ModItems.nugget_technetium);
 				boolean canOutput = true;
 				live++;
 				here:
 					for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord -1, zCoord + j);
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
 
@@ -68,7 +69,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 						}
 						}
 				}
-			}}
+			}}}
 				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
 				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
@@ -82,7 +83,8 @@ public class TileEntityPileSource extends TileEntityPileBase {
 				newthere:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + 1, zCoord + j);				
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);			
 
 				if(te1 instanceof IInventory) {	
 					IInventory inv = (IInventory) te1;
@@ -103,7 +105,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 						}
 					}
 
-				}}}
+				}}}}
 				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 				}
 		}

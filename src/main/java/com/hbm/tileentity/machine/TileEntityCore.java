@@ -248,7 +248,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		tanks[1].setFill(tanks[1].getFill() - demand);
 		}
 	
-		if(slots[1].getItem() == ModItems.battery_creative)	return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()) * 15);
+		if(slots[1].getItem() == ModItems.battery_creative)	return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()) * 15.625);
 		else return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()));
 	}
 	
@@ -296,7 +296,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 			return 62500;
 
 		if(slots[1].getItem() == ModItems.battery_creative)
-			return 1800000000;
+			return 1728000000;
 		
 		if(slots[1].getItem() == ModItems.ams_core_thingy)
 			return 2500;

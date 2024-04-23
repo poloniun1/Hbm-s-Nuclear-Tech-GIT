@@ -32,7 +32,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 	public int lastNeutrons;
 	public int progress;
 	public boolean canProduce = true;
-	public static final int maxProgress = GeneralConfig.enable528 ? 7500 : 5000; //might double to reduce compact setup's effectiveness
+	public static final int maxProgress = GeneralConfig.enable528 ? 10000 : 7500; //might double to reduce compact setup's effectiveness
 	
 	@Override
 	public void updateEntity() {
@@ -64,7 +64,8 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 				here:
 					for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - 1, zCoord + j);
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
 
@@ -101,7 +102,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 						}
 						}
 				}
-			}}
+			}}}
 				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
 				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
@@ -117,7 +118,8 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 				there:
 					for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - 1, zCoord + j);
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
 					ItemStack out =new ItemStack(ModItems.pile_rod_pu239);
@@ -154,7 +156,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 						}
 						}
 				}
-			}}
+			}}}
 				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
 				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.pile_rod_pu239));
@@ -166,7 +168,8 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 				newthere:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + 1, zCoord + j);				
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);					
 				if(te1 instanceof IInventory) {
 						
 					IInventory inv = (IInventory) te1;
@@ -189,7 +192,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 						}
 					}
 
-				}}}
+				}}}}
 				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 
 			}

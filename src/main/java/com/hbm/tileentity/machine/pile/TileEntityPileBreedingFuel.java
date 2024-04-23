@@ -24,7 +24,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 	public int neutrons;
 	public int lastNeutrons;
 	public int progress;
-	public static final int maxProgress = GeneralConfig.enable528 ? 5000 : 3000;
+	public static final int maxProgress = GeneralConfig.enable528 ? 8000 : 5000;
 	
 	@Override
 	public void updateEntity() {
@@ -37,7 +37,8 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 				here:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - 1, zCoord + j);
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
 						if(te0 instanceof IInventory) {
 							IInventory inv = (IInventory) te0;								
 							ItemStack out =new ItemStack(ModItems.cell_tritium);
@@ -74,7 +75,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 								}
 								}
 						}
-					}}
+					}}}
 					if(canOutput){
 					ForgeDirection dir = ForgeDirection.DOWN;
 					EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.cell_tritium));
@@ -85,7 +86,8 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 				there:
 				for (int i = -3 ; i <= 3 ; i++){
 					for (int j = -3 ; j <= 3 ; j++){
-						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + 1, zCoord + j);				
+					for (int u = 1 ; u <= 3 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);					
 				if(te1 instanceof IInventory) {
 						
 					IInventory inv = (IInventory) te1;
@@ -108,7 +110,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 						}
 					}
 					}
-					}}
+					}}}
 					if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 			}
 		}
