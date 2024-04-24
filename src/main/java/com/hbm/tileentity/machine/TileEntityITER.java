@@ -53,7 +53,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidAcceptor, IFluidSource, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
-	public static final long maxPower = 100000000000000L;
+	public static final long maxPower = 10000000000000L;
 	public static final int powerReq = 100000;
 	public int age = 0;
 	public List<IFluidAcceptor> list = new ArrayList();
@@ -62,7 +62,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 	public int progress;
 	public static final int duration = 100;
-	public boolean hasPlasma = false;
+
 	
 	@SideOnly(Side.CLIENT)
 	public int blanket;
@@ -185,15 +185,16 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
 						produceByproduct();
 				}
-				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*500000;				
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*500000-100000;				
 					
 					if(plasma.getFill() >= 200) {
 						power += prod;
 						plasma.setFill(plasma.getFill() - 200);
 					}
 				doBreederStuff();
-					Generate();
-				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);				
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 200)  power += 100000;				
 					}				
 				
 				
@@ -202,11 +203,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 			for(int i = 0; i < tanks.length; i++)
 				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-			if(plasma.getFill() >= 200) 	hasPlasma = true;				
+			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);			
 			NBTTagCompound data = new NBTTagCompound();
 			data.setBoolean("isOn", isOn);
-			data.setBoolean("hasPlasma", hasPlasma);
 			data.setLong("power", power);
 			data.setInteger("progress", progress);
 	
@@ -235,7 +234,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				this.lastRotor -= 360;
 			}
 			
-			if(this.isOn && ((this.power >= powerReq && !RBMKDials.getGeneratorF(worldObj))||(RBMKDials.getGeneratorF(worldObj) && this.hasPlasma))) {
+			if(  this.isOn && this.power >= powerReq ) {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed + 0.05F));
 
 				if(audio == null) {
