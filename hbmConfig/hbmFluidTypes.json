@@ -119,53 +119,5 @@
     "symbol": "NONE",
     "texture": "custom_water",
     "temperature": 20
-  },
-     "PLASMA_DT_NEW": {
-    "name": "PLASMA_DT",
-    "id": 1010,
-    "color": 17417379,
-    "tint": 17417379,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 1500
-  },
-     "PLASMA_DH3_NEW": {
-    "name": "PLASMA_DH3",
-    "id": 1011,
-    "color": 16417379,
-    "tint": 16417379,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 2000
-  },
-     "PLASMA_XM_NEW": {
-    "name": "PLASMA_XM",
-    "id": 1012,
-    "color": 12417379,
-    "tint": 12417379,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 2500
-  },
-     "PLASMA_BF_NEW": {
-    "name": "PLASMA_BF",
-    "id": 1013,
-    "color": 8417379,
-    "tint": 8417379,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 3200
   }
 }

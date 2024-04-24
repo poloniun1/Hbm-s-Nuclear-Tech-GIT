@@ -31,6 +31,7 @@ import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+import api.hbm.energymk2.IBatteryItem;
 import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
@@ -47,6 +48,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidAcceptor, IFluidSource, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
 	
@@ -60,6 +62,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 	public int progress;
 	public static final int duration = 100;
+	public boolean hasPlasma = false;
 	
 	@SideOnly(Side.CLIENT)
 	public int blanket;
@@ -77,7 +80,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		tanks = new FluidTank[2];
 		tanks[0] = new FluidTank(Fluids.WATER, 1280000, 0);
 		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 128000, 1);
-		plasma = new FluidTank(Fluids.PLASMA_DT, 32000, 2);
+		plasma = new FluidTank(Fluids.PLASMA_DT, 160000, 2);
 	}
 
 	@Override
@@ -97,14 +100,19 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 			if (age == 9 || age == 19)
 				fillFluidInit(tanks[1].getTankType());
-			if(!RBMKDials.getGeneratorF(worldObj))	{			
-			this.updateConnections();
+		
 
-			power = Library.chargeTEFromItems(slots, 0, power, maxPower);}
-
+			if(!RBMKDials.getGeneratorF(worldObj))	{
+			this.updateConnections();	
+			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
+			}
+			else {	
+				for(DirPos pos : getConPos()) 
+					this.trySubscribe(plasma.getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+				}
 			/// START Processing part ///
 			
-			if(!isOn) {
+			if(!isOn&&!RBMKDials.getGeneratorF(worldObj)) {
 				plasma.setFill(0);	//jettison plasma if the thing is turned off
 			}
 			if(!RBMKDials.getGeneratorF(worldObj)){				
@@ -160,9 +168,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			/// END Processing part ///
 
 			/// START Notif packets ///
-			for(int i = 0; i < tanks.length; i++)
-				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
+
 			
 			for(DirPos pos : getConPos()) {
 				if(tanks[1].getFill() > 0) {
@@ -171,33 +177,39 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			}
 			}else
 			{
+
 				if(isOn ) {
-				
+
 				if(plasma.getFill() > 0) {					
-					int chance = FusionRecipes.getByproductChance(plasma.getTankType()) / 50;					
+					int chance = FusionRecipes.getByproductChance(plasma.getTankType())/10;					
 					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
 						produceByproduct();
 				}
-				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*250000;				
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*500000;				
 					
-					if(plasma.getFill() > 100) {
+					if(plasma.getFill() >= 200) {
 						power += prod;
-						plasma.setFill(plasma.getFill() - 100);
+						plasma.setFill(plasma.getFill() - 200);
+						hasPlasma = true;
 					}
 				doBreederStuff();
-				plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-				Generate();
-				
+					Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);				
 					}				
 				
 				
 				
-				}			
+				}
+	
+			for(int i = 0; i < tanks.length; i++)
+				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
+			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);				
 			NBTTagCompound data = new NBTTagCompound();
 			data.setBoolean("isOn", isOn);
+			data.setBoolean("hasPlasma", hasPlasma);
 			data.setLong("power", power);
 			data.setInteger("progress", progress);
-			
+	
 			if(slots[3] == null) {
 				data.setInteger("blanket", 0);
 			} else if(slots[3].getItem() == ModItems.fusion_shield_tungsten) {
@@ -223,7 +235,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				this.lastRotor -= 360;
 			}
 			
-			if(this.isOn && this.power >= powerReq) {
+			if(this.isOn && ((this.power >= powerReq && !RBMKDials.getGeneratorF(worldObj))||(RBMKDials.getGeneratorF(worldObj) && this.hasPlasma))) {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed + 0.05F));
 
 				if(audio == null) {
@@ -234,7 +246,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				float rotorSpeed = this.rotorSpeed / 15F;
 				audio.updateVolume(getVolume(0.5f * rotorSpeed));
 				audio.updatePitch(0.25F + 0.75F * rotorSpeed);
-			} else {
+			}
+			else {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed - 0.1F));
 				
 				if(audio != null) {
@@ -258,6 +271,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		for(DirPos pos : getConPos()) {
 			this.trySubscribe(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
 		}
 	}
 	private void Generate() {
@@ -267,6 +281,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 		}
 	}	
+
+
+
 	protected List<DirPos> getConPos() {
 		if(connections != null && !connections.isEmpty())
 			return connections;
@@ -655,7 +672,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 	@Override
 	public FluidTank[] getReceivingTanks() {
-		return new FluidTank[] {tanks[0]};
+		return new FluidTank[] {tanks[0],plasma};
 	}
 
 	@Override

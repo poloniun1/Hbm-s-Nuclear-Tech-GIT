@@ -57,8 +57,9 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 			tank.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
 			this.subscribeToAllAround(tank.getTankType(), this);
 			
-			power = joules * 5000;
-			if( power > 9_000_000_000_000_000_000L ) power = Long.MAX_VALUE-1;
+			if( joules > 1_800_000_000_000_000L ) 
+			power = Long.MAX_VALUE;
+			else power = joules * 5000;
 			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
 			

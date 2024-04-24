@@ -1266,11 +1266,9 @@
     "liquid": {}
   },
   "AMAT": {
-    "amat": {},
     "gaseous": {}
   },
   "ASCHRAB": {
-    "amat": {},
     "gaseous": {}
   },
   "WASTEFLUID": {
@@ -1296,33 +1294,21 @@
     "liquid": {}
   },
   "PLASMA_DT": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "PLASMA_HD": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "PLASMA_HT": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "PLASMA_DH3": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "PLASMA_XM": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "PLASMA_BF": {
-    "nocontainer": {},
-    "noid": {},
     "plasma": {}
   },
   "SMOKE": {
@@ -1443,17 +1429,5 @@
 	  "TURBINE":1.0,
       "HEATEXCHANGER": 1.0
     }
-},
-  "PLASMA_DT_NEW": {
-    "plasma": {}
-  },
-  "PLASMA_DH3_NEW": {
-    "plasma": {}
-  },
-  "PLASMA_XM_NEW": {
-    "plasma": {}
-  },
-  "PLASMA_BF_NEW": {
-    "plasma": {}
-  }
+}
 }

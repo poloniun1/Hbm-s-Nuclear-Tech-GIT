@@ -3162,7 +3162,7 @@
 
 ],
           "outputFluids": [
-	["PLASMA_DT_NEW",1000]
+	["PLASMA_DT",1000]
           ],
           "outputItems": [
 
@@ -3179,7 +3179,7 @@
 
 ],
           "outputFluids": [
-	["PLASMA_DH3_NEW",1000]
+	["PLASMA_DH3",1000]
           ],
           "outputItems": [
 
@@ -3197,7 +3197,7 @@
 
 ],
           "outputFluids": [
-	["PLASMA_DH3_NEW",1000]
+	["PLASMA_DH3",1000]
           ],
           "outputItems": [
 
@@ -3215,7 +3215,7 @@
 
 ],
           "outputFluids": [
-	["PLASMA_XM_NEW",1000]
+	["PLASMA_XM",1000]
           ],
           "outputItems": [
 
@@ -3233,7 +3233,7 @@
 
 ],
           "outputFluids": [
-	["PLASMA_BF_NEW",1000]
+	["PLASMA_BF",1000]
           ],
           "outputItems": [
 
@@ -3384,7 +3384,7 @@
 	
         {
           "inputFluids": [
-	["PLASMA_DT_NEW",1000]
+	["PLASMA_DT",1000]
           ],
           "inputItems": [
 
@@ -3403,7 +3403,7 @@
         },		
         {
           "inputFluids": [
-	["PLASMA_DH3_NEW",1000]
+	["PLASMA_DH3",1000]
           ],
           "inputItems": [
 
@@ -3423,7 +3423,7 @@
         },		
         {
           "inputFluids": [
-	["PLASMA_XM_NEW",1000]
+	["PLASMA_XM",1000]
           ],
           "inputItems": [
 
@@ -3442,7 +3442,7 @@
         },		
         {
           "inputFluids": [
-	["PLASMA_BF_NEW",1000]
+	["PLASMA_BF",1000]
           ],
           "inputItems": [
 
