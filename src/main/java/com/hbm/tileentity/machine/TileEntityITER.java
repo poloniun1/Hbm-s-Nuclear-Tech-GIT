@@ -190,7 +190,6 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					if(plasma.getFill() >= 200) {
 						power += prod;
 						plasma.setFill(plasma.getFill() - 200);
-						hasPlasma = true;
 					}
 				doBreederStuff();
 					Generate();
@@ -203,7 +202,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 			for(int i = 0; i < tanks.length; i++)
 				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);				
+			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
+			if(plasma.getFill() >= 200) 	hasPlasma = true;				
 			NBTTagCompound data = new NBTTagCompound();
 			data.setBoolean("isOn", isOn);
 			data.setBoolean("hasPlasma", hasPlasma);
