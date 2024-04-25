@@ -53,7 +53,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidAcceptor, IFluidSource, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
-	public static final long maxPower = 10000000000000L;
+	public static final long maxPower = 5000000000000L;
 	public static final int powerReq = 100000;
 	public int age = 0;
 	public List<IFluidAcceptor> list = new ArrayList();
@@ -80,7 +80,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		tanks = new FluidTank[2];
 		tanks[0] = new FluidTank(Fluids.WATER, 1280000, 0);
 		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 128000, 1);
-		plasma = new FluidTank(Fluids.PLASMA_DT, 160000, 2);
+		plasma = new FluidTank(Fluids.PLASMA_DT, 200000, 2);
 	}
 
 	@Override
@@ -181,20 +181,20 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(isOn ) {
 
 				if(plasma.getFill() > 0) {					
-					int chance = FusionRecipes.getByproductChance(plasma.getTankType())/10;					
+					int chance = FusionRecipes.getByproductChance(plasma.getTankType())/15;					
 					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
 						produceByproduct();
 				}
-				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*500000-100000;				
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*375000-100000;				
 					
-					if(plasma.getFill() >= 200) {
+					if(plasma.getFill() >= 300) {
 						power += prod;
-						plasma.setFill(plasma.getFill() - 200);
+						plasma.setFill(plasma.getFill() - 300);
 					}
 				doBreederStuff();
 				Generate();
 				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
-				if(plasma.getFill() >= 200)  power += 100000;				
+				if(plasma.getFill() >= 300)  power += 100000;				
 					}				
 				
 				

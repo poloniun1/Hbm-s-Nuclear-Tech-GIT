@@ -3167,27 +3167,44 @@
           "outputItems": [
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 50000
+          "duration": 1,
+          "consumptionPerTick": 200000
         },
         {
           "inputFluids": [
 	["DEUTERIUM",500],
-	["HELIUM",500]
+	["HYDROGEN",500]
           ],
           "inputItems": [
 
 ],
           "outputFluids": [
-	["PLASMA_DH3",1000]
+	["PLASMA_HD",1000]
           ],
           "outputItems": [
 
+          ],
+          "duration": 1,
+          "consumptionPerTick": 200000
+        },
+        {
+          "inputFluids": [
+	["TRITIUM",500],
+	["HYDROGEN",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_HT",1000]
+          ],
+          "outputItems": [
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 75000
-        },	
+          "duration": 1,
+          "consumptionPerTick": 200000
+        },
+	
         {
           "inputFluids": [
 	["DEUTERIUM",500],
@@ -3203,8 +3220,8 @@
 
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 75000
+          "duration": 1,
+          "consumptionPerTick": 500000
         },
         {
           "inputFluids": [
@@ -3221,9 +3238,27 @@
 
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 100000
-        },		
+          "duration": 1,
+          "consumptionPerTick": 1200000
+        },	
+	        {
+          "inputFluids": [
+	["OXYGEN",500],
+	["HELIUM",500]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["PLASMA_XM",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 1200000
+        },
         {
           "inputFluids": [
 	["BALEFIRE",500],
@@ -3239,8 +3274,8 @@
 
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 120000
+          "duration": 1,
+          "consumptionPerTick": 1500000
         },		
 		
 		
@@ -3384,7 +3419,7 @@
 	
         {
           "inputFluids": [
-	["PLASMA_DT",1000]
+	["PLASMA_DT",300]
           ],
           "inputItems": [
 
@@ -3393,17 +3428,66 @@
 
           ],
           "outputItems": [
-	["hbm:item.pellet_charged",2, 1.0],
-	["hbm:item.pellet_charged",2, 0.6],
-	["hbm:item.pellet_charged",2, 0.2]
+	["hbm:item.pellet_charged",1, 0.0125]
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 1350000
+        },
+		        {
+          "inputFluids": [
+	["PLASMA_HD",300]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.0125]
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 900000
+        },
+        {
+          "inputFluids": [
+	["PLASMA_HT",300]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.0125]
 
           ],
           "duration": 20,
-          "consumptionPerTick": 200000
+          "consumptionPerTick": 1125000
+        },
+        {
+          "inputFluids": [
+	["PLASMA_DH3",300]
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.pellet_charged",1, 0.025]
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2250000
         },		
         {
           "inputFluids": [
-	["PLASMA_DH3",1000]
+	["PLASMA_XM",300]
           ],
           "inputItems": [
 
@@ -3412,18 +3496,16 @@
 
           ],
           "outputItems": [
-	["hbm:item.pellet_charged",2, 1.0],
-	["hbm:item.pellet_charged",2, 0.75],
-	["hbm:item.pellet_charged",2, 0.5],
-	["hbm:item.pellet_charged",2, 0.25]
+	["hbm:item.powder_chlorophyte",1, 0.0125]
+
 
           ],
-          "duration": 20,
-          "consumptionPerTick": 375000
+          "duration": 1,
+          "consumptionPerTick": 2700000
         },		
         {
           "inputFluids": [
-	["PLASMA_XM",1000]
+	["PLASMA_BF",300]
           ],
           "inputItems": [
 
@@ -3432,31 +3514,10 @@
 
           ],
           "outputItems": [
-	["hbm:item.powder_chlorophyte",2, 1.0],
-	["hbm:item.powder_chlorophyte",2, 0.5]
-
-
+	["hbm:item.powder_balefire",1, 0.1]
           ],
-          "duration": 20,
-          "consumptionPerTick": 600000
-        },		
-        {
-          "inputFluids": [
-	["PLASMA_BF",1000]
-          ],
-          "inputItems": [
-
-],
-          "outputFluids": [
-
-          ],
-          "outputItems": [
-	["hbm:item.powder_balefire",2, 0.6],
-	["hbm:item.powder_balefire",2, 0.2]
-
-          ],
-          "duration": 20,
-          "consumptionPerTick": 750000
+          "duration": 1,
+          "consumptionPerTick": 5400000
         },
 
 	{
