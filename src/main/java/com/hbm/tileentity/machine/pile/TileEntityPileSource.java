@@ -77,7 +77,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 				dust.motionZ = dir.offsetZ * 0.25;
 				worldObj.spawnEntityInWorld(dust);
 				}	}		
-				if(live == 18) {
+				if(live >= 18) {
 				boolean canInput = true;
 				newthere:
 				for (int i = -4 ; i <= 4 ; i++){

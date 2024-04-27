@@ -215,7 +215,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 		if(reaction <= 0)
 			return lastProgress;
 		
-		this.heat += reaction;
+		//this.heat += reaction;
 		
 		for(int i = 0; i < 12; i++)
 			this.castRay((int) Math.max(reaction * 0.25, 1), 5);
