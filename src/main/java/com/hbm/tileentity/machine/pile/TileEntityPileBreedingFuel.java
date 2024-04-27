@@ -35,10 +35,9 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 				boolean canOutput = true;
 				boolean canInput = true;				
 				here:
-				for (int i = -3 ; i <= 3 ; i++){
-					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; u++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);
 						if(te0 instanceof IInventory) {
 							IInventory inv = (IInventory) te0;								
 							ItemStack out =new ItemStack(ModItems.cell_tritium);
@@ -75,7 +74,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 								}
 								}
 						}
-					}}}
+					}}
 					if(canOutput){
 					ForgeDirection dir = ForgeDirection.DOWN;
 					EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.cell_tritium));
@@ -84,16 +83,14 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 					dust.motionZ = dir.offsetZ * 0.25;
 					worldObj.spawnEntityInWorld(dust);}
 				there:
-				for (int i = -3 ; i <= 3 ; i++){
-					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; u++){
-						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);					
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);					
 				if(te1 instanceof IInventory) {
 						
 					IInventory inv = (IInventory) te1;
-					int size = inv.getSizeInventory();
 						
-					for(int k = 0; k < size; k++) {
+					for(int k = 0; k < inv.getSizeInventory(); k++) {
 						int index = k;
 						ItemStack stack = inv.getStackInSlot(index);
 						if(stack != null &&stack.getItem()== ModItems.pile_rod_uranium){
@@ -109,7 +106,7 @@ public class TileEntityPileBreedingFuel extends TileEntityPileBase implements IP
 							break there;
 						}
 					}
-					}
+					
 					}}}
 					if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 			}

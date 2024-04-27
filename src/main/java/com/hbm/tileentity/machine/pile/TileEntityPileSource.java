@@ -29,10 +29,9 @@ public class TileEntityPileSource extends TileEntityPileBase {
 				boolean canOutput = true;
 				live++;
 				here:
-					for (int i = -3 ; i <= 3 ; i++){
-					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; u++){
-						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord - u, zCoord + j);
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);					
 				if(te0 instanceof IInventory) {
 					IInventory inv = (IInventory) te0;								
 
@@ -69,7 +68,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 						}
 						}
 				}
-			}}}
+			}}
 				if(canOutput){
 				ForgeDirection dir = ForgeDirection.DOWN;
 				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
@@ -81,11 +80,9 @@ public class TileEntityPileSource extends TileEntityPileBase {
 				if(live == 18) {
 				boolean canInput = true;
 				newthere:
-				for (int i = -3 ; i <= 3 ; i++){
-					for (int j = -3 ; j <= 3 ; j++){
-					for (int u = 1 ; u <= 3 ; u++){
-						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord + u, zCoord + j);			
-
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);					
 				if(te1 instanceof IInventory) {	
 					IInventory inv = (IInventory) te1;
 					int size = inv.getSizeInventory();	
@@ -105,7 +102,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 						}
 					}
 
-				}}}}
+				}}}
 				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
 				}
 		}
