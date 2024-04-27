@@ -19,7 +19,7 @@ public class TileEntityPileSource extends TileEntityPileBase {
 
 		if(!worldObj.isRemote) {
 			float ra = worldObj.rand.nextFloat();			
-			int n = this.getBlockType() == ModBlocks.block_graphite_source ? 3 : 6;
+			int n = this.getBlockType() == ModBlocks.block_graphite_source ? 2 : 5;
 
 			for(int i = 0; i < 12; i++) {
 				this.castRay(n, 5);
