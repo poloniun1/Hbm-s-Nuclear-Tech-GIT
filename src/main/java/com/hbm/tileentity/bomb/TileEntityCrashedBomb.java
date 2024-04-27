@@ -42,11 +42,11 @@ public class TileEntityCrashedBomb extends TileEntity {
 							inv.decrStackSize(index, 1);
 							canProduce =true;
 							break;
-						}	
+						}}	
 						if (canProduce){
-						for(int k = 0; k < inv.getSizeInventory(); k++) {
+						for(int k = 0; k< inv.getSizeInventory(); k++) {
 	
-							int slot = k;
+							int slot =k;
 							
 							if(!inv.isItemValidForSlot(slot, out))
 								continue;
@@ -61,7 +61,7 @@ public class TileEntityCrashedBomb extends TileEntity {
 							}
 						}
 					if(canOutput){	
-						for(int k = 0; k <inv.getSizeInventory(); k++) {
+						for(int k = 0; k <inv.getSizeInventory();k++) {
 	
 							int slot = k;
 							
@@ -79,7 +79,7 @@ public class TileEntityCrashedBomb extends TileEntity {
 						}
 						}}
 				}
-			}}
+			}
 			if (live >= 180) worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3);
 }
 }
