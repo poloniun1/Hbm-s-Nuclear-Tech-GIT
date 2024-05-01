@@ -2447,24 +2447,7 @@
           "duration": 1,
           "consumptionPerTick": 100000
         },		
-        {
-          "inputFluids": [		
-          ],
-          "inputItems": [
-	["item","hbm:item.coil_magnetized_tungsten",1],
-	["dict","ingotCMBSteel",4],
-	["dict","plateTripleAnyResistantAlloy",8],
-	["item","hbm:item.gear_large",1, 1]
-		  ],
-          "outputFluids": [
 
-          ],
-          "outputItems": [
-	["ha:tile.machine_stirling_cmb",1, 1.0]
-          ],
-          "duration": 200,
-          "consumptionPerTick": 2000
-        },	
         {
           "inputFluids": [		
           ],
