@@ -59,7 +59,9 @@ recipes.addShaped(<hbm:item.pile_rod_plutonium>, [[null,<hbm:item.billet_plutoni
 recipes.addShaped(<hbm:item.cube_power>, [[<hbm:item.ingot_electronium>,<hbm:item.ingot_u238m2>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.laser_crystal_digamma>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.billet_yharonite>,<hbm:item.ingot_electronium>]]);
-
+recipes.addShaped(<ha:tile.rbmk_turbine>, [[<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>],
+[<hbm:tile.rbmk_heater>,<hbm:tile.machine_turbine>,<hbm:tile.rbmk_heater>],
+[<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>]]);
 
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:11>);
 //furnace.addRecipe(<hbm:item.nugget_mercury>,<RotaryCraft:rotarycraft_item_modextracts:47>);
