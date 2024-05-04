@@ -2447,8 +2447,7 @@
           "duration": 1,
           "consumptionPerTick": 100000
         },		
-
-        {
+         {
           "inputFluids": [		
           ],
           "inputItems": [
@@ -2503,36 +2502,53 @@
           "inputFluids": [		
           ],
           "inputItems": [
-	["item","hbm:tile.rbmk_heater",8],
+	["item","hbm:tile.rbmk_heater",4],
+	["item","hbm:tile.rbmk_cooler",4],
 	["item","hbm:tile.machine_turbine",1]
 		  ],
           "outputFluids": [
 
           ],
           "outputItems": [
-	["ha:tile.rbmk_turbine",1, 1.0]
+	["ha:tile.rbmk_turbine", 1, 1.0]
           ],
           "duration": 200,
-          "consumptionPerTick": 2000
+          "consumptionPerTick": 2500
         },			
         {
           "inputFluids": [		
           ],
           "inputItems": [
-	["dict","ntmpipeCopper",4],
-	["dict","ingotAnyPlastic",4],
-	["dict","plateTripleAnyResistantAlloy",4],
-	["dict","shellCopper",1]
+	["item","hbm:tile.rbmk_heater",16],
+	["item","hbm:tile.rbmk_cooler",16],
+	["item","hbm:tile.machine_large_turbine",1]
 		  ],
           "outputFluids": [
 
           ],
           "outputItems": [
-	["ha:tile.heater_huge_heatex",1, 1.0]
+	["ha:tile.rbmk_large_turbine", 1, 1.0]
           ],
-          "duration": 200,
-          "consumptionPerTick": 2000
-        },	
+          "duration": 300,
+          "consumptionPerTick": 4000
+        },
+        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["item","hbm:tile.rbmk_heater",64],
+	["item","hbm:tile.rbmk_cooler",64],
+	["item","hbm:tile.machine_chungus",1]
+		  ],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["ha:tile.rbmk_chungus", 1, 1.0]
+          ],
+          "duration": 400,
+          "consumptionPerTick": 5000
+        },
         {
           "inputFluids": [		
           ],
