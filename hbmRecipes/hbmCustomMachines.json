@@ -5412,6 +5412,20 @@
         {
           "inputFluids": [],
           "inputItems": [
+           ["item","hbm:item.pile_rod_plutonium", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.billet_plutonium", 2, 1],
+			["hbm:item.billet_pu239", 1, 1],
+	        ["hbm:item.plate_iron", 2, 1]		
+],
+          "duration": 10,
+          "consumptionPerTick": 0
+        },	
+        {
+          "inputFluids": [],
+          "inputItems": [
            ["item","hbm:item.pile_rod_pu239", 1]
           ],
           "outputFluids": [],
