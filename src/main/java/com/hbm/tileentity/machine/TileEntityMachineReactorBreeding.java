@@ -54,7 +54,7 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 			this.flux = 0;
 			getInteractions();
 			this.totalflux += this.flux;
-
+			this.totalflux = this.totalflux > 1000000000000L ? 1000000000000L : this.totalflux ;
 			if(canProcess()) {
 				
 			progress = 0.0025D * (this.totalflux/ BreederRecipes.getOutput(slots[0]).flux);

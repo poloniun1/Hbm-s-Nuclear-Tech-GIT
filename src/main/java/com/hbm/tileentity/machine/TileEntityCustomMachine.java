@@ -143,6 +143,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 
 									TileEntityReactorResearch reactor = (TileEntityReactorResearch) tile;
 									this.flux += reactor.totalFlux;
+									this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
 								}
 							}
 						}
@@ -151,6 +152,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 						if(tile instanceof TileEntityRBMKRod) {
 							TileEntityRBMKRod reactor = (TileEntityRBMKRod) tile;
 							this.flux += (long)(reactor.fluxSlow + reactor.fluxFast * 0.2);
+							this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
 						}
 					}
 					if(config.maxHeat>0){

@@ -49,10 +49,11 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		
 		if(!worldObj.isRemote) {
 			
-/*			if(!canProcess()) {
-				this.progress = 0;
-			}*/
-			
+		if(canProcess()) {			
+			if(progress > duration) {
+				process();
+				this.markDirty();
+			}}
 			for(DirPos pos : getOutputPos()) {
 				if(this.gas.getFill() > 0) this.sendFluid(gas, worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			}
@@ -97,6 +98,7 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 				flux *= 0.2D;
 			
 			progress += flux * RBMKDials.getOutgasserMod(worldObj);
+			progress = progress > 1000000000000.0D ? 1000000000000.0D : progress ;
 		if(canProcess()) {			
 			if(progress > duration) {
 				process();
