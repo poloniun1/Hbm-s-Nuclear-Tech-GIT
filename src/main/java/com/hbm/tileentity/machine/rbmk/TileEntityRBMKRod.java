@@ -114,7 +114,16 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 				this.worldObj.theProfiler.startSection("rbmkRod_flux_spread");
 				spreadFlux(rType, fluxOut);
 				this.worldObj.theProfiler.endSection();
-				
+				if (RBMKDials.getGeneratorA(worldObj) ){
+					if((slots[0].getItem()== ModItems.rbmk_fuel_ueu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_hep239);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_thmeu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu233);						
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu233) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu235);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_meu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_hen);
+					}
 				hasRod = true;
 				
 			} else {
