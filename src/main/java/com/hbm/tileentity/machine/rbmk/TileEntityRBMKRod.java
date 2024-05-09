@@ -77,8 +77,13 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 				
 				ItemRBMKRod rod = ((ItemRBMKRod)slots[0].getItem());
 				double fluxIn;
-				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0)	
-					fluxIn = fluxFromType(rod.nType) + 50.0D;
+				if(RBMKDials.getRodUnique(worldObj)){
+				 	if(slots[0].getItem()== ModItems.rbmk_fuel_ueu||slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||slots[0].getItem()== ModItems.rbmk_fuel_leaus||slots[0].getItem()== ModItems.rbmk_fuel_thmeu)
+						fluxIn = fluxFromType(rod.nType) + 2000.0D;
+					 else if(rod.selfRate == 0)	
+						fluxIn = fluxFromType(rod.nType) + 50.0D;
+					else	fluxIn = fluxFromType(rod.nType);
+					}
 				else 
 					fluxIn = fluxFromType(rod.nType);
 	
@@ -121,8 +126,6 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu233);						
 					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu233) && rod.getYield(slots[0]) == 0)
 						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu235);
-					else if((slots[0].getItem()== ModItems.rbmk_fuel_meu) && rod.getYield(slots[0]) == 0)
-						slots[0] = new ItemStack(ModItems.rbmk_fuel_hen);
 					}
 				hasRod = true;
 				

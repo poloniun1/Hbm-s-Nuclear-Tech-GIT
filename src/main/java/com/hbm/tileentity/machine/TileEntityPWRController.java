@@ -236,14 +236,10 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 									slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 								else if(slots[0].getItemDamage()==1)
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
-								else if(slots[0].getItemDamage()==0)
-									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 4);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
 							}else if(slots[1].getItem() == ModItems.pwr_fuel && slots[1].getItemDamage() == 2 && slots[1].stackSize < slots[1].getMaxStackSize()) {
-								slots[1].stackSize++;
-							}else if(slots[1].getItem() == ModItems.pwr_fuel && slots[1].getItemDamage() == 4 && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
 							}
 							
