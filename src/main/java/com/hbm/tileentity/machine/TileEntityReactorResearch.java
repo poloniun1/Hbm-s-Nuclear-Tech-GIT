@@ -290,8 +290,9 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 				int outFlux = rod.react(worldObj, slots[i], slotFlux[i]);
 				if(!RBMKDials.getGeneratorC(worldObj))
 					this.heat += outFlux * 2;
-				else{ 	outFlux *= 20;
-					this.power += outFlux * 2 * 1800;}
+				else{ 	outFlux *= 15;
+					this.power += outFlux * 2 * 1800;
+					this.power -= 36000;}
 				slotFlux[i] = 0;
 				totalFlux += outFlux;
 				

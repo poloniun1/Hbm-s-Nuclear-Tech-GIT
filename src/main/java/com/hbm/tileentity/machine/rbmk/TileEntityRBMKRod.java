@@ -79,11 +79,10 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 				double fluxIn;
 				if(RBMKDials.getRodUnique(worldObj)){
 				 	if(slots[0].getItem()== ModItems.rbmk_fuel_ueu||slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||slots[0].getItem()== ModItems.rbmk_fuel_leaus||slots[0].getItem()== ModItems.rbmk_fuel_thmeu)
-						fluxIn = fluxFromType(rod.nType) + 2000.0D;
-					 else if(rod.selfRate == 0)	
+						rod.reactivity = 1500.0D;
+					if(rod.selfRate == 0)	
 						fluxIn = fluxFromType(rod.nType) + 50.0D;
-					else	fluxIn = fluxFromType(rod.nType);
-					}
+					else	fluxIn = fluxFromType(rod.nType);}
 				else 
 					fluxIn = fluxFromType(rod.nType);
 	

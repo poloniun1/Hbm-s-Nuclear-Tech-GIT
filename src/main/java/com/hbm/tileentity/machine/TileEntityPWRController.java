@@ -210,7 +210,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					if(this.rodTarget > this.rodLevel) this.rodLevel++;
 					if(this.rodTarget < this.rodLevel) this.rodLevel--;
 					
-					int newFlux = this.sourceCount * 20;
+					int newFlux =RBMKDials.getGeneratorB(worldObj) ? this.sourceCount * 1000 : this.sourceCount * 20;
 					
 					if(typeLoaded != -1 && amountLoaded > 0) {
 						
@@ -219,7 +219,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						double fluxPerRod = this.flux / this.rodCount;
 						double outputPerRod = fuel.function.effonix(fluxPerRod);
 						double totalOutput = outputPerRod * amountLoaded * usedRods;
-						if(RBMKDials.getGeneratorB(worldObj))	totalOutput *= 25;
+
 						double totalHeatOutput = totalOutput * fuel.heatEmission;
 						if(!RBMKDials.getGeneratorB(worldObj))
 							this.coreHeat += totalHeatOutput;
