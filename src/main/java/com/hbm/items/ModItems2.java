@@ -93,7 +93,7 @@ public class ModItems2 {
 		rbmk_pellet_euph = (ItemRBMKPellet) new ItemRBMKPellet("euphemium").setUnlocalizedName("rbmk_pellet_euph").setTextureName(RefStrings.MODID+ ":rbmk_pellet_euph");
 		rbmk_fuel_euph = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_euph)
 				.setYield(1000000D)
-				.setStats(1250, 10)
+				.setStats(1200, 10)
 				.setFunction(EnumBurnFunc.QUADRATIC)
 				.setHeat(0.1D)
 				.setDiffusion(0.5D)
@@ -103,7 +103,7 @@ public class ModItems2 {
 		rbmk_pellet_dnt = (ItemRBMKPellet) new ItemRBMKPellet("dnt").setUnlocalizedName("rbmk_pellet_dnt").setTextureName(RefStrings.MODID+ ":rbmk_pellet_dnt");
 		rbmk_fuel_dnt = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_dnt)
 				.setYield(1000000D)
-				.setStats(1500, 10)
+				.setStats(1280, 10)
 				.setFunction(EnumBurnFunc.QUADRATIC)
 				.setHeat(0.1D)
 				.setDiffusion(0.5D)

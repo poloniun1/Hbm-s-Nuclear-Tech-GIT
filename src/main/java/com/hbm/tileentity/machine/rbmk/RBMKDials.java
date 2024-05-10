@@ -57,7 +57,7 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_SURGE_MOD, "1.0");
 			rules.setOrCreateGameRule(KEY_FLUX_RANGE, "5");
 			rules.setOrCreateGameRule(KEY_REASIM_RANGE, "10");
-			rules.setOrCreateGameRule(KEY_REASIM_COUNT, "6");
+			rules.setOrCreateGameRule(KEY_REASIM_COUNT, "8");
 			rules.setOrCreateGameRule(KEY_REASIM_MOD, "1.0");
 			rules.setOrCreateGameRule(KEY_REASIM_BOILERS, "false");
 			rules.setOrCreateGameRule(KEY_REASIM_BOILER_SPEED, "0.05");

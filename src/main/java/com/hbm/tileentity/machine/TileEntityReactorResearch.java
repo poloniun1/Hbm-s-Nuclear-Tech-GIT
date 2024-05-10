@@ -286,11 +286,11 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 			
 			if(slots[i].getItem() instanceof ItemPlateFuel) {
 				ItemPlateFuel rod = (ItemPlateFuel) slots[i].getItem();
-				
+				if(RBMKDials.getGeneratorC(worldObj)&& (slots[i].getItem()==ModItems.plate_fuel_pu238be||slots[i].getItem()==ModItems.plate_fuel_ra226be))	rod.reactivity = 800;
 				int outFlux = rod.react(worldObj, slots[i], slotFlux[i]);
 				if(!RBMKDials.getGeneratorC(worldObj))
 					this.heat += outFlux * 2;
-				else{ 	outFlux *= 15;
+				else{ 	
 					this.power += outFlux * 2 * 1800;
 					this.power -= 36000;}
 				slotFlux[i] = 0;
