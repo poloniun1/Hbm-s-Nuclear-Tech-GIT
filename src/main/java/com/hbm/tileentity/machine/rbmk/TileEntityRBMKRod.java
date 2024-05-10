@@ -72,29 +72,33 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 	public void updateEntity() {
 
 		if(!worldObj.isRemote) {
-			
 			if(slots[0] != null && slots[0].getItem() instanceof ItemRBMKRod) {
 				
 				ItemRBMKRod rod = ((ItemRBMKRod)slots[0].getItem());
 				double fluxIn;
-				if(RBMKDials.getRodUnique(worldObj)){
-				 	if(slots[0].getItem()== ModItems.rbmk_fuel_ueu||slots[0].getItem()== ModItems.rbmk_fuel_meu||
-					slots[0].getItem()== ModItems.rbmk_fuel_heu235||slots[0].getItem()== ModItems.rbmk_fuel_thmeu||
-					slots[0].getItem()== ModItems.rbmk_fuel_lep||slots[0].getItem()== ModItems.rbmk_fuel_mep||
-					slots[0].getItem()== ModItems.rbmk_fuel_men||slots[0].getItem()== ModItems.rbmk_fuel_hen||
-					slots[0].getItem()== ModItems.rbmk_fuel_leaus||slots[0].getItem()== ModItems.rbmk_fuel_heaus||
-					slots[0].getItem()== ModItems.rbmk_fuel_mox||slots[0].getItem()== ModItems.rbmk_fuel_les||
-					slots[0].getItem()== ModItems.rbmk_fuel_pu238be)
-						rod.reactivity = 2000.0D;
-					else if(slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be)
-						rod.selfRate = 2000.0D;
-					if(rod.selfRate == 0)	
-						rod.selfRate = 50.0D;
-					fluxIn = fluxFromType(rod.nType);}
-				else 
-					fluxIn = fluxFromType(rod.nType);
+
+				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||
+				slots[0].getItem()== ModItems.rbmk_fuel_pu238be))
+				{	
+					rod.selfRate = 2000.0D;
+					if(slots[0].getItem()== ModItems.rbmk_fuel_pu238be)	rod.selfRate = 200.0D;
+				}
+
+				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0 )	
+					rod.selfRate = 50.0D;
+				fluxIn = fluxFromType(rod.nType);
 	
-				double fluxOut = rod.burn(worldObj, slots[0], fluxIn);				
+				double fluxOut;
+				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ueu ||
+				slots[0].getItem()== ModItems.rbmk_fuel_meu || slots[0].getItem()== ModItems.rbmk_fuel_heu235 ||
+				slots[0].getItem()== ModItems.rbmk_fuel_thmeu || slots[0].getItem()== ModItems.rbmk_fuel_lep ||
+				slots[0].getItem()== ModItems.rbmk_fuel_mep || slots[0].getItem()== ModItems.rbmk_fuel_men ||
+				slots[0].getItem()== ModItems.rbmk_fuel_hen || slots[0].getItem()== ModItems.rbmk_fuel_leaus ||
+				slots[0].getItem()== ModItems.rbmk_fuel_heaus || slots[0].getItem()== ModItems.rbmk_fuel_mox ||
+				slots[0].getItem()== ModItems.rbmk_fuel_les || slots[0].getItem()== ModItems.rbmk_fuel_mox ))
+					fluxOut = rod.burnnew(worldObj, slots[0], fluxIn);
+				else	fluxOut = rod.burn(worldObj, slots[0], fluxIn);
+				
 				NType rType = rod.rType;
 				
 				rod.updateHeat(worldObj, slots[0], 1.0D);

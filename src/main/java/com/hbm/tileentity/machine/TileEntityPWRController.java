@@ -74,8 +74,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 	public long power;
 	
 	public int unloadDelay = 0;
-	public boolean assembled;
-	
+	public boolean assembled;	
 	private AudioWrapper audio;
 
 	protected List<BlockPos> ports = new ArrayList();
@@ -195,7 +194,6 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 				
 				//only perform fission if the area has been loaded for 40 ticks or more
 				if(this.unloadDelay <= 0) {
-					
 					if((typeLoaded == -1 || amountLoaded <= 0) && slots[0] != null && slots[0].getItem() == ModItems.pwr_fuel) {
 						typeLoaded = slots[0].getItemDamage();
 						amountLoaded++;
@@ -210,7 +208,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					if(this.rodTarget > this.rodLevel) this.rodLevel++;
 					if(this.rodTarget < this.rodLevel) this.rodLevel--;
 					
-					int newFlux =this.sourceCount * 20;
+					int newFlux = this.sourceCount * 20;
 					
 					if(typeLoaded != -1 && amountLoaded > 0) {
 						
@@ -219,23 +217,24 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						double fluxPerRod = this.flux / this.rodCount;
 						double outputPerRod = fuel.function.effonix(fluxPerRod);
 						double totalOutput = outputPerRod * amountLoaded * usedRods;
-						if(RBMKDials.getGeneratorB(worldObj))	totalOutput = totalOutput >5000000 ? totalOutput : totalOutput * 10;
 						double totalHeatOutput = totalOutput * fuel.heatEmission;
-						if(!RBMKDials.getGeneratorB(worldObj))
+						if(!RBMKDials.getGeneratorB(worldObj)){
 							this.coreHeat += totalHeatOutput;
-						else this.power += totalHeatOutput;
+							this.progress += totalOutput;
+							}
+						else{ 
+							this.power += MathHelper.sqrt_double(totalOutput) * fuel.heatEmission * 40000;
+							this.progress += MathHelper.sqrt_double(totalOutput) *40000;						
+						}
 						newFlux += totalOutput;
-						
+		
 						this.processTime = (int) fuel.yield;
-						this.progress += totalOutput;
 						
 						if(this.progress >= this.processTime) {
 							this.progress -= this.processTime;
 							
 							if(slots[1] == null) {
-								if(!RBMKDials.getGeneratorB(worldObj))
-									slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
-								else if(slots[0].getItemDamage()==1)
+								if(RBMKDials.getGeneratorB(worldObj) && slots[0].getItem() == ModItems.pwr_fuel && slots[0].getItemDamage()==1 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
