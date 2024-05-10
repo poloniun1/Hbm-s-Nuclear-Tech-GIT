@@ -223,8 +223,8 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							this.progress += totalOutput;
 							}
 						else{ 
-							this.power += MathHelper.sqrt_double(totalOutput) * fuel.heatEmission * 40000;
-							this.progress += MathHelper.sqrt_double(totalOutput) *40000;						
+							this.power += MathHelper.sqrt_double(totalOutput) * fuel.heatEmission * 800000;
+							this.progress += MathHelper.sqrt_double(totalOutput) *800000;						
 						}
 						newFlux += totalOutput;
 		
@@ -234,7 +234,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							this.progress -= this.processTime;
 							
 							if(slots[1] == null) {
-								if(RBMKDials.getGeneratorB(worldObj) && slots[0].getItem() == ModItems.pwr_fuel && slots[0].getItemDamage()==1 )
+								if(RBMKDials.getGeneratorB(worldObj) && typeLoaded == 1 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {

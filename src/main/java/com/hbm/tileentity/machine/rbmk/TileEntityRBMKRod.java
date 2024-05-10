@@ -81,7 +81,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 				slots[0].getItem()== ModItems.rbmk_fuel_pu238be))
 				{	
 					rod.selfRate = 2000.0D;
-					if(slots[0].getItem()== ModItems.rbmk_fuel_pu238be)	rod.selfRate = 200.0D;
+					if(slots[0].getItem()== ModItems.rbmk_fuel_pu238be)	rod.selfRate = 800.0D;
 				}
 
 				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0 )	
@@ -95,7 +95,8 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 				slots[0].getItem()== ModItems.rbmk_fuel_mep || slots[0].getItem()== ModItems.rbmk_fuel_men ||
 				slots[0].getItem()== ModItems.rbmk_fuel_hen || slots[0].getItem()== ModItems.rbmk_fuel_leaus ||
 				slots[0].getItem()== ModItems.rbmk_fuel_heaus || slots[0].getItem()== ModItems.rbmk_fuel_mox ||
-				slots[0].getItem()== ModItems.rbmk_fuel_les || slots[0].getItem()== ModItems.rbmk_fuel_mox ))
+				slots[0].getItem()== ModItems.rbmk_fuel_les || slots[0].getItem()== ModItems.rbmk_fuel_mes ||
+				slots[0].getItem()== ModItems.rbmk_fuel_balefire_gold || slots[0].getItem()== ModItems.rbmk_fuel_flashlead ))
 					fluxOut = rod.burnnew(worldObj, slots[0], fluxIn);
 				else	fluxOut = rod.burn(worldObj, slots[0], fluxIn);
 				
