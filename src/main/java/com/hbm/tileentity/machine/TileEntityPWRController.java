@@ -223,8 +223,8 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							this.progress += totalOutput;
 							}
 						else{ 
-							this.power += MathHelper.sqrt_double(totalOutput) * fuel.heatEmission * 1600000;
-							this.progress += MathHelper.sqrt_double(totalOutput) * 1600000;						
+							this.power +=Math.sqrt(Math.sqrt(totalOutput)) * fuel.heatEmission * 1600000;
+							this.progress += Math.sqrt(Math.sqrt(totalOutput)) * 1600000.0D;						
 						}
 						newFlux += totalOutput;
 		
