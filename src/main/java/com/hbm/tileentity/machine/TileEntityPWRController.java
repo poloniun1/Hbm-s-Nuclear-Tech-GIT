@@ -208,7 +208,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					if(this.rodTarget > this.rodLevel) this.rodLevel++;
 					if(this.rodTarget < this.rodLevel) this.rodLevel--;
 					
-					int newFlux = this.sourceCount * 20;
+					int newFlux = this.sourceCount * 20 + 20;
 					
 					if(typeLoaded != -1 && amountLoaded > 0) {
 						
@@ -223,23 +223,30 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							this.progress += totalOutput;
 							}
 						else{ 
-							this.power +=Math.sqrt(Math.sqrt(totalOutput)) * fuel.heatEmission * 1600000;
-							this.progress += Math.sqrt(Math.sqrt(totalOutput)) * 1600000.0D;						
+							this.power += totalHeatOutput * totalHeatOutput * 40000 + 80000;
+							this.progress += totalOutput * totalOutput * 40000 + 80000;					
 						}
 						newFlux += totalOutput;
 		
 						this.processTime = (int) fuel.yield;
 						
 						if(this.progress >= this.processTime) {
-							this.progress -= this.processTime;
+							this.progress = 0;
 							
 							if(slots[1] == null) {
 								if(RBMKDials.getGeneratorB(worldObj) && typeLoaded == 1 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 0 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 7);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 2 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 3);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 11 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 12);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
-							}else if(slots[1].getItem() == ModItems.pwr_fuel && slots[1].getItemDamage() == 2 && slots[1].stackSize < slots[1].getMaxStackSize()) {
+							}else if(slots[1].getItem() == ModItems.pwr_fuel && (slots[1].getItemDamage() == 2 || slots[1].getItemDamage() == 3||
+							slots[1].getItemDamage() == 7 || slots[1].getItemDamage() == 12) && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
 							}
 							
@@ -565,6 +572,9 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						
 			this.tryProvide(worldObj, portPos.getX(), portPos.getY(), portPos.getZ(), dir);
 			}
+			}
+		for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord+ dir.offsetY, zCoord + dir.offsetZ, dir);
 			}
 
 	}

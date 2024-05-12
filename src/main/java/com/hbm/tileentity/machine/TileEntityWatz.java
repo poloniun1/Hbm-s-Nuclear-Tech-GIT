@@ -226,7 +226,7 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					addedFlux += burn;
 					addedHeat += type.heatEmission * burn;
 					if(!RBMKDials.getGeneratorE(worldObj))	
-					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * burn));
+						tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * burn));
 				}
 			}
 			
@@ -238,7 +238,8 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					double absorb = absorbFunc.effonix(baseFlux + fluxLastReaction);
 					addedHeat += absorb;
 					ItemWatzPellet.setYield(stack, ItemWatzPellet.getYield(stack) - absorb);
-					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * absorb));
+					if(!RBMKDials.getGeneratorE(worldObj))
+						tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * absorb));
 				}
 			}
 			if(!RBMKDials.getGeneratorE(worldObj))	
@@ -260,7 +261,9 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 			
 			/* deplete */
 			if(stack != null && stack.getItem() == ModItems.watz_pellet && ItemWatzPellet.getEnrichment(stack) <= 0) {
-				slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
+				if(slots[0].getItemDamage() == 5 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 4);
+				else slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
 				continue; // depleted pellets may persist for one tick
 			}
 		}

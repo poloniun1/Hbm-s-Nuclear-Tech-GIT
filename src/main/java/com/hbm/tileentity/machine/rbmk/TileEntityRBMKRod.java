@@ -140,6 +140,10 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu233);						
 					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu233) && rod.getYield(slots[0]) == 0)
 						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu235);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu235) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_hen);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_leaus) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heaus);
 					}
 				hasRod = true;
 				
