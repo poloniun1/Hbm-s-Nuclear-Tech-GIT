@@ -236,17 +236,19 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							if(slots[1] == null) {
 								if(RBMKDials.getGeneratorB(worldObj) && typeLoaded == 1 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
-								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 0 )
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 14 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 7);
 								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 2 )
-									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 3);
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 4);
 								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 11 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 12);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 0 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 6);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
-							}else if(slots[1].getItem() == ModItems.pwr_fuel && (slots[1].getItemDamage() == 2 || slots[1].getItemDamage() == 3||
-							slots[1].getItemDamage() == 7 || slots[1].getItemDamage() == 12) && slots[1].stackSize < slots[1].getMaxStackSize()) {
+							}else if(slots[1].getItem() == ModItems.pwr_fuel && (slots[1].getItemDamage() == 2 || slots[1].getItemDamage() == 4||
+							slots[1].getItemDamage() == 7 || slots[1].getItemDamage() == 12 || slots[1].getItemDamage() == 6) && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
 							}
 							

@@ -121,7 +121,10 @@ public class ItemZirnoxRod extends ItemEnumMulti {
 		U235_FUEL(165_000, 85),
 		LES_FUEL(150_000, 150),
 		LITHIUM(20_000, 0, true),
-		ZFB_MOX(50_000, 35);
+		ZFB_MOX(50_000, 35),
+		NP237_FUEL(150_000, 120),
+		PU239_FUEL(120_000, 180),
+		SA326_FUEL(100_000, 300);
 		
 		public final int maxLife;
 		public final int heat;

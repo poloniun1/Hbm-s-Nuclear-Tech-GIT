@@ -32,7 +32,8 @@ public class ItemPWRFuel extends ItemEnumMulti {
 		HEA242(		10.0D,	new FunctionSqrt(25)),
 		HES326(		10.0D,	new FunctionSqrt(30)),
 		HES327(		12.0D,	new FunctionSqrt(40)),
-		EUPH(	15.0D,	new FunctionSqrt(80)),
+		EUPH(		15.0D,	new FunctionSqrt(80)),
+		UEU(		06.0D,	new FunctionSqrt(15)), 
 		BFB_AM_MIX(	2.5D,	new FunctionSqrt(15), 250_000_000),
 		BFB_PU241(	2.5D,	new FunctionSqrt(15), 250_000_000);
 

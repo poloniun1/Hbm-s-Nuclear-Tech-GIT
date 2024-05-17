@@ -261,8 +261,12 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 			
 			/* deplete */
 			if(stack != null && stack.getItem() == ModItems.watz_pellet && ItemWatzPellet.getEnrichment(stack) <= 0) {
-				if(slots[0].getItemDamage() == 5 && RBMKDials.getGeneratorE(worldObj))
+				if(slots[0].getItemDamage() == 12 && RBMKDials.getGeneratorE(worldObj))
 					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 4);
+				else if(slots[0].getItemDamage() == 11 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 13);
+				else if(slots[0].getItemDamage() == 5 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 6);
 				else slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
 				continue; // depleted pellets may persist for one tick
 			}

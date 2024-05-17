@@ -52,6 +52,7 @@ public class ModBlocks2 {
 
 	public static Block ore_manganese;
 	public static Block ore_sodium;
+	public static Block ore_meteor_star;
 
 	public static Block rbmk_turbine;
 	public static Block rbmk_large_turbine;
@@ -73,6 +74,7 @@ public class ModBlocks2 {
 
 		ore_manganese = new BlockGeneric(Material.rock).setBlockName("ore_manganese").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_manganese");		
 		ore_sodium = new BlockGeneric(Material.rock).setBlockName("ore_sodium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_sodium");		
+		ore_meteor_star = new BlockGeneric(Material.rock).setBlockName("ore_meteor_star").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_meteor_star");		
 
 	}
 
@@ -90,6 +92,7 @@ public class ModBlocks2 {
 
 		register(ore_manganese);
 		register(ore_sodium);
+		register(ore_meteor_star);
 
 		GameRegistry.registerBlock(silo_hatch_ex, silo_hatch_ex.getUnlocalizedName());
 		GameRegistry.registerBlock(silo_hatch_large_ex, silo_hatch_large_ex.getUnlocalizedName());

@@ -76,12 +76,32 @@ public class ModItems2 {
 	public static ItemRBMKRod rbmk_fuel_dnt;
 	public static ItemRBMKPellet rbmk_pellet_dnt;
 
+	public static ItemRBMKRod rbmk_fuel_sa326;
+	public static ItemRBMKPellet rbmk_pellet_sa326;
+
 	public static ItemRBMKRod rbmk_fuel_pobi;
 	public static ItemRBMKPellet rbmk_pellet_pobi;
 
+	public static Item powder_astatine_tiny;
+	public static Item powder_bromine_tiny;
+	public static Item powder_caesium_tiny;
+	public static Item powder_iodine_tiny;
+	public static Item powder_strontium_tiny;
+	public static Item powder_tennessine_tiny;
+	public static Item powder_energy_tiny;
+	public static Item powder_balefire_tiny;
+
+	public static Item nugget_electronium;
+	public static Item nugget_fuller;
+	public static Item nugget_u238m2;
+	public static Item nugget_star;
 
 	public static Item ingot_manganese;
 	public static Item ingot_sodium;
+
+	public static Item rod_zirnox_pu239_fuel_depleted;
+	public static Item rod_zirnox_np237_fuel_depleted;
+	public static Item rod_zirnox_sa326_fuel_depleted;
 
 	public static Item plate_fuel_atbe;
 	public static Item waste_plate_atbe;
@@ -110,6 +130,17 @@ public class ModItems2 {
 				.setMeltingPoint(100000)
 				.setUnlocalizedName("rbmk_fuel_dnt").setTextureName(RefStrings.MODID + ":rbmk_fuel_dnt");
 
+		rbmk_pellet_sa326 = (ItemRBMKPellet) new ItemRBMKPellet("sa326").setUnlocalizedName("rbmk_pellet_sa326").setTextureName(RefStrings.MODID+ ":rbmk_pellet_dnt");
+		rbmk_fuel_sa326 = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_sa326)
+				.setYield(100000000D)
+				.setStats(200, 100)
+				.setFunction(EnumBurnFunc.LINEAR)
+				.setHeat(0.3D)
+				.setDiffusion(0.5D)
+				.setMeltingPoint(100000)
+				.setUnlocalizedName("rbmk_fuel_sa326").setTextureName(RefStrings.MODID + ":rbmk_fuel_dnt");
+
+
 		rbmk_pellet_pobi = (ItemRBMKPellet) new ItemRBMKPellet("pobi").setUnlocalizedName("rbmk_pellet_pobi").setTextureName(RefStrings.MODID+ ":rbmk_pellet_pobi");
 		rbmk_fuel_pobi = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_pobi)
 				.setYield(126000000D)
@@ -127,8 +158,29 @@ public class ModItems2 {
 		ingot_manganese = new Item().setUnlocalizedName("ingot_manganese").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_manganese");
 		ingot_sodium= new Item().setUnlocalizedName("ingot_sodium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_sodium");
 		
-		//missile_carrier = new Item().setUnlocalizedName("missile_carrier").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":missile_carrier");
 
+		nugget_electronium = new Item().setUnlocalizedName("nugget_electronium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_electronium");
+		nugget_fuller= new Item().setUnlocalizedName("nugget_fuller").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_fuller");
+		nugget_u238m2 = new Item().setUnlocalizedName("nugget_u238m2").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_u238m2");
+		nugget_star = new Item().setUnlocalizedName("nugget_star").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_star");
+
+
+		powder_astatine_tiny = new Item().setUnlocalizedName("powder_astatine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_astatine_tiny");
+		powder_bromine_tiny= new Item().setUnlocalizedName("powder_bromine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_bromine_tiny");
+		powder_caesium_tiny = new Item().setUnlocalizedName("powder_caesium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_caesium_tiny");
+		powder_iodine_tiny= new Item().setUnlocalizedName("powder_iodine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_iodine_tiny");
+		powder_strontium_tiny = new Item().setUnlocalizedName("powder_strontium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_strontium_tiny");
+		powder_tennessine_tiny= new Item().setUnlocalizedName("powder_tennessine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_tennessine_tiny");
+		powder_energy_tiny= new Item().setUnlocalizedName("powder_energy_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_energy_tiny");
+		powder_balefire_tiny= new Item().setUnlocalizedName("powder_balefire_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_balefire_tiny");
+
+		rod_zirnox_pu239_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_pu239_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_pu239_fuel_depleted");
+		rod_zirnox_np237_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_np237_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_np237_fuel_depleted");
+		rod_zirnox_sa326_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_sa326_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_sa326_fuel_depleted");
+
+
+
+		//missile_carrier = new Item().setUnlocalizedName("missile_carrier").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":missile_carrier");
 
 		plate_fuel_atbe = new ItemPlateFuel(2400000).setFunction(FunctionEnum.PASSIVE, 1000).setUnlocalizedName("plate_fuel_atbe").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":plate_fuel_atbe");
 		waste_plate_atbe = new ItemDepletedFuel().setUnlocalizedName("waste_plate_atbe").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_plate_atbe");
@@ -139,6 +191,8 @@ public class ModItems2 {
 
 		GameRegistry.registerItem(rbmk_fuel_dnt, rbmk_fuel_dnt.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_dnt, rbmk_pellet_dnt.getUnlocalizedName());
+		GameRegistry.registerItem(rbmk_fuel_sa326, rbmk_fuel_sa326.getUnlocalizedName());
+		GameRegistry.registerItem(rbmk_pellet_sa326, rbmk_pellet_sa326.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_euph, rbmk_fuel_euph.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_pellet_euph, rbmk_pellet_euph.getUnlocalizedName());
 		GameRegistry.registerItem(rbmk_fuel_pobi, rbmk_fuel_pobi.getUnlocalizedName());
@@ -147,8 +201,26 @@ public class ModItems2 {
 		GameRegistry.registerItem(waste_plate_atbe, waste_plate_atbe.getUnlocalizedName());
 		GameRegistry.registerItem(plate_fuel_atbe, plate_fuel_atbe.getUnlocalizedName());
 
-		//GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
+		GameRegistry.registerItem(powder_astatine_tiny, powder_astatine_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_bromine_tiny, powder_bromine_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_caesium_tiny, powder_caesium_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_iodine_tiny, powder_iodine_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_strontium_tiny, powder_strontium_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_tennessine_tiny, powder_tennessine_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_energy_tiny, powder_energy_tiny.getUnlocalizedName());
+		GameRegistry.registerItem(powder_balefire_tiny, powder_balefire_tiny.getUnlocalizedName());
 
+		GameRegistry.registerItem(nugget_electronium, nugget_electronium.getUnlocalizedName());
+		GameRegistry.registerItem(nugget_fuller, nugget_fuller.getUnlocalizedName());
+		GameRegistry.registerItem(nugget_u238m2, nugget_u238m2.getUnlocalizedName());
+		GameRegistry.registerItem(nugget_star, nugget_star.getUnlocalizedName());
+
+		GameRegistry.registerItem(rod_zirnox_pu239_fuel_depleted, rod_zirnox_pu239_fuel_depleted.getUnlocalizedName());
+		GameRegistry.registerItem(rod_zirnox_np237_fuel_depleted, rod_zirnox_np237_fuel_depleted.getUnlocalizedName());
+		GameRegistry.registerItem(rod_zirnox_sa326_fuel_depleted, rod_zirnox_sa326_fuel_depleted.getUnlocalizedName());
+
+
+		//GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_sodium, ingot_sodium.getUnlocalizedName());

@@ -38,6 +38,7 @@ public class RBMKDials {
 	public static final String KEY_GENERATOR_DMODE = "dialGeneratorDMode";
 	public static final String KEY_GENERATOR_EMODE = "dialGeneratorEMode";
 	public static final String KEY_GENERATOR_FMODE = "dialGeneratorFMode";
+	public static final String KEY_GENERATOR_GMODE = "dialGeneratorGMode";
 	public static final String KEY_DFC_BABY_MODE = "dialDFCBabyMode";	
 	public static void createDials(World world) {
 		GameRules rules = world.getGameRules();
@@ -71,6 +72,7 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_GENERATOR_DMODE, "true");//ZIRNOX
 			rules.setOrCreateGameRule(KEY_GENERATOR_EMODE, "true");//WATZ
 			rules.setOrCreateGameRule(KEY_GENERATOR_FMODE, "true");//FUSION
+			rules.setOrCreateGameRule(KEY_GENERATOR_GMODE, "true");//ICF
 			rules.setOrCreateGameRule(KEY_DFC_BABY_MODE, "true");
 		}
 	}
@@ -283,7 +285,11 @@ public class RBMKDials {
 	}
 
 	public static boolean getGeneratorF(World world) {
-		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_EMODE) ;
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_FMODE) ;
+	}
+
+	public static boolean getGeneratorG(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_GMODE) ;
 	}
 
 	public static boolean getDFCBABY(World world) {

@@ -113,10 +113,10 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 			errored = true;
 		}
 		
-		if(sources.size() == 0) {
+		/*if(sources.size() == 0) {
 			sendError(world, x, y, z, "Neutron sources required", player);
 			errored = true;
-		}
+		}*/
 		
 		TileEntityPWRController controller = (TileEntityPWRController) world.getTileEntity(x, y, z);
 		

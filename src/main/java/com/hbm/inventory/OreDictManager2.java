@@ -13,6 +13,7 @@ import static com.hbm.inventory.OreNames.*;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.BlockEnums.EnumStoneType;
+import com.hbm.blocks.BlockEnums.EnumMeteorType;
 import com.hbm.config.GeneralConfig;
 import com.hbm.hazard.HazardData;
 import com.hbm.hazard.HazardEntry;
@@ -65,6 +66,7 @@ public class OreDictManager2 {
 	public static final DictFrame AS = new DictFrame("Arsenic");
 	public static final DictFrame CA = new DictFrame("Calcium");
 	public static final DictFrame B = new DictFrame("Boron");
+	public static final DictFrame STAR = new DictFrame("Starmetal");
 	public static final DictFrame DESH = new DictFrame("WorkersAlloy");
 	public static final DictFrame EUPH = new DictFrame("Euphemium");
 	public static final DictFrame ASBESTOS = new DictFrame("Asbestos");
@@ -83,6 +85,12 @@ public class OreDictManager2 {
 	public static final DictFrame P_WHITE = new DictFrame("WhitePhosphorus");
 	public static final DictFrame NA = new DictFrame("Sodium");
 
+	public static final DictFrame I = new DictFrame("Iodine");
+	public static final DictFrame AT = new DictFrame("Astatine");
+	public static final DictFrame CS = new DictFrame("Caesium");
+	public static final DictFrame ST = new DictFrame("Strontium");
+	public static final DictFrame BR = new DictFrame("Bromine");
+	public static final DictFrame TS = new DictFrame("Tennessine") ;
 	
 	public static void registerOres() {
 
@@ -98,15 +106,15 @@ public class OreDictManager2 {
 		TI	.ore(ModBlocks.cluster_titanium,ModBlocks.cluster_depth_titanium);
 		CU	.ore(ModBlocks.cluster_copper);
 		AL	.ore(ModBlocks.cluster_aluminium);
-		//BI	.ore(ModBlocks.ancient_scrap);
 		AS	.ore(ModBlocks.stone_porous,ModBlocks.dirt_oily, ModBlocks.dirt_dead, ModBlocks.stone_cracked, ModBlocks.sand_dirty, ModBlocks.sand_dirty_red );
 		CA	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE) );
 		B	.ore(ModBlocks.ore_depth_borax );
+		STAR		.nugget(ModItems2.nugget_star)		.ore(ModBlocks2.ore_meteor_star);
 		EUPH	.ore(ModBlocks.block_euphemium_cluster);
 		ASBESTOS	.asbestos(1F)	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.ASBESTOS));
 		OSMIRIDIUM	.ore(ModBlocks.ore_tektite_osmiridium);
         		REDSTONE	.ingot(ModItems.redstone_depleted);
-		DESH	.ore(ModBlocks.ore_rare, ModBlocks.ore_gneiss_rare );
+		DESH	.ore(ModBlocks.ore_rare, ModBlocks.ore_gneiss_rare);
 
 		S	.ingot(ModItems.sulfur)	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.SULFUR));
 		KNO	.ingot(ModItems.niter);
@@ -122,6 +130,12 @@ public class OreDictManager2 {
 		ND	.ingot(ModItems.powder_neodymium);
 		TIKITE	.ingot(ModItems.powder_spark_mix )	.dust(ModItems.powder_nitan_mix )	.ore(ModBlocks.ore_tikite );
 
+		I	.dustSmall(ModItems2.powder_iodine_tiny);
+		AT	.dustSmall(ModItems2.powder_astatine_tiny);
+		CS	.dustSmall(ModItems2.powder_caesium_tiny);
+		ST	.dustSmall(ModItems2.powder_strontium_tiny);
+		BR	.dustSmall(ModItems2.powder_bromine_tiny);
+		TS	.dustSmall(ModItems2.powder_tennessine_tiny);
 	}
 	
 
