@@ -1271,6 +1271,9 @@
   "ASCHRAB": {
     "gaseous": {}
   },
+   "STELLAR_FLUX": {
+    "gaseous": {}
+  },
   "WASTEFLUID": {
     "viscous": {},
     "ventradiation": {

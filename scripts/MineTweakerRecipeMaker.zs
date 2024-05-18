@@ -29,29 +29,55 @@
 //import mods.ic2.OreWasher;
 //import mods.ic2.ThermalCentrifuge;
 //<ore:oreBeryllium>.add(<RotaryCraft:rotarycraft_item_customingot:4>);
+
 <ore:oreManganese>.add(<shincolle:BlockPolymetalOre>);
 <ore:oreManganese>.add(<shincolle:BlockPolymetalGravel>);
 <ore:ingotManganese>.add(<shincolle:AbyssMetal>);
-//<ore:ingotTungsten>.add(<RotaryCraft:rotarycraft_item_compacts:5>);
+
 <ore:ingotOsmium>.add(<hbm:item.ingot_osmiridium>);
 recipes.addShapeless(<hbm:item.powder_flux>*10, [<ore:dustCalcium>, <ore:dustIron>]);
+
 recipes.addShapeless(<hbm:item.billet_ra226be>*3, [<ore:dustRa226>, <ore:dustBeryllium>]);
-recipes.addShapeless(<hbm:item.billet_ra226be>*3, [<ore:ingotRa226>, <ore:ingotBeryllium>]);
 recipes.addShapeless(<hbm:item.billet_po210be>*3, [<ore:dustPolonium>, <ore:dustBeryllium>]);
-recipes.addShapeless(<hbm:item.billet_po210be>*3, [<ore:ingotPolonium>, <ore:ingotBeryllium>]);
-recipes.addShapeless(<hbm:item.pwr_fuel:13>, [<hbm:item.plate_polymer>,<ore:ingotEuphemium>]);
+
+
+recipes.addShapeless(<hbm:item.pwr_fuel:13>, [<hbm:item.plate_polymer>,<ore:ingotEuphemium>,
+<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
+recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:billetUranium>,
+<ore:billetUranium>]);
+
+recipes.addShapeless(<hbm:item.rod_zirnox:11>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_neptunium>,
+<hbm:item.billet_neptunium>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:12>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_pu239>,
+<hbm:item.billet_pu239>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:13>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>]);
+
 recipes.addShaped(<hbm:item.watz_pellet:7>, [[null,<ore:ingotEuphemium>,null],
 [<ore:ingotEuphemium>,<ore:ingotGraphite>,<ore:ingotEuphemium>],[null,<ore:ingotEuphemium>,null]]);
+recipes.addShaped(<hbm:item.watz_pellet:11>, [[null,<ore:ingotUranium>,null],
+[<ore:ingotUranium>,<ore:ingotGraphite>,<ore:ingotUranium>],[null,<ore:ingotUranium>,null]]);
+recipes.addShaped(<hbm:item.watz_pellet:12>, [[null,<ore:ingotingotU235>,null],
+[<ore:ingotU235>,<ore:ingotGraphite>,<ore:ingotU235>],[null,<ore:ingotU235>,null]]);
+recipes.addShaped(<hbm:item.watz_pellet:13>, [[null,<ore:ingotPu239>,null],
+[<ore:ingotPu239>,<ore:ingotGraphite>,<ore:ingotPu239>],[null,<ore:ingotPu239>,null]]);
+
 recipes.addShapeless(<ha:item.rbmk_fuel_euph>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotEuphemium>,
-<ore:ingotEuphemium>,<ore:ingotEuphemium>,
-<ore:ingotEuphemium>,<ore:ingotEuphemium>]);
+<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,
+<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
 recipes.addShapeless(<ha:item.rbmk_fuel_dnt>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotDineutronium>,
-<ore:ingotDineutronium>,<ore:ingotDineutronium>,
-<ore:ingotDineutronium>,<ore:ingotDineutronium>]);
+<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,
+<ore:nuggetDineutronium>,<ore:nuggetDineutronium>,<ore:nuggetDineutronium>]);
 recipes.addShapeless(<ha:item.rbmk_fuel_pobi>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_polonium>,
 <hbm:item.billet_beryllium>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,
 <hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>]);
-recipes.addShapeless(<ha:item.plate_fuel_atbe>*2, [<ore:dustAstatine>,<ore:dustBeryllium>]);
+recipes.addShapeless(<ha:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>]);
+
+recipes.addShapeless(<ha:item.plate_fuel_atbe>, [<ha:item.powder_astatine_tiny>,<ha:item.powder_astatine_tiny>,
+<ha:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
+
 recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[null,<hbm:item.ingot_pu239>,null],
 [<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>],[null,<hbm:item.ingot_pu239>,null]]);
 recipes.addShaped(<hbm:item.pile_rod_plutonium>, [[null,<hbm:item.billet_plutonium>,null],
@@ -59,9 +85,6 @@ recipes.addShaped(<hbm:item.pile_rod_plutonium>, [[null,<hbm:item.billet_plutoni
 recipes.addShaped(<hbm:item.cube_power>, [[<hbm:item.ingot_electronium>,<hbm:item.ingot_u238m2>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.laser_crystal_digamma>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.billet_yharonite>,<hbm:item.ingot_electronium>]]);
-recipes.addShaped(<ha:tile.rbmk_turbine>, [[<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>],
-[<hbm:tile.rbmk_heater>,<hbm:tile.machine_turbine>,<hbm:tile.rbmk_heater>],
-[<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>,<hbm:tile.rbmk_heater>]]);
 
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:11>);
 //furnace.addRecipe(<hbm:item.nugget_mercury>,<RotaryCraft:rotarycraft_item_modextracts:47>);
@@ -162,12 +185,4 @@ recipes.addShaped(<ha:tile.rbmk_turbine>, [[<hbm:tile.rbmk_heater>,<hbm:tile.rbm
 //furnace.addRecipe(<hbm:item.powder_zirconium>,<RotaryCraft:rotarycraft_item_customextract:95>);
 //import mods.nei.NEI;
 
-//Canner.addEnrichRecipe(<liquid:molecule.glucose>*500,<liquid:water>*500, <minecraft:sugar>);
-//Canner.addEnrichRecipe(<liquid:molecule.butene>*1000,<liquid:molecule.ethanol>*200, <minecraft:coal>);
-//Canner.addEnrichRecipe(<liquid:molecule.ethanol>*1000,<liquid:molecule.butene>*1000, <hbm:item.fluid_tank_full:1>);
-//Canner.addEnrichRecipe(<liquid:molecule.propane>*1000,<liquid:molecule.butene>*1000, <hbm:item.fluid_tank_full:37>);
-//Canner.addEnrichRecipe(<liquid:molecule.ethanol>*500,<liquid:molecule.glucose>*500, <RotaryCraft:rotarycraft_item_yeast>);
-//Canner.addEnrichRecipe(<liquid:molecule.ethanol>*1000,<liquid:molecule.butene>*1000,<liquid:water>*8);
-//Macerator.removeallRecipe();
-//Extractor.addRecipe(<hbm:item.fluid_tank_full:59>,<IC2:itemFluidCell>.withTag({Fluid: {FluidName: "rc ethanol", Amount: 1000}}));
-//Extractor.addRecipe(<IC2:itemFluidCell>.withTag({Fluid: {FluidName: "rc ethanol", Amount: 1000}}),<hbm:item.fluid_tank_full:59>);
+
