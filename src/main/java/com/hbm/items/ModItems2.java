@@ -88,8 +88,6 @@ public class ModItems2 {
 	public static Item powder_iodine_tiny;
 	public static Item powder_strontium_tiny;
 	public static Item powder_tennessine_tiny;
-	public static Item powder_energy_tiny;
-	public static Item powder_balefire_tiny;
 
 	public static Item nugget_electronium;
 	public static Item nugget_fuller;
@@ -135,8 +133,8 @@ public class ModItems2 {
 				.setYield(100000000D)
 				.setStats(200, 100)
 				.setFunction(EnumBurnFunc.LINEAR)
-				.setHeat(0.3D)
-				.setDiffusion(0.5D)
+				.setHeat(0.5D)
+				.setDiffusion(0.25D)
 				.setMeltingPoint(100000)
 				.setUnlocalizedName("rbmk_fuel_sa326").setTextureName(RefStrings.MODID + ":rbmk_fuel_dnt");
 
@@ -171,8 +169,6 @@ public class ModItems2 {
 		powder_iodine_tiny= new Item().setUnlocalizedName("powder_iodine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_iodine_tiny");
 		powder_strontium_tiny = new Item().setUnlocalizedName("powder_strontium_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_strontium_tiny");
 		powder_tennessine_tiny= new Item().setUnlocalizedName("powder_tennessine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_tennessine_tiny");
-		powder_energy_tiny= new Item().setUnlocalizedName("powder_energy_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_energy_tiny");
-		powder_balefire_tiny= new Item().setUnlocalizedName("powder_balefire_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_balefire_tiny");
 
 		rod_zirnox_pu239_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_pu239_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_pu239_fuel_depleted");
 		rod_zirnox_np237_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_np237_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_np237_fuel_depleted");
@@ -207,8 +203,6 @@ public class ModItems2 {
 		GameRegistry.registerItem(powder_iodine_tiny, powder_iodine_tiny.getUnlocalizedName());
 		GameRegistry.registerItem(powder_strontium_tiny, powder_strontium_tiny.getUnlocalizedName());
 		GameRegistry.registerItem(powder_tennessine_tiny, powder_tennessine_tiny.getUnlocalizedName());
-		GameRegistry.registerItem(powder_energy_tiny, powder_energy_tiny.getUnlocalizedName());
-		GameRegistry.registerItem(powder_balefire_tiny, powder_balefire_tiny.getUnlocalizedName());
 
 		GameRegistry.registerItem(nugget_electronium, nugget_electronium.getUnlocalizedName());
 		GameRegistry.registerItem(nugget_fuller, nugget_fuller.getUnlocalizedName());
