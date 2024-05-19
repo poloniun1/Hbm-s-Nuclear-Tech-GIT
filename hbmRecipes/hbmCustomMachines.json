@@ -2425,7 +2425,7 @@
           ],
           "inputItems": [
 	["dict","ingotMagnetizedTungsten",2],
-	["dict","ingotU238",1]
+	["dict","ingotWatzMud",1]
 		  ],
           "outputFluids": [
 
@@ -2433,7 +2433,6 @@
           "outputItems": [
 	["hbm:item.ingot_combine_steel",3, 1.0]
           ],
-		  "flux":40000,
           "duration": 1,
           "consumptionPerTick": 100000
         },		
@@ -2662,7 +2661,7 @@
 
         {
           "inputFluids": [		
-	["HELIUM4",2000]
+	["HELIUM4",8000]
           ],
           "inputItems": [["dict","oreIron"]],
           "outputFluids": [
@@ -2675,7 +2674,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",2000]
+	["HELIUM4",8000]
           ],
           "inputItems": [["dict","oreCoal"]],
           "outputFluids": [
@@ -2688,7 +2687,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",4000]
+	["HELIUM4",16000]
           ],
           "inputItems": [["dict","oreUranium"]],
           "outputFluids": [
@@ -2701,7 +2700,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",4000]
+	["HELIUM4",16000]
           ],
           "inputItems": [["dict","orePlutonium"]],
           "outputFluids": [
@@ -2714,7 +2713,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",8000]
+	["HELIUM4",24000]
           ],
           "inputItems": [["dict","oreSchrabidium"]],
           "outputFluids": [
@@ -2727,7 +2726,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",12000]
+	["HELIUM4",32000]
           ],
           "inputItems": [
 	["dict","oreColtan"]
@@ -2742,7 +2741,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",4000]
+	["HELIUM4",12000]
           ],
           "inputItems": [
 	["dict","oreGold"]
@@ -2757,7 +2756,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",6000]
+	["HELIUM4",24000]
           ],
           "inputItems": [
 	["dict","oreAustralium"]
@@ -2772,7 +2771,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",6000]
+	["HELIUM4",16000]
           ],
           "inputItems": [
 	["dict","oreCobalt"]
@@ -2787,7 +2786,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",6000]
+	["HELIUM4",24000]
           ],
           "inputItems": [
 	["dict","oreDiamond"]
@@ -2802,7 +2801,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",8000]
+	["HELIUM4",24000]
           ],
           "inputItems": [
 	["dict","oreEmerald"]
@@ -2817,7 +2816,7 @@
         },
         {
           "inputFluids": [		
-	["HELIUM4",2000]
+	["HELIUM4",16000]
           ],
           "inputItems": [
 	["dict","oreBeryllium"]
@@ -2869,7 +2868,7 @@
 	["hbm:tile.ore_nether_schrabidium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":800000,
+		  "flux":600000,
           "consumptionPerTick": 0
         },
         {
@@ -2883,7 +2882,7 @@
 	["hbm:tile.ore_nether_schrabidium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":800000,
+		  "flux":600000,
           "consumptionPerTick": 0
         },
         {
@@ -2915,7 +2914,7 @@
 	["hbm:tile.ore_tektite_osmiridium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":1800000,
+		  "flux":1600000,
           "consumptionPerTick": 0
         },
         {
@@ -2931,7 +2930,7 @@
 	["hbm:tile.ore_australium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":320000,
+		  "flux":600000,
           "consumptionPerTick": 0
         },
         {
@@ -2947,7 +2946,7 @@
 	["hbm:item.ore_enriched",1, 40, 1.0]
           ],
           "duration": 1,
-		  "flux":400000,
+		  "flux":800000,
           "consumptionPerTick": 0
         },
         {
@@ -2963,7 +2962,7 @@
 	["hbm:tile.ore_meteor_starmetal",1, 1.0]
           ],
           "duration": 1,
-		  "flux":240000,
+		  "flux":600000,
           "consumptionPerTick": 0
         },
         {
@@ -2979,7 +2978,7 @@
 	["hbm:tile.ore_basalt",1,3, 1.0]
           ],
           "duration": 1,
-		  "flux":240000,
+		  "flux":600000,
           "consumptionPerTick": 0
         },
         {
@@ -2995,7 +2994,7 @@
 	["hbm:tile.ore_alexandrite",1, 1.0]
           ],
           "duration": 1,
-		  "flux":320000,
+		  "flux":800000,
           "consumptionPerTick": 0
         },
         {
@@ -3014,7 +3013,203 @@
 		  "flux":200000,
           "consumptionPerTick": 0
         },
+        {
+          "inputFluids": [		
 
+          ],
+          "inputItems": [
+	["dict","ingotLead"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.nugget_bismuth",6, 1.0],
+	["hbm:item.nugget_pb209",3, 1.0]	
+          ],
+          "duration": 1,
+		  "flux":200000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotGold"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_au198",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotThorium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_u233",1]	
+          ],
+          "duration": 1,
+		  "flux":80000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotU233"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_u235",1]	
+          ],
+          "duration": 1,
+		  "flux":120000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotUranium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.nugget_pu239", 8,1.0],
+	["hbm:item.nugget_neptunium",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotU235"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_neptunium",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotU238"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_plutonium",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotNeptunium"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_pu238",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotPU238"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.ingot_pu239",1]	
+          ],
+          "duration": 1,
+		  "flux":100000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","ingotLithium"]
+],
+          "outputFluids": [
+		  ["TRITIUM", 1000]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+		  "flux":60000,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","nuggetU238"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["ha:item.nugget_u238m2",1, 0.5]	
+          ],
+          "duration": 1,
+		  "flux":2000000000,
+          "consumptionPerTick": 0
+        },
+		
+        {
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["item","hbm:item.meteorite_sword"]
+],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["hbm:item.meteorite_sword_baleful", 1]
+          ],
+          "duration": 1,
+		  "flux":10000000,
+          "consumptionPerTick": 0
+        },
+		
         {
           "inputFluids": [],
           "inputItems": [

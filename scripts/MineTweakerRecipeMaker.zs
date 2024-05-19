@@ -20,7 +20,40 @@
 //#MARKER REMOVE SHAPED
 
 // ================================================================================
-//#MARKER ADD
+//#MARKER ADD SHAPELESS
+recipes.addShapeless(<ha:item.waste_np237:1> * 2, [<ha:item.rod_zirnox_np237_fuel_depleted>]);
+recipes.addShapeless(<ha:item.waste_pu239:1> * 2, [<ha:item.rod_zirnox_pu239_fuel_depleted>]);
+recipes.addShapeless(<ha:item.waste_sa326:1> * 2, [<ha:item.rod_zirnox_sa326_fuel_depleted>]);
+
+//#MARKER ADD SHAPED
+recipes.addShaped(<hbm:item.ingot_starmetal>, [[<ore:nuggetStarmetal>, <ore:nuggetStarmetal>,
+ <ore:nuggetStarmetal>], [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>],
+ [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>]]);
+recipes.addShaped(<hbm:item.ingot_cft>, [[<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, 
+<ha:item.nugget_fuller>], [<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, <ha:item.nugget_fuller>],
+ [<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, <ha:item.nugget_fuller>]]);
+recipes.addShaped(<hbm:item.ingot_u238m2>, [[<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, 
+<ha:item.nugget_u238m2>], [<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>], 
+[<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>]]);
+recipes.addShaped(<hbm:item.powder_tennessine>, [[<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, 
+<ore:dustTinyTennessine>], [<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, <ore:dustTinyTennessine>], 
+[<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, <ore:dustTinyTennessine>]]);
+recipes.addShaped(<hbm:item.powder_strontium>, [[<ore:dustTinyStrontium>, <ore:dustTinyStrontium>,
+ <ore:dustTinyStrontium>], [<ore:dustTinyStrontium>, <ore:dustTinyStrontium>, <ore:dustTinyStrontium>],
+ [<ore:dustTinyStrontium>, <ore:dustTinyStrontium>, <ore:dustTinyStrontium>]]);
+recipes.addShaped(<hbm:item.powder_iodine>, [[<ore:dustTinyIodine>, <ore:dustTinyIodine>, 
+<ore:dustTinyIodine>], [<ore:dustTinyIodine>, <ore:dustTinyIodine>, <ore:dustTinyIodine>],
+ [<ore:dustTinyIodine>, <ore:dustTinyIodine>, <ore:dustTinyIodine>]]);
+recipes.addShaped(<hbm:item.powder_caesium>, [[<ore:dustTinyCaesium>, <ore:dustTinyCaesium>, 
+<ore:dustTinyCaesium>], [<ore:dustTinyCaesium>, <ore:dustTinyCaesium>, <ore:dustTinyCaesium>], 
+[<ore:dustTinyCaesium>, <ore:dustTinyCaesium>, <ore:dustTinyCaesium>]]);
+recipes.addShaped(<hbm:item.powder_bromine>, [[<ore:dustTinyBromine>, <ore:dustTinyBromine>,
+ <ore:dustTinyBromine>], [<ore:dustTinyBromine>, <ore:dustTinyBromine>, <ore:dustTinyBromine>],
+ [<ore:dustTinyBromine>, <ore:dustTinyBromine>, <ore:dustTinyBromine>]]);
+recipes.addShaped(<hbm:item.powder_astatine>, [[<ha:item.powder_astatine_tiny>, <ore:dustTinyAstatine>, 
+<ore:dustTinyAstatine>], [<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>], 
+[<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>]]);
+
 //import mods.ic2.Canner;
 //import mods.ic2.Compressor;
 //import mods.ic2.Extractor;
@@ -82,6 +115,7 @@ recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[null,<hbm:item.ingot_pu239>
 [<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>],[null,<hbm:item.ingot_pu239>,null]]);
 recipes.addShaped(<hbm:item.pile_rod_plutonium>, [[null,<hbm:item.billet_plutonium>,null],
 [<hbm:item.plate_iron>,<hbm:item.billet_plutonium>,<hbm:item.plate_iron>],[null,<hbm:item.billet_plutonium>,null]]);
+
 recipes.addShaped(<hbm:item.cube_power>, [[<hbm:item.ingot_electronium>,<hbm:item.ingot_u238m2>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.laser_crystal_digamma>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.billet_yharonite>,<hbm:item.ingot_electronium>]]);
