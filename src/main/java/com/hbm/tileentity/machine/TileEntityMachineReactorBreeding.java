@@ -102,17 +102,7 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 						this.flux += reactor.totalFlux;
 					}
 				}
-			}
-
-
-				
-			TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord, zCoord + dir.offsetZ);
-
-			if(tile instanceof TileEntityRBMKRod) {
-				TileEntityRBMKRod reactor = (TileEntityRBMKRod) tile;
-				this.flux = this.flux + (long)(reactor.fluxSlow + reactor.fluxFast * 0.2);
-				}
-				
+			}				
 			
 		}
 	}

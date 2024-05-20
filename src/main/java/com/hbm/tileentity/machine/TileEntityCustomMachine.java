@@ -147,13 +147,6 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 								}
 							}
 						}
-						TileEntity tile = worldObj.getTileEntity(pos.getX() + dir.offsetX, pos.getY(), pos.getZ() + dir.offsetZ);
-
-						if(tile instanceof TileEntityRBMKRod) {
-							TileEntityRBMKRod reactor = (TileEntityRBMKRod) tile;
-							this.flux += (long)(reactor.fluxSlow + reactor.fluxFast * 0.2);
-							this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
-						}
 					}
 					if(config.maxHeat>0){
 						for (DirPos pos : this.heatPos){
