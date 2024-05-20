@@ -2841,7 +2841,7 @@
 	["hbm:tile.ore_coltan",1, 1.0]
           ],
           "duration": 1,
-		  "flux":400000,
+		  "flux":2000000,
           "consumptionPerTick": 0
         },
         {
@@ -2854,7 +2854,7 @@
 	["minecraft:diamond_ore",1, 1.0]
           ],
           "duration": 1,
-		  "flux":200000,
+		  "flux":2000000,
           "consumptionPerTick": 0
         },
         {
@@ -2868,7 +2868,7 @@
 	["hbm:tile.ore_nether_schrabidium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":600000,
+		  "flux":4000000,
           "consumptionPerTick": 0
         },
         {
@@ -2882,7 +2882,7 @@
 	["hbm:tile.ore_nether_schrabidium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":600000,
+		  "flux":4000000,
           "consumptionPerTick": 0
         },
         {
@@ -2897,7 +2897,7 @@
 	["hbm:tile.block_euphemium_cluster",1, 1.0]
           ],
           "duration": 1,
-		  "flux":1200000,
+		  "flux":10000000,
           "consumptionPerTick": 0
         },
         {
@@ -2914,7 +2914,7 @@
 	["hbm:tile.ore_tektite_osmiridium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":1600000,
+		  "flux":80000000,
           "consumptionPerTick": 0
         },
         {
@@ -2930,7 +2930,7 @@
 	["hbm:tile.ore_australium",1, 1.0]
           ],
           "duration": 1,
-		  "flux":600000,
+		  "flux":2000000,
           "consumptionPerTick": 0
         },
         {
@@ -2946,7 +2946,7 @@
 	["hbm:item.ore_enriched",1, 40, 1.0]
           ],
           "duration": 1,
-		  "flux":800000,
+		  "flux":8000000,
           "consumptionPerTick": 0
         },
         {
@@ -2962,7 +2962,7 @@
 	["hbm:tile.ore_meteor_starmetal",1, 1.0]
           ],
           "duration": 1,
-		  "flux":600000,
+		  "flux":2000000,
           "consumptionPerTick": 0
         },
         {
@@ -2978,7 +2978,7 @@
 	["hbm:tile.ore_basalt",1,3, 1.0]
           ],
           "duration": 1,
-		  "flux":600000,
+		  "flux":4000000,
           "consumptionPerTick": 0
         },
         {
@@ -2994,7 +2994,7 @@
 	["hbm:tile.ore_alexandrite",1, 1.0]
           ],
           "duration": 1,
-		  "flux":800000,
+		  "flux":4000000,
           "consumptionPerTick": 0
         },
         {
@@ -3010,7 +3010,7 @@
 	["minecraft:emerald_ore",1, 1.0]
           ],
           "duration": 1,
-		  "flux":200000,
+		  "flux":1000000,
           "consumptionPerTick": 0
         },
         {

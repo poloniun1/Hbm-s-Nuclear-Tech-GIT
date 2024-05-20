@@ -293,9 +293,9 @@
       "recipeParts": ["I",["dict","ingotCMBSteel"],"P",["dict","plateTripleCMBSteel"],"N",["item","hbm:item.reactor_core"],"C",["item","hbm:item.circuit_targeting_tier6"]
       ],
       "components": [
-        {"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":1,"metas":[3]},
-        {"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":0,"metas":[3]},
-        {"block":"hbm:tile.cm_flux", "x":0,"y":0,"z":1,"metas":[0]}
+        {"block":"hbm:tile.cm_port", "x":0,"y":1,"z":1,"metas":[3]},
+        {"block":"hbm:tile.cm_port", "x":0,"y":0,"z":1,"metas":[3]},
+        {"block":"hbm:tile.cm_flux", "x":0,"y":1,"z":0,"metas":[0]}
       ]
     },
 
