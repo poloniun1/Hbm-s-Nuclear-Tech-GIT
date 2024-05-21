@@ -100,6 +100,7 @@ public class ModItems2 {
 	public static Item rod_zirnox_pu239_fuel_depleted;
 	public static Item rod_zirnox_np237_fuel_depleted;
 	public static Item rod_zirnox_sa326_fuel_depleted;
+	public static Item rod_zirnox_bred_lead;
 
 	public static Item plate_fuel_atbe;
 	public static Item waste_plate_atbe;
@@ -107,6 +108,7 @@ public class ModItems2 {
 	public static Item waste_pu239;
 	public static Item waste_np237;
 	public static Item waste_sa326;
+	public static Item bred_lead;
 	//public static Item missile_carrier;
 
 	public static void initializeItem()
@@ -168,6 +170,8 @@ public class ModItems2 {
 		waste_pu239 = new ItemDepletedFuel().setUnlocalizedName("waste_pu239").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_plutonium");
 		waste_np237 = new ItemDepletedFuel().setUnlocalizedName("waste_np237").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_uranium");
 		waste_sa326 = new ItemDepletedFuel().setUnlocalizedName("waste_sa326").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_schrabidium");
+		bred_lead = new Item().setUnlocalizedName("bred_lead").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_thorium");
+
 
 		powder_astatine_tiny = new Item().setUnlocalizedName("powder_astatine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_astatine_tiny");
 		powder_bromine_tiny= new Item().setUnlocalizedName("powder_bromine_tiny").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":powder_bromine_tiny");
@@ -179,6 +183,7 @@ public class ModItems2 {
 		rod_zirnox_pu239_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_pu239_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_pu239_fuel_depleted");
 		rod_zirnox_np237_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_np237_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_np237_fuel_depleted");
 		rod_zirnox_sa326_fuel_depleted = new Item().setUnlocalizedName("rod_zirnox_sa326_fuel_depleted").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_sa326_fuel_depleted");
+		rod_zirnox_bred_lead = new Item().setUnlocalizedName("rod_zirnox_bred_lead").setCreativeTab(MainRegistry.controlTab).setContainerItem(ModItems.rod_zirnox_empty).setTextureName(RefStrings.MODID + ":rod_zirnox_thorium_fuel_depleted");
 
 
 
@@ -218,10 +223,13 @@ public class ModItems2 {
 		GameRegistry.registerItem(rod_zirnox_pu239_fuel_depleted, rod_zirnox_pu239_fuel_depleted.getUnlocalizedName());
 		GameRegistry.registerItem(rod_zirnox_np237_fuel_depleted, rod_zirnox_np237_fuel_depleted.getUnlocalizedName());
 		GameRegistry.registerItem(rod_zirnox_sa326_fuel_depleted, rod_zirnox_sa326_fuel_depleted.getUnlocalizedName());
+		GameRegistry.registerItem(rod_zirnox_bred_lead, rod_zirnox_bred_lead.getUnlocalizedName());
 
 		GameRegistry.registerItem(waste_pu239, waste_pu239.getUnlocalizedName());
 		GameRegistry.registerItem(waste_np237, waste_np237.getUnlocalizedName());
 		GameRegistry.registerItem(waste_sa326, waste_sa326.getUnlocalizedName());
+		GameRegistry.registerItem(bred_lead, bred_lead.getUnlocalizedName());
+
 		//GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
