@@ -91,6 +91,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IF
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PU239_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_pu239_fuel_depleted));
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NP237_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_np237_fuel_depleted));
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.SA326_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_sa326_fuel_depleted));
+		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LEAD.ordinal()), new ItemStack(ModItems2.rod_zirnox_bred_lead));
 	}
 
 	public static final HashMap<ComparableStack, ItemStack> newfuelMap = new HashMap<ComparableStack, ItemStack>();
@@ -109,6 +110,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IF
 		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PU239_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_pu239_fuel_depleted));
 		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NP237_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_np237_fuel_depleted));
 		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.SA326_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_sa326_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LEAD.ordinal()), new ItemStack(ModItems2.rod_zirnox_bred_lead));
 	}
 
 	public TileEntityReactorZirnox() {
