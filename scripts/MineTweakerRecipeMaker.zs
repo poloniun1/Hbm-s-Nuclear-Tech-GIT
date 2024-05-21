@@ -24,6 +24,7 @@
 recipes.addShapeless(<ha:item.waste_np237:1> * 2, [<ha:item.rod_zirnox_np237_fuel_depleted>]);
 recipes.addShapeless(<ha:item.waste_pu239:1> * 2, [<ha:item.rod_zirnox_pu239_fuel_depleted>]);
 recipes.addShapeless(<ha:item.waste_sa326:1> * 2, [<ha:item.rod_zirnox_sa326_fuel_depleted>]);
+recipes.addShapeless(<ha:item.bred_lead> * 2, [<ha:item.rod_zirnox_bred_lead>]);
 
 //#MARKER ADD SHAPED
 recipes.addShaped(<hbm:item.ingot_starmetal>, [[<ore:nuggetStarmetal>, <ore:nuggetStarmetal>,
@@ -85,6 +86,8 @@ recipes.addShapeless(<hbm:item.rod_zirnox:12>, [<hbm:item.rod_zirnox_empty>,<hbm
 <hbm:item.billet_pu239>]);
 recipes.addShapeless(<hbm:item.rod_zirnox:13>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_schrabidium>,
 <hbm:item.billet_schrabidium>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:14>, [<hbm:item.rod_zirnox_empty>,<ore:ingotLead>,
+<ore:ingotLead>]);
 
 recipes.addShaped(<hbm:item.watz_pellet:7>, [[null,<ore:ingotEuphemium>,null],
 [<ore:ingotEuphemium>,<ore:ingotGraphite>,<ore:ingotEuphemium>],[null,<ore:ingotEuphemium>,null]]);

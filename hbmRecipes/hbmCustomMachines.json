@@ -2779,7 +2779,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-	["hbm:tile.ore_meteor_starmetal",1, 1.0]
+	["hbm:tile.ore_meteor_star",1, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 5000
@@ -2959,7 +2959,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-	["hbm:tile.ore_meteor_starmetal",1, 1.0]
+	["hbm:tile.ore_meteor_star",1, 1.0]
           ],
           "duration": 1,
 		  "flux":2000000,
@@ -3024,10 +3024,10 @@
           ],
           "outputItems": [
 	["hbm:item.nugget_bismuth",6, 1.0],
-	["hbm:item.nugget_pb209",3, 1.0]	
+	["hbm:item.nugget_pb209",2, 1.0]	
           ],
           "duration": 1,
-		  "flux":200000,
+		  "flux":2000000,
           "consumptionPerTick": 0
         },
         {
@@ -3043,7 +3043,7 @@
 	["hbm:item.ingot_au198",1]	
           ],
           "duration": 1,
-		  "flux":100000,
+		  "flux":500000,
           "consumptionPerTick": 0
         },
         {
@@ -3148,7 +3148,7 @@
 
           ],
           "inputItems": [
-	["dict","ingotPU238"]
+	["dict","ingotU238"]
 ],
           "outputFluids": [
           ],
@@ -3764,7 +3764,7 @@
         {
           "inputFluids": [],
           "inputItems": [
-           ["item","hbm:item.rbmk_pellet_ra226be", 8]
+           ["item","hbm:item.rbmk_pellet_ra226be", 8, 4]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -3824,7 +3824,7 @@
         {
           "inputFluids": [],
           "inputItems": [
-           ["item","hbm:item.rbmk_pellet_po210be", 8]
+           ["item","hbm:item.rbmk_pellet_po210be", 8, 4]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -3929,7 +3929,8 @@
           "duration": 100,
           "consumptionPerTick": 200000
         },
-
+		
+		
         {
           "inputFluids": [],
           "inputItems": [
@@ -3938,7 +3939,8 @@
           "outputFluids": [],
           "outputItems": [
             ["hbm:item.nugget_uranium", 36,1],
-            ["hbm:item.nugget_technetium", 6,1],
+            ["hbm:item.nugget_technetium", 3,1],
+            ["hbm:item.nugget_polonium", 3,1],
             ["hbm:item.nugget_pu239", 6,1],
 			["hbm:item.rbmk_fuel_empty", 1]
 ],
@@ -3952,15 +3954,75 @@
           ],
           "outputFluids": [],
           "outputItems": [
-            ["hbm:item.nugget_technetium", 2,1],
+            ["hbm:item.nugget_technetium", 1,1],
+            ["hbm:item.nugget_polonium", 1,1],
             ["hbm:item.nugget_pu239", 2,1],
-            ["hbm:item.nugget_uranium", 8,1],
+            ["hbm:item.nugget_uranium", 9,1],
 			["hbm:item.rod_zirnox_empty", 1]
 ],
           "duration": 100,
           "consumptionPerTick": 20000
         },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.pwr_fuel", 1, 14]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_technetium", 1,1],
+            ["hbm:item.nugget_polonium", 1,1],
+            ["hbm:item.nugget_pu239", 2,1],
+            ["hbm:item.nugget_uranium", 8,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 20000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1, 11]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_technetium", 3,1],
+            ["hbm:item.nugget_polonium", 3,1],
+            ["hbm:item.nugget_pu239", 6,1],
+            ["hbm:item.nugget_uranium", 24,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 40000
+        },
 
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet_depleted", 1, 10]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu238", 6,1],
+            ["hbm:item.nugget_polonium", 6,1],
+            ["hbm:item.nugget_pu239", 15,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 40000
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1, 12]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_u235", 20,1],
+            ["hbm:item.nugget_neptunium", 8,1],
+            ["hbm:item.nugget_technetium", 8,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 1200000
+        },		
         {
           "inputFluids": [],
           "inputItems": [
@@ -4012,14 +4074,59 @@
           ],
           "outputFluids": [],
           "outputItems": [
-            ["hbm:item.nugget_u235", 3,1],
+            ["hbm:item.nugget_u235", 4,1],
             ["hbm:item.nugget_neptunium", 1],
+            ["hbm:item.nugget_technetium", 1,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_u235", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_neptunium", 2,1],
             ["hbm:item.nugget_technetium", 2,1]
 ],
           "duration": 100,
           "consumptionPerTick": 500000
         },
 
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 11]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_neptunium", 9,1],
+            ["hbm:item.nugget_technetium", 2,1],
+            ["hbm:item.nugget_pu239", 1,1],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 2000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.waste_np237", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+
+            ["hbm:item.nugget_bismuth", 1,1],
+            ["hbm:item.nugget_technetium", 3,1],
+            ["hbm:item.nugget_pu238", 1,1],
+            ["hbm:item.nugget_pu239", 3,1]
+
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },		
         {
           "inputFluids": [],
           "inputItems": [
@@ -4116,6 +4223,121 @@
           "consumptionPerTick": 4000
         },
 
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_pu238be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu238", 21,1],
+            ["hbm:item.nugget_pu239", 6,1],
+            ["hbm:item.nugget_beryllium", 21,1],			
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_pellet_pu238be", 8, 4]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["ha:item.powder_caesium_tiny", 14,1],
+            ["hbm:item.nugget_pu239", 12,1],
+            ["hbm:item.powder_cerium_tiny", 14,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.plate_fuel_pu238be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_pu238", 2,1],
+            ["hbm:item.nugget_pu239", 2,1],
+            ["hbm:item.nugget_beryllium", 2,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_plate_pu238be", 1, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["ha:item.powder_caesium_tiny", 1],
+            ["hbm:item.nugget_pu239", 2,1],
+            ["hbm:item.powder_cerium_tiny", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 1000
+        },
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 12]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_technetium", 2,1],
+            ["hbm:item.nugget_pu239", 10,1],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.waste_pu239", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_bismuth", 1,1],
+            ["hbm:item.nugget_technetium", 3,1],
+			["hbm:item.powder_cerium_tiny", 2,1],
+			["ha:item.powder_iodine_tiny", 2,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+		{
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet", 1, 13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_technetium", 9,1],
+            ["hbm:item.nugget_pu239", 27,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 2000000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.watz_pellet_depleted", 1, 13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_bismuth", 4,1],
+            ["hbm:item.nugget_technetium", 15,1],
+			["hbm:item.powder_cerium_tiny", 4,1],
+			["ha:item.powder_iodine_tiny", 4,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
         {
           "inputFluids": [],
           "inputItems": [
@@ -4227,7 +4449,35 @@
           "outputItems": [
             ["hbm:item.nugget_au198", 20,1],
             ["hbm:item.nugget_pb209", 15,1],
-            ["ha:item.powder_balefire", 4,1]			
+            ["hbm:item.powder_balefire", 4,1]			
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+		
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.bred_lead", 2]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_bismuth", 9,1],
+            ["hbm:item.nugget_pb209", 3,1]			
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.watz_pellet_depleted", 1, 8]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+		    ["hbm:item.ingotWatzMud", 1],
+            ["hbm:item.nugget_bismuth", 21,1],
+            ["hbm:item.nugget_pb209", 6,1]			
 ],
           "duration": 100,
           "consumptionPerTick": 0
@@ -4279,7 +4529,37 @@
           "duration": 100,
           "consumptionPerTick": 0
         },
-		
+
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rod_zirnox", 1, 13]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_schrabidium", 9, 1],
+            ["hbm:item.nugget_euphemium", 1, 1],
+			["hbm:item.nugget_tantalium", 2, 1],
+			["hbm:item.rod_zirnox_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 500000
+        },
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","ha:item.waste_sa326", 2, 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["ha:item.powder_astatine_tiny", 1,1],
+            ["hbm:item.nugget_tantalium", 4,1],
+            ["hbm:item.nugget_gh336", 1,1],
+            ["hbm:item.nugget_euphemium", 2,1]
+],
+          "duration": 100,
+          "consumptionPerTick": 0
+        },		
         {
           "inputFluids": [],
           "inputItems": [
@@ -4287,9 +4567,9 @@
           ],
           "outputFluids": [],
           "outputItems": [
-            ["hbm:item.nugget_schrabidium", 36],
-            ["hbm:item.nugget_euphemium", 6],
-			["hbm:item.nugget_tantalium", 6],
+            ["hbm:item.nugget_schrabidium", 36, 1],
+            ["hbm:item.nugget_euphemium", 6, 1],
+			["hbm:item.nugget_tantalium", 6, 1],
 			["hbm:item.rbmk_fuel_empty", 1]
 ],
           "duration": 100,
@@ -4633,7 +4913,7 @@
 	        {
           "inputFluids": [],
           "inputItems": [
-           ["item","ha:item.waste_plate_atbe", 1]
+           ["item","ha:item.waste_plate_atbe", 1, 1]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -5400,7 +5680,8 @@
         }
 		]
 	},
-{"recipeKey":"heatsink",
+{
+"recipeKey":"heatsink",
 "recipes":
 [
         {
