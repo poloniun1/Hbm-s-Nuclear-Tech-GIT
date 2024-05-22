@@ -4476,8 +4476,8 @@
           "outputFluids": [],
           "outputItems": [
 		    ["hbm:item.ingot_mud", 1],
-            ["hbm:item.nugget_bismuth", 21,1],
-            ["hbm:item.nugget_pb209", 6,1]			
+            ["hbm:item.nugget_bismuth", 18,1],
+            ["hbm:item.nugget_pb209", 9,1]			
 ],
           "duration": 100,
           "consumptionPerTick": 0
