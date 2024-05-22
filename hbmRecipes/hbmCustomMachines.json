@@ -4298,7 +4298,7 @@
         {
           "inputFluids": [],
           "inputItems": [
-           ["item","hbm:item.waste_pu239", 2, 1]
+           ["item","ha:item.waste_pu239", 2, 1]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -4471,7 +4471,7 @@
         {
           "inputFluids": [],
           "inputItems": [
-           ["item","ha:item.watz_pellet_depleted", 1, 8]
+           ["item","hbm:item.watz_pellet_depleted", 1, 8]
           ],
           "outputFluids": [],
           "outputItems": [
