@@ -131,18 +131,6 @@ public class ItemRBMKRod extends Item {
 		
 		inFlux += selfRate;
 		
-		double xenon = getPoison(stack);
-		xenon -= xenonBurnFunc(inFlux);
-		
-		inFlux *= (1D - getPoisonLevel(stack));
-
-		xenon += xenonGenFunc(inFlux);
-		
-		if(xenon < 0D) xenon = 0D;
-		if(xenon > 100D) xenon = 100D;
-		
-		setPoison(stack, xenon);
-		
 		double outFlux = reactivityFunc(inFlux, getEnrichment(stack)) * RBMKDials.getReactivityMod(world);
 		
 		double y = getYield(stack);
@@ -164,19 +152,7 @@ public class ItemRBMKRod extends Item {
 	public double burnnew(World world, ItemStack stack, double inFlux) {
 		
 		inFlux += selfRate;
-		
-		double xenon = getPoison(stack);
-		xenon -= xenonBurnFunc(inFlux);
-		
-		inFlux *= (1D - getPoisonLevel(stack));
-
-		xenon += xenonGenFunc(inFlux);
-		
-		if(xenon < 0D) xenon = 0D;
-		if(xenon > 100D) xenon = 100D;
-		
-		setPoison(stack, xenon);
-		
+			
 		double outFlux = reactivityFunc(inFlux, getEnrichment(stack)) * RBMKDials.getReactivityMod(world) * 100.0D;
 		
 		double y = getYield(stack);
