@@ -4754,7 +4754,7 @@
         {
           "inputFluids": [],
           "inputItems": [
-           ["item","hbm:item.rbmk_pellet_drx", 8, 9]
+           ["item","hbm:item.rbmk_pellet_drx", 8, 4]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -4851,7 +4851,7 @@
 	        {
           "inputFluids": [],
           "inputItems": [
-           ["item","ha:item.rbmk_pellet_euph", 8, 9]
+           ["item","ha:item.rbmk_pellet_euph", 8, 4]
           ],
           "outputFluids": [],
           "outputItems": [
@@ -4943,7 +4943,7 @@
 		{
           "inputFluids": [],
           "inputItems": [
-           ["item","ha:item.rbmk_pellet_dnt", 8, 9]
+           ["item","ha:item.rbmk_pellet_dnt", 8, 4]
           ],
           "outputFluids": [],
           "outputItems": [
