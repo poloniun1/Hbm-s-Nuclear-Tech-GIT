@@ -26,10 +26,13 @@ import com.hbm.packet.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IGUIProvider;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+import api.hbm.energymk2.IBatteryItem;
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
@@ -45,11 +48,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityITER extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidAcceptor, IFluidSource, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
+public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidAcceptor, IFluidSource, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
-	public static final long maxPower = 10000000;
+	public static final long maxPower = 5000000000000L;
 	public static final int powerReq = 100000;
 	public int age = 0;
 	public List<IFluidAcceptor> list = new ArrayList();
@@ -57,7 +61,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 	public FluidTank plasma;
 	
 	public int progress;
-	public static final int duration = 100;
+	public int duration = 100;
+
 	
 	@SideOnly(Side.CLIENT)
 	public int blanket;
@@ -75,7 +80,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		tanks = new FluidTank[2];
 		tanks[0] = new FluidTank(Fluids.WATER, 1280000, 0);
 		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 128000, 1);
-		plasma = new FluidTank(Fluids.PLASMA_DT, 16000, 2);
+		plasma = new FluidTank(Fluids.PLASMA_DT, 200000, 2);
 	}
 
 	@Override
@@ -95,21 +100,27 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 			if (age == 9 || age == 19)
 				fillFluidInit(tanks[1].getTankType());
-			
-			this.updateConnections();
-			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
+		
 
+			if(!RBMKDials.getGeneratorF(worldObj))	{
+			this.updateConnections();	
+			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
+			}
+			else {	
+				for(DirPos pos : getConPos()) 
+					this.trySubscribe(plasma.getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+				}
 			/// START Processing part ///
 			
-			if(!isOn) {
+			if(!isOn&&!RBMKDials.getGeneratorF(worldObj)) {
 				plasma.setFill(0);	//jettison plasma if the thing is turned off
 			}
-			
+			if(!RBMKDials.getGeneratorF(worldObj)){				
 			//explode either if there's plasma that is too hot or if the reactor is turned on but the magnets have no power
 			if(plasma.getFill() > 0 && (this.plasma.getTankType().temperature >= this.getShield() || (this.isOn && this.power < this.powerReq))) {
 				this.explode();
 			}
-			
+		
 			if(isOn && power >= powerReq) {
 				power -= powerReq;
 				
@@ -157,21 +168,47 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			/// END Processing part ///
 
 			/// START Notif packets ///
-			for(int i = 0; i < tanks.length; i++)
-				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
-			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
+
 			
 			for(DirPos pos : getConPos()) {
 				if(tanks[1].getFill() > 0) {
 					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				}
 			}
-			
+			}else
+			{
+				duration = 8;
+				if(isOn ) {
+
+				if(plasma.getFill() > 0) {					
+					int chance = FusionRecipes.getByproductChance(plasma.getTankType())/15;					
+					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
+						produceByproduct();
+				}
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*375000-100000;				
+					
+					if(plasma.getFill() >= 300) {
+						power += prod;
+						plasma.setFill(plasma.getFill() - 300);
+					}
+				doBreederStuff();	
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 300)  power += 100000;				
+					}				
+
+				
+				
+				}
+	
+			for(int i = 0; i < tanks.length; i++)
+				tanks[i].updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);
+			plasma.updateTank(xCoord, yCoord, zCoord, worldObj.provider.dimensionId);			
 			NBTTagCompound data = new NBTTagCompound();
 			data.setBoolean("isOn", isOn);
 			data.setLong("power", power);
 			data.setInteger("progress", progress);
-			
+	
 			if(slots[3] == null) {
 				data.setInteger("blanket", 0);
 			} else if(slots[3].getItem() == ModItems.fusion_shield_tungsten) {
@@ -197,7 +234,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 				this.lastRotor -= 360;
 			}
 			
-			if(this.isOn && this.power >= powerReq) {
+			if(  this.isOn && this.power >= powerReq ) {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed + 0.05F));
 
 				if(audio == null) {
@@ -208,7 +245,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 				float rotorSpeed = this.rotorSpeed / 15F;
 				audio.updateVolume(getVolume(0.5f * rotorSpeed));
 				audio.updatePitch(0.25F + 0.75F * rotorSpeed);
-			} else {
+			}
+			else {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed - 0.1F));
 				
 				if(audio != null) {
@@ -232,9 +270,19 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		for(DirPos pos : getConPos()) {
 			this.trySubscribe(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
 		}
 	}
-	
+	private void Generate() {
+		
+		for(DirPos pos : getConPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
+		}
+	}	
+
+
+
 	protected List<DirPos> getConPos() {
 		if(connections != null && !connections.isEmpty())
 			return connections;
@@ -623,7 +671,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 	@Override
 	public FluidTank[] getReceivingTanks() {
-		return new FluidTank[] {tanks[0]};
+		return new FluidTank[] {tanks[0],plasma};
 	}
 
 	@Override

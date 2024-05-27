@@ -7,6 +7,7 @@ import java.util.Random;
 import com.hbm.blocks.ILookOverlay;
 import com.hbm.blocks.IPersistentInfoProvider;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.tileentity.IPersistentNBT;
@@ -75,6 +76,21 @@ public class MachineBattery extends BlockContainer implements ILookOverlay, IPer
 			this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + ":battery_schrabidium_side");
 		}
 		if(this == ModBlocks.machine_dineutronium_battery) {
+			this.iconFront = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_front");
+			this.iconTop = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_top");
+			this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_side");
+		}
+		if(this == ModBlocks2.machine_dineutronium_battery_ex) {
+			this.iconFront = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_front");
+			this.iconTop = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_top");
+			this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_side");
+		}
+		if(this == ModBlocks2.machine_electron_battery) {
+			this.iconFront = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_front");
+			this.iconTop = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_top");
+			this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_side");
+		}
+		if(this == ModBlocks2.machine_ex_battery) {
 			this.iconFront = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_front");
 			this.iconTop = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_top");
 			this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + ":battery_dineutronium_side");

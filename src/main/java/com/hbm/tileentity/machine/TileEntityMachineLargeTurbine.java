@@ -23,7 +23,11 @@ import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
-
+import com.hbm.blocks.ModBlocks2;
+import com.hbm.blocks.machine.rbmk.RBMKBase;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
+import api.hbm.energymk2.IBatteryItem;
 import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
@@ -38,6 +42,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -47,7 +52,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class TileEntityMachineLargeTurbine extends TileEntityMachineBase implements IFluidContainer, IFluidAcceptor, IFluidSource, IEnergyProviderMK2, IFluidStandardTransceiver, IGUIProvider, SimpleComponent, IInfoProviderEC {
 
 	public long power;
-	public static final long maxPower = 100000000;
+	public static final long maxPower = 5000000000000000L;
 	public int age = 0;
 	public List<IFluidAcceptor> list2 = new ArrayList();
 	public FluidTank[] tanks;
@@ -65,8 +70,8 @@ public class TileEntityMachineLargeTurbine extends TileEntityMachineBase impleme
 		super(7);
 		
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.STEAM, 512000, 0);
-		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, 10240000, 1);
+		tanks[0] = new FluidTank(Fluids.STEAM, 128000000, 0);
+		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, 128000000, 1);
 
 		Random rand = new Random();
 		audioDesync = rand.nextFloat() * 0.05F;
@@ -88,6 +93,34 @@ public class TileEntityMachineLargeTurbine extends TileEntityMachineBase impleme
 			if(age >= 2) {
 				age = 0;
 			}
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&& worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_large_turbine){
+			if (Fluids.fromName("SUPERCOOLANT_HOT")!=Fluids.NONE)
+				tanks[0].setTankType(Fluids.fromName("SUPERCOOLANT_HOT"));
+			else tanks[0].setTankType(Fluids.fromName("SUPERHOTSTEAM"));
+			for(int i = 0; i < 13; i++) {
+				for(int j = 0; j <13; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 6, yCoord, zCoord + j - 6);
+				
+
+				if(b instanceof RBMKBase) {
+
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 6, yCoord, zCoord + j - 6);
+					
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+							
+							int prov = Math.min(tanks[0].getMaxFill() -tanks[0].getFill(), rbmk.steam);
+							rbmk.steam -= prov;
+							tanks[0].setFill(tanks[0].getFill() + prov);
+							}
+						}
+					}
+				}
+			}
+		}
 			
 			fillFluidInit(tanks[1].getTankType());
 			
@@ -106,26 +139,51 @@ public class TileEntityMachineLargeTurbine extends TileEntityMachineBase impleme
 			boolean valid = false;
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
-				double eff = trait.getEfficiency(CoolingType.TURBINE); //100% efficiency
+				double eff = trait.getEfficiency(CoolingType.TURBINE) * 0.85D; //turbine is 85% efficient
+				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) *0.95D;//but coolant is 95% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
 					int inputOps = (int) Math.floor(tanks[0].getFill() / trait.amountReq); //amount of cycles possible with the entire input buffer
 					int outputOps = (tanks[1].getMaxFill() - tanks[1].getFill()) / trait.amountProduced; //amount of cycles possible with the output buffer's remaining space
-					int cap = (int) Math.ceil(tanks[0].getFill() / trait.amountReq / 5F); //amount of cycles by the "at least 20%" rule
+					int cap = (int) Math.ceil(40000000/ trait.amountReq ); //amount of cycles by the "at least 20%" rule
 					int ops = Math.min(inputOps, Math.min(outputOps, cap)); //defacto amount of cycles
 					tanks[0].setFill(tanks[0].getFill() - ops * trait.amountReq);
 					tanks[1].setFill(tanks[1].getFill() + ops * trait.amountProduced);
-					this.power += (ops * trait.heatEnergy * eff);
+
+					this.power += ops *eff * trait.heatEnergy;
 					info[0] = ops * trait.amountReq;
 					info[1] = ops * trait.amountProduced;
-					info[2] = ops * trait.heatEnergy * eff;
+					info[2] =ops *  eff * trait.heatEnergy ;
 					valid = true;
 					operational = ops > 0;
 				}
 			}
 			if(!valid) tanks[1].setTankType(Fluids.NONE);
 			if(power > maxPower) power = maxPower;
-			
+	
+
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&&  worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_large_turbine){	
+			for(int i = 0; i < 13; i++) {
+				for(int j = 0; j <13; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 6, yCoord, zCoord + j - 6);				
+				if(b instanceof RBMKBase) {		
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 6, yCoord, zCoord + j - 6);		
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+
+							
+							int prov = Math.min(rbmk.maxWater - rbmk.water, tanks[1].getFill());
+							rbmk.water += prov;
+							tanks[1].setFill(tanks[1].getFill() - prov);
+								}
+							}	
+							}
+					}
+				}
+			}	
 			tanks[1].unloadTank(5, 6, slots);
 			
 			for(int i = 0; i < 2; i++)

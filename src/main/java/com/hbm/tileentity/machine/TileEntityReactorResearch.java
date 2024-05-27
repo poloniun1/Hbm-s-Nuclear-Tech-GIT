@@ -11,11 +11,14 @@ import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.container.ContainerReactorResearch;
 import com.hbm.inventory.gui.GUIReactorResearch;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.machine.ItemPlateFuel;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
@@ -41,7 +44,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
 //TODO: fix reactor control;
-public class TileEntityReactorResearch extends TileEntityMachineBase implements IControlReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC {
+public class TileEntityReactorResearch extends TileEntityMachineBase implements IControlReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC, IEnergyProviderMK2  {
 	
 	@SideOnly(Side.CLIENT)
 	public double lastLevel;
@@ -55,12 +58,25 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 	public int[] slotFlux = new int[12];
 	public int totalFlux = 0;
 	
+	public long power;
 	private static final int[] slot_io = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
 	public TileEntityReactorResearch() {
 		super(12);
 	}
 	
+	private static final HashMap<ComparableStack, ItemStack> newfuelMap = new HashMap<ComparableStack, ItemStack>();
+	static {
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_u233), new ItemStack(ModItems.plate_fuel_u235, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_u235), new ItemStack(ModItems.waste_plate_u235, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_mox), new ItemStack(ModItems.waste_plate_mox, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_pu239), new ItemStack(ModItems.waste_plate_pu239, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_sa326), new ItemStack(ModItems.waste_plate_sa326, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_ra226be), new ItemStack(ModItems.waste_plate_ra226be, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_pu238be), new ItemStack(ModItems.waste_plate_pu238be, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems2.plate_fuel_atbe), new ItemStack(ModItems2.waste_plate_atbe, 1, 1));
+	}
+
 	private static final HashMap<ComparableStack, ItemStack> fuelMap = new HashMap<ComparableStack, ItemStack>();
 	static {
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_u233), new ItemStack(ModItems.waste_plate_u233, 1, 1));
@@ -70,8 +86,8 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_sa326), new ItemStack(ModItems.waste_plate_sa326, 1, 1));
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_ra226be), new ItemStack(ModItems.waste_plate_ra226be, 1, 1));
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_pu238be), new ItemStack(ModItems.waste_plate_pu238be, 1, 1));
-	}
-	
+		fuelMap.put(new ComparableStack(ModItems2.plate_fuel_atbe), new ItemStack(ModItems2.waste_plate_atbe, 1, 1));
+	}	
 	public String getName() {
 		return "container.reactorResearch";
 	}
@@ -150,7 +166,7 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 				float rad = (float) heat / (float) maxHeat * 50F;
 				ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, rad);
 			}
-			
+			if(RBMKDials.getGeneratorC(worldObj))	Generate();
 			NBTTagCompound data = new NBTTagCompound();
 			data.setInteger("heat", heat);
 			data.setByte("water", water);
@@ -270,16 +286,22 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 			
 			if(slots[i].getItem() instanceof ItemPlateFuel) {
 				ItemPlateFuel rod = (ItemPlateFuel) slots[i].getItem();
-				
+				if(RBMKDials.getGeneratorC(worldObj)&& (slots[i].getItem()==ModItems.plate_fuel_pu238be||slots[i].getItem()==ModItems.plate_fuel_ra226be))	rod.reactivity = 800;
 				int outFlux = rod.react(worldObj, slots[i], slotFlux[i]);
-				this.heat += outFlux * 2;
+				if(!RBMKDials.getGeneratorC(worldObj))
+					this.heat += outFlux * 2;
+				else{ 	
+					this.power += outFlux * 2 * 1800;
+					this.power -= 36000;}
 				slotFlux[i] = 0;
 				totalFlux += outFlux;
 				
 				int[] neighborSlots = getNeighboringSlots(i);
 				
 				if(ItemPlateFuel.getLifeTime(slots[i]) > rod.lifeTime) {
-					slots[i] = fuelMap.get(new ComparableStack(slots[i])).copy();
+					if(!RBMKDials.getGeneratorC(worldObj))
+						slots[i] = fuelMap.get(new ComparableStack(slots[i])).copy();
+					else	slots[i] = newfuelMap.get(new ComparableStack(slots[i])).copy();
 				}
 				
 				for(byte j = 0; j < neighborSlots.length; j++) {
@@ -393,6 +415,32 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 	public double getMaxRenderDistanceSquared() {
 		return 65536.0D;
 	}
+
+
+	private void Generate() {
+
+			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			for(int i =0; i<3; i++)			
+			this.tryProvide( worldObj, xCoord + dir.offsetX, yCoord + i + dir.offsetY, zCoord + dir.offsetZ,  dir);
+			}
+			
+
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+	public long getMaxPower() {
+		return power;
+	}
+
+
 	
 	// do some opencomputer stuff
 	@Override

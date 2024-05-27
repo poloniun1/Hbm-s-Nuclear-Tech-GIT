@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 
 import com.hbm.config.GeneralConfig;
 import com.hbm.entity.missile.*;
+import com.hbm.entity.missile.EntityCarrier;
 import com.hbm.entity.missile.EntityMissileTier0.*;
 import com.hbm.entity.missile.EntityMissileTier1.*;
 import com.hbm.entity.missile.EntityMissileTier2.*;
@@ -311,8 +312,7 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	}
 	
 	public boolean hasFuel() {
-		if(this.power < 75_000) return false;
-		
+		if(this.power < 75_000) return false;	
 		if(slots[0] != null && slots[0].getItem() instanceof ItemMissile) {
 			ItemMissile missile = (ItemMissile) slots[0].getItem();
 			if(this.tanks[0].getFill() < missile.fuelCap) return false;
@@ -327,6 +327,19 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	public Entity instantiateMissile(int targetX, int targetZ) {
 		
 		if(slots[0] == null) return null;
+
+		if(slots[0].getItem() == ModItems.missile_carrier) {
+			EntityCarrier missile = new EntityCarrier(worldObj);
+			missile.posX = xCoord + 0.5F;
+			missile.posY = yCoord + 1F;
+			missile.posZ = zCoord + 0.5F;
+			if(slots[1] != null) {
+				missile.setPayload(slots[1]);
+				this.slots[1] = null;
+			}
+			worldObj.playSoundEffect(xCoord + 0.5, yCoord, zCoord + 0.5, "hbm:entity.rocketTakeoff", 100.0F, 1.0F);
+			return missile;
+		}
 		
 		Class<? extends EntityMissileBaseNT> clazz = TileEntityLaunchPadBase.missiles.get(new ComparableStack(slots[0]).makeSingular());
 		
@@ -429,11 +442,13 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	}
 	
 	public boolean needsDesignator(Item item) {
-		return item != ModItems.missile_anti_ballistic;
+		return item != ModItems.missile_anti_ballistic && item != ModItems.missile_carrier;
 	}
 	
 	/** Full launch condition, checks if the item is launchable, fuel and power are present and any additional checks based on launch pad type */
 	public boolean canLaunch() {
+		if(slots[0] != null && slots[0].getItem() == ModItems.missile_carrier && this.power > 75000) 
+			return true;
 		return this.isMissileValid() && this.hasFuel() && this.isReadyForLaunch();
 	}
 	

@@ -14,9 +14,12 @@ import com.hbm.packet.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
@@ -32,15 +35,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider, IFluidStandardTransceiver, IInfoProviderEC {
+public class TileEntityICF extends TileEntityMachineBase implements IEnergyProviderMK2, IGUIProvider, IFluidStandardTransceiver, IInfoProviderEC {
 	
 	public long laser;
 	public long maxLaser;
 	public long heat;
-	public static final long maxHeat = 1_000_000_000_000L;
+	public static final long maxHeat = 100_000_000_000_000L;
 	public long heatup;
 	public int consumption;
 	public int output;
+	public long power;
 	
 	public FluidTank[] tanks;
 
@@ -61,7 +65,10 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 	public void updateEntity() {
 		
 		if(!worldObj.isRemote) {
-			
+			if(RBMKDials.getGeneratorG(worldObj)){
+			this.laser = 500000000;
+			this.maxLaser = 500000000;
+			}
 			tanks[0].setType(11, slots);
 			
 			for(DirPos pos : getConPos()) {
@@ -120,7 +127,7 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 
 			this.consumption = 0;
 			this.output = 0;
-			
+			if(!RBMKDials.getGeneratorG(worldObj)){
 			if(tanks[0].getTankType().hasTrait(FT_Heatable.class)) {
 				FT_Heatable trait = tanks[0].getTankType().getTrait(FT_Heatable.class);
 				HeatingStep step = trait.getFirstStep();
@@ -138,7 +145,10 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 				this.consumption = step.amountReq * cycles;
 				this.output = step.amountProduced * cycles;
 			}
-			
+			}
+			else {
+				Generate();
+				}
 			for(DirPos pos : getConPos()) {
 				this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				this.sendFluid(tanks[2], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
@@ -283,5 +293,29 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 		data.setLong(CompatEnergyControl.L_ENERGY_TU, this.heat);
 		data.setDouble(CompatEnergyControl.D_CONSUMPTION_MB, this.consumption);
 		data.setDouble(CompatEnergyControl.D_OUTPUT_MB, this.output);
+	}
+
+	private void Generate() {
+		this.power = this.heat;
+		for(DirPos pos : getConPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
+		}
+		this.heat = 0;
+	}	
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+
+	@Override
+	public long getMaxPower() {
+		return maxHeat;
 	}
 }

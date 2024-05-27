@@ -22,11 +22,13 @@ import com.hbm.packet.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.Compat;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.DirPos;
 import com.hbm.util.function.Function;
 
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
@@ -44,7 +46,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityWatz extends TileEntityMachineBase implements IFluidStandardTransceiver, IControlReceiver, IGUIProvider {
+public class TileEntityWatz extends TileEntityMachineBase implements IFluidStandardTransceiver, IControlReceiver, IGUIProvider ,IEnergyProviderMK2 {
 	
 	public FluidTank[] tanks;
 	public int heat;
@@ -52,7 +54,7 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 	public double fluxLastReaction;	//flux created by the previous reaction, used for the next reaction
 	public double fluxDisplay;
 	public boolean isOn;
-	
+	public long power;	
 	/* lock types for item IO */
 	public boolean isLocked = false;
 	public ItemStack[] locks;
@@ -116,7 +118,9 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 				TileEntityWatz above = segments.get(i - 1);
 				segment.updateReaction(above, sharedTanks, turnedOn);
 			}
-			
+			if(RBMKDials.getGeneratorE(worldObj))	
+			Generate();
+
 			/* send sync packets (order doesn't matter) */
 			for(TileEntityWatz segment : segments) {
 				segment.isOn = turnedOn;
@@ -221,7 +225,8 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					ItemWatzPellet.setYield(stack, ItemWatzPellet.getYield(stack) - burn);
 					addedFlux += burn;
 					addedHeat += type.heatEmission * burn;
-					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * burn));
+					if(!RBMKDials.getGeneratorE(worldObj))	
+						tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * burn));
 				}
 			}
 			
@@ -233,11 +238,15 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					double absorb = absorbFunc.effonix(baseFlux + fluxLastReaction);
 					addedHeat += absorb;
 					ItemWatzPellet.setYield(stack, ItemWatzPellet.getYield(stack) - absorb);
-					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * absorb));
+					if(!RBMKDials.getGeneratorE(worldObj))
+						tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * absorb));
 				}
 			}
-			
+			if(!RBMKDials.getGeneratorE(worldObj))	
 			this.heat += addedHeat;
+			else{ 
+			this.power += addedHeat;
+			}
 			this.fluxLastBase = baseFlux;
 			this.fluxLastReaction = addedFlux;
 			
@@ -252,7 +261,13 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 			
 			/* deplete */
 			if(stack != null && stack.getItem() == ModItems.watz_pellet && ItemWatzPellet.getEnrichment(stack) <= 0) {
-				slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
+				if(slots[0].getItemDamage() == 12 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 4);
+				else if(slots[0].getItemDamage() == 11 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 13);
+				else if(slots[0].getItemDamage() == 5 && RBMKDials.getGeneratorE(worldObj))
+					slots[0] = new ItemStack(ModItems.watz_pellet_depleted, 1, 6);
+				else slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
 				continue; // depleted pellets may persist for one tick
 			}
 		}
@@ -332,6 +347,22 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 				new DirPos(xCoord - 2, yCoord - 1, zCoord, ForgeDirection.DOWN),
 				new DirPos(xCoord, yCoord - 1, zCoord + 2, ForgeDirection.DOWN),
 				new DirPos(xCoord, yCoord - 1, zCoord - 2, ForgeDirection.DOWN)
+
+		};
+	}
+
+	protected DirPos[] getEnergyPos() {
+		return new DirPos[] {
+				new DirPos(xCoord, yCoord - 1, zCoord, ForgeDirection.DOWN),
+				new DirPos(xCoord + 2, yCoord - 1, zCoord, ForgeDirection.DOWN),
+				new DirPos(xCoord - 2, yCoord - 1, zCoord, ForgeDirection.DOWN),
+				new DirPos(xCoord, yCoord - 1, zCoord + 2, ForgeDirection.DOWN),
+				new DirPos(xCoord, yCoord - 1, zCoord - 2, ForgeDirection.DOWN),
+				new DirPos(xCoord, yCoord + 3, zCoord, ForgeDirection.UP),
+				new DirPos(xCoord + 2, yCoord + 3, zCoord, ForgeDirection.UP),
+				new DirPos(xCoord - 2, yCoord + 3, zCoord, ForgeDirection.UP),
+				new DirPos(xCoord, yCoord + 3, zCoord + 2, ForgeDirection.UP),
+				new DirPos(xCoord, yCoord + 3, zCoord - 2, ForgeDirection.UP),
 		};
 	}
 	
@@ -548,5 +579,26 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 	@Override
 	public FluidTank[] getReceivingTanks() {
 		return new FluidTank[] { tanks[0] };
+	}
+
+	private void Generate() {
+		for(DirPos pos : getEnergyPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+		}
+			
+
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+	public long getMaxPower() {
+		return power;
 	}
 }
