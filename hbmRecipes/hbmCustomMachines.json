@@ -4003,7 +4003,8 @@
           "outputItems": [
             ["hbm:item.nugget_pu238", 6,1],
             ["hbm:item.nugget_polonium", 6,1],
-            ["hbm:item.nugget_pu239", 15,1]
+            ["hbm:item.nugget_pu239", 15,1],
+			["hbm:item.ingot_mud", 1]
 ],
           "duration": 100,
           "consumptionPerTick": 40000
@@ -4333,7 +4334,8 @@
             ["hbm:item.nugget_bismuth", 4,1],
             ["hbm:item.nugget_technetium", 15,1],
 			["hbm:item.powder_cerium_tiny", 4,1],
-			["ha:item.powder_iodine_tiny", 4,1]
+			["ha:item.powder_iodine_tiny", 4,1],
+			["hbm:item.ingot_mud", 1]
 ],
           "duration": 100,
           "consumptionPerTick": 0
