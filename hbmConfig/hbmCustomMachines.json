@@ -20,7 +20,7 @@
         "ICI",
         "PIP"
       ],
-      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"C",["item","hbm:item.circuit",9]
+      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"C",["item","hbm:item.circuit", 1, 9]
       ],
       "components": [
  	{"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":0,"metas":[3]}
@@ -47,7 +47,7 @@
         "ICI",
         "PIP"
       ],
-      "recipeParts": ["I",["dict","ingotCMBSteel"],"P",["dict","plateTripleCMBSteel"],"C",["item","hbm:item.circuit",11]
+      "recipeParts": ["I",["dict","ingotCMBSteel"],"P",["dict","plateTripleCMBSteel"],"C",["item","hbm:item.circuit", 1, 11]
       ],
       "components": [
  	{"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":0,"metas":[3]}
@@ -74,7 +74,7 @@
         "PCP",
         "IPI"
       ],
-      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"C",["item","hbm:item.circuit",9]
+      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"C",["item","hbm:item.circuit", 1, 9]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":1,"metas":[3]},
@@ -103,7 +103,7 @@
         "NCN",
         "IPI"
       ],
-      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"N",["item","hbm:item.reactor_core"],"C",["item","hbm:item.circuit",9]
+      "recipeParts": ["I",["dict","ingotAnyResistantAlloy"],"P",["dict","plateTripleAnyResistantAlloy"],"N",["item","hbm:item.reactor_core"],"C",["item","hbm:item.circuit", 1, 9]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":-1,"z":1,"metas":[3]},
@@ -131,7 +131,7 @@
         "NCN",
         "IPI"
       ],
-      "recipeParts": ["I",["dict","ingotCMBSteel"],"P",["dict","plateTripleCMBSteel"],"N",["item","hbm:item.reactor_core"],"C",["item","hbm:item.circuit",11]
+      "recipeParts": ["I",["dict","ingotCMBSteel"],"P",["dict","plateTripleCMBSteel"],"N",["item","hbm:item.reactor_core"],"C",["item","hbm:item.circuit", 1, 11]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":1,"z":1,"metas":[3]},
@@ -160,7 +160,7 @@
         "PCP",
         "IPI"
       ],
-      "recipeParts": ["I",["dict","ingotSteel"],"P",["dict","plateTripleSteel"],"C",["item","hbm:item.circuit",8]
+      "recipeParts": ["I",["dict","ingotSteel"],"P",["dict","plateTripleSteel"],"C",["item","hbm:item.circuit", 1, 8]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":0,"z":1,"metas":[0]}
@@ -186,7 +186,7 @@
         "SCS",
         "PSP"
       ],
-      "recipeParts": ["P",["dict","ntmpipeCopper"],"S",["dict","shellCopper"],"C",["item","hbm:item.circuit",8]
+      "recipeParts": ["P",["dict","ntmpipeCopper"],"S",["dict","shellCopper"],"C",["item","hbm:item.circuit", 1, 8]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":0,"z":1,"metas":[0]}
