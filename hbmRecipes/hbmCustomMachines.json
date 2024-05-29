@@ -698,7 +698,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreTitanium",1]],
           "outputFluids": [
@@ -714,7 +714,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreManganese",1]],
           "outputFluids": [
@@ -730,7 +730,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreIron",1]],
           "outputFluids": [
@@ -746,7 +746,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 400],
-	["ACID",250]
+	["PEROXIDE",250]
           ],
           "inputItems": [["dict","oreHematite",1]],
           "outputFluids": [
@@ -763,7 +763,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreCoal",1]],
           "outputFluids": [
@@ -779,7 +779,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreRedstone",1]],
           "outputFluids": [
@@ -795,7 +795,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreSulfur",1]],
           "outputFluids": [
@@ -812,7 +812,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreBeryllium",1]],
           "outputFluids": [
@@ -828,7 +828,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreLithium",1]],
           "outputFluids": [
@@ -844,7 +844,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreEmerald",1]],
           "outputFluids": [
@@ -862,7 +862,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreAsbestos",1]],
           "outputFluids": [
@@ -878,7 +878,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreNetherQuartz",1]],
           "outputFluids": [
@@ -894,7 +894,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreBoron",1]],
           "outputFluids": [
@@ -911,7 +911,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreBorax",1]],
           "outputFluids": [
@@ -927,7 +927,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreGold",1]],
           "outputFluids": [
@@ -943,7 +943,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreCopper",1]],
           "outputFluids": [
@@ -959,7 +959,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 400],
-	["ACID",250]
+	["PEROXIDE",250]
           ],
           "inputItems": [["dict","oreMalachite",1]],
           "outputFluids": [
@@ -975,7 +975,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreCinnabar",1]],
           "outputFluids": [
@@ -992,7 +992,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreVolcanic",1]],
           "outputFluids": [
@@ -1008,7 +1008,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreDiamond",1]],
           "outputFluids": [
@@ -1024,7 +1024,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreAlexandrite",1]],
           "outputFluids": [
@@ -1041,7 +1041,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreAluminum",1]],
           "outputFluids": [
@@ -1057,7 +1057,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 400],
-	["ACID",250]
+	["PEROXIDE",250]
           ],
           "inputItems": [["dict","oreBauxite",1]],
           "outputFluids": [
@@ -1073,7 +1073,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreTungsten",1]],
           "outputFluids": [
@@ -1089,7 +1089,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreLead",1]],
           "outputFluids": [
@@ -1106,7 +1106,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreSaltpeter",1]],
           "outputFluids": [
@@ -1122,7 +1122,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreArsenic",1]],
           "outputFluids": [
@@ -1138,7 +1138,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreWhitePhosphorus",1]],
           "outputFluids": [
@@ -1155,7 +1155,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreGlowstone",1]],
           "outputFluids": [
@@ -1171,7 +1171,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreFluorite",1]],
           "outputFluids": [
@@ -1187,7 +1187,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreCalcium",1]],
           "outputFluids": [
@@ -1204,7 +1204,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreSodium",1]],
           "outputFluids": [
@@ -1220,7 +1220,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreNiobium",1]],
           "outputFluids": [
@@ -1236,7 +1236,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreLapis",1]],
           "outputFluids": [
@@ -1253,7 +1253,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreZirconium",1]],
           "outputFluids": [
@@ -1269,7 +1269,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreWorkersAlloy",1]],
           "outputFluids": [
@@ -1285,7 +1285,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreNeodymium",1]],
           "outputFluids": [
@@ -1302,7 +1302,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreThorium",1]],
           "outputFluids": [
@@ -1318,7 +1318,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreUranium",1]],
           "outputFluids": [
@@ -1334,7 +1334,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","orePlutonium",1]],
           "outputFluids": [
@@ -1351,7 +1351,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreTikite",1]],
           "outputFluids": [
@@ -1367,7 +1367,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreStarmetal",1]],
           "outputFluids": [
@@ -1383,7 +1383,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreCobalt",1]],
           "outputFluids": [
@@ -1399,7 +1399,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreOsmiridium",1]],
           "outputFluids": [
@@ -1415,7 +1415,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreAustralium",1]],
           "outputFluids": [
@@ -1430,7 +1430,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreColtan",1]],
           "outputFluids": [
@@ -1446,7 +1446,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreSchrabidium",1]],
           "outputFluids": [
@@ -1461,7 +1461,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreEuphemium",1]],
           "outputFluids": [
@@ -1477,7 +1477,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["ACID",200]
+	["PEROXIDE",200]
           ],
           "inputItems": [["dict","oreBismuth",1]],
           "outputFluids": [
@@ -3510,7 +3510,7 @@
 ["item","hbm:item.catalyst_clay",1]
 ],
           "outputFluids": [
-	["ACID",1000]
+	["PEROXIDE",1000]
           ],
           "outputItems": [
 
@@ -3521,7 +3521,7 @@
 		{
           "inputFluids": [		
 		["AROMATICS",1000],
-		["ACID",100]
+		["PEROXIDE",100]
           ],
           "inputItems": [
 
