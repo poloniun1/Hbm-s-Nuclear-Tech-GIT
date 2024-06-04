@@ -1,16 +1,22 @@
+## Added
+* Asphalt stairs
+  * Stairs, but fast
+* More circuits
+  * Control units and advanced control units are exclusively used for nukes
+  * CUs and ACUs are quite a bit more expensive than standard circuits and also make use of tantalum capacitors
+  * Nukes are no longer for people who weasel their way through progression and then get 8 uranium, 2 steel and some duct tape, instead every atomic bomb requires a large electronics production capacity
+  * WMDs are expensive, who woulda thunk
+
 ## Changed
-* The powder combination recipe for steel powder now yields steel scraps instead, meaning that it has to be smelted either via crucible or arc furnace
-  * In addition, there is now an alternate recipe combining four times the material, yielding larger steel scraps, allowing for higher throughput
-* The new autogen wire items now use texture overrides, restoring the original textures
-* Arc furnaces now start burning on the inside as the electrodes are inserted, making the process look a lot more violent
-* Arc furnaces in liquid mode will now immediately start draining their contents as soon as the lid starts lifting, instead of waiting until the lid is fully lifted
-* The arc furnace's lid now moves faster depending on the upgrade (each upgrade adds 50% movement speed). Do note that this shortens the timespan for cycling items, so to utilize it fully you will need multiple or upgraded conveyors.
-* Doubled the arc furnace's pouring speed to a full ingot per tick
-* Demand for hard plastic per versatile circuit has been reduced from 4 to 2 bars per board
-* The autocrafter now uses vacuum tubes instead of microchips
-* Buoyant items (fish spawned by fishing dynamite) now sink in flowing water (i.e. in a tank of non-source blocks)
-* Retextured all explosive sticks
+* Wires now use recipe autogen for anvils, meaning that all fine wires are now obtainable via tier 4 anvil
+* Changed most nuke recipes
+  * Most assembler recipes have been de-cluttered, no longer using random extra plates or wires
+  * Nukes now exclusively use control units or ACUs instead of circuits
+* CRTs are now crafted in the crafting table instead of via assembler, making use of vacuum tubes
 
 ## Fixed
-* Removed sand to silicon AE2 compat recipe which caused sand to be shreddable into the new silicon wafers, skipping the arc furnace entirely
-* Fixed shift clicking into the arc furnace placing the entire stack into a single slot, ignoring stacksize limitations
+* Fixed dupe regarding conveyor grabbers
+* Fixed soldering stations not saving progress or their fluid tanks
+* Fixed a bug where missile debris would always spawn with a stack size of 1 and a meta of 0
+* Fixed FM radios disassembling into incorrect parts
+* Fixed 256k tanks yielding too much steel when shredded
