@@ -261,7 +261,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 			return 1.8F;
 		if(type == Fluids.OXYGEN)
 			return 1.2F;
-		if(type == Fluids.ACID)
+		if(type == Fluids.PEROXIDE)
 			return 1.4F;
 		if(type == Fluids.XENON)
 			return 1.5F;
