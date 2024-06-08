@@ -160,7 +160,7 @@
         "PCP",
         "IPI"
       ],
-      "recipeParts": ["I",["dict","ingotSteel"],"P",["dict","plateTripleSteel"],"C",["item","hbm:item.circuit", 1, 8]
+      "recipeParts": ["I",["dict","ingotSteel"],"P",["dict","plateTripleSteel"],"C",["item","hbm:item.circuit", 1, 7]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":0,"z":1,"metas":[0]}
@@ -186,7 +186,7 @@
         "SCS",
         "PSP"
       ],
-      "recipeParts": ["P",["dict","ntmpipeCopper"],"S",["dict","shellCopper"],"C",["item","hbm:item.circuit", 1, 8]
+      "recipeParts": ["P",["dict","ntmpipeCopper"],"S",["dict","shellCopper"],"C",["item","hbm:item.circuit", 1, 7]
       ],
       "components": [
         {"block":"hbm:tile.cm_port", "x":0,"y":0,"z":1,"metas":[0]}
