@@ -29,8 +29,8 @@ public class TileEntityCrashedBomb extends TileEntity {
 			float ra = worldObj.rand.nextFloat();
 			if(ra<0.12){
 				boolean canOutput = true;	
-				ItemStack out = ra > 0.1 ? new ItemStack(ModItems.cell_balefire): 
-				ra> 0.06 ? new ItemStack(ModItems.cell_anti_schrabidium):new ItemStack(ModItems.cell_antimatter);
+				ItemStack out = ra > 0.1 ? new ItemStack(ModItems.cell_anti_schrabidium): 
+				ra> 0.06 ? new ItemStack(ModItems.cell_balefire):new ItemStack(ModItems.cell_antimatter);
 				TileEntity te0 = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord );
 				if(te0 instanceof IInventory) {
 

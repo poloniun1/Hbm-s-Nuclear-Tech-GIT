@@ -243,7 +243,7 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		@Callback(direct = true)
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getGasType(Context context, Arguments args) {
-		return new Object[] {gas.getTankType().getName()};
+		return new Object[] {gas.getTankType().getID()};
 	}
 
 	@Callback(direct = true)

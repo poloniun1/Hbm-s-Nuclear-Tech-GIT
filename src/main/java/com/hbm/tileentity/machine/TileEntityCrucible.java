@@ -57,7 +57,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 	//also martin i know you read these: no i will not switch to intellij after using eclipse for 8 years.
 	public static int recipeZCapacity = MaterialShapes.BLOCK.q(16);
 	public static int wasteZCapacity = MaterialShapes.BLOCK.q(16);
-	public static int processTime = 20_000;
+	public static int processTime = 5_000;
 	public static double diffusion = 0.25D;
 	public static int maxHeat = 100_000;
 
