@@ -72,7 +72,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre(OreDictManager.U.ore(), MAT_URANIUM, INGOT.q(2), MAT_LEAD, NUGGET.q(3),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.TH232.ore(), MAT_THORIUM, INGOT.q(2), MAT_URANIUM, NUGGET.q(3),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.CU.ore(), MAT_COPPER, INGOT.q(2),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
-		registerOre(OreDictManager.PB.ore(), MAT_LEAD, INGOT.q(2), MAT_GOLD, NUGGET.q(1),MAT_SILICON, NUGGET.q(4), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.PB.ore(), MAT_LEAD, INGOT.q(2), MAT_GOLD, NUGGET.q(1),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.BE.ore(), MAT_BERYLLIUM, INGOT.q(2),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.CO.ore(), MAT_COBALT, INGOT.q(1),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.REDSTONE.ore(), MAT_REDSTONE, INGOT.q(4),MAT_SILICON, NUGGET.q(1), MAT_SLAG, QUART.q(1));

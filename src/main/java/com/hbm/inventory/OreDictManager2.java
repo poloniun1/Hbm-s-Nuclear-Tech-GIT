@@ -113,7 +113,7 @@ public class OreDictManager2 {
 		EUPH	.ore(ModBlocks.block_euphemium_cluster);
 		ASBESTOS	.asbestos(1F)	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.ASBESTOS));
 		OSMIRIDIUM	.ore(ModBlocks.ore_tektite_osmiridium);
-        		REDSTONE	.ingot(ModItems.redstone_depleted);
+        		REDSTONE	.ingot(Items.redstone);
 		DESH	.ore(ModBlocks.ore_rare, ModBlocks.ore_gneiss_rare);
 
 		S	.ingot(ModItems.sulfur)	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.SULFUR));
