@@ -23,7 +23,7 @@ public abstract class TileEntityFoundryCastingBase extends TileEntityFoundryBase
 	public TileEntityFoundryCastingBase(int slotCount) {
 		slots = new ItemStack[slotCount];
 	}
-	public int cooloff = 10;
+	public int cooloff = 1;
 
 	@Override
 	public void updateEntity() {
@@ -53,12 +53,12 @@ public abstract class TileEntityFoundryCastingBase extends TileEntityFoundryBase
 						slots[1] = out.copy();
 					}
 					
-					cooloff = 20;
+					cooloff = 2;
 					this.markDirty();
 				}
 				
 			} else {
-				cooloff = 20;
+				cooloff = 2;
 			}
 		}
 	}
