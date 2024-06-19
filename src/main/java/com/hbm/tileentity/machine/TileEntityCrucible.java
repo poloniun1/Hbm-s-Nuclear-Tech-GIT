@@ -23,6 +23,7 @@ import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CrucibleUtil;
 
 import api.hbm.block.ICrucibleAcceptor;
@@ -103,7 +104,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		
 		if(!worldObj.isRemote) {
 			tryPullHeat();
-			
+			if(RBMKDials.getCrucibleBABY(worldObj))
+ 				this.heat = this.maxHeat;
+	
 			/* collect items */
 			if(worldObj.getTotalWorldTime() % 5 == 0) {
 				List<EntityItem> list = worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord - 0.5, yCoord + 0.5, zCoord - 0.5, xCoord + 1.5, yCoord + 1, zCoord + 1.5));
@@ -158,7 +161,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, this.wasteStack, MaterialShapes.NUGGET.q(3), impact);
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, this.wasteStack, MaterialShapes.INGOT.q(3), impact);
 				
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -198,7 +201,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				}
 				
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.NUGGET.q(3), impact);
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.INGOT.q(3), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -309,7 +312,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				return;
 			}
 		}
-		
+
+
 		this.heat = Math.max(this.heat - Math.max(this.heat / 1000, 1), 0);
 	}
 	
@@ -324,7 +328,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		delta *= 0.05;
 		
 		this.progress += delta;
-		this.heat -= delta;
+		if(!RBMKDials.getCrucibleBABY(worldObj))	this.heat -= delta;
 		
 		if(this.progress >= processTime) {
 			this.progress = 0;

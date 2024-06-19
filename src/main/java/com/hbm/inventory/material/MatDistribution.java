@@ -40,7 +40,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre("cobblestone",MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(2));
 		registerOre("sand",MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(2));
 		registerEntry(Blocks.gravel,MAT_SILICON, NUGGET.q(3), MAT_SLAG, QUART.q(2));
-		registerEntry(Blocks.obsidian, MAT_SILICON, NUGGET.q(1), MAT_OBSIDIAN, BLOCK.q(1));
+		registerEntry(Blocks.obsidian, MAT_OBSIDIAN, BLOCK.q(1));
 		registerEntry(Blocks.rail, MAT_IRON, INGOT.q(6, 16));
 		registerEntry(Blocks.golden_rail, MAT_GOLD, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
 		registerEntry(Blocks.detector_rail, MAT_IRON, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
