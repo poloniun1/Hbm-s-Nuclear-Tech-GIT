@@ -66,6 +66,7 @@ public class OreDictManager2 {
 	public static final DictFrame AS = new DictFrame("Arsenic");
 	public static final DictFrame CA = new DictFrame("Calcium");
 	public static final DictFrame B = new DictFrame("Boron");
+	public static final DictFrame SI = new DictFrame("Silicon");
 	public static final DictFrame STAR = new DictFrame("Starmetal");
 	public static final DictFrame DESH = new DictFrame("WorkersAlloy");
 	public static final DictFrame EUPH = new DictFrame("Euphemium");
@@ -109,6 +110,7 @@ public class OreDictManager2 {
 		AS	.ore(ModBlocks.stone_porous,ModBlocks.dirt_oily, ModBlocks.dirt_dead, ModBlocks.stone_cracked, ModBlocks.sand_dirty, ModBlocks.sand_dirty_red );
 		CA	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE) );
 		B	.ore(ModBlocks.ore_depth_borax );
+		SI	.ore(Blocks.quartz_block);
 		STAR		.nugget(ModItems2.nugget_star)		.ore(ModBlocks2.ore_meteor_star);
 		EUPH	.ore(ModBlocks.block_euphemium_cluster);
 		ASBESTOS	.asbestos(1F)	.ore(fromOne(ModBlocks.stone_resource, EnumStoneType.ASBESTOS));

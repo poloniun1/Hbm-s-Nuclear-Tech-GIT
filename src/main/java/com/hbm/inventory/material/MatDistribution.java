@@ -40,7 +40,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre("cobblestone",MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(2));
 		registerOre("sand",MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(2));
 		registerEntry(Blocks.gravel,MAT_SILICON, NUGGET.q(3), MAT_SLAG, QUART.q(2));
-		registerEntry(Blocks.obsidian, MAT_SILICON, NUGGET.q(1), MAT_OBSIDIAN, BLOCK.q(1));
+		registerEntry(Blocks.obsidian, MAT_OBSIDIAN, BLOCK.q(1));
 		registerEntry(Blocks.rail, MAT_IRON, INGOT.q(6, 16));
 		registerEntry(Blocks.golden_rail, MAT_GOLD, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
 		registerEntry(Blocks.detector_rail, MAT_IRON, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
@@ -80,9 +80,12 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre(OreDictManager.HEMATITE.ore(), MAT_HEMATITE, INGOT.q(1));
 		registerOre(OreDictManager.MALACHITE.ore(), MAT_MALACHITE, INGOT.q(1));
 		
-		registerEntry(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE),MAT_SILICON, QUANTUM.q(4), MAT_FLUX, DUST.q(10));
+		registerEntry(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE), MAT_FLUX, DUST.q(10));
 		registerEntry(ModItems.powder_flux, MAT_FLUX, DUST.q(1));
 		registerEntry(new ItemStack(Items.coal, 1, 1), MAT_CARBON, NUGGET.q(3));
+		registerEntry(new ItemStack(Items.flint), MAT_SILICON, NUGGET.q(2));
+		registerEntry(new ItemStack(Items.quartz), MAT_SILICON, NUGGET.q(1));
+		registerEntry(new ItemStack(ModItems.powder_quartz), MAT_SILICON, NUGGET.q(1));
 
 		registerEntry(DictFrame.fromOne(ModItems.powder_ash, EnumAshType.WOOD), MAT_CARBON, NUGGET.q(1));
 		registerEntry(DictFrame.fromOne(ModItems.powder_ash, EnumAshType.COAL), MAT_CARBON, NUGGET.q(2));
