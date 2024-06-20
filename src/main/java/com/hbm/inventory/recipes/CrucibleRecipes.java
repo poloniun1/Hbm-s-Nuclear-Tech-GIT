@@ -58,6 +58,18 @@ public class CrucibleRecipes extends SerializableRecipe {
 		recipes.add(new CrucibleRecipe(102, "crucible.saturn", 2, new ItemStack(ModItems.ingot_saturnite))
 				.inputs(new MaterialStack(Mats.MAT_DURA, n * 4), new MaterialStack(Mats.MAT_COPPER, n*2), new MaterialStack(Mats.MAT_CARBON, n))
 				.outputs(new MaterialStack(Mats.MAT_SATURN, n * 7)));
+		recipes.add(new CrucibleRecipe(103, "crucible.starmetal", 2, new ItemStack(ModItems.ingot_starmetal))
+				.inputs(new MaterialStack(Mats.MAT_SATURN, n * 12), new MaterialStack(Mats.MAT_LITHIUM, n * 3), new MaterialStack(Mats.MAT_IRON, n * 3), new MaterialStack(Mats.MAT_COPPER, n*3), new MaterialStack(Mats.MAT_SILICON, n))
+				.outputs(new MaterialStack(Mats.MAT_STAR, n * 24)));
+		recipes.add(new CrucibleRecipe(104, "crucible.mud", 2, new ItemStack(ModItems.ingot_mud))
+				.inputs(new MaterialStack(Mats.MAT_NEPTUNIUM, n), new MaterialStack(Mats.MAT_CO60, n), new MaterialStack(Mats.MAT_TECHNIETIUM, n))
+				.outputs(new MaterialStack(Mats.MAT_MUD, n *3)));
+		recipes.add(new CrucibleRecipe(105, "crucible.mudless", 2, new ItemStack(ModItems.ingot_mud))
+				.inputs(new MaterialStack(Mats.MAT_URANIUM, n), new MaterialStack(Mats.MAT_PLUTONIUM, n), new MaterialStack(Mats.MAT_THORIUM, n))
+				.outputs(new MaterialStack(Mats.MAT_MUD, n)));
+		recipes.add(new CrucibleRecipe(106, "crucible.mudrich", 2, new ItemStack(ModItems.ingot_mud))
+				.inputs(new MaterialStack(Mats.MAT_AU198, n), new MaterialStack(Mats.MAT_PB209, n), new MaterialStack(Mats.MAT_BISMUTH, n))
+				.outputs(new MaterialStack(Mats.MAT_MUD, n*6)));
 		
 		if(Compat.isModLoaded(Compat.MOD_GT6)) {
 			recipes.add(new CrucibleRecipe(9, "crucible.steelWrought", 2, new ItemStack(ModItems.ingot_steel))
