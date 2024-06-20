@@ -3552,6 +3552,40 @@
           "duration": 2,
           "consumptionPerTick": 500000
         },
+		{
+          "inputFluids": [		
+	["CHLORINE",500],
+	["HYDROGEN",500]
+          ],
+          "inputItems": [
+	["dict","crystalSilicon",1]
+	],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["hbm:item.ingot_silicon",3, 1.0]
+          ],
+          "duration": 5,
+          "consumptionPerTick": 50000
+        },
+		{
+          "inputFluids": [		
+
+          ],
+          "inputItems": [
+	["dict","blockQuartz",1],
+	["dict","ingotGraphite",1]
+	],
+          "outputFluids": [
+
+          ],
+          "outputItems": [
+	["aobd:crystalSilicon",1]
+          ],
+          "duration": 5,
+          "consumptionPerTick": 10000
+        },
         {
           "inputFluids": [
 	["NITRIC_ACID",1500],
@@ -5701,7 +5735,7 @@
           "duration": 120,
           "consumptionPerTick": 5000
         }
-		]
-}
   ]
+}
+]
 }
