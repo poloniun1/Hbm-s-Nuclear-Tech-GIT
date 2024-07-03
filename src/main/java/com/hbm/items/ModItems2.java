@@ -109,7 +109,7 @@ public class ModItems2 {
 	public static Item waste_np237;
 	public static Item waste_sa326;
 	public static Item bred_lead;
-	//public static Item missile_carrier;
+	public static Item missile_carrier;
 
 	public static void initializeItem()
 	{	
@@ -187,7 +187,7 @@ public class ModItems2 {
 
 
 
-		//missile_carrier = new Item().setUnlocalizedName("missile_carrier").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":missile_carrier");
+		missile_carrier = new Item().setUnlocalizedName("missile_carrier").setMaxStackSize(1).setCreativeTab(null).setTextureName(RefStrings.MODID + ":missile_carrier");
 
 		plate_fuel_atbe = new ItemPlateFuel(2400000).setFunction(FunctionEnum.PASSIVE, 1000).setUnlocalizedName("plate_fuel_atbe").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":plate_fuel_atbe");
 		waste_plate_atbe = new ItemDepletedFuel().setUnlocalizedName("waste_plate_atbe").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_plate_atbe");
@@ -230,7 +230,7 @@ public class ModItems2 {
 		GameRegistry.registerItem(waste_sa326, waste_sa326.getUnlocalizedName());
 		GameRegistry.registerItem(bred_lead, bred_lead.getUnlocalizedName());
 
-		//GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
+		GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_sodium, ingot_sodium.getUnlocalizedName());

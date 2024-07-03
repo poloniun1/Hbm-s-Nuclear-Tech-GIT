@@ -15,6 +15,7 @@ import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.OreDictManager;
+import com.hbm.inventory.OreDictManager2;
 import com.hbm.inventory.OreDictManager.DictFrame;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
@@ -76,15 +77,27 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre(OreDictManager.BE.ore(), MAT_BERYLLIUM, INGOT.q(2),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.CO.ore(), MAT_COBALT, INGOT.q(1),MAT_SILICON, QUANTUM.q(4), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.REDSTONE.ore(), MAT_REDSTONE, INGOT.q(4),MAT_SILICON, NUGGET.q(1), MAT_SLAG, QUART.q(1));
-		registerOre(OreDictManager.QUARTZ.ore(), MAT_SILICON, NUGGET.q(6), MAT_SLAG, QUART.q(1));
 
 		registerOre(OreDictManager.HEMATITE.ore(), MAT_HEMATITE, INGOT.q(1));
 		registerOre(OreDictManager.MALACHITE.ore(), MAT_MALACHITE, INGOT.q(1));
+
+		registerOre(OreDictManager.LI.ore(), MAT_LITHIUM, INGOT.q(2), MAT_BERYLLIUM, NUGGET.q(6), MAT_SLAG, QUART.q(1));
+		registerOre("oreRareEarth", MAT_DESH, NUGGET.q(6), MAT_ZIRCONIUM, NUGGET.q(2), MAT_NEODYMIUM, NUGGET.q(1), MAT_NIOBIUM, NUGGET.q(3), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.OSMIRIDIUM.ore(), MAT_OSMIRIDIUM, QUANTUM.q(6),MAT_SILICON,NUGGET.q(1), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.BORAX.ore(), MAT_BORON, NUGGET.q(4),MAT_SILICON,QUANTUM.q(4), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.SA326.ore(), MAT_SCHRABIDIUM, INGOT.q(2), MAT_URANIUM, NUGGET.q(6), MAT_SILICON,QUANTUM.q(4), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.QUARTZ.ore(), MAT_SILICON, NUGGET.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.COLTAN.ore(), MAT_TANTALIUM, NUGGET.q(6), MAT_NIOBIUM, INGOT.q(3,2), MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.BI.ore(), MAT_BISMUTH, INGOT.q(1), MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.ZR.ore(), MAT_ZIRCONIUM, INGOT.q(2), MAT_NIOBIUM, NUGGET.q(3), MAT_NEODYMIUM, NUGGET.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.ND.ore(), MAT_NEODYMIUM, INGOT.q(2), MAT_NIOBIUM, NUGGET.q(3), MAT_ZIRCONIUM, NUGGET.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.AS.ore(), MAT_PREARSENIC, QUANTUM.q(3), MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager2.PAS.ingot(), MAT_PREARSENIC, QUANTUM.q(4));
 		
 		registerEntry(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE), MAT_FLUX, DUST.q(10));
 		registerEntry(ModItems.powder_flux, MAT_FLUX, DUST.q(1));
+		registerEntry(new ItemStack(ModItems.plant_item, 1, 2), MAT_CADMIUM, QUANTUM.q(6));
 		registerEntry(new ItemStack(Items.coal, 1, 1), MAT_CARBON, NUGGET.q(3));
-
 
 		registerEntry(DictFrame.fromOne(ModItems.powder_ash, EnumAshType.WOOD), MAT_CARBON, NUGGET.q(1));
 		registerEntry(DictFrame.fromOne(ModItems.powder_ash, EnumAshType.COAL), MAT_CARBON, NUGGET.q(2));

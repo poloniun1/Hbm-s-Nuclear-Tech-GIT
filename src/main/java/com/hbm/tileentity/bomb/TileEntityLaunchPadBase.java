@@ -21,6 +21,7 @@ import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.gui.GUILaunchPadLarge;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.weapon.ItemMissile;
 import com.hbm.items.weapon.ItemMissile.MissileFuel;
 import com.hbm.lib.Library;
@@ -328,7 +329,7 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 		
 		if(slots[0] == null) return null;
 
-		if(slots[0].getItem() == ModItems.missile_carrier) {
+		if(slots[0].getItem() == ModItems2.missile_carrier) {
 			EntityCarrier missile = new EntityCarrier(worldObj);
 			missile.posX = xCoord + 0.5F;
 			missile.posY = yCoord + 1F;
@@ -442,12 +443,12 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	}
 	
 	public boolean needsDesignator(Item item) {
-		return item != ModItems.missile_anti_ballistic && item != ModItems.missile_carrier;
+		return item != ModItems.missile_anti_ballistic && item != ModItems2.missile_carrier;
 	}
 	
 	/** Full launch condition, checks if the item is launchable, fuel and power are present and any additional checks based on launch pad type */
 	public boolean canLaunch() {
-		if(slots[0] != null && slots[0].getItem() == ModItems.missile_carrier && this.power > 75000) 
+		if(slots[0] != null && slots[0].getItem() == ModItems2.missile_carrier && this.power > 75000) 
 			return true;
 		return this.isMissileValid() && this.hasFuel() && this.isReadyForLaunch();
 	}

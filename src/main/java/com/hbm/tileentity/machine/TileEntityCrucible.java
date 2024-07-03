@@ -56,8 +56,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 	/* CONFIGURABLE CONSTANTS */
 	//because eclipse's auto complete is dumb as a fucking rock, it's now called "ZCapacity" so it's listed AFTER the actual stacks in the auto complete list.
 	//also martin i know you read these: no i will not switch to intellij after using eclipse for 8 years.
-	public static int recipeZCapacity = MaterialShapes.BLOCK.q(16);
-	public static int wasteZCapacity = MaterialShapes.BLOCK.q(16);
+	public static int recipeZCapacity = MaterialShapes.BLOCK.q(256);
+	public static int wasteZCapacity = MaterialShapes.BLOCK.q(256);
 	public static int processTime = 5_000;
 	public static double diffusion = 0.25D;
 	public static int maxHeat = 100_000;
@@ -161,7 +161,13 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, this.wasteStack, MaterialShapes.INGOT.q(3), impact);
+				List<MaterialStack> newCast = new ArrayList();
+				for(MaterialStack stack : this.wasteStack) {
+					if(!RBMKDials.getCrucibleBABY(worldObj)||stack.amount>=648 ) {
+						newCast.add(stack);
+					}
+				}
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
 				
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -186,8 +192,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				CrucibleRecipe recipe = this.getLoadedRecipe();
 				//if no recipe is loaded, everything from the recipe stack will be drainable
-				if(recipe == null) {
-					toCast.addAll(this.recipeStack);
+				if(recipe == null) {		
+					toCast.addAll(this.recipeStack);					
 				} else {
 					
 					for(MaterialStack stack : this.recipeStack) {
@@ -200,8 +206,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 					}
 				}
 				
-				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.INGOT.q(3), impact);
+				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);	
+			
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.BLOCK.q(1), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
