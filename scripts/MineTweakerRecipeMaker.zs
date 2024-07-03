@@ -21,21 +21,21 @@
 
 // ================================================================================
 //#MARKER ADD SHAPELESS
-recipes.addShapeless(<ha:item.waste_np237:1> * 2, [<ha:item.rod_zirnox_np237_fuel_depleted>]);
-recipes.addShapeless(<ha:item.waste_pu239:1> * 2, [<ha:item.rod_zirnox_pu239_fuel_depleted>]);
-recipes.addShapeless(<ha:item.waste_sa326:1> * 2, [<ha:item.rod_zirnox_sa326_fuel_depleted>]);
-recipes.addShapeless(<ha:item.bred_lead> * 2, [<ha:item.rod_zirnox_bred_lead>]);
+recipes.addShapeless(<hbm:item.waste_np237:1> * 2, [<hbm:item.rod_zirnox_np237_fuel_depleted>]);
+recipes.addShapeless(<hbm:item.waste_pu239:1> * 2, [<hbm:item.rod_zirnox_pu239_fuel_depleted>]);
+recipes.addShapeless(<hbm:item.waste_sa326:1> * 2, [<hbm:item.rod_zirnox_sa326_fuel_depleted>]);
+recipes.addShapeless(<hbm:item.bred_lead> * 2, [<hbm:item.rod_zirnox_bred_lead>]);
 
 //#MARKER ADD SHAPED
 recipes.addShaped(<hbm:item.ingot_starmetal>, [[<ore:nuggetStarmetal>, <ore:nuggetStarmetal>,
  <ore:nuggetStarmetal>], [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>],
  [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>]]);
-recipes.addShaped(<hbm:item.ingot_cft>, [[<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, 
-<ha:item.nugget_fuller>], [<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, <ha:item.nugget_fuller>],
- [<ha:item.nugget_fuller>, <ha:item.nugget_fuller>, <ha:item.nugget_fuller>]]);
-recipes.addShaped(<hbm:item.ingot_u238m2>, [[<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, 
-<ha:item.nugget_u238m2>], [<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>], 
-[<ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>, <ha:item.nugget_u238m2>]]);
+recipes.addShaped(<hbm:item.ingot_cft>, [[<hbm:item.nugget_fuller>, <hbm:item.nugget_fuller>, 
+<hbm:item.nugget_fuller>], [<hbm:item.nugget_fuller>, <hbm:item.nugget_fuller>, <hbm:item.nugget_fuller>],
+ [<hbm:item.nugget_fuller>, <hbm:item.nugget_fuller>, <hbm:item.nugget_fuller>]]);
+recipes.addShaped(<hbm:item.ingot_u238m2>, [[<hbm:item.nugget_u238m2>, <hbm:item.nugget_u238m2>, 
+<hbm:item.nugget_u238m2>], [<hbm:item.nugget_u238m2>, <hbm:item.nugget_u238m2>, <hbm:item.nugget_u238m2>], 
+[<hbm:item.nugget_u238m2>, <hbm:item.nugget_u238m2>, <hbm:item.nugget_u238m2>]]);
 recipes.addShaped(<hbm:item.powder_tennessine>, [[<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, 
 <ore:dustTinyTennessine>], [<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, <ore:dustTinyTennessine>], 
 [<ore:dustTinyTennessine>, <ore:dustTinyTennessine>, <ore:dustTinyTennessine>]]);
@@ -51,7 +51,7 @@ recipes.addShaped(<hbm:item.powder_caesium>, [[<ore:dustTinyCaesium>, <ore:dustT
 recipes.addShaped(<hbm:item.powder_bromine>, [[<ore:dustTinyBromine>, <ore:dustTinyBromine>,
  <ore:dustTinyBromine>], [<ore:dustTinyBromine>, <ore:dustTinyBromine>, <ore:dustTinyBromine>],
  [<ore:dustTinyBromine>, <ore:dustTinyBromine>, <ore:dustTinyBromine>]]);
-recipes.addShaped(<hbm:item.powder_astatine>, [[<ha:item.powder_astatine_tiny>, <ore:dustTinyAstatine>, 
+recipes.addShaped(<hbm:item.powder_astatine>, [[<hbm:item.powder_astatine_tiny>, <ore:dustTinyAstatine>, 
 <ore:dustTinyAstatine>], [<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>], 
 [<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>]]);
 
@@ -98,21 +98,21 @@ recipes.addShaped(<hbm:item.watz_pellet:12>, [[null,<ore:ingotingotU235>,null],
 recipes.addShaped(<hbm:item.watz_pellet:13>, [[null,<ore:ingotPu239>,null],
 [<ore:ingotPu239>,<ore:ingotGraphite>,<ore:ingotPu239>],[null,<ore:ingotPu239>,null]]);
 
-recipes.addShapeless(<ha:item.rbmk_fuel_euph>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotEuphemium>,
+recipes.addShapeless(<hbm:item.rbmk_fuel_euph>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotEuphemium>,
 <ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,
 <ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
-recipes.addShapeless(<ha:item.rbmk_fuel_dnt>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotDineutronium>,
+recipes.addShapeless(<hbm:item.rbmk_fuel_dnt>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotDineutronium>,
 <ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,
 <ore:nuggetDineutronium>,<ore:nuggetDineutronium>,<ore:nuggetDineutronium>]);
-recipes.addShapeless(<ha:item.rbmk_fuel_pobi>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_polonium>,
+recipes.addShapeless(<hbm:item.rbmk_fuel_pobi>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_polonium>,
 <hbm:item.billet_beryllium>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,
 <hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>]);
-recipes.addShapeless(<ha:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_schrabidium>,
+recipes.addShapeless(<hbm:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_schrabidium>,
 <hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,
 <hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>]);
 
-recipes.addShapeless(<ha:item.plate_fuel_atbe>, [<ha:item.powder_astatine_tiny>,<ha:item.powder_astatine_tiny>,
-<ha:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
+recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
+<hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
 
 recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[null,<hbm:item.ingot_pu239>,null],
 [<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>],[null,<hbm:item.ingot_pu239>,null]]);
