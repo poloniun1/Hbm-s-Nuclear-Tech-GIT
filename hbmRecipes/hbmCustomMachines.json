@@ -711,12 +711,7 @@
             ["hbm:item.bedrock_ore",3,5,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -737,12 +732,7 @@
             ["hbm:item.bedrock_ore",1,400,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -763,12 +753,7 @@
             ["hbm:item.bedrock_ore",1,401,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -789,12 +774,7 @@
             ["hbm:item.bedrock_ore",1,402,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -815,12 +795,7 @@
             ["hbm:item.bedrock_ore",1,403,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -841,12 +816,7 @@
             ["hbm:item.bedrock_ore",1,404,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -867,12 +837,7 @@
             ["hbm:item.bedrock_ore",1,405,1.0]
           ],
           "duration": 10,
-          "consumptionPerTick": 1000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 1000
         },
         {
           "inputFluids": [
@@ -888,12 +853,7 @@
 			["hbm:item.powder_aluminium",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -909,12 +869,7 @@
 			["shincolle:AbyssMetal",9,1, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -930,12 +885,7 @@
 			["hbm:item.powder_sodium",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -951,12 +901,7 @@
 			["hbm:item.powder_sodium",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -972,12 +917,7 @@
 			["hbm:item.powder_copper",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -993,12 +933,7 @@
 			["hbm:item.nugget_mercury",3, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1014,12 +949,7 @@
 			["hbm:item.ingot_starmetal",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1035,12 +965,7 @@
 			["hbm:item.ingot_osmiridium",6, 0.2]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1055,12 +980,7 @@
 			["hbm:item.powder_niobium",9,1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1076,12 +996,7 @@
 			["hbm:item.powder_stronium",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1097,12 +1012,7 @@
 			["hbm:item.powder_nitan_mix",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1118,12 +1028,7 @@
 			["hbm:item.powder_spark_mix",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1139,12 +1044,7 @@
 			["hbm:item.powder_plutonium",6,0.5]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1160,12 +1060,7 @@
 			["hbm:item.powder_technetium",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1177,16 +1072,11 @@
           ],
           "outputItems": [
 			["hbm:item.powder_schrabidium",9, 1.0],
-			["hbm:item.powder_euphemium",6,1.0],
+			["hbm:item.ingot_gh336",6,1.0],
 			["hbm:item.powder_balefire",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1197,17 +1087,12 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.billet_yharonite",9, 1.0],
-			["hbm:item.pellet_charged",3,1,1.0],
+			["hbm:item.billet_yharonite",6, 1.0],
+			["hbm:item.powder_euphemium",9,1,1.0],
 			["hbm:item.powder_dineutronium",3, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1221,14 +1106,9 @@
 			["hbm:item.powder_coal",18, 1.0],
 			["hbm:item.niter",18, 1.0],
 			["hbm:item.sulfur",18,1.0]
-          ]
+          ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1244,12 +1124,7 @@
 			["hbm:item.powder_fire",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1265,12 +1140,7 @@
 			["hbm:item.powder_iodine",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1286,12 +1156,7 @@
 			["hbm:item.powder_tennessine",3, 1.0]
 			],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
 		        {
           "inputFluids": [
@@ -1307,12 +1172,7 @@
 			["hbm:item.fluorite",18,1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1328,12 +1188,7 @@
 			["hbm:item.ingot_silicon",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1349,12 +1204,7 @@
 			["hbm:item.ingot_phosphorus",9, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
         {
           "inputFluids": [
@@ -1369,12 +1219,7 @@
 			["hbm:item.gem_alexandrite",6, 1.0]
           ],
           "duration": 1,
-          "consumptionPerTick": 10000,
-          "pollutionType": null,
-          "pollutionAmount": 0.0,
-          "radiationAmount": 0.0,
-          "flux": 0,
-          "heat": 0
+          "consumptionPerTick": 10000
         },
 
 	
