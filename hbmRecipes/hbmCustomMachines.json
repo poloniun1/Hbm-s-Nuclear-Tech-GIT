@@ -711,6 +711,25 @@
             ["hbm:item.bedrock_ore",3,5,1.0]
           ],
           "duration": 10,
+          "consumptionPerTick": 2000
+        },
+        {
+          "inputFluids": [
+            ["WATER",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore_base"]
+          ],
+          "outputFluids": [["SLOP",1000]],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,1.0],
+            ["hbm:item.bedrock_ore",2,1,1.0],
+            ["hbm:item.bedrock_ore",2,2,1.0],
+            ["hbm:item.bedrock_ore",2,3,1.0],
+            ["hbm:item.bedrock_ore",2,4,1.0],
+            ["hbm:item.bedrock_ore",2,5,1.0]
+          ],
+          "duration": 10,
           "consumptionPerTick": 1000
         },
         {
@@ -730,6 +749,76 @@
             ["hbm:item.bedrock_ore",2,272,1.0],
             ["hbm:item.bedrock_ore",1,336,1.0],
             ["hbm:item.bedrock_ore",1,400,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore"]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,192,1.0],
+            ["hbm:item.bedrock_ore",1,192,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore"]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,192,1.0],
+            ["hbm:item.bedrock_ore",3,272,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore"]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,192,1.0],
+            ["hbm:item.bedrock_ore",1,192,0.5],
+            ["hbm:item.bedrock_ore",2,336,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore"]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,192,1.0],
+            ["hbm:item.bedrock_ore",1,400,1.0],
+            ["hbm:item.bedrock_ore",1,400,0.5]
           ],
           "duration": 10,
           "consumptionPerTick": 1000
@@ -757,6 +846,76 @@
         },
         {
           "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,1]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,193,1.0],
+            ["hbm:item.bedrock_ore",1,193,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,1]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,193,1.0],
+            ["hbm:item.bedrock_ore",3,273,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,1]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,193,1.0],
+            ["hbm:item.bedrock_ore",1,193,0.5],
+            ["hbm:item.bedrock_ore",2,337,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,1]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,193,1.0],
+            ["hbm:item.bedrock_ore",1,401,1.0],
+            ["hbm:item.bedrock_ore",1,401,0.5]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
             ["SULFURIC_ACID",200],
             ["SOLVENT",200],
             ["RADIOSOLVENT",200]
@@ -772,6 +931,76 @@
             ["hbm:item.bedrock_ore",2,274,1.0],
             ["hbm:item.bedrock_ore",1,338,1.0],
             ["hbm:item.bedrock_ore",1,402,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,2]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,194,1.0],
+            ["hbm:item.bedrock_ore",1,194,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,2]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,194,1.0],
+            ["hbm:item.bedrock_ore",3,274,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,2]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,194,1.0],
+            ["hbm:item.bedrock_ore",1,194,0.5],
+            ["hbm:item.bedrock_ore",2,338,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,2]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,194,1.0],
+            ["hbm:item.bedrock_ore",1,402,1.0],
+            ["hbm:item.bedrock_ore",1,402,0.5]
           ],
           "duration": 10,
           "consumptionPerTick": 1000
@@ -799,6 +1028,76 @@
         },
         {
           "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,3]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,195,1.0],
+            ["hbm:item.bedrock_ore",1,195,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,3]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,195,1.0],
+            ["hbm:item.bedrock_ore",3,275,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,3]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,195,1.0],
+            ["hbm:item.bedrock_ore",1,195,0.5],
+            ["hbm:item.bedrock_ore",2,339,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,3]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,195,1.0],
+            ["hbm:item.bedrock_ore",1,403,1.0],
+            ["hbm:item.bedrock_ore",1,403,0.5]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
             ["SULFURIC_ACID",200],
             ["SOLVENT",200],
             ["RADIOSOLVENT",200]
@@ -820,6 +1119,76 @@
         },
         {
           "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,4]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,196,1.0],
+            ["hbm:item.bedrock_ore",1,196,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,4]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,196,1.0],
+            ["hbm:item.bedrock_ore",3,276,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,4]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,196,1.0],
+            ["hbm:item.bedrock_ore",1,196,0.5],
+            ["hbm:item.bedrock_ore",2,340,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,4]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,196,1.0],
+            ["hbm:item.bedrock_ore",1,404,1.0],
+            ["hbm:item.bedrock_ore",1,404,0.5]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
             ["SULFURIC_ACID",200],
             ["SOLVENT",200],
             ["RADIOSOLVENT",200]
@@ -835,6 +1204,76 @@
             ["hbm:item.bedrock_ore",2,277,1.0],
             ["hbm:item.bedrock_ore",1,341,1.0],
             ["hbm:item.bedrock_ore",1,405,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["WATER",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,5]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,197,1.0],
+            ["hbm:item.bedrock_ore",1,197,0.6]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SULFURIC_ACID",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,5]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",3,197,1.0],
+            ["hbm:item.bedrock_ore",3,277,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,5]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,197,1.0],
+            ["hbm:item.bedrock_ore",1,197,0.5],
+            ["hbm:item.bedrock_ore",2,341,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["RADIOSOLVENT",200]
+          ],
+          "inputItems": [
+            ["item","hbm:item.bedrock_ore",1,5]
+          ],
+          "outputFluids": [
+            ["VITRIOL",100]
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,197,1.0],
+            ["hbm:item.bedrock_ore",1,405,1.0],
+            ["hbm:item.bedrock_ore",1,405,0.5]
           ],
           "duration": 10,
           "consumptionPerTick": 1000
@@ -878,6 +1317,7 @@
             ["item","hbm:item.bedrock_ore",1,336]
           ],
           "outputFluids": [
+		  ["CHLORINE",800]
           ],
           "outputItems": [
 			["hbm:item.powder_beryllium",6, 1.0],
@@ -894,6 +1334,7 @@
             ["item","hbm:item.bedrock_ore",1,400]
           ],
           "outputFluids": [
+		  ["CHLORINE",1200]
           ],
           "outputItems": [
 			["hbm:item.powder_beryllium",9, 1.0],
@@ -929,7 +1370,7 @@
           ],
           "outputItems": [
 			["hbm:item.powder_gold",9, 1.0],
-			["hbm:item.powder_cadium",9,1.0],
+			["hbm:item.powder_cadmium",9,1.0],
 			["hbm:item.nugget_mercury",3, 1.0]
           ],
           "duration": 1,
@@ -993,7 +1434,7 @@
           "outputItems": [
 			["hbm:item.powder_zirconium",9, 1.0],
 			["hbm:item.powder_cerium",6,1.0],
-			["hbm:item.powder_stronium",6, 1.0]
+			["hbm:item.powder_strontium",6, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -1007,7 +1448,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.powder_neodyium",6, 1.0],
+			["hbm:item.powder_neodymium",6, 1.0],
 			["hbm:item.powder_caesium",6,1.0],
 			["hbm:item.powder_nitan_mix",9, 1.0]
           ],
@@ -1023,7 +1464,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.powder_neodyium",9, 1.0],
+			["hbm:item.powder_neodymium",9, 1.0],
 			["hbm:item.powder_caesium",9,1.0],
 			["hbm:item.powder_spark_mix",6, 1.0]
           ],
@@ -1055,9 +1496,9 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.powder_radium",9, 1.0],
+			["hbm:item.powder_ra226",9, 1.0],
 			["hbm:item.powder_polonium",6,1.0],
-			["hbm:item.powder_technetium",6, 1.0]
+			["hbm:item.ingot_technetium",6, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -2256,7 +2697,7 @@
 	["SULFURIC_ACID", 300],
 	["SOLVENT",300]
           ],
-          "inputItems": [["dict","crystalCinnabar",1]],
+          "inputItems": [["item","hbm:item.crystal_cinnebar",1]],
           "outputFluids": [
           ],
           "outputItems": [
