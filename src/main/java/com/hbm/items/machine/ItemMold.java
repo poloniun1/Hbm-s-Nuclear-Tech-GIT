@@ -38,6 +38,7 @@ public class ItemMold extends Item {
 
 		blockOverrides.put(Mats.MAT_STONE,		new ItemStack(Blocks.stone));
 		blockOverrides.put(Mats.MAT_OBSIDIAN,	new ItemStack(Blocks.obsidian));
+		blockOverrides.put(Mats.MAT_STRONTIUM,	new ItemStack(ModItems.powder_strontium ,9));			
 		blockOverrides.put(Mats.MAT_SILICON,	new ItemStack(ModItems.ingot_silicon ,9));			
 		blockOverrides.put(Mats.MAT_PREARSENIC,	new ItemStack(ModItems.ingot_arsenic));			
 		blockOverrides.put(Mats.MAT_NEODYMIUM,	new ItemStack(ModItems.powder_neodymium ,9));	

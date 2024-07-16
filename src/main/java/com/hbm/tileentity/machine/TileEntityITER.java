@@ -62,7 +62,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 	public int progress;
 	public int duration = 100;
-
+	public long totalRuntime;
 	
 	@SideOnly(Side.CLIENT)
 	public int blanket;
@@ -125,11 +125,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				power -= powerReq;
 				
 				if(plasma.getFill() > 0) {
-					
-					int chance = FusionRecipes.getByproductChance(plasma.getTankType());
-					
-					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
-						produceByproduct();
+					this.totalRuntime++;
+					int delay = FusionRecipes.getByproductDelay(plasma.getTankType());
+					if(delay > 0 && totalRuntime % delay == 0) produceByproduct();
 				}
 				
 				if(plasma.getFill() > 0 && this.getShield() != 0) {
@@ -181,9 +179,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(isOn ) {
 
 				if(plasma.getFill() > 0) {					
-					int chance = FusionRecipes.getByproductChance(plasma.getTankType())/15;					
-					if(chance > 0 && worldObj.rand.nextInt(chance) == 0)
-						produceByproduct();
+					this.totalRuntime++;
+					int delay = FusionRecipes.getByproductDelay(plasma.getTankType())/15;
+					if(delay > 0 && totalRuntime % delay == 0) produceByproduct();
 				}
 				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*375000-100000;				
 					
@@ -580,6 +578,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		
 		this.power = nbt.getLong("power");
 		this.isOn = nbt.getBoolean("isOn");
+		this.totalRuntime = nbt.getLong("totalRuntime");
 
 		tanks[0].readFromNBT(nbt, "water");
 		tanks[1].readFromNBT(nbt, "steam");
@@ -592,6 +591,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		
 		nbt.setLong("power", this.power);
 		nbt.setBoolean("isOn", isOn);
+		nbt.setLong("totalRuntime", this.totalRuntime);
 
 		tanks[0].writeToNBT(nbt, "water");
 		tanks[1].writeToNBT(nbt, "steam");

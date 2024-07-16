@@ -7,7 +7,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.items.ModItems;
-import com.hbm.items.ModItems2;
 import com.hbm.main.ResourceManager;
 
 import net.minecraft.client.Minecraft;
