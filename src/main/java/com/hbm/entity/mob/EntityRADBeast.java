@@ -186,27 +186,30 @@ public class EntityRADBeast extends EntityMob implements IRadiationImmune {
 
 			if(looting > 0) {
 				float ra = this.rand.nextFloat();	
-				if(ra <0.9 ) {
+				if(ra <0.8 ) {
 					this.dropItem(ModItems.nugget_polonium, looting);
-				} else if (ra < 0.99) {
+				} else if (ra < 0.96) {
 					this.dropItem(ModItems.nugget_technetium, looting);
 				} else {
 					this.dropItem(ModItems.nugget_bismuth, looting);
 				}
 			}
 
-			int count = this.rand.nextInt(3) + 1;
+			int count = (looting + 1)/2;
 
 			for(int i = 0; i < count; i++) {
 
-				int r = this.rand.nextInt(10);
+				int r = this.rand.nextInt(20);
 
-				if(r < 6) {
-					this.dropItem(ModItems2.waste_np237 ,2);
-				} else if(r < 9) {
-					this.dropItem(ModItems2.waste_pu239 ,2);
-				} else  {
-					this.dropItem(ModItems2.waste_sa326 ,2);				}
+				if(r < 9) {
+					this.dropItem(ModItems2.rod_zirnox_np237_fuel_depleted, 1);
+				} else if(r < 18) {
+					this.dropItem(ModItems2.rod_zirnox_pu239_fuel_depleted, 1);
+				} else if(r < 19) {
+					this.dropItem(ModItems2.rod_zirnox_sa326_fuel_depleted, 1);
+				} else {
+					this.dropItem(ModItems2.rod_zirnox_bred_lead, 1);				
+				}
 			}
 		}
 	}
