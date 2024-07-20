@@ -1,6 +1,7 @@
 package com.hbm.entity.mob;
 
 import java.util.List;
+import java.util.List;
 
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.items.ModItems;
@@ -186,16 +187,24 @@ public class EntityRADBeast extends EntityMob implements IRadiationImmune {
 
 			if(looting > 0) {
 				float ra = this.rand.nextFloat();	
-				if(ra <0.8 ) {
+				if(ra <0.25 ) {
+					this.dropItem(ModItems.nugget_uranium, looting);
+				} else if (ra < 0.5) {
+					this.dropItem(ModItems.nugget_th232, looting);
+				} else if (ra < 0.75) {
+					this.dropItem(ModItems.nugget_plutonium, looting);
+				} else if (ra < 0.85) {
+					this.dropItem(ModItems.nugget_ra226, looting);
+				} else if (ra < 0.95) {
 					this.dropItem(ModItems.nugget_polonium, looting);
-				} else if (ra < 0.96) {
+				} else if (ra < 0.99) {
 					this.dropItem(ModItems.nugget_technetium, looting);
 				} else {
 					this.dropItem(ModItems.nugget_bismuth, looting);
 				}
 			}
 
-			int count = (looting + 1)/2;
+			int count = (int)(Math.log(2.5D + looting) + 1);
 
 			for(int i = 0; i < count; i++) {
 
