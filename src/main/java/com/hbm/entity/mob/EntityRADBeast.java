@@ -187,20 +187,21 @@ public class EntityRADBeast extends EntityMob implements IRadiationImmune {
 
 			if(looting > 0) {
 				float ra = this.rand.nextFloat();	
+				int num =  (int)(Math.sqrt(1.0D + looting) +1);
 				if(ra <0.25 ) {
-					this.dropItem(ModItems.nugget_uranium, looting);
+					this.dropItem(ModItems.nugget_uranium, num);
 				} else if (ra < 0.5) {
-					this.dropItem(ModItems.nugget_th232, looting);
+					this.dropItem(ModItems.nugget_th232, num);
 				} else if (ra < 0.75) {
-					this.dropItem(ModItems.nugget_plutonium, looting);
+					this.dropItem(ModItems.nugget_plutonium, num);
 				} else if (ra < 0.85) {
-					this.dropItem(ModItems.nugget_ra226, looting);
+					this.dropItem(ModItems.nugget_ra226, num);
 				} else if (ra < 0.95) {
-					this.dropItem(ModItems.nugget_polonium, looting);
+					this.dropItem(ModItems.nugget_polonium, num);
 				} else if (ra < 0.99) {
-					this.dropItem(ModItems.nugget_technetium, looting);
+					this.dropItem(ModItems.nugget_technetium, num);
 				} else {
-					this.dropItem(ModItems.nugget_bismuth, looting);
+					this.dropItem(ModItems.nugget_bismuth, num);
 				}
 			}
 
