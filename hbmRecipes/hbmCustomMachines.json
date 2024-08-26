@@ -695,13 +695,13 @@
         },
         {
           "inputFluids": [
-            ["NITRIC_ACID",1000],
+            ["NITRIC_ACID",500],
             ["WATER",1000]
           ],
           "inputItems": [
             ["item","hbm:item.bedrock_ore_base"]
           ],
-          "outputFluids": [["SLOP",2000]],
+          "outputFluids": [["SLOP",1500]],
           "outputItems": [
             ["hbm:item.bedrock_ore",3,1.0],
             ["hbm:item.bedrock_ore",3,1,1.0],
@@ -1274,6 +1274,21 @@
             ["hbm:item.bedrock_ore",2,197,1.0],
             ["hbm:item.bedrock_ore",1,405,1.0],
             ["hbm:item.bedrock_ore",1,405,0.5]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 1000
+        },
+        {
+          "inputFluids": [
+            ["SLOP",1500],
+			["VITRIOL",1800]
+          ],
+          "inputItems": [
+          ],
+          "outputFluids": [
+          ],
+          "outputItems": [
+            ["hbm:item.bedrock_ore_base",1,1.0]
           ],
           "duration": 10,
           "consumptionPerTick": 1000
