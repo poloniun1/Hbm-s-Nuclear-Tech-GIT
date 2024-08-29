@@ -1,5 +1,9 @@
 package com.hbm.tileentity.machine;
 
+import java.io.IOException;
+
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonWriter;
 import com.hbm.handler.CompatHandler;
 import com.hbm.inventory.container.ContainerMachineTurbine;
 import com.hbm.inventory.fluid.FluidType;
@@ -9,6 +13,7 @@ import com.hbm.inventory.fluid.trait.FT_Coolable;
 import com.hbm.inventory.fluid.trait.FT_Coolable.CoolingType;
 import com.hbm.inventory.gui.GUIMachineTurbine;
 import com.hbm.lib.Library;
+import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.IBufPacketReceiver;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityLoadedBase;
@@ -43,12 +48,12 @@ import net.minecraft.block.Block;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityMachineTurbine extends TileEntityLoadedBase implements ISidedInventory,IBufPacketReceiver, IEnergyProviderMK2, IFluidStandardTransceiver, IGUIProvider, SimpleComponent, IInfoProviderEC {
+public class TileEntityMachineTurbine extends TileEntityLoadedBase implements ISidedInventory,IBufPacketReceiver, IEnergyProviderMK2, IFluidStandardTransceiver, IGUIProvider, SimpleComponent, IInfoProviderEC, IConfigurableMachine {
 
 	private ItemStack slots[];
 
 	public long power;
-	public static final long maxPower = 100000000000000L;
+	public static long maxPower = 100000000000000L;
 	public int age = 0;
 	public FluidTank[] tanks;
 	public int initmeta = 0;
@@ -59,11 +64,38 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 	private String customName;
 	protected double[] info = new double[3];
 	
+	public static int inputTankSize = 12800000;
+	public static int outputTankSize = 12800000;
+
+	public static double efficiency = 0.85D;
 	public TileEntityMachineTurbine() {
 		slots = new ItemStack[7];
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.STEAM, 12800000);
-		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, 12800000);
+		tanks[0] = new FluidTank(Fluids.STEAM, inputTankSize);
+		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, outputTankSize);
+	}
+
+	@Override
+	public String getConfigName() {
+		return "steamturbine";
+	}
+
+	@Override
+	public void readIfPresent(JsonObject obj) {
+		maxPower = IConfigurableMachine.grab(obj, "L:maxPower", maxPower);
+		inputTankSize = IConfigurableMachine.grab(obj, "I:inputTankSize", inputTankSize);
+		outputTankSize = IConfigurableMachine.grab(obj, "I:outputTankSize", outputTankSize);
+
+		efficiency = IConfigurableMachine.grab(obj, "D:efficiency", efficiency);
+	}
+
+	@Override
+	public void writeConfig(JsonWriter writer) throws IOException {
+		writer.name("L:maxPower").value(maxPower);
+		writer.name("I:inputTankSize").value(inputTankSize);
+		writer.name("I:outputTankSize").value(outputTankSize);
+
+		writer.name("D:efficiency").value(efficiency);
 	}
 
 	@Override
@@ -280,7 +312,7 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 			boolean valid = false;
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
-				double eff = trait.getEfficiency(CoolingType.TURBINE) * 0.9D; //small turbine is 90% efficient
+				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; //small turbine is 90% efficient
 				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) ;//but coolant is 100% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
@@ -382,7 +414,7 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 	@Callback(direct = true)
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getFluid(Context context, Arguments args) {
-		return new Object[] {tanks[0].getFill(), tanks[1].getFill(), tanks[1].getFill(), tanks[1].getMaxFill()};
+		return new Object[] {tanks[0].getFill(), tanks[0].getMaxFill(), tanks[1].getFill(), tanks[1].getMaxFill()};
 	}
 
 	@Callback(direct = true)

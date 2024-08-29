@@ -1,8 +1,9 @@
 package com.hbm.tileentity.machine;
 
-
 import java.util.Random;
-
+import java.io.IOException;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.handler.CompatHandler;
 
@@ -12,10 +13,12 @@ import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.fluid.trait.FT_Coolable;
 import com.hbm.inventory.fluid.trait.FT_Coolable.CoolingType;
 import com.hbm.lib.Library;
+import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.main.MainRegistry;
 import com.hbm.packet.NBTPacket;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.sound.AudioWrapper;
+import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.INBTPacketReceiver;
 import com.hbm.blocks.ModBlocks2;
 import com.hbm.blocks.machine.rbmk.RBMKBase;
@@ -45,10 +48,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyProviderMK2, INBTPacketReceiver, IFluidStandardTransceiver, SimpleComponent, IInfoProviderEC {
+public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyProviderMK2, INBTPacketReceiver, IFluidStandardTransceiver, SimpleComponent, IInfoProviderEC, IConfigurableMachine {
 
 	public long power;
-	public static final long maxPower = 50000000000000000L;
+	public static long maxPower = 50000000000000000L;
 	private int turnTimer;
 	public float rotor;
 	public float lastRotor;
@@ -60,15 +63,42 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	
 	private AudioWrapper audio;
 	private float audioDesync;
+	public static int inputTankSize = 1_000_000_000;
+	public static int outputTankSize = 1_000_000_000;
+	public static double efficiency = 0.85D;
 	
 	public TileEntityChungus() {
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.STEAM, 1280000000);
-		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, 1280000000);
+		tanks[0] = new FluidTank(Fluids.STEAM, inputTankSize);
+		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, outputTankSize);
 
 		Random rand = new Random();
 		audioDesync = rand.nextFloat() * 0.05F;
 	}
+
+	@Override
+	public String getConfigName() {
+		return "steamturbineLeviathan";
+	}
+
+	@Override
+	public void readIfPresent(JsonObject obj) {
+		maxPower = IConfigurableMachine.grab(obj, "L:maxPower", maxPower);
+		inputTankSize = IConfigurableMachine.grab(obj, "I:inputTankSize", inputTankSize);
+		outputTankSize = IConfigurableMachine.grab(obj, "I:outputTankSize", outputTankSize);
+		efficiency = IConfigurableMachine.grab(obj, "D:efficiency", efficiency);
+	}
+
+	@Override
+	public void writeConfig(JsonWriter writer) throws IOException {
+		writer.name("L:maxPower").value(maxPower);
+		writer.name("INFO").value("leviathan steam turbine consumes all availible steam per tick");
+		writer.name("I:inputTankSize").value(inputTankSize);
+		writer.name("I:outputTankSize").value(outputTankSize);
+		writer.name("D:efficiency").value(efficiency);
+	}
+
+
 
 	@Override
 	public void updateEntity() {
@@ -110,7 +140,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
-				double eff = trait.getEfficiency(CoolingType.TURBINE) * 0.85D; // turbine is 85% efficient
+				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; // turbine is 85% efficient
 				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) *0.95D;//but coolant is 95% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
@@ -336,7 +366,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	@Callback(direct = true)
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getFluid(Context context, Arguments args) {
-		return new Object[] {tanks[0].getFill(), tanks[1].getFill(), tanks[1].getFill(), tanks[1].getMaxFill()};
+		return new Object[] {tanks[0].getFill(), tanks[0].getMaxFill(), tanks[1].getFill(), tanks[1].getMaxFill()};
 	}
 
 	@Callback(direct = true)
@@ -349,7 +379,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] setType(Context context, Arguments args) {
 		tanks[0].setTankType(CompatHandler.intToSteamType(args.checkInteger(0)));
-		return new Object[] {true};
+		return new Object[] {};
 	}
 
 	@Callback(direct = true)
