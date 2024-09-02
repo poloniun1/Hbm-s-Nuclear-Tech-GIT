@@ -2,22 +2,29 @@ package com.hbm.tileentity.machine;
 
 import java.util.Random;
 import java.io.IOException;
-
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.handler.CompatHandler;
+
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.fluid.trait.FT_Coolable;
 import com.hbm.inventory.fluid.trait.FT_Coolable.CoolingType;
+import com.hbm.lib.Library;
+import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.main.MainRegistry;
 import com.hbm.packet.NBTPacket;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.INBTPacketReceiver;
+import com.hbm.blocks.ModBlocks2;
+import com.hbm.blocks.machine.rbmk.RBMKBase;
+
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityLoadedBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.BlockPos;
@@ -35,27 +42,27 @@ import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyProviderMK2, INBTPacketReceiver, IFluidStandardTransceiver, SimpleComponent, IInfoProviderEC, CompatHandler.OCComponent, IConfigurableMachine {
+public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyProviderMK2, INBTPacketReceiver, IFluidStandardTransceiver, SimpleComponent, IInfoProviderEC, IConfigurableMachine {
 
 	public long power;
+	public static long maxPower = 50000000000000000L;
 	private int turnTimer;
 	public float rotor;
 	public float lastRotor;
 	public float fanAcceleration = 0F;
+	
 	
 	public FluidTank[] tanks;
 	protected double[] info = new double[3];
 	
 	private AudioWrapper audio;
 	private float audioDesync;
-
-	//Configurable values
-	public static long maxPower = 100000000000L;
 	public static int inputTankSize = 1_000_000_000;
 	public static int outputTankSize = 1_000_000_000;
 	public static double efficiency = 0.85D;
@@ -103,9 +110,38 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 			boolean operational = false;
 			FluidType in = tanks[0].getTankType();
 			boolean valid = false;
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&& worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_chungus){
+			if (Fluids.fromName("SUPERCOOLANT_HOT")!=Fluids.NONE)
+				tanks[0].setTankType(Fluids.fromName("SUPERCOOLANT_HOT"));
+			else tanks[0].setTankType(Fluids.fromName("SUPERHOTSTEAM"));
+			for(int i = 0; i < 19; i++) {
+				for(int j = 0; j <19; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 9, yCoord, zCoord + j - 9);
+				
+				if(b instanceof RBMKBase) {
+
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 9, yCoord, zCoord + j - 9);
+					
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+							
+							int prov = Math.min(tanks[0].getMaxFill() -tanks[0].getFill(), rbmk.steam);
+							rbmk.steam -= prov;
+							tanks[0].setFill(tanks[0].getFill() + prov);
+							}
+						}
+					}
+				}
+			}
+		}
+
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
-				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; //85% efficiency by default
+				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; // turbine is 85% efficient
+				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) *0.95D;//but coolant is 95% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
 					int inputOps = tanks[0].getFill() / trait.amountReq;
@@ -113,7 +149,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 					int ops = Math.min(inputOps, outputOps);
 					tanks[0].setFill(tanks[0].getFill() - ops * trait.amountReq);
 					tanks[1].setFill(tanks[1].getFill() + ops * trait.amountProduced);
-					this.power += (ops * trait.heatEnergy * eff);
+					this.power += ops * eff * trait.heatEnergy;
 					info[0] = ops * trait.amountReq;
 					info[1] = ops * trait.amountProduced;
 					info[2] = ops * trait.heatEnergy * eff;
@@ -124,6 +160,30 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 			
 			if(!valid) tanks[1].setTankType(Fluids.NONE);
 			if(power > maxPower) power = maxPower;
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&&  worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_chungus){	
+			for(int i = 0; i < 19; i++) {
+				for(int j = 0; j <19; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 9, yCoord, zCoord + j - 9);				
+				if(b instanceof RBMKBase) {		
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 9, yCoord, zCoord + j - 9);
+			
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+
+							
+							int prov = Math.min(rbmk.maxWater - rbmk.water, tanks[1].getFill());
+							rbmk.water += prov;
+							tanks[1].setFill(tanks[1].getFill() - prov);
+
+								}
+							}	
+						}
+					}
+				}
+			}			
 			
 			ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 			this.tryProvide(worldObj, xCoord - dir.offsetX * 11, yCoord, zCoord - dir.offsetZ * 11, dir.getOpposite());
@@ -138,7 +198,9 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 			
 			turnTimer--;
 			
-			if(operational) turnTimer = 25;
+			if(operational)
+				turnTimer = 25;
+			
 			
 			NBTTagCompound data = new NBTTagCompound();
 			data.setLong("power", power);
@@ -240,6 +302,10 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 		tanks[1].writeToNBT(nbt, "steam");
 		nbt.setLong("power", power);
 	}
+
+
+
+
 	
 	@Override
 	public AxisAlignedBB getRenderBoundingBox() {
@@ -273,7 +339,6 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	}
 
 	@Override
-	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "ntm_turbine";
 	}
@@ -321,33 +386,6 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getInfo(Context context, Arguments args) {
 		return new Object[] {tanks[0].getFill(), tanks[0].getMaxFill(), tanks[1].getFill(), tanks[1].getMaxFill(), CompatHandler.steamTypeToInt(tanks[0].getTankType())};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String[] methods() {
-		return new String[] {
-				"getFluid",
-				"getType",
-				"setType",
-				"getInfo"
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] invoke(String method, Context context, Arguments args) throws Exception {
-		switch(method) {
-			case ("getFluid"):
-				return getFluid(context, args);
-			case ("getType"):
-				return getType(context, args);
-			case ("setType"):
-				return setType(context, args);
-			case ("getInfo"):
-				return getInfo(context, args);
-		}
-	throw new NoSuchMethodException();
 	}
 
 	@Override

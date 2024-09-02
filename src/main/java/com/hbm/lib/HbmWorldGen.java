@@ -161,6 +161,8 @@ public class HbmWorldGen implements IWorldGenerator {
 	
 					BedrockOre.generate(world, randPosX, randPosZ, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 				}
+				if ((i % 256 == 0 )&&( j % 256 == 0))
+					BedrockOre.generate(world, i, j, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 
 			} else {
 

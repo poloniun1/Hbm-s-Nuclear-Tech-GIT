@@ -49,9 +49,10 @@ public class ItemBedrockOreBase extends Item {
 		
 		if(level == null) level = new NoiseGeneratorPerlin(new Random(2114043), 4);
 		if(ores[type.ordinal()] == null) ores[type.ordinal()] = new NoiseGeneratorPerlin(new Random(2082127 + type.ordinal()), 4);
-		
 		double scale = 0.01D;
-		
+		if((x % 256 == 0)&& (z % 256 == 0))
+			return 2.0D;
+
 		return MathHelper.clamp_double(Math.abs(level.func_151601_a(x * scale, z * scale) * ores[type.ordinal()].func_151601_a(x * scale, z * scale)) * 0.05, 0, 2);
 	}
 }

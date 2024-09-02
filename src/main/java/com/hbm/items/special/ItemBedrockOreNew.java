@@ -157,15 +157,22 @@ public class ItemBedrockOreNew extends Item {
 	}
 	
 	public static MaterialStack toFluid(BedrockOreOutput o, double amount) {
+
+
 		if(o.mat != null && o.mat.smeltable == SmeltingBehavior.SMELTABLE) {
 			return new MaterialStack(o.mat, (int) Math.ceil(MaterialShapes.FRAGMENT.q(o.amount) * amount));
+
 		}
+
 		return null;
 	}
+
 	
 	public static ItemStack extract(BedrockOreOutput o, double amount) {
+
 		return new ItemStack(ModItems.bedrock_ore_fragment, Math.min((int) Math.ceil(o.amount * amount), 64), o.mat.id);
 	}
+
 
 	@Override
 	@SideOnly(Side.CLIENT)

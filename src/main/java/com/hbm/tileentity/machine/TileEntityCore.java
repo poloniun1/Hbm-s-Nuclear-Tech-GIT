@@ -20,6 +20,7 @@ import com.hbm.lib.Library;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.ArmorUtil;
 import com.hbm.util.CompatEnergyControl;
 
@@ -49,8 +50,9 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 	public TileEntityCore() {
 		super(3);
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.DEUTERIUM, 128000);
-		tanks[1] = new FluidTank(Fluids.TRITIUM, 128000);
+		tanks[0] = new FluidTank(Fluids.ASCHRAB, 128000);
+		tanks[1] = new FluidTank(Fluids.BALEFIRE, 128000);
+
 	}
 
 	@Override
@@ -62,13 +64,13 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 	public void updateEntity() {
 		
 		if(!worldObj.isRemote) {
-			
+
 			this.prevConsumption = this.consumption;
 			this.consumption = 0;
 			
 			int chunkX = xCoord >> 4;
 			int chunkZ = zCoord >> 4;
-			
+
 			meltdownTick = false;
 			
 			lastTickValid = worldObj.getChunkProvider().chunkExists(chunkX, chunkZ) &&
@@ -101,7 +103,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 						break;
 					}
 				}
-				
+				if(!RBMKDials.getDFCBABY(worldObj)){	
 				if(canExplode) {
 					
 					EntityNukeExplosionMK3 ex = new EntityNukeExplosionMK3(worldObj);
@@ -125,7 +127,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 				} else {
 					meltdownTick = true;
 					ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, 100);
-				}
+				}}
 			}
 			
 			if(slots[0] != null && slots[2] != null && slots[0].getItem() instanceof ItemCatalyst && slots[2].getItem() instanceof ItemCatalyst)
@@ -135,10 +137,12 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 				);
 			else
 				color = 0;
-			
+
+			if(!RBMKDials.getDFCBABY(worldObj)){				
 			if(heat > 0)
 				radiation();
-			
+			}
+
 			NBTTagCompound data = new NBTTagCompound();
 			tanks[0].writeToNBT(data, "t0");
 			tanks[1].writeToNBT(data, "t1");
@@ -229,19 +233,19 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 			return joules;
 		
 		int demand = (int)Math.ceil((double)joules / 1000D);
-		
+		heat += (int)Math.ceil((double)joules / 10000D);	
+	
 		//check if the reaction has enough valid fuel
+		if(!RBMKDials.getDFCBABY(worldObj)){	
 		if(tanks[0].getFill() < demand || tanks[1].getFill() < demand)
-			return joules;
-		
-		this.consumption += demand;
-		
-		heat += (int)Math.ceil((double)joules / 10000D);
-
+			return joules;		
+		this.consumption += demand;			
 		tanks[0].setFill(tanks[0].getFill() - demand);
 		tanks[1].setFill(tanks[1].getFill() - demand);
-		
-		return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()));
+		}
+	
+		if(slots[1].getItem() == ModItems.battery_creative)	return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()) * 15.625);
+		else return (long) (joules * getCore() * getFuelEfficiency(tanks[0].getTankType()) * getFuelEfficiency(tanks[1].getTankType()));
 	}
 	
 	public float getFuelEfficiency(FluidType type) {
@@ -250,7 +254,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		if(type == Fluids.DEUTERIUM)
 			return 1.5F;
 		if(type == Fluids.TRITIUM)
-			return 1.7F;
+			return 1.8F;
 		if(type == Fluids.OXYGEN)
 			return 1.2F;
 		if(type == Fluids.PEROXIDE)
@@ -262,9 +266,9 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		if(type == Fluids.BALEFIRE)
 			return 2.5F;
 		if(type == Fluids.AMAT)
-			return 2.2F;
+			return 2.4F;
 		if(type == Fluids.ASCHRAB)
-			return 2.7F;
+			return 3.0F;
 		return 0;
 	}
 	
@@ -276,13 +280,19 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		}
 		
 		if(slots[1].getItem() == ModItems.ams_core_sing)
-			return 500;
+			return 800;
 		
 		if(slots[1].getItem() == ModItems.ams_core_wormhole)
-			return 650;
+			return 1000;
 		
 		if(slots[1].getItem() == ModItems.ams_core_eyeofharmony)
-			return 800;
+			return 1600;
+
+		if(slots[1].getItem() == ModItems.cube_power)
+			return 62500;
+
+		if(slots[1].getItem() == ModItems.battery_creative)
+			return 1728000000;
 		
 		if(slots[1].getItem() == ModItems.ams_core_thingy)
 			return 2500;

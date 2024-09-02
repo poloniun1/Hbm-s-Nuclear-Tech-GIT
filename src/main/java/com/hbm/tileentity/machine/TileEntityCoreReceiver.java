@@ -1,12 +1,12 @@
 package com.hbm.tileentity.machine;
 
-import com.hbm.handler.CompatHandler;
 import com.hbm.inventory.container.ContainerCoreReceiver;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.gui.GUICoreReceiver;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 
 import api.hbm.block.ILaserable;
@@ -31,7 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEnergyProviderMK2, ILaserable, IFluidStandardReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC, CompatHandler.OCComponent {
+public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEnergyProviderMK2, ILaserable, IFluidStandardReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
 	public long joules;
@@ -54,24 +54,25 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 			
 			this.subscribeToAllAround(tank.getTankType(), this);
 			
-			power = joules * 5000;
-			
+			if( joules > 1_800_000_000_000_000L ) 
+			power = Long.MAX_VALUE;
+			else power = joules * 5000;
 			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
 			
 			if(joules > 0) {
-
+				if(!RBMKDials.getDFCBABY(worldObj)){	
 				if(tank.getFill() >= 20) {
 					tank.setFill(tank.getFill() - 20);
 				} else {
 					worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava);
 					return;
 				}
+				}
 			}
 
 			NBTTagCompound data = new NBTTagCompound();
 			data.setLong("joules", joules);
-			tank.writeToNBT(data, "t");
 			this.networkPack(data, 50);
 			
 			joules = 0;
@@ -81,7 +82,6 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 	public void networkUnpack(NBTTagCompound data) {
 		super.networkUnpack(data);
 		joules = data.getLong("joules");
-		tank.readFromNBT(data, "t");
 	}
 
 	@Override
@@ -101,8 +101,11 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 
 	@Override
 	public long getMaxPower() {
-		return this.power;
+		return Long.MAX_VALUE;
 	}
+
+
+
 
 	@Override
 	public void addEnergy(World world, int x, int y, int z, long energy, ForgeDirection dir) {
@@ -157,7 +160,6 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 
 	// do some opencomputer stuff
 	@Override
-	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "dfc_receiver";
 	}

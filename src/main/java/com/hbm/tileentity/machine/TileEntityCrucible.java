@@ -23,6 +23,7 @@ import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CrucibleUtil;
 
 import api.hbm.block.ICrucibleAcceptor;
@@ -30,7 +31,6 @@ import api.hbm.tile.IHeatSource;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -56,9 +56,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 	/* CONFIGURABLE CONSTANTS */
 	//because eclipse's auto complete is dumb as a fucking rock, it's now called "ZCapacity" so it's listed AFTER the actual stacks in the auto complete list.
 	//also martin i know you read these: no i will not switch to intellij after using eclipse for 8 years.
-	public static int recipeZCapacity = MaterialShapes.BLOCK.q(16);
-	public static int wasteZCapacity = MaterialShapes.BLOCK.q(16);
-	public static int processTime = 20_000;
+	public static int recipeZCapacity = MaterialShapes.BLOCK.q(64);
+	public static int wasteZCapacity = MaterialShapes.BLOCK.q(64);
+	public static int processTime = 5_000;
 	public static double diffusion = 0.25D;
 	public static int maxHeat = 100_000;
 
@@ -104,7 +104,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		
 		if(!worldObj.isRemote) {
 			tryPullHeat();
-			
+			if(RBMKDials.getCrucibleBABY(worldObj))
+ 				this.heat = this.maxHeat;
+	
 			/* collect items */
 			if(worldObj.getTotalWorldTime() % 5 == 0) {
 				List<EntityItem> list = worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord - 0.5, yCoord + 0.5, zCoord - 0.5, xCoord + 1.5, yCoord + 1, zCoord + 1.5));
@@ -159,7 +161,13 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, this.wasteStack, MaterialShapes.NUGGET.q(3), impact);
+				List<MaterialStack> newCast = new ArrayList();
+				for(MaterialStack stack : this.wasteStack) {
+					if(!RBMKDials.getCrucibleBABY(worldObj)||stack.amount>=648 ) {
+						newCast.add(stack);
+					}
+				}
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
 				
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -184,8 +192,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				CrucibleRecipe recipe = this.getLoadedRecipe();
 				//if no recipe is loaded, everything from the recipe stack will be drainable
-				if(recipe == null) {
-					toCast.addAll(this.recipeStack);
+				if(recipe == null) {		
+					toCast.addAll(this.recipeStack);					
 				} else {
 					
 					for(MaterialStack stack : this.recipeStack) {
@@ -198,8 +206,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 					}
 				}
 				
-				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.NUGGET.q(3), impact);
+				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);	
+			
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.BLOCK.q(1), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -221,47 +230,38 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			this.wasteStack.removeIf(x -> x.amount <= 0);
 			
 			/* sync */
-			this.networkPackNT(25);
+			NBTTagCompound data = new NBTTagCompound();
+			int[] rec = new int[recipeStack.size() * 2];
+			int[] was = new int[wasteStack.size() * 2];
+			for(int i = 0; i < recipeStack.size(); i++) { MaterialStack sta = recipeStack.get(i); rec[i * 2] = sta.material.id; rec[i * 2 + 1] = sta.amount; }
+			for(int i = 0; i < wasteStack.size(); i++) { MaterialStack sta = wasteStack.get(i); was[i * 2] = sta.material.id; was[i * 2 + 1] = sta.amount; }
+			data.setIntArray("rec", rec);
+			data.setIntArray("was", was);
+			data.setInteger("progress", progress);
+			data.setInteger("heat", heat);
+			this.networkPack(data, 25);
 		}
 	}
-	
+
 	@Override
-	public void serialize(ByteBuf buf) {
-		super.serialize(buf);
-		buf.writeInt(progress);
-		buf.writeInt(heat);
+	public void networkUnpack(NBTTagCompound nbt) {
+		super.networkUnpack(nbt);
+
+		this.recipeStack.clear();
+		this.wasteStack.clear();
 		
-		buf.writeShort(recipeStack.size());
-		for(MaterialStack sta : recipeStack) {
-			buf.writeInt(sta.material.id);
-			buf.writeInt(sta.amount);
+		int[] rec = nbt.getIntArray("rec");
+		for(int i = 0; i < rec.length / 2; i++) {
+			recipeStack.add(new MaterialStack(Mats.matById.get(rec[i * 2]), rec[i * 2 + 1]));
 		}
 		
-		buf.writeShort(wasteStack.size());
-		for(MaterialStack sta : wasteStack) {
-			buf.writeInt(sta.material.id);
-			buf.writeInt(sta.amount);
-		}
-	}
-	
-	@Override
-	public void deserialize(ByteBuf buf) {
-		super.deserialize(buf);
-		progress = buf.readInt();
-		heat = buf.readInt();
-		
-		recipeStack.clear();
-		wasteStack.clear();
-		
-		int mats = buf.readShort();
-		for(int i = 0; i < mats; i++) {
-			recipeStack.add(new MaterialStack(Mats.matById.get(buf.readInt()), buf.readInt()));
+		int[] was = nbt.getIntArray("was");
+		for(int i = 0; i < was.length / 2; i++) {
+			wasteStack.add(new MaterialStack(Mats.matById.get(was[i * 2]), was[i * 2 + 1]));
 		}
 		
-		mats = buf.readShort();
-		for(int i = 0; i < mats; i++) {
-			wasteStack.add(new MaterialStack(Mats.matById.get(buf.readInt()), buf.readInt()));
-		}
+		this.progress = nbt.getInteger("progress");
+		this.heat = nbt.getInteger("heat");
 	}
 	
 	@Override
@@ -319,7 +319,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				return;
 			}
 		}
-		
+
+
 		this.heat = Math.max(this.heat - Math.max(this.heat / 1000, 1), 0);
 	}
 	
@@ -334,7 +335,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		delta *= 0.05;
 		
 		this.progress += delta;
-		this.heat -= delta;
+		if(!RBMKDials.getCrucibleBABY(worldObj))	this.heat -= delta;
 		
 		if(this.progress >= processTime) {
 			this.progress = 0;

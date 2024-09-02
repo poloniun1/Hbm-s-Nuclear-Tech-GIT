@@ -20,6 +20,7 @@ import com.hbm.util.fauxpointtwelve.BlockPos;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.init.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -183,6 +184,10 @@ public class MachineICFController extends BlockContainer implements ILookOverlay
 		
 		if(validCasing) {
 			assembly.put(pos, meta);
+			return;
+		}
+
+		if(block == Blocks.air) {
 			return;
 		}
 		

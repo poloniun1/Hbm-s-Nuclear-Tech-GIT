@@ -5,7 +5,6 @@ import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardReceiver;
 import api.hbm.tile.IInfoProviderEC;
 
-import com.hbm.handler.CompatHandler;
 import com.hbm.inventory.container.ContainerCoreEmitter;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
@@ -13,6 +12,7 @@ import com.hbm.inventory.gui.GUICoreEmitter;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 
 import cpw.mods.fml.common.Optional;
@@ -38,7 +38,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.List;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEnergyReceiverMK2, ILaserable, IFluidStandardReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC, CompatHandler.OCComponent {
+public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEnergyReceiverMK2, ILaserable, IFluidStandardReceiver, SimpleComponent, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
 	public static final long maxPower = 1000000000L;
@@ -72,7 +72,8 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 			long demand = maxPower * watts / 2000;
 			
 			beam = 0;
-			
+			if(!RBMKDials.getDFCBABY(worldObj))	
+			{
 			if(joules > 0 || prev > 0) {
 
 				if(tank.getFill() >= 20) {
@@ -81,18 +82,23 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 					worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava);
 					return;
 				}
-			}
+			}}
 			
 			if(isOn) {
 				
 				//i.e. 50,000,000 HE = 10,000 SPK
 				//1 SPK = 5,000HE
-				
-				if(power >= demand) {
+				if(!RBMKDials.getDFCBABY(worldObj)){
+					if(power >= demand) {
 					power -= demand;
 					long add = watts * 100;
 					joules += add;
+					}
 				}
+				else{	
+					long add = watts * 100;
+					joules += add;
+					}
 				prev = joules;
 				
 				if(joules > 0) {
@@ -275,7 +281,6 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 	
 	// do some opencomputer stuff
 	@Override
-	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "dfc_emitter";
 	}

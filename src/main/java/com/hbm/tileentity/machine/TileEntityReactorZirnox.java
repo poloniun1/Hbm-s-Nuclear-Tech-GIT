@@ -10,24 +10,28 @@ import com.hbm.config.MobConfig;
 import com.hbm.entity.projectile.EntityZirnoxDebris;
 import com.hbm.entity.projectile.EntityZirnoxDebris.DebrisType;
 import com.hbm.explosion.ExplosionNukeGeneric;
-import com.hbm.handler.CompatHandler;
 import com.hbm.handler.MultiblockHandlerXR;
 import com.hbm.interfaces.IControlReceiver;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.container.ContainerReactorZirnox;
+import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.gui.GUIReactorZirnox;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.machine.ItemZirnoxRod;
 import com.hbm.items.machine.ItemZirnoxRod.EnumZirnoxType;
+import com.hbm.lib.Library;
 import com.hbm.main.MainRegistry;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
@@ -48,7 +52,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityReactorZirnox extends TileEntityMachineBase implements IControlReceiver, IFluidStandardTransceiver, SimpleComponent, IGUIProvider, IInfoProviderEC, CompatHandler.OCComponent {
+public class TileEntityReactorZirnox extends TileEntityMachineBase implements IControlReceiver, IFluidStandardTransceiver, SimpleComponent, IGUIProvider, IInfoProviderEC ,IEnergyProviderMK2{
 
 	public int heat;
 	public static final int maxHeat = 100000;
@@ -56,10 +60,13 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 	public static final int maxPressure = 100000;
 	public boolean isOn = false;
 
+
 	public FluidTank steam;
 	public FluidTank carbonDioxide;
 	public FluidTank water;
 	protected int output;
+
+	public long power;
 	
 	private static final int[] slots_io = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
 
@@ -76,6 +83,29 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LES_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox_les_fuel_depleted));
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LITHIUM.ordinal()), new ItemStack(ModItems.rod_zirnox_tritium));
 		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.ZFB_MOX.ordinal()), new ItemStack(ModItems.rod_zirnox_zfb_mox_depleted));
+		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PU239_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_pu239_fuel_depleted));
+		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NP237_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_np237_fuel_depleted));
+		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.SA326_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_sa326_fuel_depleted));
+		fuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LEAD.ordinal()), new ItemStack(ModItems2.rod_zirnox_bred_lead));
+	}
+
+	public static final HashMap<ComparableStack, ItemStack> newfuelMap = new HashMap<ComparableStack, ItemStack>();
+	static {
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NATURAL_URANIUM_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PU239_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.URANIUM_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PLUTONIUM_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.TH232.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.THORIUM_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.THORIUM_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.U233_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.MOX_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox_mox_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PLUTONIUM_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox_plutonium_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.U233_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.U235_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.U235_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NP237_FUEL.ordinal()));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LES_FUEL.ordinal()), new ItemStack(ModItems.rod_zirnox_les_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LITHIUM.ordinal()), new ItemStack(ModItems.rod_zirnox_tritium));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.ZFB_MOX.ordinal()), new ItemStack(ModItems.rod_zirnox_zfb_mox_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.PU239_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_pu239_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.NP237_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_np237_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.SA326_FUEL.ordinal()), new ItemStack(ModItems2.rod_zirnox_sa326_fuel_depleted));
+		newfuelMap.put(new ComparableStack(ModItems.rod_zirnox, 1, EnumZirnoxType.LEAD.ordinal()), new ItemStack(ModItems2.rod_zirnox_bred_lead));
 	}
 
 	public TileEntityReactorZirnox() {
@@ -188,6 +218,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 		if(!worldObj.isRemote) {
 
 			this.output = 0;
+
 			
 			if(worldObj.getTotalWorldTime() % 20 == 0) {
 				this.updateConnections();
@@ -207,7 +238,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 					}
 				}
 			}
-			
+			if(!RBMKDials.getGeneratorD(worldObj))	{
 			//2(fill) + (x * fill%)
 			this.pressure = (this.carbonDioxide.getFill() * 2) + (int)((float)this.heat * ((float)this.carbonDioxide.getFill() / (float)this.carbonDioxide.getMaxFill()));
 
@@ -225,8 +256,10 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 			for(DirPos pos : getConPos()) {
 				this.sendFluid(steam, worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			}
-
 			checkIfMeltdown();
+			}
+			else Generate();	
+
 			
 			NBTTagCompound data = new NBTTagCompound();
 			data.setInteger("heat", heat);
@@ -236,6 +269,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 			carbonDioxide.writeToNBT(data, "t1");
 			water.writeToNBT(data, "t2");
 			this.networkPack(data, 150);
+			
 		}
 	}
 
@@ -293,13 +327,19 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 
 		if(!num.breeding)
 			decay++;
-
 		for(int i = 0; i < decay; i++) {
+			if(!RBMKDials.getGeneratorD(worldObj)){		
 			this.heat += num.heat;
 			ItemZirnoxRod.incrementLifeTime(slots[id]);
-			
+			}
+			else{ 
+			this.power = this.power + num.heat * 20;
+			ItemZirnoxRod.incrementLongLifeTime(slots[id]);
+			}
 			if(ItemZirnoxRod.getLifeTime(slots[id]) > num.maxLife) {
-				slots[id] = fuelMap.get(new ComparableStack(getStackInSlot(id))).copy();
+				if(!RBMKDials.getGeneratorD(worldObj))
+					slots[id] = fuelMap.get(new ComparableStack(getStackInSlot(id))).copy();
+				else	slots[id] = newfuelMap.get(new ComparableStack(getStackInSlot(id))).copy();
 				break;
 			}
 		}
@@ -452,10 +492,32 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 	public FluidTank[] getAllTanks() {
 		return new FluidTank[] { water, steam, carbonDioxide };
 	}
+
+
+	private void Generate() {
+			for(DirPos pos : getConPos()) {
+				this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+			}					
+
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+	public long getMaxPower() {
+		return power;
+	}
+
+
   
 	// do some opencomputer stuff
 	@Override
-	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "zirnox_reactor";
 	}
@@ -507,45 +569,6 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 	public Object[] setActive(Context context, Arguments args) {
 		isOn = args.checkBoolean(0);
 		return new Object[] {};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String[] methods() {
-		return new String[] {
-				"getTemp",
-				"getPressure",
-				"getWater",
-				"getSteam",
-				"getCarbonDioxide",
-				"isActive",
-				"getInfo",
-				"setActive"
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] invoke(String method, Context context, Arguments args) throws Exception {
-		switch(method) {
-			case ("getTemp"):
-				return getTemp(context, args);
-			case ("getPressure"):
-				return getPressure(context, args);
-			case ("getWater"):
-				return getWater(context, args);
-			case ("getSteam"):
-				return getSteam(context, args);
-			case ("getCarbonDioxide"):
-				return getCarbonDioxide(context, args);
-			case ("isActive"):
-				return isActive(context, args);
-			case ("getInfo"):
-				return getInfo(context, args);
-			case ("setActive"):
-				return setActive(context, args);
-		}
-		throw new NoSuchMethodException();
 	}
 
 	@Override
