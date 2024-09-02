@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.inventory.RecipesCommon.MetaBlock;
 import com.hbm.main.MainRegistry;
 import com.hbm.util.Compat;
@@ -118,32 +119,56 @@ public class FalloutConfigJSON {
 
 		entries.add(new FalloutEntry()
 				.mB(Blocks.coal_block)
-				.prim(new Triplet(Blocks.diamond_block, 0, 1))
-				.c(0.2));
+				.prim(new Triplet(Blocks.diamond_block, 0, 3),new Triplet(Blocks.emerald_block, 0, 2))
+				.c(0.4));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.iron_block)
 				.prim(new Triplet(ModBlocks.block_tantalium, 0, 1))
 				.c(0.1));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.gold_block)
-				.prim(new Triplet(ModBlocks.block_australium, 0, 4))
+				.prim(new Triplet(ModBlocks.block_australium, 0, 4),new Triplet(ModBlocks2.block_au198, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_lead)
-				.prim(new Triplet(ModBlocks.block_bismuth, 0, 1))
-				.c(0.02));
+				.prim(new Triplet(ModBlocks2.block_pb209, 0, 4),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.c(0.1));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_uranium)
-				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks.block_tcalloy, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks2.block_technetium, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_plutonium)
-				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks.block_tcalloy, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks2.block_technetium, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_thorium)
 				.prim(new Triplet(ModBlocks.block_u235, 0, 1))
 				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.stone_porous)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.stone_cracked)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.sand_dirty)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.sand_dirty_red)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.dirt_dead)
+				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.dirt_oily)
+				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
+				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_schrabidium)
 				.prim(new Triplet(ModBlocks.block_euphemium, 0, 1))
@@ -154,24 +179,28 @@ public class FalloutConfigJSON {
 				.c(0.05));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_tantalium)
-				.prim(new Triplet(ModBlocks.ore_tektite_osmiridium, 0, 1))
-				.c(0.02));
+				.prim(new Triplet(ModBlocks2.block_osmiridium, 0, 1))
+				.c(0.01));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_beryllium)
 				.prim(new Triplet(Blocks.emerald_block, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.emerald_block)
-				.prim(new Triplet(ModBlocks.ore_alexandrite, 0, 1))
+				.prim(new Triplet(ModBlocks2.block_alexandrite, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.diamond_block)
-				.prim(new Triplet(ModBlocks.ore_basalt, 3, 1))
+				.prim(new Triplet(ModBlocks2.block_volcanic, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_lithium)
 				.prim(new Triplet(ModBlocks.block_tritium, 0, 1))
 				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.quartz_block)
+				.prim(new Triplet(ModBlocks2.block_silicon, 0, 1))
+				.c(0.1));
 	}
 	
 	private static void writeDefault(File file) {

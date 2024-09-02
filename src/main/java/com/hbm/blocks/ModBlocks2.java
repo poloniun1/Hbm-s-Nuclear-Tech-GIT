@@ -54,6 +54,17 @@ public class ModBlocks2 {
 	public static Block ore_sodium;
 	public static Block ore_meteor_star;
 
+	public static Block block_alexandrite;
+	public static Block block_arsenic;
+	public static Block block_au198;
+	public static Block block_volcanic;
+	public static Block block_osmiridium;
+	public static Block block_pb209;
+	public static Block block_technetium;
+	public static Block block_silicon;
+	public static Block block_strontium;
+	public static Block block_neodymium;
+
 	public static Block rbmk_turbine;
 	public static Block rbmk_large_turbine;
 	public static Block rbmk_chungus;
@@ -76,6 +87,17 @@ public class ModBlocks2 {
 		ore_sodium = new BlockGeneric(Material.rock).setBlockName("ore_sodium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_sodium");		
 		ore_meteor_star = new BlockGeneric(Material.rock).setBlockName("ore_meteor_star").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_meteor_star");		
 
+		block_alexandrite = new BlockGeneric(Material.rock).setBlockName("block_alexandrite").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_alexandrite");		
+		block_arsenic = new BlockGeneric(Material.rock).setBlockName("block_arsenic").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_arsenic");		
+		block_au198 = new BlockGeneric(Material.rock).setBlockName("block_au198").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_au198");		
+		block_volcanic = new BlockGeneric(Material.rock).setBlockName("block_volcanic").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_volcanic");		
+		block_osmiridium = new BlockGeneric(Material.rock).setBlockName("block_osmiridium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_osmiridium");		
+		block_pb209 = new BlockGeneric(Material.rock).setBlockName("block_pb209").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_pb209");		
+		block_technetium = new BlockGeneric(Material.rock).setBlockName("block_technetium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_technetium");		
+		block_silicon = new BlockGeneric(Material.rock).setBlockName("block_silicon").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_silicon");		
+		block_strontium = new BlockGeneric(Material.rock).setBlockName("block_strontium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_strontium");		
+		block_neodymium = new BlockGeneric(Material.rock).setBlockName("block_neodymium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_neodymium");		
+
 	}
 
 	private static void registerBlock() {
@@ -93,6 +115,17 @@ public class ModBlocks2 {
 		register(ore_manganese);
 		register(ore_sodium);
 		register(ore_meteor_star);
+
+		register(block_alexandrite);
+		register(block_arsenic);
+		register(block_au198);
+		register(block_volcanic);
+		register(block_osmiridium);
+		register(block_pb209);
+		register(block_technetium);
+		register(block_silicon);
+		register(block_strontium);
+		register(block_neodymium);
 
 		GameRegistry.registerBlock(silo_hatch_ex, silo_hatch_ex.getUnlocalizedName());
 		GameRegistry.registerBlock(silo_hatch_large_ex, silo_hatch_large_ex.getUnlocalizedName());
