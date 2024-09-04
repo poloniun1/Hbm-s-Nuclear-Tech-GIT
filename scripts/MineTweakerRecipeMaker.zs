@@ -26,7 +26,50 @@ recipes.addShapeless(<hbm:item.waste_pu239:1> * 2, [<hbm:item.rod_zirnox_pu239_f
 recipes.addShapeless(<hbm:item.waste_sa326:1> * 2, [<hbm:item.rod_zirnox_sa326_fuel_depleted>]);
 recipes.addShapeless(<hbm:item.bred_lead> * 2, [<hbm:item.rod_zirnox_bred_lead>]);
 
+recipes.addShapeless(<hbm:item.powder_strontium> * 9, [<ore:blockStrontium>]);
+recipes.addShapeless(<hbm:item.ingot_technetium> * 9, [<ore:blockTechnetium>]);
+recipes.addShapeless(<hbm:item.ingot_au198> * 9, [<ore:blockAu198>]);
+recipes.addShapeless(<hbm:item.ingot_pb209> * 9, [<ore:blockPb209>]);
+recipes.addShapeless(<hbm:item.ingot_silicon> * 9, [<ore:blockSilicon>]);
+recipes.addShapeless(<hbm:item.ingot_arsenic> * 9, [<ore:blockArsenic>]);
+recipes.addShapeless(<hbm:item.ingot_osmiridium> * 9, [<ore:blockOsmiridium>]);
+recipes.addShapeless(<hbm:item.powder_neodymium> * 9, [<ore:blockNeodymium>]);
+recipes.addShapeless(<hbm:item.gem_volcanic> * 9, [<ore:blockVolcanic>]);
+recipes.addShapeless(<hbm:item.gem_alexandrite> * 9, [<ore:blockAlexandrite>]);
+
 //#MARKER ADD SHAPED
+recipes.addShaped(<hbm:tile.block_strontium>, [[<ore:dustStrontium>, <ore:dustStrontium>,
+ <ore:dustStrontium>], [<ore:dustStrontium>, <ore:dustStrontium>, <ore:dustStrontium>],
+ [<ore:dustStrontium>, <ore:dustStrontium>, <ore:dustStrontium>]]);
+recipes.addShaped(<hbm:tile.block_technetium>, [[<ore:ingotTc99>, <ore:ingotTc99>,
+ <ore:ingotTc99>], [<ore:ingotTc99>, <ore:ingotTc99>, <ore:ingotTc99>],
+ [<ore:ingotTc99>, <ore:ingotTc99>, <ore:ingotTc99>]]);
+recipes.addShaped(<hbm:tile.block_osmiridium>, [[<ore:ingotOsmiridium>, <ore:ingotOsmiridium>,
+ <ore:ingotOsmiridium>], [<ore:ingotOsmiridium>, <ore:ingotOsmiridium>, <ore:ingotOsmiridium>],
+ [<ore:ingotOsmiridium>, <ore:ingotOsmiridium>, <ore:ingotOsmiridium>]]);
+recipes.addShaped(<hbm:tile.block_arsenic>, [[<ore:ingotArsenic>, <ore:ingotArsenic>,
+ <ore:ingotArsenic>], [<ore:ingotArsenic>, <ore:ingotArsenic>, <ore:ingotArsenic>],
+ [<ore:ingotArsenic>, <ore:ingotArsenic>, <ore:ingotArsenic>]]);
+recipes.addShaped(<hbm:tile.block_au198>, [[<ore:ingotAu198>, <ore:ingotAu198>,
+ <ore:ingotAu198>], [<ore:ingotAu198>, <ore:ingotAu198>, <ore:ingotAu198>],
+ [<ore:ingotAu198>, <ore:ingotAu198>, <ore:ingotAu198>]]);
+recipes.addShaped(<hbm:tile.block_pb209>, [[<ore:ingotPb209>, <ore:ingotPb209>,
+ <ore:ingotPb209>], [<ore:ingotPb209>, <ore:ingotPb209>, <ore:ingotPb209>],
+ [<ore:ingotPb209>, <ore:ingotPb209>, <ore:ingotPb209>]]);
+recipes.addShaped(<hbm:tile.block_silicon>, [[<ore:ingotSilicon>, <ore:ingotSilicon>,
+ <ore:ingotSilicon>], [<ore:ingotSilicon>, <ore:ingotSilicon>, <ore:ingotSilicon>],
+ [<ore:ingotSilicon>, <ore:ingotSilicon>, <ore:ingotSilicon>]]);
+recipes.addShaped(<hbm:tile.block_neodymium>, [[<ore:ingotNeodymium>, <ore:ingotNeodymium>,
+ <ore:ingotNeodymium>], [<ore:ingotNeodymium>, <ore:ingotNeodymium>, <ore:ingotNeodymium>],
+ [<ore:ingotNeodymium>, <ore:ingotNeodymium>, <ore:ingotNeodymium>]]);
+recipes.addShaped(<hbm:tile.block_volcanic>, [[<ore:ingotVolcanic>, <ore:ingotVolcanic>,
+ <ore:ingotVolcanic>], [<ore:ingotVolcanic>, <ore:ingotVolcanic>, <ore:ingotVolcanic>],
+ [<ore:ingotVolcanic>, <ore:ingotVolcanic>, <ore:ingotVolcanic>]]);
+recipes.addShaped(<hbm:tile.block_alexandrite>, [[<ore:ingotAlexandrite>, <ore:ingotAlexandrite>,
+ <ore:ingotAlexandrite>], [<ore:ingotAlexandrite>, <ore:ingotAlexandrite>, <ore:ingotAlexandrite>],
+ [<ore:ingotAlexandrite>, <ore:ingotAlexandrite>, <ore:ingotAlexandrite>]]);
+
+
 recipes.addShaped(<hbm:item.ingot_starmetal>, [[<ore:nuggetStarmetal>, <ore:nuggetStarmetal>,
  <ore:nuggetStarmetal>], [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>],
  [<ore:nuggetStarmetal>, <ore:nuggetStarmetal>, <ore:nuggetStarmetal>]]);
