@@ -119,8 +119,8 @@ public class FalloutConfigJSON {
 
 		entries.add(new FalloutEntry()
 				.mB(Blocks.coal_block)
-				.prim(new Triplet(Blocks.diamond_block, 0, 3),new Triplet(Blocks.emerald_block, 0, 2))
-				.c(0.4));
+				.prim(new Triplet(ModBlocks.block_graphite, 0, 3), new Triplet(Blocks.diamond_block, 0, 2), new Triplet(Blocks.emerald_block, 0, 1))
+				.c(0.6));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.iron_block)
 				.prim(new Triplet(ModBlocks.block_tantalium, 0, 1))
@@ -155,12 +155,12 @@ public class FalloutConfigJSON {
 				.c(0.1));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.sand_dirty)
-				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
-				.c(0.1));
+				.prim(new Triplet(ModBlocks.block_white_phosphorus, 0, 1))
+				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.sand_dirty_red)
-				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
-				.c(0.1));
+				.prim(new Triplet(ModBlocks.block_white_phosphorus, 0, 1))
+				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.dirt_dead)
 				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
@@ -168,6 +168,10 @@ public class FalloutConfigJSON {
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.dirt_oily)
 				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_oil_sand)
+				.prim(new Triplet(ModBlocks.block_polymer, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_schrabidium)
