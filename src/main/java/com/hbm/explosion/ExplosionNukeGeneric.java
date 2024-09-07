@@ -354,17 +354,7 @@ public class ExplosionNukeGeneric {
 					world.setBlock(x, y, z, ModBlocks.block_bismuth);
 				}
 			}
-			else if (b == ModBlocks.block_uranium) {
-				rand = random.nextInt(200);
-				if (rand > 196) {
-					world.setBlock(x, y, z, ModBlocks.block_schrabidium);
-				} else if (rand > 192) {
-					world.setBlock(x, y, z, ModBlocks2.block_technetium);
-				} else if (rand > 191) {
-					world.setBlock(x, y, z, ModBlocks.block_bismuth);
-				}
-			}
-			else if (b == ModBlocks.block_plutonium) {
+			else if (b == ModBlocks.block_uranium || b == ModBlocks.block_plutonium) {
 				rand = random.nextInt(200);
 				if (rand > 196) {
 					world.setBlock(x, y, z, ModBlocks.block_schrabidium);
@@ -381,38 +371,19 @@ public class ExplosionNukeGeneric {
 				}
 			}
 
-			else if (b == ModBlocks.stone_porous) {
+			else if (b == ModBlocks.stone_porous || b == ModBlocks.stone_cracked) {
 				rand = random.nextInt(100);
 				if (rand > 97) {
 					world.setBlock(x, y, z, ModBlocks2.block_arsenic);
 				}
 			}
-
-			else if (b == ModBlocks.stone_cracked) {
-				rand = random.nextInt(100);
-				if (rand > 97) {
-					world.setBlock(x, y, z, ModBlocks2.block_arsenic);
-				}
-			}
-			else if (b == ModBlocks.sand_dirty) {
+			else if (b == ModBlocks.sand_dirty || b == ModBlocks.sand_dirty_red) {
 				rand = random.nextInt(100);
 				if (rand > 95) {
 					world.setBlock(x, y, z, ModBlocks.block_white_phosphorus);
 				}
 			}
-			else if (b == ModBlocks.sand_dirty_red) {
-				rand = random.nextInt(100);
-				if (rand > 95) {
-					world.setBlock(x, y, z, ModBlocks.block_white_phosphorus);
-				}
-			}
-			else if (b == ModBlocks.dirt_dead) {
-				rand = random.nextInt(100);
-				if (rand > 95) {
-					world.setBlock(x, y, z, ModBlocks.block_cadmium);
-				}
-			}
-			else if (b == ModBlocks.dirt_oily) {
+			else if (b == ModBlocks.dirt_dead || b == ModBlocks.dirt_oily) {
 				rand = random.nextInt(100);
 				if (rand > 95) {
 					world.setBlock(x, y, z, ModBlocks.block_cadmium);
@@ -459,6 +430,24 @@ public class ExplosionNukeGeneric {
 				rand = random.nextInt(100);
 				if (rand > 95) {
 					world.setBlock(x, y, z, ModBlocks2.block_volcanic);
+				}
+			}
+			else if (b == ModBlocks.ore_rare || b == ModBlocks.ore_gneiss_rare) {
+				rand = random.nextInt(500);
+				if (rand > 498) {
+					world.setBlock(x, y, z, ModBlocks2.block_neodymium);
+				} else if (rand > 496) {
+					world.setBlock(x, y, z, ModBlocks.block_niobium);
+				} else if (rand > 494) {
+					world.setBlock(x, y, z, ModBlocks.block_zirconium);
+				} else if (rand > 489) {
+					world.setBlock(x, y, z, ModBlocks.block_desh);
+				}
+			}
+			else if (b == ModBlocks.block_cobalt) {
+				rand = random.nextInt(100);
+				if (rand > 96) {
+					world.setBlock(x, y, z, ModBlocks.block_starmetal);
 				}
 			}
 			else if (b == ModBlocks.block_lithium) {

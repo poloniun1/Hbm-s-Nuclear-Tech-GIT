@@ -148,11 +148,11 @@ public class FalloutConfigJSON {
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.stone_porous)
 				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
-				.c(0.1));
+				.c(0.01));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.stone_cracked)
 				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
-				.c(0.1));
+				.c(0.01));
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.sand_dirty)
 				.prim(new Triplet(ModBlocks.block_white_phosphorus, 0, 1))
@@ -200,6 +200,18 @@ public class FalloutConfigJSON {
 		entries.add(new FalloutEntry()
 				.mB(ModBlocks.block_lithium)
 				.prim(new Triplet(ModBlocks.block_tritium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_rare)
+				.prim(new Triplet(ModBlocks2.block_neodymium, 0, 1),new Triplet(ModBlocks.block_niobium, 0, 2),new Triplet(ModBlocks.block_zirconium, 0, 2),new Triplet(ModBlocks.block_desh, 0, 5))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_gneiss_rare)
+				.prim(new Triplet(ModBlocks2.block_neodymium, 0, 1),new Triplet(ModBlocks.block_niobium, 0, 2),new Triplet(ModBlocks.block_zirconium, 0, 2),new Triplet(ModBlocks.block_desh, 0, 5))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_cobalt)
+				.prim(new Triplet(ModBlocks.block_starmetal, 0, 1))
 				.c(0.2));
 		entries.add(new FalloutEntry()
 				.mB(Blocks.quartz_block)
