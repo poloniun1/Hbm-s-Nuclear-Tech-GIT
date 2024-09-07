@@ -33,6 +33,7 @@ recipes.addShapeless(<hbm:item.ingot_pb209> * 9, [<ore:blockPb209>]);
 recipes.addShapeless(<hbm:item.ingot_silicon> * 9, [<ore:blockSilicon>]);
 recipes.addShapeless(<hbm:item.ingot_arsenic> * 9, [<ore:blockArsenic>]);
 recipes.addShapeless(<hbm:item.ingot_osmiridium> * 9, [<ore:blockOsmiridium>]);
+recipes.addShapeless(<hbm:item.ingot_calcium> * 9, [<ore:blockCalcium>]);
 recipes.addShapeless(<hbm:item.powder_neodymium> * 9, [<ore:blockNeodymium>]);
 recipes.addShapeless(<hbm:item.gem_volcanic> * 9, [<ore:blockVolcanic>]);
 recipes.addShapeless(<hbm:item.gem_alexandrite> * 9, [<ore:blockAlexandrite>]);
@@ -68,6 +69,9 @@ recipes.addShaped(<hbm:tile.block_volcanic>, [[<ore:ingotVolcanic>, <ore:ingotVo
 recipes.addShaped(<hbm:tile.block_alexandrite>, [[<ore:ingotAlexandrite>, <ore:ingotAlexandrite>,
  <ore:ingotAlexandrite>], [<ore:ingotAlexandrite>, <ore:ingotAlexandrite>, <ore:ingotAlexandrite>],
  [<ore:ingotAlexandrite>, <ore:ingotAlexandrite>, <ore:ingotAlexandrite>]]);
+recipes.addShaped(<hbm:tile.block_calcium>, [[<ore:ingotCalcium>, <ore:ingotCalcium>,
+ <ore:ingotCalcium>], [<ore:ingotCalcium>, <ore:ingotCalcium>, <ore:ingotCalcium>],
+ [<ore:ingotCalcium>, <ore:ingotCalcium>, <ore:ingotCalcium>]]);
 
 
 recipes.addShaped(<hbm:item.ingot_starmetal>, [[<ore:nuggetStarmetal>, <ore:nuggetStarmetal>,
