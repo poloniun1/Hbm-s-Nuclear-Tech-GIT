@@ -64,6 +64,7 @@ public class ModBlocks2 {
 	public static Block block_silicon;
 	public static Block block_strontium;
 	public static Block block_neodymium;
+	public static Block block_calcium;
 
 	public static Block rbmk_turbine;
 	public static Block rbmk_large_turbine;
@@ -97,6 +98,7 @@ public class ModBlocks2 {
 		block_silicon = new BlockGeneric(Material.rock).setBlockName("block_silicon").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_silicon");		
 		block_strontium = new BlockGeneric(Material.rock).setBlockName("block_strontium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_strontium");		
 		block_neodymium = new BlockGeneric(Material.rock).setBlockName("block_neodymium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_neodymium");		
+		block_calcium = new BlockGeneric(Material.rock).setBlockName("block_calcium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_calcium");		
 
 	}
 
@@ -126,6 +128,7 @@ public class ModBlocks2 {
 		register(block_silicon);
 		register(block_strontium);
 		register(block_neodymium);
+		register(block_calcium);
 
 		GameRegistry.registerBlock(silo_hatch_ex, silo_hatch_ex.getUnlocalizedName());
 		GameRegistry.registerBlock(silo_hatch_large_ex, silo_hatch_large_ex.getUnlocalizedName());

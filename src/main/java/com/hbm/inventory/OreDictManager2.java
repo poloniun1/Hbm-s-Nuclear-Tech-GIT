@@ -114,7 +114,7 @@ public class OreDictManager2 {
 		AL	.ore(ModBlocks.cluster_aluminium);
 		AS	.ore(ModBlocks.stone_porous,ModBlocks.dirt_oily, ModBlocks.dirt_dead, ModBlocks.stone_cracked, ModBlocks.sand_dirty, ModBlocks.sand_dirty_red )	.block(ModBlocks2.block_arsenic);
 		PAS	.ingot(ModItems.scrap_oil);
-		CA	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE) );
+		CA	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE) )	.block(ModBlocks2.block_calcium);
 		B	.ore(ModBlocks.ore_depth_borax );
 		SI	.ore(Blocks.quartz_block)	.block(ModBlocks2.block_silicon);
 		STAR		.nugget(ModItems2.nugget_star)		.ore(ModBlocks2.ore_meteor_star);
