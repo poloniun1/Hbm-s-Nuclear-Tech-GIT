@@ -70,9 +70,6 @@ public class CrucibleRecipes extends SerializableRecipe {
 		recipes.add(new CrucibleRecipe(106, "crucible.mudrich", 2, new ItemStack(ModItems.ingot_mud))
 				.inputs(new MaterialStack(Mats.MAT_AU198, n), new MaterialStack(Mats.MAT_PB209, n), new MaterialStack(Mats.MAT_BISMUTH, n))
 				.outputs(new MaterialStack(Mats.MAT_MUD, n*6)));	
-		recipes.add(new CrucibleRecipe(107, "crucible.slagrecycle", 2, new ItemStack(ModBlocks.block_slag))
-				.inputs(new MaterialStack(Mats.MAT_SLAG, n*9))
-				.outputs(new MaterialStack(Mats.MAT_CALCIUM, n), new MaterialStack(Mats.MAT_IRON, n), new MaterialStack(Mats.MAT_PHOSPHORUS, n)));			
 		if(Compat.isModLoaded(Compat.MOD_GT6)) {
 			recipes.add(new CrucibleRecipe(9, "crucible.steelWrought", 2, new ItemStack(ModItems.ingot_steel))
 					.inputs(new MaterialStack(Mats.MAT_WROUGHTIRON, n * 2), new MaterialStack(Mats.MAT_CARBON, n))
