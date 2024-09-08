@@ -91,8 +91,9 @@ public class MatDistribution extends SerializableRecipe {
 		registerOre(OreDictManager.BI.ore(), MAT_BISMUTH, INGOT.q(1), MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.ZR.ore(), MAT_ZIRCONIUM, INGOT.q(2), MAT_NIOBIUM, NUGGET.q(3), MAT_NEODYMIUM, NUGGET.q(6), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager.ND.ore(), MAT_NEODYMIUM, INGOT.q(2), MAT_NIOBIUM, NUGGET.q(3), MAT_ZIRCONIUM, NUGGET.q(6), MAT_SLAG, QUART.q(1));
-		registerOre(OreDictManager.AS.ore(), MAT_PREARSENIC, QUANTUM.q(3), MAT_SILICON, QUANTUM.q(6), MAT_SLAG, QUART.q(1));
+		registerOre(OreDictManager.AS.ore(), MAT_PREARSENIC, QUANTUM.q(3), MAT_SILICON, QUANTUM.q(6), MAT_CADMIUM, INGOT.q(1), MAT_WHITE_P, NUGGET.q(1), MAT_SLAG, QUART.q(1));
 		registerOre(OreDictManager2.PAS.ingot(), MAT_PREARSENIC, QUANTUM.q(4));
+		registerOre(OreDictManager.SLAG.block(), MAT_PHOSPHORUS,DUST.q(1), MAT_CALCIUM, INGOT.q(1), MAT_IRON, INGOT.q(1),MAT_WHITE_P, NUGGET.q(1));
 		
 		registerEntry(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE), MAT_FLUX, DUST.q(10));
 		registerEntry(ModItems.powder_flux, MAT_FLUX, DUST.q(1));
