@@ -10,7 +10,7 @@ import com.hbm.inventory.gui.GUIICF;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemICFPellet;
 import com.hbm.lib.Library;
-import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;

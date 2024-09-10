@@ -4,7 +4,7 @@ import com.hbm.explosion.ExplosionLarge;
 import com.hbm.items.ISatChip;
 import com.hbm.items.ModItems;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.saveddata.satellites.Satellite;
 

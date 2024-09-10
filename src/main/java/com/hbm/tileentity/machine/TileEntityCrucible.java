@@ -19,7 +19,7 @@ import com.hbm.inventory.material.NTMMaterial;
 import com.hbm.inventory.recipes.CrucibleRecipes;
 import com.hbm.inventory.recipes.CrucibleRecipes.CrucibleRecipe;
 import com.hbm.items.ModItems;
-import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.IGUIProvider;
@@ -222,17 +222,17 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 					
 					for(MaterialStack stack : this.recipeStack) {
 						for(MaterialStack output : recipe.output) {
-							if(stack.material == output.material&&(!RBMKDials.getCrucibleBABY(worldObj)  || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank)) {
+							if(stack.material == output.material && (!RBMKDials.getCrucibleBABY(worldObj)  || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank)) {
 								toCast.add(output);
 								break;
 							}
-							if(stack.material == output.material&&(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin)) {
+							if(stack.material == output.material && (b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin)) {
 								TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
 								TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 								if(stack.amount >= tile1.getCapacity()){
 									toCast.add(output);
-									break;
-								}		
+								}	
+								break;	
 							}
 						}
 					}

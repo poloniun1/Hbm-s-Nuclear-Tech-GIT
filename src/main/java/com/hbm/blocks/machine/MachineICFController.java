@@ -11,7 +11,7 @@ import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.machine.BlockICF.TileEntityBlockICF;
 import com.hbm.blocks.machine.BlockICFLaserComponent.EnumICFPart;
 import com.hbm.lib.RefStrings;
-import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.machine.TileEntityICFController;
 import com.hbm.util.BobMathUtil;

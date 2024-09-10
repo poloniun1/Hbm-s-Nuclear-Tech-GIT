@@ -15,7 +15,7 @@ import com.hbm.inventory.fluid.trait.FT_Coolable.CoolingType;
 import com.hbm.lib.Library;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.NBTPacket;
+import com.hbm.packet.toclient.NBTPacket;
 import com.hbm.packet.PacketDispatcher;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IConfigurableMachine;

@@ -34,7 +34,6 @@ import com.hbm.items.tool.*;
 import com.hbm.items.tool.ItemToolAbility.EnumToolType;
 import com.hbm.items.weapon.*;
 import com.hbm.items.weapon.ItemMissile.*;
-import com.hbm.items.weapon.gununified.ItemEnergyGunBase;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.potion.HbmPotion;

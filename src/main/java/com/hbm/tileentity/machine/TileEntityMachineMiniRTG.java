@@ -24,8 +24,9 @@ public class TileEntityMachineMiniRTG extends TileEntityLoadedBase implements IE
 			if(power > getMaxPower())
 				power = getMaxPower();
 
-			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS){
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
+			}
 		}
 	}
 	

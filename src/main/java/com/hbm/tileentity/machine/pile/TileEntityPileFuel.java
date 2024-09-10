@@ -5,7 +5,7 @@ import com.hbm.items.ModItems;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.GeneralConfig;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.packet.PacketDispatcher;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
