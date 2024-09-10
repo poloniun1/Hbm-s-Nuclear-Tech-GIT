@@ -3596,7 +3596,21 @@
           "duration": 450,
           "consumptionPerTick": 8000
         },			
-		
+
+        {
+          "inputFluids": [
+          ],
+          "inputItems": [
+	["item","minecraft:chicken",1],
+	["item","hbm:item.pellet_charged",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	["item","hbm:item.nugget",1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 50000
+        },		
         {
           "inputFluids": [
 	["HELIUM3",2000]
@@ -3939,15 +3953,15 @@
 
           ],
           "inputItems": [
-	["dict","oreCobalt"]
+	["dict","blockCobalt"]
 ],
           "outputFluids": [
           ],
           "outputItems": [
-	["hbm:tile.ore_meteor_star",1, 1.0]
+	["hbm:tile.block_starmetal",1, 1.0]
           ],
           "duration": 1,
-		  "flux":2000000,
+		  "flux":10000000,
           "consumptionPerTick": 0
         },
         {
