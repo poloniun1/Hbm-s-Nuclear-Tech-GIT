@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockDummyable;
+import com.hbm.blocks.ModBlocks;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
 import com.hbm.inventory.container.ContainerCrucible;
@@ -44,6 +45,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.block.Block;
 
 public class TileEntityCrucible extends TileEntityMachineBase implements IGUIProvider, ICrucibleAcceptor, IConfigurableMachine {
 
@@ -160,11 +162,20 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			if(!this.wasteStack.isEmpty()) {
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
 				List<MaterialStack> newCast = new ArrayList();
 				for(MaterialStack stack : this.wasteStack) {
-					if(!RBMKDials.getCrucibleBABY(worldObj)||stack.amount>=648 ) {
+					if(!RBMKDials.getCrucibleBABY(worldObj) || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank) {
 						newCast.add(stack);
+					}
+					if(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+						if(stack.amount >= tile1.getCapacity()){
+							newCast.add(stack);
+						}	
 					}
 				}
 				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
@@ -180,7 +191,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 					PacketDispatcher.wrapper.sendToAllAround(new AuxParticlePacketNT(data, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord, zCoord + 0.5D + dir.offsetZ * 1.875D), new TargetPoint(worldObj.provider.dimensionId, xCoord + 0.5, yCoord + 1, zCoord + 0.5, 50));
 				
 				}
-
+				
 				PollutionHandler.incrementPollution(worldObj, xCoord, yCoord, zCoord, PollutionType.SOOT, PollutionHandler.SOOT_PER_SECOND / 20F);
 			}
 			
@@ -189,18 +200,39 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 				List<MaterialStack> toCast = new ArrayList();
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
 				
 				CrucibleRecipe recipe = this.getLoadedRecipe();
 				//if no recipe is loaded, everything from the recipe stack will be drainable
-				if(recipe == null) {		
-					toCast.addAll(this.recipeStack);					
+				if(recipe == null) {	
+					if(!RBMKDials.getCrucibleBABY(worldObj) || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank) {
+						toCast.addAll(this.recipeStack);		
+					}
+					if(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+						for(MaterialStack stack : this.recipeStack) {
+							if(stack.amount >= tile1.getCapacity()){
+								toCast.add(stack);
+							}
+						}	
+					}	
+			
 				} else {
 					
 					for(MaterialStack stack : this.recipeStack) {
 						for(MaterialStack output : recipe.output) {
-							if(stack.material == output.material) {
-								toCast.add(stack);
+							if(stack.material == output.material&&(!RBMKDials.getCrucibleBABY(worldObj)  || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank)) {
+								toCast.add(output);
 								break;
+							}
+							if(stack.material == output.material&&(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin)) {
+								TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+								TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+								if(stack.amount >= tile1.getCapacity()){
+									toCast.add(output);
+									break;
+								}		
 							}
 						}
 					}
