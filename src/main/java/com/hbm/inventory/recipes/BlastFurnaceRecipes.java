@@ -31,7 +31,7 @@ import com.hbm.util.Tuple.Triplet;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.init.Items;
 /**
  * Magic!
  * 
@@ -64,6 +64,7 @@ public class BlastFurnaceRecipes extends SerializableRecipe {
 		addRecipe(CO,									ModBlocks.block_meteor,							new ItemStack(ModItems.ingot_meteorite));
 		addRecipe(ModItems.meteorite_sword_hardened,	CO,												new ItemStack(ModItems.meteorite_sword_alloyed));
 		addRecipe(ModBlocks.block_meteor,				CO,												new ItemStack(ModItems.ingot_meteorite));
+		addRecipe(Items.chicken,				ModItems.pellet_charged,												new ItemStack(ModItems.nugget));
 
 		if(GeneralConfig.enableLBSM && GeneralConfig.enableLBSMSimpleChemsitry) {
 			addRecipe(ModItems.canister_empty, COAL, new ItemStack(ModItems.canister_full, 1, Fluids.OIL.getID()));
