@@ -3606,7 +3606,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-	["item","hbm:item.nugget",1]
+	["hbm:item.nugget",1]
           ],
           "duration": 1,
           "consumptionPerTick": 50000
