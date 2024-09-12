@@ -37,8 +37,12 @@ recipes.addShapeless(<hbm:item.ingot_calcium> * 9, [<ore:blockCalcium>]);
 recipes.addShapeless(<hbm:item.powder_neodymium> * 9, [<ore:blockNeodymium>]);
 recipes.addShapeless(<hbm:item.gem_volcanic> * 9, [<ore:blockVolcanic>]);
 recipes.addShapeless(<hbm:item.gem_alexandrite> * 9, [<ore:blockAlexandrite>]);
+recipes.addShapeless(<hbm:item.powder_sodium> * 9, [<ore:blockSodium>]);
 
 //#MARKER ADD SHAPED
+recipes.addShaped(<hbm:tile.block_sodium>, [[<ore:dustSodium>, <ore:dustSodium>,
+ <ore:dustSodium>], [<ore:dustSodium>, <ore:dustSodium>, <ore:dustSodium>],
+ [<ore:dustSodium>, <ore:dustSodium>, <ore:dustSodium>]]);
 recipes.addShaped(<hbm:tile.block_strontium>, [[<ore:dustStrontium>, <ore:dustStrontium>,
  <ore:dustStrontium>], [<ore:dustStrontium>, <ore:dustStrontium>, <ore:dustStrontium>],
  [<ore:dustStrontium>, <ore:dustStrontium>, <ore:dustStrontium>]]);
