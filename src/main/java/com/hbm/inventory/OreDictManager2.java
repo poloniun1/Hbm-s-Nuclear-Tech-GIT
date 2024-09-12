@@ -79,6 +79,8 @@ public class OreDictManager2 {
 	public static final DictFrame PB209 = new DictFrame("Lead209", "Pb209");
 
 	public static final DictFrame CINNABAR = new DictFrame("Cinnabar");
+	public static final DictFrame HG = new DictFrame("Mercury");
+
 	public static final DictFrame S = new DictFrame("Sulfur");
 	public static final DictFrame KNO = new DictFrame("Saltpeter");
 	public static final DictFrame F = new DictFrame("Fluorite");
@@ -132,12 +134,13 @@ public class OreDictManager2 {
 		KNO	.ingot(ModItems.niter);
 		F	.ingot(ModItems.fluorite);
 		CINNABAR	.ingot(ModItems.cinnebar);
+		HG	.ingot(ModItems.nugget_mercury)	.block(ModItems.bottle_mercury);
 		BAUXITE	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.BAUXITE));
 		ALEXANDRITE	.ingot(ModItems.gem_alexandrite )	.gem(ModItems.gem_alexandrite )	.ore(ModBlocks.ore_alexandrite )	.block(ModBlocks2.block_alexandrite );
 		VOLCANIC						.ingot(ModItems.gem_volcanic)	.block(ModBlocks2.block_volcanic);													
 
 
-		NA	.hydro(1F)	.ingot(ModItems2.ingot_sodium)	.ore(ModBlocks2.ore_sodium);											
+		NA	.hydro(1F)	.ingot(ModItems2.ingot_sodium)	.ore(ModBlocks2.ore_sodium)	.block(ModBlocks2.block_sodium);											
 		P_WHITE	.hot(5)	.ore(ModBlocks.ore_nether_fire);
 		ND	.ingot(ModItems.powder_neodymium)	.block(ModBlocks2.block_neodymium);
 		TIKITE	.ingot(ModItems.powder_spark_mix )	.dust(ModItems.powder_nitan_mix )	.ore(ModBlocks.ore_tikite );
