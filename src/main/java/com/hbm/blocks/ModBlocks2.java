@@ -66,6 +66,7 @@ public class ModBlocks2 {
 	public static Block block_neodymium;
 	public static Block block_calcium;
 	public static Block block_sodium;
+	public static Block block_gh336;
 
 	public static Block rbmk_turbine;
 	public static Block rbmk_large_turbine;
@@ -101,6 +102,7 @@ public class ModBlocks2 {
 		block_neodymium = new BlockGeneric(Material.rock).setBlockName("block_neodymium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_neodymium");		
 		block_calcium = new BlockGeneric(Material.rock).setBlockName("block_calcium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_calcium");		
 		block_sodium = new BlockGeneric(Material.rock).setBlockName("block_sodium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_sodium");		
+		block_gh336 = new BlockGeneric(Material.rock).setBlockName("block_gh336").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_gh336");		
 
 	}
 
@@ -132,6 +134,7 @@ public class ModBlocks2 {
 		register(block_neodymium);
 		register(block_calcium);
 		register(block_sodium);
+		register(block_gh336);
 
 		GameRegistry.registerBlock(silo_hatch_ex, silo_hatch_ex.getUnlocalizedName());
 		GameRegistry.registerBlock(silo_hatch_large_ex, silo_hatch_large_ex.getUnlocalizedName());

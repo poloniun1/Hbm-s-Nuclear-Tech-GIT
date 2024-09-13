@@ -60,6 +60,7 @@ public class OreDictManager2 {
 
 	public static final DictFrame TI = new DictFrame("Titanium");
 	public static final DictFrame CU = new DictFrame("Copper");
+	public static final DictFrame CD = new DictFrame("Cadmium");
 
 	public static final DictFrame AL = new DictFrame("Aluminum");
 	//public static final DictFrame BI = new DictFrame("Bismuth");
@@ -77,6 +78,7 @@ public class OreDictManager2 {
 	public static final DictFrame TC99 = new DictFrame("Technetium99", "Tc99");
 	public static final DictFrame AU198 = new DictFrame("Gold198", "Au198");
 	public static final DictFrame PB209 = new DictFrame("Lead209", "Pb209");
+	public static final DictFrame GH336 = new DictFrame("Ghiorsium336", "Gh336");
 
 	public static final DictFrame CINNABAR = new DictFrame("Cinnabar");
 	public static final DictFrame HG = new DictFrame("Mercury");
@@ -113,8 +115,10 @@ public class OreDictManager2 {
 
 		TI	.ore(ModBlocks.cluster_titanium,ModBlocks.cluster_depth_titanium);
 		CU	.ore(ModBlocks.cluster_copper);
+		CD	.ore(ModBlocks.dirt_oily, ModBlocks.dirt_dead);
+
 		AL	.ore(ModBlocks.cluster_aluminium);
-		AS	.ore(ModBlocks.stone_porous,ModBlocks.dirt_oily, ModBlocks.dirt_dead, ModBlocks.stone_cracked, ModBlocks.sand_dirty, ModBlocks.sand_dirty_red )	.block(ModBlocks2.block_arsenic);
+		AS	.ore(ModBlocks.stone_porous, ModBlocks.stone_cracked, ModBlocks.sand_dirty, ModBlocks.sand_dirty_red )	.block(ModBlocks2.block_arsenic);
 		PAS	.ingot(ModItems.scrap_oil);
 		CA	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE) )	.block(ModBlocks2.block_calcium);
 		B	.ore(ModBlocks.ore_depth_borax );
@@ -129,6 +133,7 @@ public class OreDictManager2 {
 		TC99	.block(ModBlocks2.block_technetium);
 		AU198	.block(ModBlocks2.block_au198);
 		PB209	.block(ModBlocks2.block_pb209);
+		GH336	.block(ModBlocks2.block_gh336);
 
 		S	.ingot(ModItems.sulfur)	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.SULFUR));
 		KNO	.ingot(ModItems.niter);

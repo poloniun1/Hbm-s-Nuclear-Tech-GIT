@@ -88,6 +88,7 @@ public class Mats {
 	public static final NTMMaterial MAT_RADIUM		= makeSmeltable(8826,		RA226,		0xFCFCFC, 0xADBFBA, 0xE9FAF6).setShapes(FRAGMENT, NUGGET, BILLET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_ACTINIUM	= makeSmeltable(8927,		AC227,		0xECE0E0, 0x221616, 0x958989).setShapes(NUGGET, BILLET, INGOT).m();
 	public static final NTMMaterial MAT_CO60		= makeSmeltable(2760,		CO60,		0xC2D1EE, 0x353554, 0x8F72AE).setShapes(NUGGET, BILLET, INGOT, DUST).m();
+	public static final NTMMaterial MAT_AUSTRALIUM		= makeSmeltable(7997,		AUSTRALIUM,		0xFFEE8B, 0xC26E00, 0xF8D754).setShapes(NUGGET, BILLET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_AU198		= makeSmeltable(7998,		AU198,		0xFFFF8B, 0xC26E00, 0xE8D754).setShapes(NUGGET, BILLET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_PB209		= makeSmeltable(8209,		PB209,		0xB38A94, 0x12020E, 0x7B535D).setShapes(NUGGET, BILLET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_SCHRABIDIUM	= makeSmeltable(12626,		SA326,		0x32FFFF, 0x005C5C, 0x32FFFF).setShapes(NUGGET, WIRE, BILLET, INGOT, DUST, DENSEWIRE, PLATE, CASTPLATE, BLOCK).m();
