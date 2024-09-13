@@ -58,8 +58,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 	/* CONFIGURABLE CONSTANTS */
 	//because eclipse's auto complete is dumb as a fucking rock, it's now called "ZCapacity" so it's listed AFTER the actual stacks in the auto complete list.
 	//also martin i know you read these: no i will not switch to intellij after using eclipse for 8 years.
-	public static int recipeZCapacity = MaterialShapes.BLOCK.q(64);
-	public static int wasteZCapacity = MaterialShapes.BLOCK.q(64);
+	public static int recipeZCapacity = MaterialShapes.BLOCK.q(256);
+	public static int wasteZCapacity = MaterialShapes.BLOCK.q(256);
 	public static int processTime = 5_000;
 	public static double diffusion = 0.25D;
 	public static int maxHeat = 100_000;
@@ -231,8 +231,8 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 								TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 								if(stack.amount >= tile1.getCapacity()){
 									toCast.add(stack);
-									break;
-								}
+									break;						
+								}		
 							}
 						}
 					}
