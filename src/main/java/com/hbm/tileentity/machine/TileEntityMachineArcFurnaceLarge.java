@@ -161,9 +161,9 @@ public class TileEntityMachineArcFurnaceLarge extends TileEntityMachineBase impl
 			if(!this.liquids.isEmpty() && this.lid > 0F) {
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - 10);
-				int pov = 1;
+				int pov = 0;
 				Block b = worldObj.getBlock(xCoord + dir.offsetX * 3, yCoord - pov, zCoord + dir.offsetZ * 3);
-				for (int range =1;range < 6; range++){
+				for (int range =0;range < 5; range++){
 					if(b instanceof ICrucibleAcceptor)
 						break;
 					b = worldObj.getBlock(xCoord + dir.offsetX * 3, yCoord - range, zCoord + dir.offsetZ * 3);
