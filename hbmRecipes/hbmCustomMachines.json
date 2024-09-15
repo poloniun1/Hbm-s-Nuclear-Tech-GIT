@@ -715,6 +715,26 @@
         },
         {
           "inputFluids": [
+            ["NITRIC_ACID",500],
+            ["WATER",1000]
+          ],
+          "inputItems": [
+            ["item","hbm:tile.ore_vault",64]
+          ],
+          "outputFluids": [["SLOP",1500]],
+          "outputItems": [
+            ["hbm:item.bedrock_ore",2,1.0],
+            ["hbm:item.bedrock_ore",2,1,1.0],
+            ["hbm:item.bedrock_ore",2,2,1.0],
+            ["hbm:item.bedrock_ore",2,3,1.0],
+            ["hbm:item.bedrock_ore",2,4,1.0],
+            ["hbm:item.bedrock_ore",2,5,1.0]
+          ],
+          "duration": 10,
+          "consumptionPerTick": 2000
+        },
+        {
+          "inputFluids": [
             ["WATER",1000]
           ],
           "inputItems": [
