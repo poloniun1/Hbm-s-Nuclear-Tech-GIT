@@ -173,7 +173,7 @@ public class TileEntityMachineArcFurnaceLarge extends TileEntityMachineBase impl
 				List<MaterialStack> newCast = new ArrayList();
 				for(MaterialStack stack : this.liquids) {
 					if(b instanceof FoundryCastingBase) {
-						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 3, yCoord - pov, zCoord + dir.offsetZ * 3);
 						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 						if(stack.amount >= tile1.getCapacity()){
 							newCast.add(stack);
