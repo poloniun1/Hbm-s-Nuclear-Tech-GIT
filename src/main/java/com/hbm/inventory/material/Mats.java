@@ -109,6 +109,7 @@ public class Mats {
 	public static final NTMMaterial MAT_TANTALIUM		= makeSmeltable(7300,		TA,				0xFFFFFF, 0x1D1D36, 0xA89B74).setShapes(NUGGET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_NEODYMIUM		= makeSmeltable(6000,		ND,				0xE6E6B6, 0x1C1C00, 0x8F8F5F).setShapes(FRAGMENT, NUGGET, DUSTTINY, INGOT, DUST, DENSEWIRE, BLOCK).m();
 	public static final NTMMaterial MAT_NIOBIUM			= makeSmeltable(4100,		NB,				0xB76EC9, 0x2F2D42, 0xD576B1).setShapes(FRAGMENT, NUGGET, DUSTTINY, INGOT, DUST, BLOCK).m();
+	public static final NTMMaterial MAT_EUPH		= makeSmeltable(9000,		EUPH,				0xC76EC9, 0x3F2D42, 0xE576B1).setShapes(NUGGET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_BERYLLIUM		= makeSmeltable(400,		BE,				0xB2B2A6, 0x0F0F03, 0xAE9572).setShapes(FRAGMENT, NUGGET, INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_EMERALD			= makeNonSmeltable(401,		EMERALD,		0xBAFFD4, 0x003900, 0x17DD62).setConversion(MAT_BERYLLIUM, 4, 3).setShapes(FRAGMENT, DUST, GEM, BLOCK).n();
 	public static final NTMMaterial MAT_COBALT			= makeSmeltable(2700,		CO,				0xC2D1EE, 0x353554, 0x8F72AE).setShapes(FRAGMENT, NUGGET, DUSTTINY, BILLET, INGOT, DUST, BLOCK).m();

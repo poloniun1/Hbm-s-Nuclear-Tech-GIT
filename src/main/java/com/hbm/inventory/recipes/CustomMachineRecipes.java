@@ -21,6 +21,7 @@ import com.hbm.items.special.ItemBedrockOreNew.BedrockOreType;
 import com.hbm.items.special.ItemBedrockOreNew.BedrockOreGrade;
 import com.hbm.items.special.ItemBedrockOreNew;
 import com.hbm.util.Tuple.Pair;
+import com.hbm.blocks.ModBlocks2;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -70,7 +71,20 @@ public class CustomMachineRecipes extends SerializableRecipe {
 			recipe2.consumptionPerTick = 1000;
 			add(recipe2);
 		}
-		}			
+			CustomMachineRecipe recipe3 = new CustomMachineRecipe();
+			recipe3.inputFluids = new FluidStack[] {new FluidStack(Fluids.NITRIC_ACID, 1000),new FluidStack(Fluids.WATER,1000)};
+			recipe3.inputItems = new AStack[] {new ComparableStack(ModBlocks2.ore_vault,64)};
+			recipe3.outputFluids = new FluidStack[]{new FluidStack(Fluids.SLOP, 2000)};
+			recipe3.outputItems = new Pair[] {new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.LIGHT_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.HEAVY_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.RARE_EARTH,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.ACTINIDE,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.NON_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.CRYSTALLINE,2), 1F)};
+			recipe3.duration = 10;
+			recipe3.consumptionPerTick = 1000;
+			add(recipe1);	
+		}		
 	});
 	}
 

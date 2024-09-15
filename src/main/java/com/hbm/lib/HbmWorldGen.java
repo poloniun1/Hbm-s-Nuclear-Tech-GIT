@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.blocks.generic.BlockMotherOfAllOres;
 import com.hbm.blocks.generic.BlockNTMFlower.EnumFlowerType;
 import com.hbm.config.GeneralConfig;
@@ -231,6 +232,8 @@ public class HbmWorldGen implements IWorldGenerator {
 				if(randPosX <= -350 && randPosX >= -450 && randPosZ <= -350 && randPosZ >= -450)
 					(new WorldGenMinable(ModBlocks.ore_australium, 50)).generate(world, rand, randPosX, randPosY, randPosZ);
 			}
+			if((i % 125 == 0 )&&( j % 125 == 0))
+				(new WorldGenMinable(ModBlocks2.ore_vault, 15)).generate(world, rand, i, 35, j);
 		}
 		
 		boolean enableDungeons = world.getWorldInfo().isMapFeaturesEnabled();

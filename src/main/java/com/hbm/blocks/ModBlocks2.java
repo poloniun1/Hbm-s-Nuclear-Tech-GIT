@@ -53,6 +53,7 @@ public class ModBlocks2 {
 	public static Block ore_manganese;
 	public static Block ore_sodium;
 	public static Block ore_meteor_star;
+	public static Block ore_vault;
 
 	public static Block block_alexandrite;
 	public static Block block_arsenic;
@@ -89,6 +90,7 @@ public class ModBlocks2 {
 		ore_manganese = new BlockGeneric(Material.rock).setBlockName("ore_manganese").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_manganese");		
 		ore_sodium = new BlockGeneric(Material.rock).setBlockName("ore_sodium").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_sodium");		
 		ore_meteor_star = new BlockGeneric(Material.rock).setBlockName("ore_meteor_star").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_meteor_star");		
+		ore_vault = new BlockGeneric(Material.rock).setBlockName("ore_vault").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":ore_vault");		
 
 		block_alexandrite = new BlockGeneric(Material.rock).setBlockName("block_alexandrite").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_alexandrite");		
 		block_arsenic = new BlockGeneric(Material.rock).setBlockName("block_arsenic").setCreativeTab(null).setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.blockTab).setBlockTextureName(RefStrings.MODID + ":block_arsenic");		
@@ -121,6 +123,7 @@ public class ModBlocks2 {
 		register(ore_manganese);
 		register(ore_sodium);
 		register(ore_meteor_star);
+		register(ore_vault);
 
 		register(block_alexandrite);
 		register(block_arsenic);
