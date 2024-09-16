@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.logging.log4j.Level;
-
+import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.config.GeneralConfig;
 import com.hbm.entity.missile.*;
 import com.hbm.entity.missile.EntityCarrier;
@@ -50,7 +50,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver {
+public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver, IFluidCopiable {
 	
 	/** Automatic instantiation of generic missiles, i.e. everything that both extends EntityMissileBaseNT and needs a designator */
 	public static final HashMap<ComparableStack, Class<? extends EntityMissileBaseNT>> missiles = new HashMap();
@@ -472,6 +472,16 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public int[] getFluidIDToCopy() {
+		return new int[]{tanks[0].getTankType().getID(), tanks[1].getTankType().getID()};
+	}
+
+	@Override
+	public FluidTank getTankToPaste() {
+		return null;
 	}
 	
 	/** Any extra conditions for launching in addition to the missile being valid and fueled */
