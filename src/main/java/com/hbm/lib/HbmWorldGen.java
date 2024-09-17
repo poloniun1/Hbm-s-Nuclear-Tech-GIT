@@ -232,12 +232,10 @@ public class HbmWorldGen implements IWorldGenerator {
 				if(randPosX <= -350 && randPosX >= -450 && randPosZ <= -350 && randPosZ >= -450)
 					(new WorldGenMinable(ModBlocks.ore_australium, 50)).generate(world, rand, randPosX, randPosY, randPosZ);
 			}
-			if((i % 128 == 0 )&&( j % 128 == 0)){
+			if((i % 64 == 0 )&&( j % 64 == 0)){
 				for(int PosX = i-1; PosX <= i+1; PosX++){
-					for(int PosY = 34; PosY <= 36; PosY++){
-						for(int PosZ = j-1; PosZ <= j+1; PosZ++)
-							world.setBlock(PosX, PosY, PosZ, ModBlocks2.ore_vault);
-					}
+					for(int PosZ = j-1; PosZ <= j+1; PosZ++)
+						world.setBlock(PosX, 35, PosZ, ModBlocks2.ore_vault);
 				}
 			}
 		}
