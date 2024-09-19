@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.inventory.RecipesCommon.MetaBlock;
 import com.hbm.main.MainRegistry;
 import com.hbm.util.Compat;
@@ -88,16 +89,16 @@ public class FalloutConfigJSON {
 			if(m > 4) entries.add(new FalloutEntry().prim(new Triplet(ModBlocks.ore_sellafield_schrabidium, m, 1),	new Triplet(ModBlocks.ore_sellafield_uranium_scorched, m, 9))		.max(i * 5).sol(true).mB(ModBlocks.ore_gneiss_uranium));
 			entries.add(new FalloutEntry().prim(new Triplet(ModBlocks.ore_sellafield_radgem, m, 1))																						.max(i * 5).sol(true).mB(Blocks.diamond_ore));
 			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(Blocks.bedrock));
-			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(ModBlocks.ore_bedrock));
-			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(ModBlocks.ore_bedrock_oil));
+			//entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(ModBlocks.ore_bedrock));
+			//entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(ModBlocks.ore_bedrock_oil));
 			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_bedrock, m, 1)).max(i * 5).sol(true).mB(ModBlocks.sellafield_bedrock));
-			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.iron));
-			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.rock));
-			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.sand));
+			//entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.iron));
+			//entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.rock));
+			//entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.sand));
 			entries.add(new FalloutEntry()							.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.ground));
 			if(i <= 9) entries.add(new FalloutEntry()				.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mMa(Material.grass));
-			if(deepslate != null)	entries.add(new FalloutEntry()	.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mB(deepslate));
-			if(stone != null)		entries.add(new FalloutEntry()	.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mB(stone));
+			//if(deepslate != null)	entries.add(new FalloutEntry()	.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mB(deepslate));
+			//if(stone != null)		entries.add(new FalloutEntry()	.prim(new Triplet(ModBlocks.sellafield_slaked, m, 1)).max(i * 5).sol(true).mB(stone));
 		}
 		
 		entries.add(new FalloutEntry()
@@ -114,6 +115,108 @@ public class FalloutConfigJSON {
 		entries.add(new FalloutEntry()
 				.mB(Blocks.clay)
 				.prim(new Triplet(Blocks.hardened_clay, 0, 1)));
+
+
+		entries.add(new FalloutEntry()
+				.mB(Blocks.coal_block)
+				.prim(new Triplet(ModBlocks.block_graphite, 0, 3), new Triplet(Blocks.diamond_block, 0, 2), new Triplet(Blocks.emerald_block, 0, 1))
+				.c(0.6));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.iron_block)
+				.prim(new Triplet(ModBlocks.block_tantalium, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.gold_block)
+				.prim(new Triplet(ModBlocks.block_australium, 0, 4),new Triplet(ModBlocks2.block_au198, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_lead)
+				.prim(new Triplet(ModBlocks2.block_pb209, 0, 4),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_uranium)
+				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks2.block_technetium, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_plutonium)
+				.prim(new Triplet(ModBlocks.block_schrabidium, 0, 4),new Triplet(ModBlocks2.block_technetium, 0, 5),new Triplet(ModBlocks.block_bismuth, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_thorium)
+				.prim(new Triplet(ModBlocks.block_u235, 0, 1))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.stone_porous)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.01));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.stone_cracked)
+				.prim(new Triplet(ModBlocks2.block_arsenic, 0, 1))
+				.c(0.01));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.sand_dirty)
+				.prim(new Triplet(ModBlocks.block_white_phosphorus, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.sand_dirty_red)
+				.prim(new Triplet(ModBlocks.block_white_phosphorus, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.dirt_dead)
+				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.dirt_oily)
+				.prim(new Triplet(ModBlocks.block_cadmium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_oil_sand)
+				.prim(new Triplet(ModBlocks.block_polymer, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_schrabidium)
+				.prim(new Triplet(ModBlocks.block_euphemium, 0, 1))
+				.c(0.05));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_euphemium)
+				.prim(new Triplet(ModBlocks.block_dineutronium, 0, 1))
+				.c(0.05));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_tantalium)
+				.prim(new Triplet(ModBlocks2.block_osmiridium, 0, 1))
+				.c(0.01));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_beryllium)
+				.prim(new Triplet(Blocks.emerald_block, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.emerald_block)
+				.prim(new Triplet(ModBlocks2.block_alexandrite, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.diamond_block)
+				.prim(new Triplet(ModBlocks2.block_volcanic, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_lithium)
+				.prim(new Triplet(ModBlocks.block_tritium, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_rare)
+				.prim(new Triplet(ModBlocks2.block_neodymium, 0, 1),new Triplet(ModBlocks.block_niobium, 0, 2),new Triplet(ModBlocks.block_zirconium, 0, 2),new Triplet(ModBlocks.block_desh, 0, 5))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.ore_gneiss_rare)
+				.prim(new Triplet(ModBlocks2.block_neodymium, 0, 1),new Triplet(ModBlocks.block_niobium, 0, 2),new Triplet(ModBlocks.block_zirconium, 0, 2),new Triplet(ModBlocks.block_desh, 0, 5))
+				.c(0.1));
+		entries.add(new FalloutEntry()
+				.mB(ModBlocks.block_cobalt)
+				.prim(new Triplet(ModBlocks.block_starmetal, 0, 1))
+				.c(0.2));
+		entries.add(new FalloutEntry()
+				.mB(Blocks.quartz_block)
+				.prim(new Triplet(ModBlocks2.block_silicon, 0, 1))
+				.c(0.1));
 	}
 	
 	private static void writeDefault(File file) {

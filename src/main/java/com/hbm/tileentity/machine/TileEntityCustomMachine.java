@@ -22,6 +22,7 @@ import com.hbm.module.ModulePatternMatcher;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachinePolluting;
 import com.hbm.tileentity.TileEntityProxyBase;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
 import com.hbm.util.Compat;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
@@ -46,7 +47,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 	public MachineConfiguration config;
 
 	public long power;
-	public int flux;
+	public long flux;
 	public int heat;
 	public int maxHeat;
 	public int progress;
@@ -140,7 +141,8 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 								if (tile instanceof TileEntityReactorResearch) {
 
 									TileEntityReactorResearch reactor = (TileEntityReactorResearch) tile;
-									this.flux = reactor.totalFlux;
+									this.flux += reactor.totalFlux;
+									this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
 								}
 							}
 						}
@@ -180,6 +182,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 						this.progress++;
 						this.power += powerReq;
 						this.heat -= cachedRecipe.heat;
+						this.flux -=cachedRecipe.flux;
 						if (power > config.maxPower) power = config.maxPower;
 						if (worldObj.getTotalWorldTime() % 20 == 0) {
 							pollution(cachedRecipe);
@@ -203,6 +206,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 							this.progress++;
 							this.power -= powerReq;
 							this.heat -= recipe.heat;
+							this.flux -=recipe.flux;
 							if (worldObj.getTotalWorldTime() % 20 == 0) {
 								pollution(recipe);
 								radiation(recipe);
@@ -225,7 +229,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 			data.setString("type", this.machineType);
 			data.setLong("power", power);
 			data.setBoolean("structureOK", structureOK);
-			data.setInteger("flux", flux);
+			data.setLong("flux", flux);
 			data.setInteger("heat", heat);
 			data.setInteger("progress", progress);
 			data.setInteger("maxProgress", maxProgress);
@@ -272,6 +276,8 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 			ChunkRadiationManager.proxy.decrementRad(worldObj, xCoord, yCoord, zCoord, -recipe.radiationAmount);
 		}
 	}
+
+
 	protected void tryPullHeat(int x, int y, int z) {
 		TileEntity con = worldObj.getTileEntity(x, y, z);
 
@@ -467,7 +473,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 
 		this.power = nbt.getLong("power");
 		this.progress = nbt.getInteger("progress");
-		this.flux = nbt.getInteger("flux");
+		this.flux = nbt.getLong("flux");
 		this.heat = nbt.getInteger("heat");
 		this.structureOK = nbt.getBoolean("structureOK");
 		this.maxProgress = nbt.getInteger("maxProgress");
@@ -592,13 +598,13 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 
 		return 0;
 	}
-	
+
 	@Override
 	public long getReceiverSpeed() {
 		if(this.config != null && !this.config.generatorMode) return this.getMaxPower();
 		return 0;
 	}
-	
+
 	@Override
 	public long getProviderSpeed() {
 		if(this.config != null && this.config.generatorMode) return this.getMaxPower();

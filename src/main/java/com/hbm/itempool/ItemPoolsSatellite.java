@@ -19,42 +19,43 @@ public class ItemPoolsSatellite {
 			this.pool = new WeightedRandomChestContent[] {
 					weighted(ModItems.powder_aluminium, 0, 3, 3, 10),
 					weighted(ModItems.powder_iron, 0, 3, 3, 10),
-					weighted(ModItems.powder_titanium, 0, 2, 2, 8),
+					weighted(ModItems.powder_titanium, 0, 2, 2, 10),
 					weighted(ModItems.crystal_tungsten, 0, 2, 2, 7),
-					weighted(ModItems.powder_coal, 0, 4, 4, 15),
-					weighted(ModItems.powder_uranium, 0, 2, 2, 5),
-					weighted(ModItems.powder_plutonium, 0, 1, 1, 5),
-					weighted(ModItems.powder_thorium, 0, 2, 2, 7),
-					weighted(ModItems.powder_desh_mix, 0, 3, 3, 5),
-					weighted(ModItems.powder_diamond, 0, 2, 2, 7),
-					weighted(Items.redstone, 0, 5, 5, 15),
-					weighted(ModItems.powder_nitan_mix, 0, 2, 2, 5),
-					weighted(ModItems.powder_power, 0, 2, 2, 5),
-					weighted(ModItems.powder_copper, 0, 5, 5, 15),
+					weighted(ModItems.powder_coal, 0, 4, 4, 10),
+					weighted(ModItems.powder_uranium, 0, 2, 2, 10),
+					weighted(ModItems.powder_plutonium, 0, 1, 1, 10),
+					weighted(ModItems.powder_thorium, 0, 2, 2, 10),
+					weighted(ModItems.powder_desh, 0, 3, 3, 10),
+					weighted(ModItems.powder_diamond, 0, 2, 2, 10),
+					weighted(Items.redstone, 0, 5, 5, 10),
+					weighted(ModItems.powder_nitan_mix, 0, 2, 2, 10),
+					weighted(ModItems.powder_spark_mix, 0, 1, 1, 10),
+					weighted(ModItems.powder_power, 0, 2, 2, 10),
+					weighted(ModItems.powder_copper, 0, 5, 5, 10),
 					weighted(ModItems.powder_lead, 0, 3, 3, 10),
-					weighted(ModItems.fluorite, 0, 4, 4, 15),
+					weighted(ModItems.fluorite, 0, 4, 4, 10),
 					weighted(ModItems.powder_lapis, 0, 4, 4, 10),
-					weighted(ModItems.crystal_aluminium, 0, 1, 1, 5),
-					weighted(ModItems.crystal_gold, 0, 1, 1, 5),
-					weighted(ModItems.crystal_phosphorus, 0, 1, 1, 10),
-					weighted(ModBlocks.gravel_diamond, 0, 1, 1, 3),
-					weighted(ModItems.crystal_uranium, 0, 1, 1, 3),
-					weighted(ModItems.crystal_plutonium, 0, 1, 1, 3),
-					weighted(ModItems.crystal_trixite, 0, 1, 1, 1),
-					weighted(ModItems.crystal_starmetal, 0, 1, 1, 1),
-					weighted(ModItems.crystal_lithium, 0, 2 ,2, 4)
+					weighted(ModItems.powder_combine_steel, 0, 1, 1, 8),
+					weighted(ModItems.powder_magic, 0, 1, 1, 7),
+					weighted(ModItems.powder_dineutronium, 0, 1, 1, 7),
+					weighted(ModItems.ingot_technetium, 0, 1, 1, 10),
+					weighted(ModItems.powder_meteorite, 0, 1, 1, 8)
 			};
 		}};
 		
 		new ItemPool(POOL_SAT_LUNAR) {{
 			this.pool = new WeightedRandomChestContent[] {
-					weighted(ModBlocks.moon_turf, 0, 48, 48, 5),
-					weighted(ModBlocks.moon_turf, 0, 32, 32, 7),
-					weighted(ModBlocks.moon_turf, 0, 16, 16, 5),
+					weighted(ModBlocks.moon_turf, 0, 8, 8, 15),
+					weighted(ModBlocks.moon_turf, 0, 16, 16, 15),
 					weighted(ModItems.powder_lithium, 0, 3, 3, 5),
 					weighted(ModItems.powder_iron, 0, 3, 3, 5),
-					weighted(ModItems.crystal_iron, 0, 1, 1, 1),
-					weighted(ModItems.crystal_lithium, 0, 1, 1, 1)
+					weighted(ModItems.powder_nitan_mix, 0, 2, 2, 10),
+					weighted(ModItems.powder_spark_mix, 0, 1, 1, 10),
+					weighted(ModItems.powder_combine_steel, 0, 1, 1, 8),
+					weighted(ModItems.powder_magic, 0, 1, 1, 7),
+					weighted(ModItems.powder_dineutronium, 0, 1, 1, 7),
+					weighted(ModItems.ingot_technetium, 0, 1, 1, 10),
+					weighted(ModItems.powder_meteorite, 0, 1, 1, 8)
 			};
 		}};
 	}

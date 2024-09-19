@@ -13,21 +13,24 @@ import com.hbm.inventory.fluid.trait.FT_Coolable;
 import com.hbm.inventory.fluid.trait.FT_Coolable.CoolingType;
 import com.hbm.inventory.gui.GUIMachineTurbine;
 import com.hbm.lib.Library;
-import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.IConfigurableMachine;
 import com.hbm.tileentity.IBufPacketReceiver;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityLoadedBase;
 import com.hbm.util.CompatEnergyControl;
 
+import com.hbm.blocks.ModBlocks2;
+import com.hbm.blocks.machine.rbmk.RBMKBase;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import api.hbm.energymk2.IBatteryItem;
 import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
+import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import io.netty.buffer.ByteBuf;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
@@ -39,17 +42,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.block.Block;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityMachineTurbine extends TileEntityLoadedBase implements ISidedInventory, IEnergyProviderMK2, IFluidStandardTransceiver, IBufPacketReceiver, IGUIProvider, SimpleComponent, IInfoProviderEC, CompatHandler.OCComponent, IConfigurableMachine, IFluidCopiable{
+public class TileEntityMachineTurbine extends TileEntityLoadedBase implements ISidedInventory,IBufPacketReceiver, IEnergyProviderMK2, IFluidStandardTransceiver, IGUIProvider, SimpleComponent, IInfoProviderEC, IConfigurableMachine {
 
 	private ItemStack slots[];
 
 	public long power;
+	public static long maxPower = 100000000000000L;
 	public int age = 0;
 	public FluidTank[] tanks;
-	
+	public int initmeta = 0;
 	private static final int[] slots_top = new int[] {4};
 	private static final int[] slots_bottom = new int[] {6};
 	private static final int[] slots_side = new int[] {4};
@@ -57,19 +63,17 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 	private String customName;
 	protected double[] info = new double[3];
 	
-	//Configurable values
-	public static long maxPower = 1_000_000;
-	public static int inputTankSize = 64_000;
-	public static int outputTankSize = 128_000;
-	public static int maxSteamPerTick = 6_000;
-	public static double efficiency = 0.85D;
+	public static int inputTankSize = 12800000;
+	public static int outputTankSize = 12800000;
 
+	public static double efficiency = 0.85D;
 	public TileEntityMachineTurbine() {
 		slots = new ItemStack[7];
 		tanks = new FluidTank[2];
 		tanks[0] = new FluidTank(Fluids.STEAM, inputTankSize);
 		tanks[1] = new FluidTank(Fluids.SPENTSTEAM, outputTankSize);
 	}
+
 	@Override
 	public String getConfigName() {
 		return "steamturbine";
@@ -80,7 +84,7 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 		maxPower = IConfigurableMachine.grab(obj, "L:maxPower", maxPower);
 		inputTankSize = IConfigurableMachine.grab(obj, "I:inputTankSize", inputTankSize);
 		outputTankSize = IConfigurableMachine.grab(obj, "I:outputTankSize", outputTankSize);
-		maxSteamPerTick = IConfigurableMachine.grab(obj, "I:maxSteamPerTick", maxSteamPerTick);
+
 		efficiency = IConfigurableMachine.grab(obj, "D:efficiency", efficiency);
 	}
 
@@ -89,7 +93,7 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 		writer.name("L:maxPower").value(maxPower);
 		writer.name("I:inputTankSize").value(inputTankSize);
 		writer.name("I:outputTankSize").value(outputTankSize);
-		writer.name("I:maxSteamPerTick").value(maxSteamPerTick);
+
 		writer.name("D:efficiency").value(efficiency);
 	}
 
@@ -268,6 +272,33 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 			}
 			
 			this.subscribeToAllAround(tanks[0].getTankType(), this);
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&& worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_turbine){
+			if (Fluids.fromName("SUPERCOOLANT_HOT")!=Fluids.NONE)
+				tanks[0].setTankType(Fluids.fromName("SUPERCOOLANT_HOT"));
+			else tanks[0].setTankType(Fluids.fromName("SUPERHOTSTEAM"));
+			for(int i = 0; i < 7; i++) {
+				for(int j = 0; j <7; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 3, yCoord, zCoord + j - 3);
+				
+				if(b instanceof RBMKBase) {
+
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 3, yCoord, zCoord + j - 3);
+					
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+							
+							int prov = Math.min(tanks[0].getMaxFill() -tanks[0].getFill(), rbmk.steam);
+							rbmk.steam -= prov;
+							tanks[0].setFill(tanks[0].getFill() + prov);
+							}
+						}
+					}
+				}
+			}
+		}
 			
 			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
@@ -280,19 +311,20 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 			boolean valid = false;
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
-				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; //small turbine is only 85% efficient by default
+				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; //small turbine is 90% efficient
+				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) ;//but coolant is 100% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
 					int inputOps = tanks[0].getFill() / trait.amountReq;
 					int outputOps = (tanks[1].getMaxFill() - tanks[1].getFill()) / trait.amountProduced;
-					int cap = maxSteamPerTick / trait.amountReq;
+					int cap = 5000000 / trait.amountReq;
 					int ops = Math.min(inputOps, Math.min(outputOps, cap));
 					tanks[0].setFill(tanks[0].getFill() - ops * trait.amountReq);
 					tanks[1].setFill(tanks[1].getFill() + ops * trait.amountProduced);
-					this.power += (ops * trait.heatEnergy * eff);
+					this.power += ops *eff * trait.heatEnergy;
 					info[0] = ops * trait.amountReq;
 					info[1] = ops * trait.amountProduced;
-					info[2] = ops * trait.heatEnergy * eff;
+					info[2] =ops *  eff * trait.heatEnergy ;
 					valid = true;
 				}
 			}
@@ -300,12 +332,37 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 			if(power > maxPower) power = maxPower;
 			
 			this.sendFluidToAll(tanks[1], this);
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&&  worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_turbine){	
+			for(int i = 0; i < 7; i++) {
+				for(int j = 0; j <7; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 3, yCoord, zCoord + j - 3);				
+				if(b instanceof RBMKBase) {		
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 3, yCoord, zCoord + j - 3);
+			
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+
+							
+							int prov = Math.min(rbmk.maxWater - rbmk.water, tanks[1].getFill());
+							rbmk.water += prov;
+							tanks[1].setFill(tanks[1].getFill() - prov);
+
+								}
+							}	
+						}
+					}
+				}
+			}			
 			
 			tanks[1].unloadTank(5, 6, slots);
 			
 			this.sendStandard(25);
 		}
 	}
+
 
 	@Override public void serialize(ByteBuf buf) {
 		buf.writeLong(power);
@@ -316,8 +373,7 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 	@Override public void deserialize(ByteBuf buf) {
 		this.power = buf.readLong();
 		tanks[0].deserialize(buf);
-		tanks[1].deserialize(buf);
-	}
+		tanks[1].deserialize(buf);}
 	
 	@Override
 	public long getPower() {
@@ -350,7 +406,6 @@ public class TileEntityMachineTurbine extends TileEntityLoadedBase implements IS
 	}
 
 	@Override
-	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "ntm_turbine";
 	}

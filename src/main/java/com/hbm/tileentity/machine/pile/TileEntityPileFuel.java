@@ -1,33 +1,47 @@
 package com.hbm.tileentity.machine.pile;
 
+import com.hbm.blocks.machine.pile.BlockGraphiteFuel;
+import com.hbm.items.ModItems;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.GeneralConfig;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
-
+import com.hbm.packet.PacketDispatcher;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import api.hbm.block.IPileNeutronReceiver;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.common.util.ForgeDirection;
+import com.hbm.blocks.generic.BlockFlammable;
+import com.hbm.items.ModItems;
+import com.hbm.lib.RefStrings;
+import com.hbm.util.InventoryUtil;
 
+import net.minecraft.inventory.IInventory;
+import api.hbm.block.IToolable;
+import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutronReceiver {
-
 	public int heat;
 	public static final int maxHeat = 1000;
 	public int neutrons;
 	public int lastNeutrons;
 	public int progress;
-	public static final int maxProgress = GeneralConfig.enable528 ? 75000 : 50000; //might double to reduce compact setup's effectiveness
-
+	public boolean canProduce = true;
+	public static final int maxProgress = GeneralConfig.enable528 ? 15000 : 12000; //might double to reduce compact setup's effectiveness
+	
 	@Override
 	public void updateEntity() {
-		
+
 		if(!worldObj.isRemote) {
 			dissipateHeat();
 			checkRedstone(react());
 			transmute();
-			
+		float ra = worldObj.rand.nextFloat();			
 			if(this.heat >= this.maxHeat) {
 				worldObj.newExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 4, true, true);
 				worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.gas_radon_dense);
@@ -42,9 +56,142 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 						new TargetPoint(worldObj.provider.dimensionId, xCoord + 0.5, yCoord + 1, zCoord + 0.5, 20));
 				MainRegistry.proxy.effectNT(data);
 			}
-			
+			if(this.progress >= this.maxProgress-500 && canProduce) {
+				canProduce = false ;
+				if(ra < 0.2){
+				ItemStack out = ra > 0.175 ? new ItemStack(ModItems.nugget_bismuth):new ItemStack(ModItems.nugget_technetium);
+				boolean canOutput = true;
+				here:
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);
+				if(te0 instanceof IInventory) {
+					IInventory inv = (IInventory) te0;								
+
+						for(int k = 0; k < inv.getSizeInventory(); k++) {
+	
+							int slot = k;
+							
+							if(!inv.isItemValidForSlot(slot, out))
+								continue;
+								
+							ItemStack target = inv.getStackInSlot(slot);
+							
+							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
+								target.stackSize ++;
+								canOutput = false;
+								break here;
+							}
+						}
+					if(canOutput){	
+						for(int k = 0; k <inv.getSizeInventory(); k++) {
+	
+							int slot = k;
+							
+							if(!inv.isItemValidForSlot(slot, out))
+								continue;
+							
+							if(inv.getStackInSlot(slot) == null ) {
+								ItemStack copy = out.copy();
+								copy.stackSize = 1;
+								inv.setInventorySlotContents(slot, copy);
+								canOutput = false;
+								break here;
+							}
+						}
+						}
+				}
+			}}
+				if(canOutput){
+				ForgeDirection dir = ForgeDirection.DOWN;
+				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, out);
+				dust.motionX = dir.offsetX * 0.25;
+				dust.motionY = dir.offsetY * 0.25;
+				dust.motionZ = dir.offsetZ * 0.25;
+				worldObj.spawnEntityInWorld(dust);
+				}	}}		
+		
 			if(this.progress >= this.maxProgress) {
-				worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_plutonium, this.getBlockMetadata() & 7, 3);
+				boolean canOutput = true;
+				boolean canInput = true;
+				there:
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te0 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);
+				if(te0 instanceof IInventory) {
+					IInventory inv = (IInventory) te0;								
+					ItemStack out =new ItemStack(ModItems.pile_rod_pu239);
+						for(int k = 0; k < inv.getSizeInventory(); k++) {
+	
+							int slot = k;
+							
+							if(!inv.isItemValidForSlot(slot, out))
+								continue;
+								
+							ItemStack target = inv.getStackInSlot(slot);
+							
+							if(canOutput && InventoryUtil.doesStackDataMatch(out, target) && target.stackSize < Math.min(target.getMaxStackSize(), inv.getInventoryStackLimit())) {
+								target.stackSize ++;
+								canOutput = false;
+								break there;
+							}
+						}
+					if(canOutput){	
+						for(int k = 0; k <inv.getSizeInventory(); k++) {
+	
+							int slot = k;
+							
+							if(!inv.isItemValidForSlot(slot, out))
+								continue;
+							
+							if(inv.getStackInSlot(slot) == null ) {
+								ItemStack copy = out.copy();
+								copy.stackSize = 1;
+								inv.setInventorySlotContents(slot, copy);
+								canOutput = false;
+								break there;
+							}
+						}
+						}
+				}
+			}}
+				if(canOutput){
+				ForgeDirection dir = ForgeDirection.DOWN;
+				EntityItem dust = new EntityItem(worldObj, xCoord + 0.5D + dir.offsetX * 0.75D, yCoord + 0.5D + dir.offsetY * 0.75D, zCoord + 0.5D + dir.offsetZ * 0.75D, new ItemStack(ModItems.pile_rod_pu239));
+				dust.motionX = dir.offsetX * 0.25;
+				dust.motionY = dir.offsetY * 0.25;
+				dust.motionZ = dir.offsetZ * 0.25;
+				worldObj.spawnEntityInWorld(dust);
+				}
+				newthere:
+				for (int i = -4 ; i <= 4 ; i++){
+					for (int j = -4 ; j <= 4 ; j++){
+						TileEntity te1 = worldObj.getTileEntity(xCoord + i, yCoord , zCoord + j);					
+				if(te1 instanceof IInventory) {
+						
+					IInventory inv = (IInventory) te1;
+					int size = inv.getSizeInventory();
+						
+					for(int k = 0; k < size; k++) {
+						int index = k;
+						ItemStack stack = inv.getStackInSlot(index);
+						if(stack != null &&stack.getItem()== ModItems.pile_rod_uranium){
+							inv.decrStackSize(index, 1);
+							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_fuel ,0, 3);
+							canInput = false;
+							break newthere;
+						}
+						else if(stack != null &&stack.getItem()== ModItems.pile_rod_lithium){
+							inv.decrStackSize(index, 1);
+							worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_lithium ,0, 3);
+							canInput = false;
+							break newthere;
+						}
+					}
+
+				}}}
+				if(canInput)	worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.block_graphite_drilled, 0, 3);
+
 			}
 		}
 		
@@ -68,7 +215,7 @@ public class TileEntityPileFuel extends TileEntityPileBase implements IPileNeutr
 		if(reaction <= 0)
 			return lastProgress;
 		
-		this.heat += reaction;
+		//this.heat += reaction;
 		
 		for(int i = 0; i < 12; i++)
 			this.castRay((int) Math.max(reaction * 0.25, 1), 5);

@@ -118,7 +118,21 @@ public class PyroOvenRecipes extends SerializableRecipe {
 		recipes.add(new PyroOvenRecipe(60)
 				.in(new FluidStack(GAS_COKER, 4_000))
 				.out(new FluidStack(Fluids.REFORMGAS, 100)));
+		recipes.add(new PyroOvenRecipe(40)
+				.in(new ComparableStack(ModItems.powder_ash, 1, 4))
+				.in(new FluidStack(RADIOSOLVENT, 500))
+				.out(new ItemStack(ModItems.powder_ash, 1, 5)));
+		recipes.add(new PyroOvenRecipe(40)
+				.in(new ComparableStack(ModItems.powder_ash, 4, 5))
+				.in(new FluidStack(XYLENE, 1000))
+				.out(new ItemStack(ModItems.ingot_cft)));
+		recipes.add(new PyroOvenRecipe(240)
+				.in(new ComparableStack(ModItems.powder_ash, 4, 4))
+				.in(new FluidStack(BALEFIRE, 200))
+				.out(new ItemStack(ModItems.ingot_cft)));
 	}
+
+
 
 	private static void registerSFAuto(FluidType fluid) {
 		registerSFAuto(fluid, 1_440_000L, ModItems.solid_fuel); //3200 burntime * 1.5 burntime bonus * 300 TU/t

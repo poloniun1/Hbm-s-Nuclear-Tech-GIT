@@ -5,8 +5,8 @@ import com.hbm.entity.projectile.EntityChopperMine;
 import com.hbm.items.ModItems;
 import com.hbm.lib.Library;
 import com.hbm.lib.ModDamageSource;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 
 import api.hbm.entity.IRadiationImmune;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
@@ -60,7 +60,7 @@ public class EntityHunterChopper extends EntityFlying implements IMob, IBossDisp
 		if(!(source == ModDamageSource.shrapnel || source == ModDamageSource.nuclearBlast || source == ModDamageSource.blackhole || source.isExplosion() || ModDamageSource.getIsTau(source) || ModDamageSource.getIsSubatomic(source) || ModDamageSource.getIsDischarge(source)))
 			amount *= 0.1F;
 
-		if(this.isEntityInvulnerable() || source instanceof EntityDamageSource || this.getHealth() <= 0.1F) {
+		if(this.isEntityInvulnerable()|| this.getHealth() <= 0.1F) { //|| source instanceof EntityDamageSource 
 			return false;
 		} else if(amount >= this.getHealth()) {
 			this.initDeath();

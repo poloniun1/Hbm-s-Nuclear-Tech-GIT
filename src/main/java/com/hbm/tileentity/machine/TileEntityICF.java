@@ -1,6 +1,5 @@
 package com.hbm.tileentity.machine;
 
-import com.hbm.handler.CompatHandler;
 import com.hbm.inventory.container.ContainerICF;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
@@ -11,25 +10,22 @@ import com.hbm.inventory.gui.GUIICF;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemICFPellet;
 import com.hbm.lib.Library;
-import com.hbm.packet.PacketDispatcher;
-import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
-import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
-import li.cil.oc.api.machine.Arguments;
-import li.cil.oc.api.machine.Callback;
-import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -38,16 +34,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-@Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider, IFluidStandardTransceiver, IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent, IFluidCopiable {
+public class TileEntityICF extends TileEntityMachineBase implements IEnergyProviderMK2, IGUIProvider, IFluidStandardTransceiver, IInfoProviderEC {
 	
 	public long laser;
 	public long maxLaser;
 	public long heat;
-	public static final long maxHeat = 1_000_000_000_000L;
+	public static final long maxHeat = 100_000_000_000_000L;
 	public long heatup;
 	public int consumption;
 	public int output;
+	public long power;
 	
 	public FluidTank[] tanks;
 
@@ -68,7 +64,10 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 	public void updateEntity() {
 		
 		if(!worldObj.isRemote) {
-			
+			if(RBMKDials.getGeneratorG(worldObj)){
+			this.laser = 500000000;
+			this.maxLaser = 500000000;
+			}
 			tanks[0].setType(11, slots);
 			
 			for(DirPos pos : getConPos()) {
@@ -127,7 +126,7 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 
 			this.consumption = 0;
 			this.output = 0;
-			
+			if(!RBMKDials.getGeneratorG(worldObj)){
 			if(tanks[0].getTankType().hasTrait(FT_Heatable.class)) {
 				FT_Heatable trait = tanks[0].getTankType().getTrait(FT_Heatable.class);
 				HeatingStep step = trait.getFirstStep();
@@ -145,7 +144,10 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 				this.consumption = step.amountReq * cycles;
 				this.output = step.amountProduced * cycles;
 			}
-			
+			}
+			else {
+				Generate();
+				}
 			for(DirPos pos : getConPos()) {
 				this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				this.sendFluid(tanks[2], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
@@ -292,90 +294,27 @@ public class TileEntityICF extends TileEntityMachineBase implements IGUIProvider
 		data.setDouble(CompatEnergyControl.D_OUTPUT_MB, this.output);
 	}
 
-	//OC stuff
+	private void Generate() {
+		this.power = this.heat;
+		for(DirPos pos : getConPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String getComponentName() {
-		return "ntm_icf_reactor";
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getHeat(Context context, Arguments args) {
-		return new Object[] {this.heat};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getHeatingRate(Context context, Arguments args) {
-		return new Object[] {this.heatup};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getMaxHeat(Context context, Arguments args) {
-		return new Object[] {maxHeat};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getPower(Context context, Arguments args) {
-		return new Object[] {this.laser};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getFluid(Context context, Arguments args) {
-		return new Object[] {
-				tanks[0].getFill(), tanks[0].getMaxFill(), tanks[0].getTankType().getUnlocalizedName(),
-				tanks[1].getFill(), tanks[1].getMaxFill(), tanks[1].getTankType().getUnlocalizedName(),
-				tanks[2].getFill(), tanks[2].getMaxFill()
-		};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getPelletStats(Context context, Arguments args) {
-		return new Object[] {
-				ItemICFPellet.getDepletion(slots[5]),
-				ItemICFPellet.getMaxDepletion(slots[5]),
-				ItemICFPellet.getFusingDifficulty(slots[5]),
-				ItemICFPellet.getType(slots[5], true).name(),
-				ItemICFPellet.getType(slots[5], false).name()
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String[] methods() {
-		return new String[] {
-				"getHeat",
-				"getHeatingRate",
-				"getMaxHeat",
-				"getPower",
-				"getFluid",
-				"getPelletStats"
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] invoke(String method, Context context, Arguments args) throws Exception {
-		switch (method) {
-			case ("getHeat"):
-				return getHeat(context, args);
-			case ("getHeatingRate"):
-				return getHeatingRate(context, args);
-			case ("getMaxHeat"):
-				return getMaxHeat(context, args);
-			case ("getPower"):
-				return getPower(context, args);
-			case ("getFluid"):
-				return getFluid(context, args);
-			case ("getPelletStats"):
-				return getPelletStats(context, args);
 		}
-		throw new NoSuchMethodException();
+		this.heat = 0;
+	}	
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+
+	@Override
+	public long getMaxPower() {
+		return maxHeat;
 	}
 }
