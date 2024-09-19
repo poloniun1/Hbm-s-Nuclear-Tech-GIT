@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockDummyable;
+import com.hbm.blocks.machine.FoundryCastingBase;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
@@ -32,7 +33,6 @@ import api.hbm.tile.IHeatSource;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -162,20 +162,26 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			if(!this.wasteStack.isEmpty()) {
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
-				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
-
+				int pov = 1;
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+				for (int range =1;range < 6; range++){
+					if(b instanceof ICrucibleAcceptor)
+						break;
+					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
+					pov = range;
+				}	
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
 				List<MaterialStack> newCast = new ArrayList();
 				for(MaterialStack stack : this.wasteStack) {
-					if(!RBMKDials.getCrucibleBABY(worldObj) || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank) {
-						newCast.add(stack);
-					}
-					if(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin) {
-						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+					if(b instanceof FoundryCastingBase) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
 						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 						if(stack.amount >= tile1.getCapacity()){
 							newCast.add(stack);
 						}	
+					}
+					if(b instanceof ICrucibleAcceptor && !(b instanceof FoundryCastingBase)) {
+						newCast.add(stack);
 					}
 				}
 				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
@@ -200,16 +206,19 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 				List<MaterialStack> toCast = new ArrayList();
-				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
-				
+				int pov = 1;
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+				for (int range =1;range < 6; range++){
+					if(b instanceof ICrucibleAcceptor)
+						break;
+					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
+					pov = range;
+				}				
 				CrucibleRecipe recipe = this.getLoadedRecipe();
 				//if no recipe is loaded, everything from the recipe stack will be drainable
 				if(recipe == null) {	
-					if(!RBMKDials.getCrucibleBABY(worldObj) || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank) {
-						toCast.addAll(this.recipeStack);		
-					}
-					if(b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin) {
-						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+					if(b instanceof FoundryCastingBase) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
 						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 						for(MaterialStack stack : this.recipeStack) {
 							if(stack.amount >= tile1.getCapacity()){
@@ -217,22 +226,24 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 							}
 						}	
 					}	
-			
+					if(b instanceof ICrucibleAcceptor && !(b instanceof FoundryCastingBase)) {
+						toCast.addAll(this.recipeStack);		
+					}			
 				} else {
 					
 					for(MaterialStack stack : this.recipeStack) {
 						for(MaterialStack output : recipe.output) {
-							if(stack.material == output.material && (!RBMKDials.getCrucibleBABY(worldObj)  || b == ModBlocks.foundry_channel || b == ModBlocks.foundry_tank)) {
-								toCast.add(stack);
-								break;
-							}
-							if(stack.material == output.material && (b == ModBlocks.foundry_mold || b == ModBlocks.foundry_basin)) {
-								TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - 1, zCoord + dir.offsetZ * 2);
+							if(stack.material == output.material && (b instanceof FoundryCastingBase)) {
+								TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
 								TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
 								if(stack.amount >= tile1.getCapacity()){
 									toCast.add(stack);
 									break;						
 								}		
+							}
+							if(stack.material == output.material && (b instanceof ICrucibleAcceptor) && !(b instanceof FoundryCastingBase)) {
+								toCast.add(stack);
+								break;
 							}
 						}
 					}
@@ -552,7 +563,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public GuiScreen provideGUI(int ID, EntityPlayer player, World world, int x, int y, int z) {
+	public Object provideGUI(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		return new GUICrucible(player.inventory, this);
 	}
 	
