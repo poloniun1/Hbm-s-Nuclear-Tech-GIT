@@ -4353,7 +4353,7 @@
 	["AROMATICS",1000]
           ],
           "outputItems": [
-	["hbm:item.coke",9]
+	["hbm:item.coke",9, 1.0]
           ],
           "duration": 50,
           "consumptionPerTick": 2500
