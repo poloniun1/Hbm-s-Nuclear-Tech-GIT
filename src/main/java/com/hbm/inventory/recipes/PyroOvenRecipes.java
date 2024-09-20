@@ -92,7 +92,7 @@ public class PyroOvenRecipes extends SerializableRecipe {
 				.out(new FluidStack(Fluids.SYNGAS, 1_000)).out(new ItemStack(Items.coal, 1, 1)));
 		//soot from tar
 		recipes.add(new PyroOvenRecipe(40)
-				.out(new FluidStack(Fluids.HYDROGEN, 250)).in(new OreDictStack(ANY_TAR.any(), 8))
+				.out(new FluidStack(Fluids.HYDROGEN, 250)).in(new OreDictStack(ANY_TAR.any(), 4))
 				.out(new FluidStack(Fluids.CARBONDIOXIDE, 1_000)).out(DictFrame.fromOne(ModItems.powder_ash, EnumAshType.SOOT)));
 		//heavyoil from coal
 		recipes.add(new PyroOvenRecipe(100)
@@ -119,16 +119,16 @@ public class PyroOvenRecipes extends SerializableRecipe {
 				.in(new FluidStack(GAS_COKER, 4_000))
 				.out(new FluidStack(Fluids.REFORMGAS, 100)));
 		recipes.add(new PyroOvenRecipe(40)
-				.in(new ComparableStack(ModItems.powder_ash, 1, 4))
-				.in(new FluidStack(RADIOSOLVENT, 500))
+				.in(new ComparableStack(ModItems.powder_ash, 3, 4))
+				.in(new FluidStack(RADIOSOLVENT, 600))
 				.out(new ItemStack(ModItems.powder_ash, 1, 5)));
 		recipes.add(new PyroOvenRecipe(40)
-				.in(new ComparableStack(ModItems.powder_ash, 4, 5))
-				.in(new FluidStack(XYLENE, 1000))
+				.in(new ComparableStack(ModItems.powder_ash, 3, 5))
+				.in(new FluidStack(XYLENE, 1200))
 				.out(new ItemStack(ModItems.ingot_cft)));
 		recipes.add(new PyroOvenRecipe(240)
-				.in(new ComparableStack(ModItems.powder_ash, 4, 4))
-				.in(new FluidStack(BALEFIRE, 200))
+				.in(new ComparableStack(ModItems.powder_ash, 9, 4))
+				.in(new FluidStack(BALEFIRE, 300))
 				.out(new ItemStack(ModItems.ingot_cft)));
 	}
 
