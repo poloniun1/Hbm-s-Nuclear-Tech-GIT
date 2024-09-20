@@ -55,7 +55,7 @@ public class ArcFurnaceRecipes extends SerializableRecipe {
 		recipes.put(new OreDictStack(ASBESTOS.dust()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.nugget_silicon, 4))		.fluid(new MaterialStack(Mats.MAT_SILICON, MaterialShapes.INGOT.q(1, 2))));
 		recipes.put(new OreDictStack(ASBESTOS.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.nugget_silicon, 40))	.fluid(new MaterialStack(Mats.MAT_SILICON, MaterialShapes.INGOT.q(9, 2))));
 		recipes.put(new OreDictStack(GRAPHITE.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems2.nugget_fuller, 3)));
-		recipes.put(new OreDictStack(COAL.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_ash, 2, 4)));
+		recipes.put(new OreDictStack(COAL.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_ash, 3, 4)));
 		recipes.put(new OreDictStack(ANY_COKE.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_ash, 1, 5)));
 
 		recipes.put(new ComparableStack(ModBlocks.sand_quartz), new ArcFurnaceRecipe().solid(new ItemStack(ModBlocks.glass_quartz)));
