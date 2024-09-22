@@ -165,8 +165,8 @@ recipes.addShapeless(<hbm:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hb
 recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
 <hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
 
-recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[null,<hbm:item.ingot_pu239>,null],
-[<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>],[null,<hbm:item.ingot_pu239>,null]]);
+recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>],
+[null,<hbm:item.ingot_pu239>,null],[<hbm:item.plate_iron>,<hbm:item.ingot_pu239>,<hbm:item.plate_iron>]]);
 recipes.addShaped(<hbm:item.pile_rod_plutonium>, [[null,<hbm:item.billet_plutonium>,null],
 [<hbm:item.plate_iron>,<hbm:item.billet_plutonium>,<hbm:item.plate_iron>],[null,<hbm:item.billet_plutonium>,null]]);
 
