@@ -174,6 +174,13 @@ recipes.addShaped(<hbm:item.cube_power>, [[<hbm:item.ingot_electronium>,<hbm:ite
 [<hbm:item.ingot_electronium>,<hbm:item.laser_crystal_digamma>,<hbm:item.ingot_electronium>],
 [<hbm:item.ingot_electronium>,<hbm:item.billet_yharonite>,<hbm:item.ingot_electronium>]]);
 
+recipes.addShaped(<hbm:item.dnt_pickaxe>, [[null,<ore:ingotDineutronium>,<hbm:item.ingot_u238m2>],
+[<ore:ingotDineutronium>,<hbm:item.mese_pickaxe>,<ore:ingotDineutronium>],
+[<hbm:item.motor_desh>,<ore:ingotDineutronium>,null]]);
+recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<hbm:item.ingot_electronium>],
+[<ore:ingotOsmiridium>,<hbm:item.dnt_pickaxe>,<ore:ingotOsmiridium>],
+[<hbm:item.motor_bismuth>,<ore:ingotOsmiridium>,null]]);
+
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:11>);
 //furnace.addRecipe(<hbm:item.nugget_mercury>,<RotaryCraft:rotarycraft_item_modextracts:47>);
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:63>);
