@@ -13,6 +13,8 @@ import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.recipes.CentrifugeRecipes;
 import com.hbm.inventory.recipes.CrystallizerRecipes;
 import com.hbm.inventory.recipes.CrystallizerRecipes.CrystallizerRecipe;
+import com.hbm.inventory.recipes.CustomMachineRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes.CustomMachineRecipe;
 import com.hbm.inventory.recipes.ShredderRecipes;
 import com.hbm.items.ModItems;
 import com.hbm.items.tool.IItemAbility;
@@ -30,6 +32,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import com.hbm.inventory.fluid.Fluids;
 
 public abstract class ToolAbility {
 
@@ -562,4 +565,340 @@ public abstract class ToolAbility {
 			return ToolConfig.abilityExplosion;
 		}
 	}
+	public static class WorldAbility extends ToolAbility {
+		
+		int radius;
+		
+		public WorldAbility(int radius) {
+			this.radius = radius;
+		}
+		
+		private Set<ThreeInts> pos = new HashSet();
+
+		@Override
+		public boolean onDig(World world, int x, int y, int z, EntityPlayer player, Block block, int meta, IItemAbility tool) {
+			
+			Block b = world.getBlock(x, y, z);
+
+			if(b == Blocks.stone && !ToolConfig.recursiveStone)
+				return false;
+			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack)
+				return false;
+
+			ItemStack stack = new ItemStack(b, 1, meta);
+			CrystallizerRecipe result = CrystallizerRecipes.getOutput(stack, Fluids.PEROXIDE);
+			
+			if(result != null) {
+			ItemStack stack1 = result.output;
+			ItemStack[] result1 = CentrifugeRecipes.getOutput(stack1);
+			
+			if(result1 != null) {
+				world.setBlockToAir(x, y, z);
+				player.getHeldItem().damageItem(1, player);
+				
+				for(ItemStack st : result1) {
+					if(st != null)
+						world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));
+				}
+			}
+			}			
+			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});
+			Collections.shuffle(indices);
+			
+			pos.clear();
+			
+			for(Integer i : indices) {
+				switch(i) {
+				case 0: breakExtra(world, x + 1, y, z, x, y, z, player, tool, 0); break;
+				case 1: breakExtra(world, x - 1, y, z, x, y, z, player, tool, 0); break;
+				case 2: breakExtra(world, x, y + 1, z, x, y, z, player, tool, 0); break;
+				case 3: breakExtra(world, x, y - 1, z, x, y, z, player, tool, 0); break;
+				case 4: breakExtra(world, x, y, z + 1, x, y, z, player, tool, 0); break;
+				case 5: breakExtra(world, x, y, z - 1, x, y, z, player, tool, 0); break;
+				}
+			}
+
+			
+			return false;
+		}
+		
+		private void breakExtra(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, IItemAbility tool, int depth) {
+			
+			if(pos.contains(new ThreeInts(x, y, z)))
+				return;
+			
+			depth += 1;
+			
+			if(depth > ToolConfig.recursionDepth)
+				return;
+			
+			pos.add(new ThreeInts(x, y, z));
+			
+			//don't lose the ref block just yet
+			if(x == refX && y == refY && z == refZ)
+				return;
+			
+			if(Vec3.createVectorHelper(x - refX, y - refY, z - refZ).lengthVector() > radius)
+				return;
+			
+			Block b = world.getBlock(x, y, z);
+			Block ref = world.getBlock(refX, refY, refZ);
+			int meta = world.getBlockMetadata(x, y, z);
+			int refMeta = world.getBlockMetadata(refX, refY, refZ);
+			
+			if(!isSameBlock(b, ref))
+				return;
+			
+			if(meta != refMeta)
+				return;
+			
+			if(player.getHeldItem() == null)
+				return;
+			
+			if(b == Blocks.lit_redstone_ore)
+				b = Blocks.redstone_ore;
+			
+			ItemStack stack = new ItemStack(b, 1, meta);
+			CrystallizerRecipe result = CrystallizerRecipes.getOutput(stack, Fluids.PEROXIDE);
+			
+			if(result != null) {
+			ItemStack stack1 = result.output;
+			ItemStack[] result1 = CentrifugeRecipes.getOutput(stack1);
+			
+			if(result1 != null) {
+				world.setBlockToAir(x, y, z);
+				player.getHeldItem().damageItem(1, player);
+				
+				for(ItemStack st : result1) {
+					if(st != null)
+						world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));
+				}
+			}
+			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+			
+			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});
+			Collections.shuffle(indices);
+			
+			for(Integer i : indices) {
+				switch(i) {
+				case 0: breakExtra(world, x + 1, y, z, refX, refY, refZ, player, tool, depth); break;
+				case 1: breakExtra(world, x - 1, y, z, refX, refY, refZ, player, tool, depth); break;
+				case 2: breakExtra(world, x, y + 1, z, refX, refY, refZ, player, tool, depth); break;
+				case 3: breakExtra(world, x, y - 1, z, refX, refY, refZ, player, tool, depth); break;
+				case 4: breakExtra(world, x, y, z + 1, refX, refY, refZ, player, tool, depth); break;
+				case 5: breakExtra(world, x, y, z - 1, refX, refY, refZ, player, tool, depth); break;
+				}
+			}
+
+		}
+		
+		private boolean isSameBlock(Block b1, Block b2) {
+			
+			if(b1 == b2) return true;
+			if((b1 == Blocks.redstone_ore && b2 == Blocks.lit_redstone_ore) || (b1 == Blocks.lit_redstone_ore && b2 == Blocks.redstone_ore)) return true;
+			
+			return false;
+		}
+
+		@Override
+		public String getName() {
+			return "tool.ability.world";
+		}
+
+		@Override
+		public String getFullName() {
+			return I18n.format(getName()) + getExtension();
+		}
+
+		@Override
+		public String getExtension() {
+			return " (" + radius + ")";
+		}
+
+		@Override
+		public boolean isAllowed() {
+			return ToolConfig.abilityVein;
+		}
+	}
+
+	public static class GodAbility extends ToolAbility {
+		
+		int radius;
+		
+		public GodAbility(int radius) {
+			this.radius = radius;
+		}
+		
+		private Set<ThreeInts> pos = new HashSet();
+
+		@Override
+		public boolean onDig(World world, int x, int y, int z, EntityPlayer player, Block block, int meta, IItemAbility tool) {
+			
+			Block b = world.getBlock(x, y, z);
+
+			if(b == Blocks.stone && !ToolConfig.recursiveStone)
+				return false;
+			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack)
+				return false;
+			ItemStack stack = new ItemStack(b, 1, meta);
+			CustomMachineRecipe result = getMatchingRecipe(stack);
+			
+			if(result != null) {
+			ItemStack stack1;
+
+			ItemStack stacka;
+			CustomMachineRecipe result1;
+			for(int i = 0; i < result.outputItems.length; i++) {
+				 stack1 = result.outputItems[i].key.copy();
+				result1 = getMatchingRecipe(stack1);
+				for(int k = 0; k < stack1.stackSize; k++) {			
+				if(result1 != null) {
+					world.setBlockToAir(x, y, z);
+					player.getHeldItem().damageItem(1, player);
+					ItemStack st;
+					for(int j = 0; j < result1.outputItems.length;j++) {
+						 st= result1.outputItems[j].key.copy();
+						if(st != null)
+							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));
+				}
+			}}}
+			}			
+			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});
+			Collections.shuffle(indices);
+			
+			pos.clear();
+			
+			for(Integer i : indices) {
+				switch(i) {
+				case 0: breakExtra(world, x + 1, y, z, x, y, z, player, tool, 0); break;
+				case 1: breakExtra(world, x - 1, y, z, x, y, z, player, tool, 0); break;
+				case 2: breakExtra(world, x, y + 1, z, x, y, z, player, tool, 0); break;
+				case 3: breakExtra(world, x, y - 1, z, x, y, z, player, tool, 0); break;
+				case 4: breakExtra(world, x, y, z + 1, x, y, z, player, tool, 0); break;
+				case 5: breakExtra(world, x, y, z - 1, x, y, z, player, tool, 0); break;
+				}
+			}
+
+			
+			return false;
+		}
+		
+		private void breakExtra(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, IItemAbility tool, int depth) {
+			
+			if(pos.contains(new ThreeInts(x, y, z)))
+				return;
+			
+			depth += 1;
+			
+			if(depth > ToolConfig.recursionDepth)
+				return;
+			
+			pos.add(new ThreeInts(x, y, z));
+			
+			//don't lose the ref block just yet
+			if(x == refX && y == refY && z == refZ)
+				return;
+			
+			if(Vec3.createVectorHelper(x - refX, y - refY, z - refZ).lengthVector() > radius)
+				return;
+			
+			Block b = world.getBlock(x, y, z);
+			Block ref = world.getBlock(refX, refY, refZ);
+			int meta = world.getBlockMetadata(x, y, z);
+			int refMeta = world.getBlockMetadata(refX, refY, refZ);
+			
+			if(!isSameBlock(b, ref))
+				return;
+			
+			if(meta != refMeta)
+				return;
+			
+			if(player.getHeldItem() == null)
+				return;
+			
+			if(b == Blocks.lit_redstone_ore)
+				b = Blocks.redstone_ore;
+			
+			ItemStack stack = new ItemStack(b, 1, meta);
+			CustomMachineRecipe result = getMatchingRecipe(stack);
+			
+			if(result != null) {
+			ItemStack stack1;
+
+			ItemStack stacka;
+			CustomMachineRecipe result1;
+			for(int i = 0; i < result.outputItems.length; i++) {
+				 stack1 = result.outputItems[i].key.copy();
+				result1 = getMatchingRecipe(stack1);
+				for(int k = 0; k < stack1.stackSize; k++) {			
+				if(result1 != null) {
+					world.setBlockToAir(x, y, z);
+					player.getHeldItem().damageItem(1, player);
+					ItemStack st;
+					for(int j = 0; j < result1.outputItems.length;j++) {
+						 st= result1.outputItems[j].key.copy();
+						if(st != null)
+							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));
+				}
+			}}}
+			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+			
+			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});
+			Collections.shuffle(indices);
+			
+			for(Integer i : indices) {
+				switch(i) {
+				case 0: breakExtra(world, x + 1, y, z, refX, refY, refZ, player, tool, depth); break;
+				case 1: breakExtra(world, x - 1, y, z, refX, refY, refZ, player, tool, depth); break;
+				case 2: breakExtra(world, x, y + 1, z, refX, refY, refZ, player, tool, depth); break;
+				case 3: breakExtra(world, x, y - 1, z, refX, refY, refZ, player, tool, depth); break;
+				case 4: breakExtra(world, x, y, z + 1, refX, refY, refZ, player, tool, depth); break;
+				case 5: breakExtra(world, x, y, z - 1, refX, refY, refZ, player, tool, depth); break;
+				}
+			}
+
+		}
+		
+		private boolean isSameBlock(Block b1, Block b2) {
+			
+			if(b1 == b2) return true;
+			if((b1 == Blocks.redstone_ore && b2 == Blocks.lit_redstone_ore) || (b1 == Blocks.lit_redstone_ore && b2 == Blocks.redstone_ore)) return true;
+			
+			return false;
+		}
+
+		public CustomMachineRecipe getMatchingRecipe(ItemStack stack) {
+			List<CustomMachineRecipe> recipes = CustomMachineRecipes.recipes.get("normalfactory");
+			if(recipes == null || recipes.isEmpty()) return null;
+
+			for(CustomMachineRecipe recipe : recipes) {
+				if(recipe.inputItems.length == 0) continue;
+				if(!recipe.inputItems[0].matchesRecipe(stack, true)) continue;
+				return recipe;
+			}
+
+			return null;
+		}
+
+		@Override
+		public String getName() {
+			return "tool.ability.god";
+		}
+
+		@Override
+		public String getFullName() {
+			return I18n.format(getName()) + getExtension();
+		}
+
+		@Override
+		public String getExtension() {
+			return " (" + radius + ")";
+		}
+
+		@Override
+		public boolean isAllowed() {
+			return ToolConfig.abilityVein;
+		}
+	}
+
 }

@@ -109,7 +109,8 @@ public class ModItems2 {
 	public static Item waste_sa326;
 	public static Item bred_lead;
 
-
+	public static Item dnt_pickaxe;
+	public static Item osmiridium_pickaxe;
 	public static void initializeItem()
 	{	
 		rbmk_pellet_euph = (ItemRBMKPellet) new ItemRBMKPellet("euphemium").setUnlocalizedName("rbmk_pellet_euph").setTextureName(RefStrings.MODID+ ":rbmk_pellet_euph");
@@ -187,6 +188,15 @@ public class ModItems2 {
 
 		plate_fuel_atbe = new ItemPlateFuel(2400000).setFunction(FunctionEnum.PASSIVE, 1000).setUnlocalizedName("plate_fuel_atbe").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":plate_fuel_atbe");
 		waste_plate_atbe = new ItemDepletedFuel().setUnlocalizedName("waste_plate_atbe").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_plate_atbe");
+
+		ToolMaterial matDNT = EnumHelper.addToolMaterial("HBM_DNT", 4, 0, 150F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_dineutronium));
+		dnt_pickaxe = new ItemToolAbility(35F, 0, matDNT, EnumToolType.MINER)
+				.addBreakAbility(new ToolAbility.WorldAbility(7))
+				.setDepthRockBreaker().setUnlocalizedName("dnt_pickaxe").setTextureName(RefStrings.MODID + ":mese_pickaxe");
+		ToolMaterial matOSMIRIDIUM = EnumHelper.addToolMaterial("HBM_OSMIRIDIUM", 4, 0, 200F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_osmiridium));
+		osmiridium_pickaxe = new ItemToolAbility(35F, 0, matOSMIRIDIUM, EnumToolType.MINER)
+				.addBreakAbility(new ToolAbility.GodAbility(3))
+				.setDepthRockBreaker().setUnlocalizedName("osmiridium_pickaxe").setTextureName(RefStrings.MODID + ":mese_pickaxe");
 		
 	}
 	
@@ -229,6 +239,8 @@ public class ModItems2 {
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
 		GameRegistry.registerItem(ingot_sodium, ingot_sodium.getUnlocalizedName());
 
+		GameRegistry.registerItem(dnt_pickaxe, dnt_pickaxe.getUnlocalizedName());
+		GameRegistry.registerItem(osmiridium_pickaxe, osmiridium_pickaxe.getUnlocalizedName());
 	}
 	
 	public static void addRemap(String unloc, Item item, Enum sub) {
