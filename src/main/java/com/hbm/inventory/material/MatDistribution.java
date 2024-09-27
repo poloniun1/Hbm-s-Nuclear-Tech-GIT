@@ -47,6 +47,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerEntry(Blocks.golden_rail, MAT_GOLD, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
 		registerEntry(Blocks.detector_rail, MAT_IRON, INGOT.q(6, 6), MAT_REDSTONE, DUST.q(1, 6));
 		registerEntry(Items.minecart, MAT_IRON, INGOT.q(5));
+		registerEntry(Items.flint, MAT_SILICON, NUGGET.q(4));
 		
 		//castables
 		registerEntry(ModItems.blade_titanium,				MAT_TITANIUM,		INGOT.q(2));
@@ -100,6 +101,8 @@ public class MatDistribution extends SerializableRecipe {
 		
 		registerEntry(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE), MAT_FLUX, DUST.q(10));
 		registerEntry(ModItems.powder_flux, MAT_FLUX, DUST.q(1));
+		registerEntry(ModItems.pile_rod_pu239, MAT_U235, BILLET.q(1), MAT_PU239, BILLET.q(1), MAT_URANIUM, BILLET.q(1), MAT_IRON, INGOT.q(2));
+		registerEntry(ModItems.pile_rod_plutonium, MAT_PU239, BILLET.q(1), MAT_PLUTONIUM, BILLET.q(2), MAT_IRON, INGOT.q(2));
 		registerEntry(new ItemStack(ModItems.plant_item, 1, 2), MAT_CADMIUM, QUANTUM.q(6));
 		registerEntry(new ItemStack(Items.coal, 1, 1), MAT_CARBON, NUGGET.q(3));
 
