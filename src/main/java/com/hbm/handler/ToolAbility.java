@@ -593,7 +593,7 @@ public abstract class ToolAbility {
 			ItemStack[] result1 = CentrifugeRecipes.getOutput(stack1);
 			
 			if(result1 != null) {
-				world.setBlockToAir(x, y, z);
+
 				player.getHeldItem().damageItem(1, player);
 				
 				for(ItemStack st : result1) {
@@ -618,7 +618,7 @@ public abstract class ToolAbility {
 				}
 			}
 
-			
+			world.setBlockToAir(x, y, z);			
 			return false;
 		}
 		
@@ -666,7 +666,7 @@ public abstract class ToolAbility {
 			ItemStack[] result1 = CentrifugeRecipes.getOutput(stack1);
 			
 			if(result1 != null) {
-				world.setBlockToAir(x, y, z);
+
 				player.getHeldItem().damageItem(1, player);
 				
 				for(ItemStack st : result1) {
@@ -689,7 +689,7 @@ public abstract class ToolAbility {
 				case 5: breakExtra(world, x, y, z - 1, refX, refY, refZ, player, tool, depth); break;
 				}
 			}
-
+			world.setBlockToAir(x, y, z);
 		}
 		
 		private boolean isSameBlock(Block b1, Block b2) {
@@ -753,7 +753,7 @@ public abstract class ToolAbility {
 				result1 = getMatchingRecipe(stack1);
 				for(int k = 0; k < stack1.stackSize; k++) {			
 				if(result1 != null) {
-					world.setBlockToAir(x, y, z);
+
 					player.getHeldItem().damageItem(1, player);
 					ItemStack st;
 					for(int j = 0; j < result1.outputItems.length;j++) {
@@ -779,7 +779,7 @@ public abstract class ToolAbility {
 				}
 			}
 
-			
+			world.setBlockToAir(x, y, z);			
 			return false;
 		}
 		
@@ -832,7 +832,7 @@ public abstract class ToolAbility {
 				result1 = getMatchingRecipe(stack1);
 				for(int k = 0; k < stack1.stackSize; k++) {			
 				if(result1 != null) {
-					world.setBlockToAir(x, y, z);
+
 					player.getHeldItem().damageItem(1, player);
 					ItemStack st;
 					for(int j = 0; j < result1.outputItems.length;j++) {
@@ -856,7 +856,7 @@ public abstract class ToolAbility {
 				case 5: breakExtra(world, x, y, z - 1, refX, refY, refZ, player, tool, depth); break;
 				}
 			}
-
+			world.setBlockToAir(x, y, z);
 		}
 		
 		private boolean isSameBlock(Block b1, Block b2) {
