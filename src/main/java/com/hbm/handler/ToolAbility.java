@@ -828,7 +828,8 @@ public abstract class ToolAbility {
 			ItemStack stacka;
 			CustomMachineRecipe result1;
 			for(int i = 0; i < result.outputItems.length; i++) {
-				 stack1 = result.outputItems[i].key.copy();
+				if(world.rand.nextFloat() < result.outputItems[i].value*2)
+				 {stack1 = result.outputItems[i].key.copy();
 				result1 = getMatchingRecipe(stack1);
 				for(int k = 0; k < stack1.stackSize; k++) {			
 				if(result1 != null) {
@@ -836,11 +837,12 @@ public abstract class ToolAbility {
 					player.getHeldItem().damageItem(1, player);
 					ItemStack st;
 					for(int j = 0; j < result1.outputItems.length;j++) {
-						 st= result1.outputItems[j].key.copy();
+						if(world.rand.nextFloat() < result1.outputItems[j].value*2)
+						 {st= result1.outputItems[j].key.copy();
 						if(st != null)
-							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));
+							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));}
 				}
-			}}}
+			}}}}
 			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
 			
 			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});

@@ -130,7 +130,7 @@ public class Mats {
 	public static final NTMMaterial MAT_CHLOROCALCITE	= makeNonSmeltable(1701, 	CHLOROCALCITE,	0xF7E761, 0x475B46, 0xA8B963).setShapes(FRAGMENT, DUST).n();
 	public static final NTMMaterial MAT_MOLYSITE		= makeNonSmeltable(1702, 	MOLYSITE, 		0xF9E97B, 0x216E00, 0xD0D264).setShapes(FRAGMENT, DUST).n();
 	public static final NTMMaterial MAT_CINNABAR		= makeNonSmeltable(8001,	CINNABAR,		0xD87070, 0x993030, 0xBF4E4E).setShapes(FRAGMENT, GEM).n();
-	public static final NTMMaterial MAT_MERCURY		= makeSmeltable(8002,	OreDictManager2.HG,		0xD8D9CF, 0xA16258, 0xE0B3A8).setShapes(INGOT, BLOCK).n();
+	public static final NTMMaterial MAT_MERCURY		= makeSmeltable(8002,	OreDictManager2.HG,		0xD8D9CF, 0xA16258, 0xE0B3A8).setShapes(NUGGET, INGOT, BLOCK).n();
 	public static final NTMMaterial MAT_CADMIUM			= makeSmeltable(4800,		CD,				0xFFFADE, 0x350000, 0xA85600).setShapes(INGOT, DUST, BLOCK).m();
 	public static final NTMMaterial MAT_SILICON			= makeSmeltable(1400,		SI,				0xD1D7DF, 0x1A1A3D, 0x878B9E).setShapes(FRAGMENT, NUGGET, BILLET, INGOT, BLOCK).m();
 	public static final NTMMaterial MAT_ASBESTOS		= makeSmeltable(1401,		ASBESTOS,		0xD8D9CF, 0x616258, 0xB0B3A8).setShapes(FRAGMENT, INGOT, BLOCK).n();

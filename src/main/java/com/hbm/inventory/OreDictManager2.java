@@ -139,7 +139,7 @@ public class OreDictManager2 {
 		KNO	.ingot(ModItems.niter);
 		F	.ingot(ModItems.fluorite);
 		CINNABAR	.ingot(ModItems.cinnebar);
-		HG	.ingot(ModItems.nugget_mercury)	.block(ModItems.bottle_mercury);
+		HG	.ingot(ModItems.ingot_mercury)	.nugget(ModItems.nugget_mercury)	.block(ModItems.bottle_mercury);
 		BAUXITE	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.BAUXITE));
 		ALEXANDRITE	.ingot(ModItems.gem_alexandrite )	.gem(ModItems.gem_alexandrite )	.ore(ModBlocks.ore_alexandrite )	.block(ModBlocks2.block_alexandrite );
 		VOLCANIC						.ingot(ModItems.gem_volcanic)	.block(ModBlocks2.block_volcanic);													
