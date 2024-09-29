@@ -4651,7 +4651,977 @@
           ],
           "duration": 40,
           "consumptionPerTick": 2500
-        }
+        },
+    {
+      "inputFluids": [],
+      "inputItems": [
+        ["item","hbm:item.biomass",16]
+      ],
+      "outputFluids": [
+        ["BIOGAS",2000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["BIOGAS",1500],
+        ["ETHANOL",250]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["BIOFUEL",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",2000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["LPG",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [],
+      "inputItems": [
+        ["item","hbm:tile.ore_oil_sand",16],
+        ["dict","anyTar"]
+      ],
+      "outputFluids": [
+        ["BITUMEN",1000]
+      ],
+      "outputItems": [
+        ["minecraft:sand",16,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["BITUMEN",1000]
+      ],
+      "inputItems": [
+        ["item","minecraft:gravel",2],
+        ["item","minecraft:sand",6]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:tile.asphalt",16,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",1800]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter"]
+      ],
+      "outputFluids": [
+        ["COOLANT",2000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["COOLANT",1800]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_ice"]
+      ],
+      "outputFluids": [
+        ["CRYOGEL",2000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["MERCURY",200],
+        ["LIGHTOIL",200]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_desh_mix"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_desh",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["KEROSENE",600],
+        ["MERCURY",200]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_nitan_mix"]
+      ],
+      "outputFluids": [
+        ["NITAN",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",1000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["PEROXIDE",800]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PEROXIDE",800],
+        ["WATER",1000]
+      ],
+      "inputItems": [
+        ["dict","dustSulfur"]
+      ],
+      "outputFluids": [
+        ["SULFURIC_ACID",2000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SULFURIC_ACID",500]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter"]
+      ],
+      "outputFluids": [
+        ["NITRIC_ACID",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["NAPHTHA",500],
+        ["AROMATICS",500]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["SOLVENT",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",500]
+      ],
+      "inputItems": [
+        ["dict","dustCoal",2],
+        ["dict","dustFluorite"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_polymer",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["AROMATICS",500],
+        ["PETROLEUM",500]
+      ],
+      "inputItems": [],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_bakelite",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["UNSATURATEDS",500]
+      ],
+      "inputItems": [
+        ["dict","dustSulfur"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_rubber",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["XYLENE",250],
+        ["PHOSGENE",250]
+      ],
+      "inputItems": [
+        ["item","hbm:tile.reinforced_glass"],
+        ["dict","boltSteel",4]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:tile.reinforced_laminate",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["XYLENE",500],
+        ["PHOSGENE",500]
+      ],
+      "inputItems": [],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_pc",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["UNSATURATEDS",250],
+        ["CHLORINE",250]
+      ],
+      "inputItems": [
+        ["dict","dustCadmium"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_pvc",2,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [],
+      "inputItems": [
+        ["item","minecraft:sugar"],
+        ["dict","dustSaltpeter"],
+        ["dict","sand"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ball_dynamite",2,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["AROMATICS",500]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ball_tnt",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SOURGAS",200,1],
+        ["NITRIC_ACID",10]
+      ],
+      "inputItems": [
+        ["item","hbm:item.ball_tnt"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ball_tatb",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["UNSATURATEDS",500]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_c4",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PEROXIDE",500]
+      ],
+      "inputItems": [
+        ["dict","billetUranium",2],
+        ["dict","dustSulfur",2]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.powder_yellowcake",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",1000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_yellowcake"],
+        ["dict","dustFluorite",4]
+      ],
+      "outputFluids": [
+        ["UF6",1200]
+      ],
+      "outputItems": [
+        ["hbm:item.sulfur",2,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",1000]
+      ],
+      "inputItems": [
+        ["dict","dustPlutonium"],
+        ["dict","dustFluorite",3]
+      ],
+      "outputFluids": [
+        ["PUF6",900]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PEROXIDE",2000]
+      ],
+      "inputItems": [
+        ["dict","dustSchrabidium"],
+        ["dict","dustSulfur",2]
+      ],
+      "outputFluids": [
+        ["SAS3",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["GAS",200]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter",2],
+        ["dict","plankWood"],
+        ["item","minecraft:sugar"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.cordite",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",100]
+      ],
+      "inputItems": [
+        ["dict","dustSaltpeter",2],
+        ["item","minecraft:brick"],
+        ["dict","dustCoal"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.plate_kevlar",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",2000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_cement"],
+        ["item","minecraft:gravel",8],
+        ["dict","sand",8]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:tile.concrete_smooth",16,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",2000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_cement"],
+        ["item","minecraft:gravel",2],
+        ["dict","sand",2],
+        ["dict","ingotAsbestos",4]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:tile.concrete_asbestos",16,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",2000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_cement",4],
+        ["item","minecraft:gravel",2],
+        ["dict","sand",8],
+        ["dict","billetUranium238",2]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:tile.ducrete_smooth",8,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",200],
+        ["NITRIC_ACID",100]
+      ],
+      "inputItems": [
+        ["item","hbm:item.solid_fuel",2]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.rocket_fuel",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WATER",4000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["HYDROGEN",400],
+        ["OXYGEN",400]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["NONE",0]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["XENON",50]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["OXYGEN",250]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["XENON",50]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SULFURIC_ACID",100]
+      ],
+      "inputItems": [
+        ["dict","dustDuraSteel",2],
+        ["dict","dustCopper"],
+        ["dict","dustCoal"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ingot_saturnite",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["KEROSENE",6000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.egg_balefire_shard"]
+      ],
+      "outputFluids": [
+        ["BALEFIRE",8000]
+      ],
+      "outputItems": [
+        ["hbm:item.powder_balefire",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SAS3",8000],
+        ["PEROXIDE",6000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.pellet_charged"]
+      ],
+      "outputFluids": [
+        ["SCHRABIDIC",16000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SCHRABIDIC",250]
+      ],
+      "inputItems": [
+        ["dict","dustIron"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.powder_schrabidate",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PEROXIDE",250],
+        ["HYDROGEN",500]
+      ],
+      "inputItems": [
+        ["dict","dustColtan",2],
+        ["dict","dustCoal"]
+      ],
+      "outputFluids": [
+        ["WATER",500]
+      ],
+      "outputItems": [
+        ["hbm:item.powder_coltan",1.0],
+        ["hbm:item.powder_niobium",1.0],
+        ["hbm:item.dust",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["GAS",1000],
+        ["OXYGEN",500]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_coltan"],
+        ["dict","dustFluorite"]
+      ],
+      "outputFluids": [
+        ["PAIN",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PAIN",1000],
+        ["PEROXIDE",500]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["WATER",250]
+      ],
+      "outputItems": [
+        ["hbm:item.gem_tantalium",1.0],
+        ["hbm:item.dust",3,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WASTEFLUID",1000]
+      ],
+      "inputItems": [
+        ["item","hbm:tile.sand_lead"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.nuclear_waste_vitrified",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["WASTEGAS",1000]
+      ],
+      "inputItems": [
+        ["item","hbm:tile.sand_lead"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.nuclear_waste_vitrified",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["HEATINGOIL",500],
+        ["UNSATURATEDS",500]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["LUBRICANT",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",100],
+        ["STEAM",1000]
+      ],
+      "inputItems": [
+        ["dict","anyTar"],
+        ["dict","dustLead"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.fuel_additive",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SMEAR",1000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["RECLAIMED",800]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["RECLAIMED",800],
+        ["LUBRICANT",200]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["PETROIL",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROIL",10000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.fuel_additive"]
+      ],
+      "outputFluids": [
+        ["PETROIL_LEADED",12000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["NAPHTHA",1000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["GASOLINE",800]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["GASOLINE",10000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.fuel_additive"]
+      ],
+      "outputFluids": [
+        ["GASOLINE_LEADED",12000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["COALGAS",10000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.fuel_additive"]
+      ],
+      "outputFluids": [
+        ["COALGAS_LEADED",12000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PETROLEUM",100],
+        ["WATER",1000]
+      ],
+      "inputItems": [
+        ["dict","dustSulfur"]
+      ],
+      "outputFluids": [
+        ["FRACKSOL",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [],
+      "inputItems": [
+        ["item","hbm:tile.moon_turf",8]
+      ],
+      "outputFluids": [
+        ["HELIUM3",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PEROXIDE",1000,5]
+      ],
+      "inputItems": [
+        ["item","hbm:item.powder_paleogenite"],
+        ["dict","dustFluorite",8],
+        ["item","hbm:item.nugget_bismuth",4]
+      ],
+      "outputFluids": [
+        ["DEATH",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [],
+      "inputItems": [
+        ["item","minecraft:sugar",10]
+      ],
+      "outputFluids": [
+        ["ETHANOL",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["LUBRICANT",400],
+        ["PEROXIDE",400]
+      ],
+      "inputItems": [
+        ["item","minecraft:wheat"],
+        ["item","minecraft:dye",2,3]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.chocolate",4,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["GAS",1000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["CARBONDIOXIDE",1000]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["HEAVYWATER",2000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["DEUTERIUM",200],
+        ["OXYGEN",200]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["XPJUICE",500]
+      ],
+      "inputItems": [
+        ["dict","dustDiamond"]
+      ],
+      "outputFluids": [
+        ["ENDERJUICE",100]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["CHLORINE",4000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.ammo_arty"],
+        ["dict","ingotAnyPlastic"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ammo_arty",1,9,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["PHOSGENE",4000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.ammo_arty"],
+        ["dict","ingotAnyPlastic"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ammo_arty",1,10,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["MUSTARDGAS",4000]
+      ],
+      "inputItems": [
+        ["item","hbm:item.ammo_arty"],
+        ["dict","ingotAnyPlastic"]
+      ],
+      "outputFluids": [],
+      "outputItems": [
+        ["hbm:item.ammo_arty",1,11,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["CHLOROCALCITE_CLEANED",500],
+        ["SULFURIC_ACID",8000]
+      ],
+      "inputItems": [],
+      "outputFluids": [
+        ["POTASSIUM_CHLORIDE",250],
+        ["CALCIUM_CHLORIDE",250]
+      ],
+      "outputItems": [],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["THORIUM_SALT_DEPLETED",16000]
+      ],
+      "inputItems": [
+        ["dict","nuggetThorium232",2]
+      ],
+      "outputFluids": [
+        ["THORIUM_SALT",16000]
+      ],
+      "outputItems": [
+        ["hbm:item.nugget_u233",1.0],
+        ["hbm:item.nuclear_waste_tiny",1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    },
+    {
+      "inputFluids": [
+        ["SULFURIC_ACID",1000]
+      ],
+      "inputItems": [
+        ["dict","glyphidMeat",3]
+      ],
+      "outputFluids": [
+        ["SALIENT",250]
+      ],
+      "outputItems": [
+        ["hbm:item.sulfur",4,1.0],
+        ["hbm:item.niter",3,1.0]
+      ],
+      "duration": 10,
+      "consumptionPerTick": 1000
+    }
 
   ]},
    {
