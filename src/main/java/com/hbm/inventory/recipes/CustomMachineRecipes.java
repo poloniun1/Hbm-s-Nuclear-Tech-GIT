@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Map;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -83,7 +84,7 @@ public class CustomMachineRecipes extends SerializableRecipe {
 				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.CRYSTALLINE,2), 1F)};
 			recipe3.duration = 10;
 			recipe3.consumptionPerTick = 1000;
-			add(recipe1);	
+			add(recipe3);	
 		}		
 	});
 	}
