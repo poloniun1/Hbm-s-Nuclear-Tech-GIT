@@ -3349,6 +3349,40 @@
           "consumptionPerTick": 2500
         },
         {
+          "inputFluids": [		
+	["STEAM",2000]
+          ],
+          "inputItems": [["item","hbm:tile.ore_oil_sand",1]],
+          "outputFluids": [
+	["OIL_EXTRACT",200],		
+	["KEROSENE",50],
+	["HELIUM",1]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["HOTSTEAM",2000],
+	["HELIUM4",4000]
+          ],
+          "inputItems": [
+	["item", "hbm:tile.ore_oil_sand", 1]],
+          "outputFluids": [
+	["OIL_EXTRACT",200],		
+	["OIL_CHARGED",50],
+	["HELIUM",5]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
           "inputFluids": [
 	["HOTSTEAM",2000],
 	["HELIUM4",4000]
