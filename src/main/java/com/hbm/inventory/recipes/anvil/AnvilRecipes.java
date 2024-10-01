@@ -1069,6 +1069,19 @@ public class AnvilRecipes {
 					}).setTier(4));
 			constructionRecipes.add(new AnvilConstructionRecipe(
 					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.nugget_bismuth, 3)),
+							new AnvilOutput(new ItemStack(ModItems.nugget_technetium, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_pu239), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 2)), //Might need to be cut to 3 nuggets, but a full billet is nice and round
+							new AnvilOutput(new ItemStack(ModItems.billet_u235, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
 							new AnvilOutput(new ItemStack(ModItems.billet_pu_mix, 2)),
 							new AnvilOutput(new ItemStack(ModItems.billet_uranium, 1)),
 							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
@@ -1127,29 +1140,6 @@ public class AnvilRecipes {
 		constructionRecipes.add(new AnvilConstructionRecipe(
 				new ComparableStack(ModBlocks.ore_oil), 
 				new AnvilOutput[] {
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.06F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.06F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.06F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOURGAS.getID()), 0.02F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.06F),					
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.06F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.XYLENE.getID()), 0.02F),				
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.REFORMGAS.getID()), 0.02F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.04F),	
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.04F),
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.04F),	
-					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.RADIOSOLVENT.getID()), 0.02F),	
-					new AnvilOutput(new ItemStack(ModItems.ingot_mud), 0.02F)	
-				}
-		).setTier(3));
-		constructionRecipes.add(new AnvilConstructionRecipe(
-				new ComparableStack(ModBlocks.ore_oil_sand), 
-				new AnvilOutput[] {
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.02F),
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.02F),
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.03F),
@@ -1168,6 +1158,24 @@ public class AnvilRecipes {
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.02F),	
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.RADIOSOLVENT.getID()), 0.01F),	
 					new AnvilOutput(new ItemStack(ModItems.ingot_mud), 0.01F)	
+				}
+		).setTier(3));
+		constructionRecipes.add(new AnvilConstructionRecipe(
+				new ComparableStack(ModBlocks.ore_oil_sand), 
+				new AnvilOutput[] {
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.02F),					
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.02F),			
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.01F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.01F)
 				}
 		).setTier(3));
 	}
