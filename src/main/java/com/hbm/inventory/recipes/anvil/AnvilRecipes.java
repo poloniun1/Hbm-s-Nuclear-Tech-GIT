@@ -23,6 +23,8 @@ import com.hbm.inventory.recipes.SolderingRecipes;
 import com.hbm.inventory.recipes.SolderingRecipes.SolderingRecipe;
 import com.hbm.inventory.recipes.ArcWelderRecipes;
 import com.hbm.inventory.recipes.ArcWelderRecipes.ArcWelderRecipe;
+import com.hbm.inventory.recipes.CustomMachineRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes.CustomMachineRecipe;
 import com.hbm.items.ItemAmmoEnums.*;
 import com.hbm.items.ItemEnums.EnumChunkType;
 import com.hbm.items.ModItems;
@@ -562,17 +564,18 @@ public class AnvilRecipes {
 			for(AStack items : result1.solder)
 				inputItems.add(items);
 			inputItems.add(new OreDictStack(Fluids.SOLVENT.getDict(1000),1));
-			int size = inputItems.size();
-			constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result1.output)).setTier(5));
-			//constructionRecipes.add(new AnvilConstructionRecipe(inputItems, new AnvilOutput(result1.output)).setTier(5));
+			//int size = inputItems.size();
+			//constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result1.output)).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(inputItems, new AnvilOutput(result1.output)).setTier(5));
 		}
 		for(ArcWelderRecipe result2: ArcWelderRecipes.recipes){
 			List<AStack> inputItems = new ArrayList();
 			for(AStack items : result2.ingredients)
 				inputItems.add(items);
 			inputItems.add(new OreDictStack(Fluids.SOLVENT.getDict(1000),1));
-			int size = inputItems.size();		
-			constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result2.output)).setTier(5));
+			//int size = inputItems.size();		
+			//constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result2.output)).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(inputItems, new AnvilOutput(result2.output)).setTier(5));
 		}			
 
 
@@ -1178,6 +1181,31 @@ public class AnvilRecipes {
 					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.01F)
 				}
 		).setTier(3));
+		for(CustomMachineRecipe result4: CustomMachineRecipes.recipes.get("simplefactory")){
+			if(result4.inputItems.length == 1 && result4.outputItems.length > 1){
+				List<AnvilOutput> output = new ArrayList();
+				for(int i = 0; i < result4.outputItems.length; i++)
+					output.add(new AnvilOutput(result4.outputItems[i].key.copy(),result4.outputItems[i].value/2));
+				constructionRecipes.add(new AnvilConstructionRecipe(result4.inputItems[0], output).setTier(1));
+			}
+		}
+		for(CustomMachineRecipe result5: CustomMachineRecipes.recipes.get("normalfactory")){
+			if(result5.inputItems.length == 1 && result5.outputItems.length > 1){
+				List<AnvilOutput> output = new ArrayList();
+				for(int i = 0; i < result5.outputItems.length; i++)
+					output.add(new AnvilOutput(result5.outputItems[i].key.copy(),result5.outputItems[i].value*0.9F));
+				constructionRecipes.add(new AnvilConstructionRecipe(result5.inputItems[0], output).setTier(5));
+			}
+		}
+		for(CustomMachineRecipe result6: CustomMachineRecipes.recipes.get("normalfactory")){
+			if(result6.inputItems.length > 1 && result6.outputItems.length == 1){
+				List<AStack> input = new ArrayList();
+				for(int i = 0; i < result6.inputItems.length; i++)
+					input.add(result6.inputItems[i]);
+				constructionRecipes.add(new AnvilConstructionRecipe(input,
+				new AnvilOutput(result6.outputItems[0].key.copy(),result6.outputItems[0].value)).setTier(5));
+			}
+		}
 	}
 	
 	public static void pullFromAssembler(ComparableStack result, int tier) {
@@ -1215,8 +1243,20 @@ public class AnvilRecipes {
 			this.output.add(output);
 			this.setOverlay(OverlayType.CONSTRUCTION); //preferred overlay for many:1 conversions is construction
 		}
+
+		public AnvilConstructionRecipe(List<AStack> input, AnvilOutput output) {
+			for(AStack stack : input) this.input.add(stack);
+			this.output.add(output);
+			this.setOverlay(OverlayType.CONSTRUCTION); //preferred overlay for many:1 conversions is construction
+		}
 		
 		public AnvilConstructionRecipe(AStack input, AnvilOutput[] output) {
+			this.input.add(input);
+			for(AnvilOutput out : output) this.output.add(out);
+			this.setOverlay(OverlayType.RECYCLING); //preferred overlay for 1:many conversions is recycling
+		}
+
+		public AnvilConstructionRecipe(AStack input, List<AnvilOutput> output) {
 			this.input.add(input);
 			for(AnvilOutput out : output) this.output.add(out);
 			this.setOverlay(OverlayType.RECYCLING); //preferred overlay for 1:many conversions is recycling
