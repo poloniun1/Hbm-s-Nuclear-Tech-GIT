@@ -4300,9 +4300,10 @@
           ],
           "outputFluids": [],
           "outputItems": [
-            ["hbm:item.nugget_technetium",6, 1],
-            ["hbm:item.nugget_pu239", 9, 1],
-            ["hbm:item.nugget_bismuth", 3, 1],
+            ["hbm:item.nugget_technetium",4, 1],
+            ["hbm:item.billet_pu239", 1, 1],
+			["hbm:item.billet_plutonium", 1, 1],
+            ["hbm:item.nugget_bismuth", 2, 1],
 	        ["hbm:item.plate_iron", 2, 1]		
 ],
 		  "flux":400000,
