@@ -1071,7 +1071,33 @@ public class AnvilRecipes {
 							new AnvilOutput(new ItemStack(ModItems.circuit, 1, EnumCircuitType.BASIC.ordinal()), 0.5F),
 					}).setTier(4));
 
-
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_plutonium, 2)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(2));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_pu239), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_u235, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_uranium, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(2));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_plutonium, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
+							new AnvilOutput(new ItemStack(ModItems.nugget_technetium, 4)),
+							new AnvilOutput(new ItemStack(ModItems.nugget_bismuth, 2)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_pu239), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 2)),
+							new AnvilOutput(new ItemStack(ModItems.billet_u235, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
 		} else {
 			constructionRecipes.add(new AnvilConstructionRecipe(
 					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
@@ -1157,7 +1183,7 @@ public class AnvilRecipes {
 				}
 		).setTier(3));
 		for(CustomMachineRecipe result4: CustomMachineRecipes.recipes.get("simplefactory")){
-			if(result4.inputItems.length == 1 && result4.outputItems.length > 1){
+			if(result4.inputItems[0] != new ComparableStack(ModItems.pile_rod_pu239)&& result4.inputItems[0] != new ComparableStack(ModItems.pile_rod_plutonium)&& result4.inputItems.length == 1 && result4.outputItems.length > 1){
 				List<AnvilOutput> output = new ArrayList();
 				for(int i = 0; i < result4.outputItems.length; i++)
 					output.add(new AnvilOutput(result4.outputItems[i].key.copy(),result4.outputItems[i].value/2));
@@ -1165,7 +1191,7 @@ public class AnvilRecipes {
 			}
 		}
 		for(CustomMachineRecipe result5: CustomMachineRecipes.recipes.get("normalfactory")){
-			if(result5.inputItems.length == 1 && result5.outputItems.length > 1){
+			if(result5.inputItems[0] != new ComparableStack(ModItems.pile_rod_pu239)&& result5.inputItems[0] != new ComparableStack(ModItems.pile_rod_plutonium)&& result5.inputItems.length == 1 && result5.outputItems.length > 1){
 				List<AnvilOutput> output = new ArrayList();
 				for(int i = 0; i < result5.outputItems.length; i++)
 					output.add(new AnvilOutput(result5.outputItems[i].key.copy(),result5.outputItems[i].value*0.9F));
