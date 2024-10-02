@@ -1186,17 +1186,17 @@ public class AnvilRecipes {
 			ComparableStack ex2 = new ComparableStack(ModItems.pile_rod_plutonium);
 		for(CustomMachineRecipe result4: CustomMachineRecipes.recipes.get("simplefactory")){
 			if(result4.inputItems.length == 1 && result4.outputItems.length > 1){
-			if(result4.inputItems[0] != ex1 && result4.inputItems[0] != ex2 ){
+			if(result4.inputItems[0].compareTo(ex1) != 0 && result4.inputItems[0].compareTo(ex2) != 0 ){
 				List<AnvilOutput> output = new ArrayList();
 				for(int i = 0; i < result4.outputItems.length; i++)
 					output.add(new AnvilOutput(result4.outputItems[i].key.copy(),result4.outputItems[i].value/2));
-				constructionRecipes.add(new AnvilConstructionRecipe(result4.inputItems[0], output).setTier(1));
+				constructionRecipes.add(new AnvilConstructionRecipe(result4.inputItems[0], output).setTier(2));
 			}
 			}
 		}
 		for(CustomMachineRecipe result5: CustomMachineRecipes.recipes.get("normalfactory")){
  			if(result5.inputItems.length == 1 && result5.outputItems.length > 1){
-			if(result5.inputItems[0] != ex1 && result5.inputItems[0] != ex2){
+			if(result5.inputItems[0].compareTo(ex1) != 0 && result5.inputItems[0].compareTo(ex2) != 0 ){
 				List<AnvilOutput> output = new ArrayList();
 				for(int i = 0; i < result5.outputItems.length; i++)
 					output.add(new AnvilOutput(result5.outputItems[i].key.copy(),result5.outputItems[i].value*0.9F));
