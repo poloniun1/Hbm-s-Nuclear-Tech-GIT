@@ -24,10 +24,16 @@ public class TileEntityPileSource extends TileEntityPileBase {
 			for(int i = 0; i < 12; i++) {
 				this.castRay(n, 5);
 			}
-			if(ra< 0.00036 && n == 5) {
-				ItemStack out = ra > 0.0003 ? new ItemStack(ModItems.nugget_bismuth):new ItemStack(ModItems.nugget_technetium);
-				boolean canOutput = true;
+			if(ra< 0.00036) {
+
+				ItemStack out = ra > 0.0003 ? new ItemStack(ModItems.nugget_bismuth) : new ItemStack(ModItems.nugget_technetium);
 				live++;
+				if(n == 2){
+					out = ra > 0.0003 ? new ItemStack(ModItems.pellet_charged) : new ItemStack(ModItems.nugget_polonium);
+					live++;
+				}
+				boolean canOutput = true;
+
 				here:
 				for (int i = -4 ; i <= 4 ; i++){
 					for (int j = -4 ; j <= 4 ; j++){
