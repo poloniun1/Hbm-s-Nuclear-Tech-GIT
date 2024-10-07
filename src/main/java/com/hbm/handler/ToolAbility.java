@@ -62,6 +62,14 @@ public abstract class ToolAbility {
 				return false;
 			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack)
 				return false;
+			if(b == Blocks.dirt)
+				return false;
+			if(b == Blocks.grass)
+				return false;
+			if(b == Blocks.sand)
+				return false;
+			if(b == Blocks.sandstone)
+				return false;
 			
 			List<Integer> indices = Arrays.asList(new Integer[] {0, 1, 2, 3, 4, 5});
 			Collections.shuffle(indices);
@@ -584,6 +592,14 @@ public abstract class ToolAbility {
 				return false;
 			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack)
 				return false;
+			if(b == Blocks.dirt)
+				return false;
+			if(b == Blocks.grass)
+				return false;
+			if(b == Blocks.sand)
+				return false;
+			if(b == Blocks.sandstone)
+				return false;
 
 			ItemStack stack = new ItemStack(b, 1, meta);
 			CrystallizerRecipe result = CrystallizerRecipes.getOutput(stack, Fluids.PEROXIDE);
@@ -740,6 +756,15 @@ public abstract class ToolAbility {
 				return false;
 			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack)
 				return false;
+			if(b == Blocks.dirt)
+				return false;
+			if(b == Blocks.grass)
+				return false;
+			if(b == Blocks.sand)
+				return false;
+			if(b == Blocks.sandstone)
+				return false;
+
 			ItemStack stack = new ItemStack(b, 1, meta);
 			CustomMachineRecipe result = getMatchingRecipe(stack);
 			
