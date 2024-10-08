@@ -162,9 +162,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			if(!this.wasteStack.isEmpty()) {
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
-				int pov = 1;
+				int pov = 0;
 				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
-				for (int range =1;range < 6; range++){
+				for (int range =0;range < 6; range++){
 					if(b instanceof ICrucibleAcceptor)
 						break;
 					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
@@ -184,7 +184,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 						newCast.add(stack);
 					}
 				}
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 1.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
 				
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -206,9 +206,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 				List<MaterialStack> toCast = new ArrayList();
-				int pov = 1;
+				int pov = 0;
 				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
-				for (int range =1;range < 6; range++){
+				for (int range =0;range < 6; range++){
 					if(b instanceof ICrucibleAcceptor)
 						break;
 					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
@@ -251,7 +251,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);	
 			
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.BLOCK.q(1), impact);
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 1.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.BLOCK.q(1), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
