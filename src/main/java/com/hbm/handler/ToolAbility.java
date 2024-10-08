@@ -853,7 +853,7 @@ public abstract class ToolAbility {
 			ItemStack stacka;
 			CustomMachineRecipe result1;
 			for(int i = 0; i < result.outputItems.length; i++) {
-				if(world.rand.nextFloat() < result.outputItems[i].value*2)
+				if(world.rand.nextFloat() < result.outputItems[i].value)
 				 {stack1 = result.outputItems[i].key.copy();
 				result1 = getMatchingRecipe(stack1);
 				for(int k = 0; k < stack1.stackSize; k++) {			
@@ -862,7 +862,7 @@ public abstract class ToolAbility {
 					player.getHeldItem().damageItem(1, player);
 					ItemStack st;
 					for(int j = 0; j < result1.outputItems.length;j++) {
-						if(world.rand.nextFloat() < result1.outputItems[j].value*2)
+						if(world.rand.nextFloat() < result1.outputItems[j].value)
 						 {st= result1.outputItems[j].key.copy();
 						if(st != null)
 							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, st.copy()));}

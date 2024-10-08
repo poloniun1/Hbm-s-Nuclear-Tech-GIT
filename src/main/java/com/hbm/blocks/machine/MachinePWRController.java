@@ -170,7 +170,7 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 			return;
 		}
 
-		if(block == Blocks.air ) {
+		if(!isValidCasing(block) && !isValidCore(block)) {
 
 			return;
 		}
