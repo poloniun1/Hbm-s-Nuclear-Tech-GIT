@@ -164,24 +164,23 @@ public class ItemPoolsLegacy {
 					weighted(ModItems.rod, BreedingRodType.U235.ordinal(), 1, 1, 3),
 					weighted(ModItems.rod_dual, BreedingRodType.U235.ordinal(), 1, 1, 3),
 					weighted(ModItems.rod_quad, BreedingRodType.U235.ordinal(), 1, 1, 3),
-					weighted(ModItems.rod_zirnox, EnumZirnoxType.URANIUM_FUEL.ordinal(), 1, 1, 4),
-					weighted(ModItems.rod_zirnox, EnumZirnoxType.MOX_FUEL.ordinal(), 1, 1, 4),
 					weighted(ModItems.rod_zirnox, EnumZirnoxType.LITHIUM.ordinal(), 1, 1, 3),
-					weighted(ModItems.rod_zirnox, EnumZirnoxType.THORIUM_FUEL.ordinal(), 1, 1, 3),
-					weighted(ModItems.rod_dual, BreedingRodType.THF.ordinal(), 1, 1, 3),
+					weighted(ModItems.rod_zirnox, EnumZirnoxType.TH232.ordinal(), 1, 1, 3),
+					weighted(ModItems.rod_dual, BreedingRodType.TH232.ordinal(), 1, 1, 3),
 					weighted(ModItems.rod_zirnox_tritium, 0, 1, 1, 1),
 					weighted(ModItems.rod_zirnox, EnumZirnoxType.U233_FUEL.ordinal(), 1, 1, 1),
 					weighted(ModItems.rod_zirnox, EnumZirnoxType.U235_FUEL.ordinal(), 1, 1, 1),
-					weighted(ModItems.pellet_rtg, 0, 1, 1, 3),
+					weighted(ModItems.pellet_rtg_lead, 0, 3, 6, 3),
 					weighted(ModItems.powder_thorium, 0, 1, 1, 1),
 					weighted(ModItems.powder_neptunium, 0, 1, 1, 1),
 					weighted(ModItems.powder_strontium, 0, 1, 1, 1),
 					weighted(ModItems.powder_cobalt, 0, 1, 1, 1),
-					weighted(ModItems.bottle_quantum, 0, 1, 1, 1),
-					weighted(ModItems.gas_mask_m65, 60, 1, 1, 5),
 					weighted(ModItems.hazmat_kit, 0, 1, 1, 2),
-					weighted(ModItems.gas_mask_filter, 0, 1, 1, 5),
-					weighted(ModBlocks.yellow_barrel, 0, 1, 3, 3)
+					weighted(ModBlocks.yellow_barrel, 0, 1, 3, 3),
+					weighted(ModBlocks.reactor_zirnox, 0, 1, 1, 1),
+					weighted(ModItems.rbmk_fuel_empty, 0, 1, 3, 2),
+					weighted(ModBlocks.rbmk_outgasser, 0, 1, 1, 1),
+					weighted(ModBlocks.rbmk_rod_reasim_mod, 0, 1, 1, 1)
 			};
 		}};
 		
@@ -232,6 +231,7 @@ public class ItemPoolsLegacy {
 					weighted(ModBlocks.fusion_conductor, 0, 2, 4, 5),
 					weighted(ModBlocks.fusion_heater, 0, 1, 3, 5),
 					weighted(ModBlocks.pwr_fuel, 0, 1, 2, 5),
+					weighted(ModBlocks.pwr_controller, 0, 1, 1, 3),
 					weighted(ModBlocks.block_tungsten, 0, 3, 8, 5),
 					weighted(ModBlocks.red_wire_coated, 0, 4, 8, 5),
 					weighted(ModBlocks.red_cable, 0, 8, 16, 5)
