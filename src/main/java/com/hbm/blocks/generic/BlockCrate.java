@@ -94,29 +94,17 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_plutonium, 7);
 		// BlockCrate.addToListWithWeight(leadList, ModItems.ingot_pu238, 5);
 		// BlockCrate.addToListWithWeight(leadList, ModItems.ingot_pu239, 4);
-		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_pu240, 6);
 		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_neptunium, 7);
-		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_uranium_fuel, 8);
-		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_plutonium_fuel, 7);
-		BlockCrate.addToListWithWeight(leadList, ModItems.ingot_mox_fuel, 6);
 		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_uranium, 10);
 		// BlockCrate.addToListWithWeight(leadList, ModItems.nugget_u235, 5);
 		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_u238, 8);
 		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_plutonium, 7);
 		// BlockCrate.addToListWithWeight(leadList, ModItems.nugget_pu238, 5);
 		// BlockCrate.addToListWithWeight(leadList, ModItems.nugget_pu239, 4);
-		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_pu240, 6);
 		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_neptunium, 7);
-		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_uranium_fuel, 8);
-		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_plutonium_fuel, 7);
-		BlockCrate.addToListWithWeight(leadList, ModItems.nugget_mox_fuel, 6);
 		BlockCrate.addToListWithWeight(leadList, ModItems.cell_deuterium, 8);
 		BlockCrate.addToListWithWeight(leadList, ModItems.cell_tritium, 8);
-		BlockCrate.addToListWithWeight(leadList, ModItems.cell_uf6, 8);
-		BlockCrate.addToListWithWeight(leadList, ModItems.cell_puf6, 8);
-		BlockCrate.addToListWithWeight(leadList, ModItems.pellet_rtg, 6);
-		BlockCrate.addToListWithWeight(leadList, ModItems.pellet_rtg_weak, 7);
-		BlockCrate.addToListWithWeight(leadList, ModItems.tritium_deuterium_cake, 5);
+		BlockCrate.addToListWithWeight(leadList, ModItems.pellet_rtg_lead, 7);
 		BlockCrate.addToListWithWeight(leadList, ModItems.powder_yellowcake, 10);
 
 		// Metal Crate
