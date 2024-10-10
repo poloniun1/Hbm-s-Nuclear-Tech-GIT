@@ -142,15 +142,11 @@ public class ItemPoolsLegacy {
 		new ItemPool(POOL_NUKE_TRASH) {{
 			this.pool = new WeightedRandomChestContent[] {
 					weighted(ModItems.nugget_u238, 0, 3, 12, 5),
-					weighted(ModItems.nugget_pu240, 0, 3, 8, 5),
 					weighted(ModItems.nugget_neptunium, 0, 1, 4, 3),
 					weighted(ModItems.rod, BreedingRodType.U238.ordinal(), 1, 1, 3),
 					weighted(ModItems.rod_dual, BreedingRodType.U238.ordinal(), 1, 1, 3),
 					weighted(ModItems.rod_quad, BreedingRodType.U238.ordinal(), 1, 1, 3),
-					weighted(ModItems.bottle_quantum, 0, 1, 1, 1),
-					weighted(ModItems.gas_mask_m65, 60, 1, 1, 5),
 					weighted(ModItems.hazmat_kit, 0, 1, 1, 1),
-					weighted(ModItems.gas_mask_filter, 0, 1, 1, 5),
 					weighted(ModBlocks.yellow_barrel, 0, 1, 1, 2)
 			};
 		}};
