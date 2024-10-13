@@ -103,6 +103,7 @@ public class MatDistribution extends SerializableRecipe {
 		registerEntry(ModItems.powder_flux, MAT_FLUX, DUST.q(1));
 		registerEntry(ModItems.pile_rod_pu239, MAT_U235, BILLET.q(1), MAT_PU239, BILLET.q(1), MAT_URANIUM, BILLET.q(1), MAT_IRON, INGOT.q(2));
 		registerEntry(ModItems.pile_rod_plutonium, MAT_PU239, BILLET.q(1), MAT_PLUTONIUM, BILLET.q(2), MAT_IRON, INGOT.q(2));
+
 		registerEntry(new ItemStack(ModItems.plant_item, 1, 2), MAT_CADMIUM, QUANTUM.q(6));
 		registerEntry(new ItemStack(Items.coal, 1, 1), MAT_CARBON, NUGGET.q(3));
 
