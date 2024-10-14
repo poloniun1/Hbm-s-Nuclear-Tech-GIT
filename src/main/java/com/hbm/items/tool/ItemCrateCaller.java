@@ -19,7 +19,7 @@ public class ItemCrateCaller extends Item {
 	
 	public ItemCrateCaller() {
 		this.canRepair = false;
-		this.setMaxDamage(4);
+		this.setMaxDamage(20);
 	}
 
 	@Override
@@ -40,14 +40,14 @@ public class ItemCrateCaller extends Item {
 		
 		int i = rand.nextInt(1000);
 		
-		if(i < 350)
-			crate = ModBlocks.crate_weapon;
-		if(i < 100)
-			crate = ModBlocks.crate_metal;
-		if(i < 50)
-			crate = ModBlocks.crate_lead;
-		if(i == 0)
+		if(i < 600)
 			crate = ModBlocks.crate_red;
+		if(i < 570)
+			crate = ModBlocks.crate_metal;
+		if(i < 290)
+			crate = ModBlocks.crate_lead;
+		if(i < 10)
+			crate = ModBlocks.crate_weapon;
 
 		if(!world.isRemote)
 		{
