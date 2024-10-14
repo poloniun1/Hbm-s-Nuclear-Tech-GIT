@@ -85,7 +85,7 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(crateList, ModItems.tank_steel, 900);
 		BlockCrate.addToListWithWeight(crateList, ModItems.blades_desh, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.blades_advanced_alloy, 700);
-		BlockCrate.addToListWithWeight(crateList, ModItems.missile_cluster_strong, 300);
+		BlockCrate.addToListWithWeight(crateList, ModItems.missile_strong, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.missile_stealth, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.missile_generic, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.battery_sc_polonium, 400);
