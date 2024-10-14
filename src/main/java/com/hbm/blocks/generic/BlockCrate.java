@@ -91,6 +91,8 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(crateList, ModItems.battery_sc_polonium, 400);
 		BlockCrate.addToListWithWeight(crateList, ModItems.battery_sc_lead, 100);
 		BlockCrate.addToListWithWeight(crateList, ModItems.piston_selenium, 600);
+		BlockCrate.addToListWithWeight(crateList, ModItems.battery_schrabidium_cell_4, 300);
+		BlockCrate.addToListWithWeight(crateList, ModItems.cube_power, 10);
 		BlockCrate.addToListWithWeight(crateList, ModItems.ams_core_thingy, 2);
 		BlockCrate.addToListWithWeight(crateList, ModItems.ams_core_eyeofharmony, 5);
 
@@ -177,7 +179,8 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.machine_assembler), 100);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.machine_fluidtank), 70);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.anvil_dnt), 1);
-		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.anvil_arsenic_bronze), 30);
+		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.anvil_arsenic_bronze), 30);machine_schrabidium_battery;
+		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.machine_schrabidium_battery), 70);
 		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 1), 30);
 		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 4), 30);
 		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.cm_port), 3, 3), 30);
