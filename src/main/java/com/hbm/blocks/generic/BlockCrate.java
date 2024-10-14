@@ -181,8 +181,8 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.anvil_dnt), 1);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.anvil_arsenic_bronze), 30);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.machine_schrabidium_battery), 70);
-		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 1), 30);
-		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 4), 30);
+		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 101), 30);
+		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.custom_machine), 1, 104), 30);
 		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.cm_port), 3, 3), 30);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.cm_flux), 30);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks2.rbmk_turbine), 10);
