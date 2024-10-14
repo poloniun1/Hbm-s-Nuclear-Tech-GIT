@@ -136,7 +136,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						}
 						break;
 					}
-					if(atPos == ModBlocks.pwr_reflector) {
+					if(atPos == ModBlocks.pwr_reflector || atPos == ModBlocks.pwr_controller) {
 						if(controlled) {
 							connectionsControlledDouble += 2;
 						} else {
