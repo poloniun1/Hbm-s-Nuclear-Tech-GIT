@@ -216,10 +216,17 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 
 		if(RBMKDials.getRodUnique(worldObj)) {
 			ItemRBMKRod fuel = ((ItemRBMKRod)slots[0].getItem());
+			if(RBMKDials.getRodUnique(worldObj)) {
+			if( fuel.function.name()!="CONSTANT")
+				this.receiveFlux(this.isModerated() ? NType.SLOW : stream, flux * 4.0D);
+			else if (fuel.getYield(slots[0]) > 0)
+				this.fluxSlow = fuel.selfRate ;			
+			} else {
 			if( fuel.function.name()!="CONSTANT")
 				this.receiveFlux(this.isModerated() ? NType.SLOW : stream, flux * 1.05D);
 			else if (fuel.getYield(slots[0]) > 0)
 				this.fluxSlow = fuel.selfRate ;
+			}
 			if(te instanceof TileEntityRBMKOutgasser) {
 				TileEntityRBMKOutgasser rod = (TileEntityRBMKOutgasser)te;
 				rod.receiveFlux(NType.SLOW, flux);

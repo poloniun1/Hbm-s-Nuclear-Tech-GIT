@@ -42,6 +42,7 @@ public class RBMKDials {
 	public static final String KEY_DFC_BABY_MODE = "dialDFCBabyMode";	
 	public static final String KEY_CRUCIBLE_BABY_MODE = "dialCrucibleBabyMode";	
 	public static final String KEY_PWR_FLUX_MODE = "dialPWRFluxMode";
+	public static final String KEY_RBMK_FLUX_MODE = "dialRBMKFluxMode";
 
 	public static void createDials(World world) {
 		GameRules rules = world.getGameRules();
@@ -79,6 +80,7 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_DFC_BABY_MODE, "true");
 			rules.setOrCreateGameRule(KEY_CRUCIBLE_BABY_MODE, "true");
 			rules.setOrCreateGameRule(KEY_PWR_FLUX_MODE, "true");
+			rules.setOrCreateGameRule(KEY_RBMK_FLUX_MODE, "true");
 
 		}
 	}
@@ -307,4 +309,8 @@ public class RBMKDials {
 	public static boolean getPWRFlux(World world) {
 		return world.getGameRules().getGameRuleBooleanValue(KEY_PWR_FLUX_MODE) ;
 	}
+	public static boolean getRBMKFlux(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_RBMK_FLUX_MODE) ;
+	}
+
 }
