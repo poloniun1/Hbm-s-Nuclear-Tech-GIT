@@ -169,10 +169,10 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.red_pylon), 90);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.crate_desh), 90);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.reactor_zirnox), 90);
-		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_controller), 50);
-		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_fuel), 50);
-		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_neutron_source), 40);
-		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_reflector), 40);
+		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_controller), 80);
+		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.pwr_fuel), 8), 80);
+		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.pwr_neutron_source), 20);
+		BlockCrate.addToListWithWeight(metalList, new ItemStack(Item.getItemFromBlock(ModBlocks.pwr_reflector), 8), 20);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.rbmk_rod_reasim_mod), 30);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.rbmk_outgasser), 50);
 		BlockCrate.addToListWithWeight(metalList, Item.getItemFromBlock(ModBlocks.machine_electric_furnace_off), 80);

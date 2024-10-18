@@ -129,12 +129,12 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					if(atPos == null || atPos == ModBlocks.pwr_casing) break;
 					if(atPos == ModBlocks.pwr_control) controlled = true;
 					if(RBMKDials.getGeneratorB(worldObj)){
-						if(RBMKDials.getPWRFlux(worldObj)){
+						if(RBMKDials.getHighFlux(worldObj)){
 							if(atPos == ModBlocks.pwr_fuel) {
 								if(controlled) {
-									connectionsControlledDouble += 20;
+									connectionsControlledDouble += 8;
 								} else {
-									connectionsDouble += 20;
+									connectionsDouble += 8;
 								}
 								break;
 							}
