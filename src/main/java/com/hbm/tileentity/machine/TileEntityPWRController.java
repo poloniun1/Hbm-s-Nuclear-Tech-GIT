@@ -139,15 +139,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 								break;
 							}
 						}else{
-							if(atPos == ModBlocks.pwr_fuel) {
-								if(controlled) {
-									connectionsControlledDouble += 2;
-								} else {
-									connectionsDouble += 2;
-								}
-								break;
-							}
-							if(atPos == ModBlocks.pwr_reflector || atPos == ModBlocks.pwr_controller) {
+							if(atPos == ModBlocks.pwr_fuel || atPos == ModBlocks.pwr_reflector || atPos == ModBlocks.pwr_controller) {
 								if(controlled) {
 									connectionsControlledDouble += 2;
 								} else {
