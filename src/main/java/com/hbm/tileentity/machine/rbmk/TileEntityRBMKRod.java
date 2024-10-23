@@ -9,6 +9,7 @@ import com.hbm.inventory.container.ContainerRBMKRod;
 import com.hbm.inventory.gui.GUIRBMKRod;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemRBMKRod;
+import com.hbm.items.machine.ItemRBMKRod.EnumBurnFunc;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKConsole.ColumnType;
 import com.hbm.tileentity.machine.TileEntityCustomMachine;
 import com.hbm.tileentity.machine.TileEntityMachineReactorBreeding;
@@ -89,6 +90,10 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 					rod.selfRate = 10.0D;
 				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0 )	
 					rod.selfRate = 50.0D;
+				if(RBMKDials.getHighFlux(worldObj) && slots[0].getItem()== ModItems.rbmk_fuel_hen){
+					rod.setFunction(EnumBurnFunc.LINEAR);
+					rod.setStats(1);
+					}
 				fluxIn = fluxFromType(rod.nType);
 	
 				double fluxOut;
@@ -218,8 +223,8 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IEne
 			ItemRBMKRod fuel = ((ItemRBMKRod)slots[0].getItem());
 			if(RBMKDials.getHighFlux(worldObj)) {
 			if( fuel.function.name()!="CONSTANT")
-				this.receiveFlux(this.isModerated() ? NType.SLOW : stream,  fuel.function.name() == "QUADRATIC" ? 50000000.0D : 
-				fuel.function.name() == "LINEAR" ? 100000000000.0D : 20000000000000.0D);
+				this.receiveFlux(this.isModerated() ? NType.SLOW : stream,  fuel.function.name() == "QUADRATIC" ? flux * 1.125D : 
+				fuel.function.name() == "LINEAR" ? 20000000000.0D : 1000000000000.0D);
 			else if (fuel.getYield(slots[0]) > 0)
 				this.fluxSlow = fuel.selfRate ;			
 			} else {
