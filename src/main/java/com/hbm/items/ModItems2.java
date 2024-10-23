@@ -136,7 +136,7 @@ public class ModItems2 {
 		rbmk_pellet_sa326 = (ItemRBMKPellet) new ItemRBMKPellet("sa326").setUnlocalizedName("rbmk_pellet_sa326").setTextureName(RefStrings.MODID+ ":rbmk_pellet_dnt");
 		rbmk_fuel_sa326 = (ItemRBMKRod) new ItemRBMKRod(rbmk_pellet_sa326)
 				.setYield(100000000D)
-				.setStats(2000, 1000)
+				.setStats(20000, 1000)
 				.setFunction(EnumBurnFunc.LINEAR)
 				.setHeat(0.6D)
 				.setDiffusion(0.25D)
