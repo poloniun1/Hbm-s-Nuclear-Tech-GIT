@@ -8,6 +8,7 @@ import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.ModBlocks2;
 import com.hbm.items.ItemAmmoEnums.Ammo44Magnum;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -85,9 +86,6 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(crateList, ModItems.tank_steel, 900);
 		BlockCrate.addToListWithWeight(crateList, ModItems.blades_desh, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.blades_advanced_alloy, 700);
-		BlockCrate.addToListWithWeight(crateList, ModItems.missile_strong, 300);
-		BlockCrate.addToListWithWeight(crateList, ModItems.missile_stealth, 300);
-		BlockCrate.addToListWithWeight(crateList, ModItems.missile_generic, 300);
 		BlockCrate.addToListWithWeight(crateList, ModItems.battery_sc_polonium, 400);
 		BlockCrate.addToListWithWeight(crateList, ModItems.battery_sc_lead, 100);
 		BlockCrate.addToListWithWeight(crateList, ModItems.piston_selenium, 600);
@@ -97,40 +95,17 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(crateList, ModItems.ams_core_eyeofharmony, 5);
 
 		// Weapon Crate
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_revolver, 9);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_revolver_gold, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_revolver_cursed, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_calamity, 3);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_rpg, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_karl, 4);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_panzerschreck, 6);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_hk69, 8);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_stinger, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_mp40, 9);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_uzi, 6);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_uzi_silencer, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_uboinik, 8);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_lever_action, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.gun_bolt_action, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.syringe_metal_stimpak, 10);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.syringe_antidote, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_revolver_iron, 9);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_revolver, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_revolver_gold, 4);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_revolver_lead, 6);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_revolver_cursed, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_rpg, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_fatman, 1);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_mp40, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_uzi, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_uboinik, 7);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_lever_action, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.clip_bolt_action, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.grenade_generic, 8);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.grenade_strong, 6);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.grenade_mk2, 4);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.grenade_flare, 4);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.ammo_container, 2);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_legs, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_boots, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_plate, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_helmet, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.meteorite_sword_baleful, 5);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.schrabidium_shovel, 5);
+		BlockCrate.addToListWithWeight(weaponList, ModItems2.osmiridium_pickaxe, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems2.dnt_pickaxe, 10);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.missile_strong, 25);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.missile_stealth, 25);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.missile_generic, 25);
 		// Lead Crate
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.ingot_uranium, 5), 10);
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.ingot_u235, 3), 5);
@@ -214,7 +189,7 @@ public class BlockCrate extends BlockFalling {
 
 		List<ItemStack> list = new ArrayList();
 
-		int i = rand.nextInt(3) + 8;
+		int i = this == ModBlocks.crate_weapon ? rand.nextInt(3)+2 : rand.nextInt(3) + 8;
 
 		for(int j = 0; j < i; j++) {
 

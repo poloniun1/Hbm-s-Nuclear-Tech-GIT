@@ -42,11 +42,11 @@ public class ItemCrateCaller extends Item {
 		
 		if(i < 600)
 			crate = ModBlocks.crate_red;
-		if(i < 570)
+		if(i < 580)
 			crate = ModBlocks.crate_metal;
-		if(i < 290)
+		if(i < 340)
 			crate = ModBlocks.crate_lead;
-		if(i < 10)
+		if(i < 100)
 			crate = ModBlocks.crate_weapon;
 
 		if(!world.isRemote)
