@@ -120,7 +120,7 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.ingot_pb209, 1), 3);
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.cell_deuterium, 5), 8);
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.cell_tritium, 3), 8);
-		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.pellet_rtg_lead, 3), 7);
+		BlockCrate.addToListWithWeight(leadList,  ModItems.pellet_rtg_lead, 5);
 		BlockCrate.addToListWithWeight(leadList,  new ItemStack(ModItems.ingot_polonium, 2), 5);
 		BlockCrate.addToListWithWeight(leadList,  ModItems.rbmk_fuel_empty, 8);
 		BlockCrate.addToListWithWeight(leadList,  ModItems.rod_zirnox_empty, 8);
