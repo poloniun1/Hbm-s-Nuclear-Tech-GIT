@@ -41,7 +41,8 @@ public class RBMKDials {
 	public static final String KEY_GENERATOR_GMODE = "dialGeneratorGMode";
 	public static final String KEY_DFC_BABY_MODE = "dialDFCBabyMode";	
 	public static final String KEY_CRUCIBLE_BABY_MODE = "dialCrucibleBabyMode";	
-	public static final String KEY_HIGH_FLUX_MODE = "dialHighFluxMode";;
+	public static final String KEY_HIGH_FLUX_MODE = "dialHighFluxMode";
+	public static final String KEY_LMSR_MODE = "dialLMSRMode";
 
 	public static void createDials(World world) {
 		GameRules rules = world.getGameRules();
@@ -78,7 +79,8 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_GENERATOR_GMODE, "true");//ICF
 			rules.setOrCreateGameRule(KEY_DFC_BABY_MODE, "true");
 			rules.setOrCreateGameRule(KEY_CRUCIBLE_BABY_MODE, "true");
-			rules.setOrCreateGameRule(KEY_HIGH_FLUX_MODE, "true");
+			rules.setOrCreateGameRule(KEY_HIGH_FLUX_MODE, "false");
+			rules.setOrCreateGameRule(KEY_LMSR_MODE, "false");
 
 		}
 	}
@@ -307,6 +309,8 @@ public class RBMKDials {
 	public static boolean getHighFlux(World world) {
 		return world.getGameRules().getGameRuleBooleanValue(KEY_HIGH_FLUX_MODE) ;
 	}
-
+	public static boolean getLMSR(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_LMSR_MODE) ;
+	}
 
 }
