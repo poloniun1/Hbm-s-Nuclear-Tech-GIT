@@ -4300,10 +4300,9 @@
           ],
           "outputFluids": [],
           "outputItems": [
-            ["hbm:item.nugget_technetium",4, 1],
-            ["hbm:item.billet_pu239", 1, 1],
-			["hbm:item.billet_plutonium", 1, 1],
-            ["hbm:item.nugget_bismuth", 2, 1],
+            ["hbm:item.nugget_technetium",6, 1],
+            ["hbm:item.nugget_pu239", 9, 1],
+            ["hbm:item.nugget_bismuth", 3, 1],
 	        ["hbm:item.plate_iron", 2, 1]		
 ],
 		  "flux":400000,
@@ -4548,6 +4547,104 @@
           "consumptionPerTick": 1500000
         },		
 		
+        {
+          "inputFluids": [
+          ],
+          "inputItems": [
+	["dict","dustLithium",4],
+	["dict","dustBeryllium",1],
+	["dict","Fluorite",6]
+],
+          "outputFluids": [
+	["MOLTEN_SALT",1000]
+          ],
+          "outputItems": [
+
+
+          ],
+          "duration": 1,
+          "consumptionPerTick": 50000
+        },
+        {
+          "inputFluids": [
+	["MOLTEN_SALT",2000]
+          ],
+          "inputItems": [
+	["dict","dustZirconium",1],
+	["dict","billetTh232",1]
+],
+          "outputFluids": [
+	["TH232_SALT",2000]
+          ],
+          "outputItems": [
+          ],
+          "duration": 1,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [
+	["MOLTEN_SALT",2000]
+          ],
+          "inputItems": [
+	["dict","dustZirconium",1],
+	["dict","billetU238",1]
+],
+          "outputFluids": [
+	["U238_SALT",2000]
+          ],
+          "outputItems": [
+          ],
+          "duration": 1,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [
+	["MOLTEN_SALT",2000]
+          ],
+          "inputItems": [
+	["dict","dustZirconium",1],
+	["dict","billetU235",1]
+],
+          "outputFluids": [
+	["U235_SALT",2000]
+          ],
+          "outputItems": [
+          ],
+          "duration": 1,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [
+	["MOLTEN_SALT",2000]
+          ],
+          "inputItems": [
+	["dict","dustZirconium",1],
+	["dict","billetPu239",1]
+],
+          "outputFluids": [
+	["PU239_SALT",2000]
+          ],
+          "outputItems": [
+          ],
+          "duration": 1,
+          "consumptionPerTick": 10000
+        },
+        {
+          "inputFluids": [
+	["MOLTEN_SALT",2000]
+          ],
+          "inputItems": [
+	["dict","dustZirconium",1],
+	["dict","billetU233",1]
+],
+          "outputFluids": [
+	["U233_SALT",2000]
+          ],
+          "outputItems": [
+          ],
+          "duration": 1,
+          "consumptionPerTick": 10000
+        },
 		
         {
           "inputFluids": [
@@ -5673,7 +5770,7 @@
           "outputItems": [
           ],
           "duration": 10,
-          "consumptionPerTick": 400000
+          "consumptionPerTick": 800000
         },
         {
           "inputFluids": [["OIL_CHARGED",1000]],
@@ -5686,11 +5783,122 @@
 	 ["hbm:item.powder_nitan_mix",1, 0.02]
           ],
           "duration": 10,
-          "consumptionPerTick": 5000000
+          "consumptionPerTick": 2400000
         },
 
 		
-	
+        {
+          "inputFluids": [
+	["U238_SALT",4000],
+	["U233_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["U235_SALT",1000],
+	["MOLTEN_SALT",5000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_pu239",2,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },		
+        {
+          "inputFluids": [
+	["TH232_SALT",4000],
+	["U233_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["U235_SALT",1000],
+	["MOLTEN_SALT",5000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_u233",2,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },
+        {
+          "inputFluids": [
+	["TH232_SALT",4000],
+	["U235_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["MOLTEN_SALT",6000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_u233",2,1],
+	["hbm:item.rbmk_pellet_hen",1,4,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },
+        {
+          "inputFluids": [
+	["U238_SALT",4000],
+	["U235_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["MOLTEN_SALT",6000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_pu239",2,1],
+	["hbm:item.rbmk_pellet_hen",1,4,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },
+        {
+          "inputFluids": [
+	["TH232_SALT",4000],
+	["PU239_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["MOLTEN_SALT",6000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_u233",2,1],
+	["hbm:item.rbmk_pellet_hep239",1,4,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },
+        {
+          "inputFluids": [
+	["U238_SALT",4000],
+	["PU239_SALT",2000]	
+          ],
+          "inputItems": [
+
+],
+          "outputFluids": [
+	["MOLTEN_SALT",6000]	
+          ],
+          "outputItems": [
+	["hbm:item.billet_pu239",2,1],
+	["hbm:item.rbmk_pellet_hep239",1,4,1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 32000000
+        },
+
+
+		
+		
         {
           "inputFluids": [
 	["PLASMA_DT",300]
@@ -5834,6 +6042,25 @@
           "consumptionPerTick": 15000
         },	
 
+        {
+          "inputFluids": [],
+          "inputItems": [
+           ["item","hbm:item.rbmk_fuel_ra226be", 1]
+          ],
+          "outputFluids": [],
+          "outputItems": [
+            ["hbm:item.nugget_polonium",6,1],
+            ["hbm:item.nugget_ra226", 21,1],
+            ["hbm:item.nugget_beryllium", 21,1],
+			["hbm:item.rbmk_fuel_empty", 1]
+],
+          "duration": 100,
+          "consumptionPerTick": 100000
+        },		
+		
+		
+		
+		
         {
           "inputFluids": [],
           "inputItems": [

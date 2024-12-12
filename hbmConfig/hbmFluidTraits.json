@@ -975,11 +975,11 @@
   },
   "NITAN": {
     "combustible": {
-      "energy": 160000000,
+      "energy": 40000000,
       "grade": "HIGH"
     },
     "flammable": {
-      "energy": 64000000
+      "energy": 16000000
     },
     "liquid": {}
   },
@@ -989,11 +989,11 @@
       "rating": 50
     },
     "combustible": {
-      "energy": 640000000,
+      "energy": 80000000,
       "grade": "HIGH"
     },
     "flammable": {
-      "energy": 256000000
+      "energy": 32000000
     },
     "liquid": {}
   },
@@ -1376,21 +1376,21 @@
   "OIL_EXTRACT": {
   "liquid": {},
     "combustible": {
-      "energy": 40000000,
+      "energy": 16000000,
       "grade": "MEDIUM"
     },
     "flammable": {
-      "energy": 24000000
+      "energy": 6400000
     }
 	},
   "OIL_CHARGED": {
   "liquid": {},
     "combustible": {
-      "energy": 500000000,
+      "energy": 40000000,
       "grade": "HIGH"
     },
     "flammable": {
-      "energy": 300000000
+      "energy": 16000000
     }
 	},
   "SUPERCOOLANT": {    
@@ -1432,5 +1432,23 @@
 	  "TURBINE":1.0,
       "HEATEXCHANGER": 1.0
     }
+},
+  "U233_SALT": {
+    "liquid": {}
+},
+  "U238_SALT": {
+    "liquid": {}
+},
+  "PU239_SALT": {
+    "liquid": {}
+},
+  "TH232_SALT": {
+    "liquid": {}
+},
+  "U235_SALT": {
+    "liquid": {}
+},
+  "MOLTEN_SALT": {
+    "liquid": {}
 }
 }
