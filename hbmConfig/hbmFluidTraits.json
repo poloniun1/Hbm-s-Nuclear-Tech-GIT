@@ -1434,19 +1434,22 @@
     }
 },
   "U233_SALT": {
-    "liquid": {}
+    "liquid": {},
+	"plasma": {}
 },
   "U238_SALT": {
     "liquid": {}
 },
   "PU239_SALT": {
-    "liquid": {}
+    "liquid": {},
+	"plasma": {}
 },
   "TH232_SALT": {
     "liquid": {}
 },
   "U235_SALT": {
-    "liquid": {}
+    "liquid": {},
+	"plasma": {}
 },
   "MOLTEN_SALT": {
     "liquid": {}

@@ -5796,11 +5796,11 @@
 
 ],
           "outputFluids": [
-	["U235_SALT",1000],
-	["MOLTEN_SALT",5000]	
+	["MOLTEN_SALT",6000]	
           ],
           "outputItems": [
-	["hbm:item.billet_pu239",2,1]
+	["hbm:item.billet_pu239",2,1],
+	["hbm:item.rbmk_pellet_hen",1,4,0.5]
           ],
           "duration": 1,
           "consumptionPerTick": 32000000
@@ -5814,11 +5814,11 @@
 
 ],
           "outputFluids": [
-	["U235_SALT",1000],
-	["MOLTEN_SALT",5000]	
+	["MOLTEN_SALT",6000]	
           ],
           "outputItems": [
-	["hbm:item.billet_u233",2,1]
+	["hbm:item.billet_u233",2,1],
+	["hbm:item.rbmk_pellet_hen",1,4,0.5]
           ],
           "duration": 1,
           "consumptionPerTick": 32000000
@@ -5947,7 +5947,7 @@
 	["hbm:item.pellet_charged",1, 0.0125]
 
           ],
-          "duration": 20,
+          "duration": 1,
           "consumptionPerTick": 1125000
         },
         {
