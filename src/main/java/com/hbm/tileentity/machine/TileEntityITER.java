@@ -76,9 +76,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	public TileEntityITER() {
 		super(5);
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.WATER, 25600000);
-		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 25600000);
-		plasma = new FluidTank(Fluids.PLASMA_DT, 12800000);
+		tanks[0] = new FluidTank(Fluids.WATER, 2560000);
+		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 2560000);
+		plasma = new FluidTank(Fluids.PLASMA_DT, 1280000);
 	}
 
 	@Override
@@ -164,7 +164,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				}
 			}
-			}else if(!RBMKDials.getLMSR(worldObj)&&(Fluids.fromID(1015)==Fluids.NONE))
+			}else if(!RBMKDials.getLMSR(worldObj) || (Fluids.fromID(1015)==Fluids.NONE))
 			{
 				duration = 8;
 				if(isOn ) {
