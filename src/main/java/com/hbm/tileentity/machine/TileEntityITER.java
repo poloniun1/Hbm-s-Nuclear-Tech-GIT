@@ -194,6 +194,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				this.tanks[0].setType(1, slots);
 				setupTanks();
 				}
+				Recycling();
 				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
 					plasma.getTankType() == Fluids.fromID(1015))) {
 					this.totalRuntime++;
@@ -204,13 +205,13 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					if(delay > 0 && totalRuntime % delay == 0 && tanks[0].getFill() > 0) {				
 						doNewBreederStuff();
 						}
-					if(plasma.getFill() >= 50) {
+					if(plasma.getFill() >= 100) {
 						power += 19900000;
-						plasma.setFill(plasma.getFill() - 50);
-						tanks[1].setFill(tanks[1].getFill() + 50);
+						plasma.setFill(plasma.getFill() - 100);
+						tanks[1].setFill(tanks[1].getFill() + 100);
 						if(tanks[0].getFill()>=100){
-							tanks[0].setFill(tanks[0].getFill() - 100);
-							tanks[1].setFill(tanks[1].getFill() + 100);
+							tanks[0].setFill(tanks[0].getFill() - 200);
+							tanks[1].setFill(tanks[1].getFill() + 200);
 						}
 					}
 	
@@ -433,7 +434,63 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		this.markDirty();
 		
 	}
-	
+
+	private void Recycling() {
+		
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_th232 && tanks[0].getTankType() == Fluids.fromID(1014)
+			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[0].setFill(tanks[0].getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u238 && tanks[0].getTankType() == Fluids.fromID(1013)
+			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[0].setFill(tanks[0].getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.fluorite && tanks[1].getTankType() == Fluids.fromID(1010)
+			&& tanks[1].getFill() < tanks[1].getMaxFill()-500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[1].setFill(tanks[1].getFill() + 500);
+			}
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u233 && plasma.getTankType() == Fluids.fromID(1011)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_pu239 && plasma.getTankType() == Fluids.fromID(1012)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u235 && plasma.getTankType() == Fluids.fromID(1015)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+		this.markDirty();
+		
+	}
+
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
 		return true;
@@ -449,6 +506,10 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		
 		if(i == 1 && BreederRecipes.getOutput(itemStack) != null)
 			return true;
+
+		if(i == 1 && (itemStack.item == ModItems.billet_u235 || ModItems.billet_u233 ||
+		 ModItems.billet_pu239 ||  ModItems.billet_u238 ||  ModItems.billet_th232))
+			return true;
 		
 		return false;
 	}
@@ -456,8 +517,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	private void produceNewByproduct() {
 		
 		ItemStack by = plasma.getTankType() == Fluids.fromID(1011) ? new ItemStack(ModItems.rbmk_pellet_hen,1,4):
-		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.billet_u233,2,4): 
-		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.rbmk_pellet_hep239,2,4): 	null;
+		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.rbmk_pellet_hep239,2,4): 
+		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.rbmk_pellet_hen,2,4): 	null;
 		
 		if(by == null)
 			return;
