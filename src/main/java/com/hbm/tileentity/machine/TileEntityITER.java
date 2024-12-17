@@ -507,8 +507,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		if(i == 1 && BreederRecipes.getOutput(itemStack) != null)
 			return true;
 
-		if(i == 1 && (itemStack.item == ModItems.billet_u235 || ModItems.billet_u233 ||
-		 ModItems.billet_pu239 ||  ModItems.billet_u238 ||  ModItems.billet_th232))
+		if(i == 1 && (itemStack.getItem() == ModItems.billet_u235 || itemStack.getItem() == ModItems.billet_u233 || itemStack.getItem() == ModItems.billet_pu239 ||
+		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232))
 			return true;
 		
 		return false;
