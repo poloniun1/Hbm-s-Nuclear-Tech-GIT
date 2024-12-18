@@ -493,12 +493,13 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
-		return true;
+		if (i != 1)return true;
+		return false;
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
-		return new int[] { 2, 4 };
+		return new int[] {1, 2, 4 };
 	}
 
 	@Override
@@ -508,7 +509,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			return true;
 
 		if(i == 1 && (itemStack.getItem() == ModItems.billet_u235 || itemStack.getItem() == ModItems.billet_u233 || itemStack.getItem() == ModItems.billet_pu239 ||
-		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232 ||  itemStack.getItem() == ModItems.flourite))
+		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232 ||  itemStack.getItem() == ModItems.fluorite))
 			return true;
 		
 		return false;
