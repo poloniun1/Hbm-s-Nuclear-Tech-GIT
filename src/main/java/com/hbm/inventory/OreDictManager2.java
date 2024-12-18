@@ -9,7 +9,7 @@ import java.util.List;
 import com.hbm.items.ModItems2;
 import com.hbm.blocks.ModBlocks2;
 import static com.hbm.inventory.OreDictManager.DictFrame;
-import static com.hbm.inventory.OreNames.*;
+import com.hbm.inventory.material.MaterialShapes.*;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.BlockEnums.EnumStoneType;
@@ -145,7 +145,7 @@ public class OreDictManager2 {
 		VOLCANIC						.ingot(ModItems.gem_volcanic)	.block(ModBlocks2.block_volcanic);													
 
 
-		NA	.hydro(1F)	.ingot(ModItems2.ingot_sodium)	.ore(ModBlocks2.ore_sodium)	.block(ModBlocks2.block_sodium);											
+		NA	.hydro(1F)		.ore(ModBlocks2.ore_sodium)	.block(ModBlocks2.block_sodium);											
 		P_WHITE	.hot(5)	.ore(ModBlocks.ore_nether_fire);
 		ND	.ingot(ModItems.powder_neodymium)	.block(ModBlocks2.block_neodymium);
 		TIKITE	.ingot(ModItems.powder_spark_mix )	.dust(ModItems.powder_nitan_mix )	.ore(ModBlocks.ore_tikite );

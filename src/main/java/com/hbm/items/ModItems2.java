@@ -94,7 +94,6 @@ public class ModItems2 {
 	public static Item nugget_star;
 
 	public static Item ingot_manganese;
-	public static Item ingot_sodium;
 
 	public static Item rod_zirnox_pu239_fuel_depleted;
 	public static Item rod_zirnox_np237_fuel_depleted;
@@ -159,7 +158,6 @@ public class ModItems2 {
 
 
 		ingot_manganese = new Item().setUnlocalizedName("ingot_manganese").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_manganese");
-		ingot_sodium= new Item().setUnlocalizedName("ingot_sodium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_sodium");
 		
 
 		nugget_electronium = new Item().setUnlocalizedName("nugget_electronium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_electronium");
@@ -237,7 +235,6 @@ public class ModItems2 {
 		GameRegistry.registerItem(bred_lead, bred_lead.getUnlocalizedName());
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
-		GameRegistry.registerItem(ingot_sodium, ingot_sodium.getUnlocalizedName());
 
 		GameRegistry.registerItem(dnt_pickaxe, dnt_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(osmiridium_pickaxe, osmiridium_pickaxe.getUnlocalizedName());
