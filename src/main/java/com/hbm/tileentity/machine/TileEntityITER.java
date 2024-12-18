@@ -8,7 +8,7 @@ import com.hbm.blocks.machine.MachineITER;
 import com.hbm.explosion.ExplosionLarge;
 import com.hbm.explosion.ExplosionNT;
 import com.hbm.explosion.ExplosionNT.ExAttrib;
-import com.hbm.handler.CompatHandler;
+
 import com.hbm.inventory.container.ContainerITER;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
@@ -18,29 +18,27 @@ import com.hbm.inventory.recipes.BreederRecipes;
 import com.hbm.inventory.recipes.BreederRecipes.BreederRecipe;
 import com.hbm.inventory.recipes.FusionRecipes;
 import com.hbm.items.ModItems;
+import com.hbm.items.machine.IItemFluidIdentifier;
 import com.hbm.items.special.ItemFusionShield;
 import com.hbm.lib.Library;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.sound.AudioWrapper;
-import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.IGUIProvider;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+import api.hbm.energymk2.IBatteryItem;
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.tile.IInfoProviderEC;
-import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import li.cil.oc.api.machine.Arguments;
-import li.cil.oc.api.machine.Callback;
-import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -49,18 +47,19 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
 
-@Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityITER extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent, IFluidCopiable {
+public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC {
 	
 	public long power;
-	public static final long maxPower = 10000000;
+	public static final long maxPower = 5000000000000L;
 	public static final int powerReq = 100000;
+
 	public FluidTank[] tanks;
 	public FluidTank plasma;
 	
 	public int progress;
-	public static final int duration = 100;
+	public int duration = 100;
 	public long totalRuntime;
 	
 	@SideOnly(Side.CLIENT)
@@ -77,9 +76,9 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 	public TileEntityITER() {
 		super(5);
 		tanks = new FluidTank[2];
-		tanks[0] = new FluidTank(Fluids.WATER, 1280000);
-		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 128000);
-		plasma = new FluidTank(Fluids.PLASMA_DT, 16000);
+		tanks[0] = new FluidTank(Fluids.WATER, 2560000);
+		tanks[1] = new FluidTank(Fluids.ULTRAHOTSTEAM, 2560000);
+		plasma = new FluidTank(Fluids.PLASMA_DT, 1280000);
 	}
 
 	@Override
@@ -92,20 +91,27 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		
 		if(!worldObj.isRemote) {
 			
-			this.updateConnections();
-			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
+	
 
+			if(!RBMKDials.getGeneratorF(worldObj))	{
+			this.updateConnections();	
+			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
+			}
+			else {	
+				for(DirPos pos : getConPos()) 
+					this.trySubscribe(plasma.getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+				}
 			/// START Processing part ///
 			
-			if(!isOn) {
+			if(!isOn&&!RBMKDials.getGeneratorF(worldObj)) {
 				plasma.setFill(0);	//jettison plasma if the thing is turned off
 			}
-			
+			if(!RBMKDials.getGeneratorF(worldObj)){				
 			//explode either if there's plasma that is too hot or if the reactor is turned on but the magnets have no power
 			if(plasma.getFill() > 0 && (this.plasma.getTankType().temperature >= this.getShield() || (this.isOn && this.power < this.powerReq))) {
 				this.explode();
 			}
-			
+		
 			if(isOn && power >= powerReq) {
 				power -= powerReq;
 				
@@ -151,21 +157,82 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			/// END Processing part ///
 
 			/// START Notif packets ///
+
 			
 			for(DirPos pos : getConPos()) {
 				if(tanks[1].getFill() > 0) {
 					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				}
 			}
-			
+			}else if(!RBMKDials.getLMSR(worldObj) || (Fluids.fromID(1015)==Fluids.NONE))
+			{
+				duration = 8;
+				if(isOn ) {
+
+				if(plasma.getFill() >=300) {					
+					this.totalRuntime++;
+					int delay = FusionRecipes.getByproductDelay(plasma.getTankType())/15;
+					if(delay > 0 && totalRuntime % delay == 0) produceByproduct();
+				}
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*375000-100000;				
+					
+					if(plasma.getFill() >= 300) {
+						power += prod;
+						plasma.setFill(plasma.getFill() - 300);
+					}
+				doBreederStuff();	
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 300)  power += 100000;				
+					}	
+					
+	
+				}
+			else if((Fluids.fromID(1010)!=Fluids.NONE)&&(Fluids.fromID(1011)!=Fluids.NONE)&&(Fluids.fromID(1012)!=Fluids.NONE)&&
+				(Fluids.fromID(1013)!=Fluids.NONE)&&(Fluids.fromID(1014)!=Fluids.NONE)){
+				if(slots[1] != null && (slots[1].getItem() instanceof IItemFluidIdentifier)){
+				this.tanks[0].setType(1, slots);
+				setupTanks();
+				}
+				Recycling();
+				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
+					plasma.getTankType() == Fluids.fromID(1015))) {
+					this.totalRuntime++;
+					int delay = 32;
+					if(delay > 0 && totalRuntime % delay == 0 && plasma.getFill() > 0) {
+						produceNewByproduct();						
+						}
+					if(delay > 0 && totalRuntime % delay == 0 && tanks[0].getFill() > 0) {				
+						doNewBreederStuff();
+						}
+					if(plasma.getFill() >= 125) {
+						power += 24900000;
+						plasma.setFill(plasma.getFill() - 125);
+						tanks[1].setFill(tanks[1].getFill() + 125);
+						if(tanks[0].getFill()>=250){
+							tanks[0].setFill(tanks[0].getFill() - 250);
+							tanks[1].setFill(tanks[1].getFill() + 250);
+						}
+					}
+	
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 125)  power += 100000;				
+					}			
+				for(DirPos pos : getConPos()) {
+					if(tanks[1].getFill() > 0) {
+						this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+					}
+				}
+				}
+	
 			NBTTagCompound data = new NBTTagCompound();
 			data.setBoolean("isOn", isOn);
 			data.setLong("power", power);
 			data.setInteger("progress", progress);
 			tanks[0].writeToNBT(data, "t0");
 			tanks[1].writeToNBT(data, "t1");
-			plasma.writeToNBT(data, "t2");
-			
+			plasma.writeToNBT(data, "t2");	
 			if(slots[3] == null) {
 				data.setInteger("blanket", 0);
 			} else if(slots[3].getItem() == ModItems.fusion_shield_tungsten) {
@@ -191,7 +258,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 				this.lastRotor -= 360;
 			}
 			
-			if(this.isOn && this.power >= powerReq) {
+			if(  this.isOn && this.power >= powerReq ) {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed + 0.05F));
 
 				if(audio == null) {
@@ -202,7 +269,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 				float rotorSpeed = this.rotorSpeed / 15F;
 				audio.updateVolume(getVolume(0.5f * rotorSpeed));
 				audio.updatePitch(0.25F + 0.75F * rotorSpeed);
-			} else {
+			}
+			else {
 				this.rotorSpeed = Math.max(0F, Math.min(15F, this.rotorSpeed - 0.1F));
 				
 				if(audio != null) {
@@ -226,9 +294,19 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		for(DirPos pos : getConPos()) {
 			this.trySubscribe(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
 		}
 	}
-	
+	private void Generate() {
+		
+		for(DirPos pos : getConPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+
+		}
+	}	
+
+
+
 	protected List<DirPos> getConPos() {
 		if(connections != null && !connections.isEmpty())
 			return connections;
@@ -333,14 +411,95 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		}
 	}
 
+	private void doNewBreederStuff() {
+		
+		if(plasma.getFill() == 0) {
+			return;
+		}
+		
+		
+		if(slots[2] != null && slots[2].stackSize >= slots[2].getMaxStackSize()) {
+			return;
+		}
+		
+		ItemStack out = tanks[0].getTankType() == Fluids.fromID(1013) ? new ItemStack(ModItems.billet_pu239,4):
+		tanks[0].getTankType() == Fluids.fromID(1014) ? new ItemStack(ModItems.billet_u233,4): null; 
+			
+		if(slots[2] != null && out != null) {
+			slots[2].stackSize += out.stackSize;
+		} else {
+			slots[2] = out;
+		}
+			
+		this.markDirty();
+		
+	}
+
+	private void Recycling() {
+		
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_th232 && tanks[0].getTankType() == Fluids.fromID(1014)
+			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[0].setFill(tanks[0].getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u238 && tanks[0].getTankType() == Fluids.fromID(1013)
+			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[0].setFill(tanks[0].getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.fluorite && tanks[1].getTankType() == Fluids.fromID(1010)
+			&& tanks[1].getFill() < tanks[1].getMaxFill()-500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				tanks[1].setFill(tanks[1].getFill() + 500);
+			}
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u233 && plasma.getTankType() == Fluids.fromID(1011)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_pu239 && plasma.getTankType() == Fluids.fromID(1012)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u235 && plasma.getTankType() == Fluids.fromID(1015)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 3000);
+			}		
+		this.markDirty();
+		
+	}
+
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
-		return true;
+		if (i != 1)return true;
+		return false;
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
-		return new int[] { 1, 2, 4 };
+		return new int[] {1, 2, 4 };
 	}
 
 	@Override
@@ -348,11 +507,34 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		
 		if(i == 1 && BreederRecipes.getOutput(itemStack) != null)
 			return true;
+
+		if(i == 1 && (itemStack.getItem() == ModItems.billet_u235 || itemStack.getItem() == ModItems.billet_u233 || itemStack.getItem() == ModItems.billet_pu239 ||
+		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232 ||  itemStack.getItem() == ModItems.fluorite))
+			return true;
 		
 		return false;
 	}
 	
-	private void produceByproduct() {
+	private void produceNewByproduct() {
+		
+		ItemStack by = plasma.getTankType() == Fluids.fromID(1011) ? new ItemStack(ModItems.rbmk_pellet_hen,1,4):
+		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.rbmk_pellet_hep239,2,4): 
+		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.rbmk_pellet_hen,2,4): 	null;
+		
+		if(by == null)
+			return;
+		
+		if(slots[4] == null) {
+			slots[4] = by;
+			return;
+		}
+		
+		if(slots[4].getItem() == by.getItem() && slots[4].getItemDamage() == by.getItemDamage() && slots[4].stackSize < slots[4].getMaxStackSize()) {
+			slots[4].stackSize += by.stackSize;
+		}
+	}
+
+		private void produceByproduct() {
 		
 		ItemStack by = FusionRecipes.getByproduct(plasma.getTankType());
 		
@@ -392,15 +574,37 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 	@Override
 	public void handleButtonPacket(int value, int meta) {
-		if(meta == 0) this.isOn = !this.isOn;
+		
+		if(meta == 0) {
+			this.isOn = !this.isOn;
+		}
 	}
 
-	public long getPowerScaled(long i) { return (power * i) / maxPower; }
-	public long getProgressScaled(long i) { return (progress * i) / duration; }
-	@Override public void setPower(long i) { this.power = i; }
-	@Override public long getPower() { return power; }
-	@Override public long getMaxPower() { return maxPower; }
+	public long getPowerScaled(long i) {
+		return (power * i) / maxPower;
+	}
 
+	public long getProgressScaled(long i) {
+		return (progress * i) / duration;
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+
+	@Override
+	public long getMaxPower() {
+		return maxPower;
+	}
+
+
+	
 	@Override
 	public void onChunkUnload() {
 		super.onChunkUnload();
@@ -512,7 +716,18 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			player.triggerAchievement(MainRegistry.achMeltdown);
 		}
 	}
-
+	
+	protected void setupTanks() {
+		
+		if(tanks[0].getTankType()!=Fluids.fromID(1013)&&tanks[0].getTankType()!=Fluids.fromID(1014)) {
+			tanks[0].setTankType(Fluids.NONE);
+			tanks[1].setTankType(Fluids.NONE);
+			return;
+		}
+		
+		tanks[1].setTankType(Fluids.fromID(1010));
+	}
+	
 	@Override
 	public FluidTank[] getSendingTanks() {
 		return new FluidTank[] {tanks[1]};
@@ -520,7 +735,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 	@Override
 	public FluidTank[] getReceivingTanks() {
-		return new FluidTank[] {tanks[0]};
+		return new FluidTank[] {tanks[0],plasma};
 	}
 
 	@Override
@@ -555,104 +770,5 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		int output = FusionRecipes.getSteamProduction(plasma.getTankType());
 		data.setDouble("consumption", output * 10);
 		data.setDouble("outputmb", output);
-	}
-
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String getComponentName() {
-		return "ntm_fusion";
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getEnergyInfo(Context context, Arguments args) {
-		return new Object[] {getPower(), getMaxPower()};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] isActive(Context context, Arguments args) {
-		return new Object[] {isOn};
-	}
-
-	@Callback(direct = true, limit = 4)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] setActive(Context context, Arguments args) {
-		isOn = args.checkBoolean(0);
-		return new Object[] {};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getFluid(Context context, Arguments args) {
-		return new Object[] {
-				tanks[0].getFill(), tanks[0].getMaxFill(),
-				tanks[1].getFill(), tanks[1].getMaxFill(),
-				plasma.getFill(), plasma.getMaxFill(), plasma.getTankType().getUnlocalizedName()
-		};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getPlasmaTemp(Context context, Arguments args) {
-		return new Object[] {plasma.getTankType().temperature};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getMaxTemp(Context context, Arguments args) {
-		if (slots[3] != null && (slots[3].getItem() instanceof ItemFusionShield))
-			return new Object[] {((ItemFusionShield) slots[3].getItem()).maxTemp};
-		return new Object[] {"N/A"};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getBlanketDamage(Context context, Arguments args) {
-		if (slots[3] != null && (slots[3].getItem() instanceof ItemFusionShield))
-			return new Object[]{ItemFusionShield.getShieldDamage(slots[3]), ((ItemFusionShield)slots[3].getItem()).maxDamage};
-		return new Object[] {"N/A", "N/A"};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String[] methods() {
-		return new String[] {
-				"getEnergyInfo",
-				"isActive",
-				"setActive",
-				"getFluid",
-				"getPlasmaTemp",
-				"getMaxTemp",
-				"getBlanketDamage"
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] invoke(String method, Context context, Arguments args) throws Exception {
-		switch (method) {
-			case ("getEnergyInfo"):
-				return getEnergyInfo(context, args);
-			case ("isActive"):
-				return isActive(context, args);
-			case ("setActive"):
-				return setActive(context, args);
-			case ("getFluid"):
-				return getFluid(context, args);
-			case ("getPlasmaTemp"):
-				return getPlasmaTemp(context, args);
-			case ("getMaxTemp"):
-				return getMaxTemp(context, args);
-			case ("getBlanketDamage"):
-				return getBlanketDamage(context, args);
-		}
-		throw new NoSuchMethodException();
-	}
-
-	@Override
-	public FluidTank getTankToPaste() {
-		return null;
 	}
 }

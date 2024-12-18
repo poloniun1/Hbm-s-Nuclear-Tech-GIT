@@ -9,8 +9,8 @@ import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.machine.BlockPWR.TileEntityBlockPWR;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.machine.TileEntityPWRController;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 
@@ -31,6 +31,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.init.Blocks;
 
 public class MachinePWRController extends BlockContainer implements ITooltipProvider {
 	
@@ -112,10 +113,10 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 			errored = true;
 		}
 		
-		if(sources.size() == 0) {
+		/*if(sources.size() == 0) {
 			sendError(world, x, y, z, "Neutron sources required", player);
 			errored = true;
-		}
+		}*/
 		
 		TileEntityPWRController controller = (TileEntityPWRController) world.getTileEntity(x, y, z);
 		
@@ -164,8 +165,13 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 		
 		Block block = world.getBlock(x, y, z);
 		
-		if(isValidCasing(block)) {
+		if(isValidCasing(block) ) {
 			assembly.put(pos, block);
+			return;
+		}
+
+		if(!isValidCasing(block) && !isValidCore(block)) {
+
 			return;
 		}
 		

@@ -4,17 +4,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.hbm.handler.CompatHandler;
-import com.hbm.tileentity.IFluidCopiable;
-import cpw.mods.fml.common.Optional;
-import li.cil.oc.api.machine.Arguments;
-import li.cil.oc.api.machine.Callback;
-import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.SimpleComponent;
 import org.apache.logging.log4j.Level;
-
+import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.config.GeneralConfig;
 import com.hbm.entity.missile.*;
+import com.hbm.entity.missile.EntityCarrier;
 import com.hbm.entity.missile.EntityMissileTier0.*;
 import com.hbm.entity.missile.EntityMissileTier1.*;
 import com.hbm.entity.missile.EntityMissileTier2.*;
@@ -55,8 +49,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-@Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver, SimpleComponent, CompatHandler.OCComponent, IFluidCopiable {
+public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver, IFluidCopiable {
 	
 	/** Automatic instantiation of generic missiles, i.e. everything that both extends EntityMissileBaseNT and needs a designator */
 	public static final HashMap<ComparableStack, Class<? extends EntityMissileBaseNT>> missiles = new HashMap();
@@ -318,8 +311,7 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	}
 	
 	public boolean hasFuel() {
-		if(this.power < 75_000) return false;
-		
+		if(this.power < 75_000) return false;	
 		if(slots[0] != null && slots[0].getItem() instanceof ItemMissile) {
 			ItemMissile missile = (ItemMissile) slots[0].getItem();
 			if(this.tanks[0].getFill() < missile.fuelCap) return false;
@@ -334,6 +326,19 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	public Entity instantiateMissile(int targetX, int targetZ) {
 		
 		if(slots[0] == null) return null;
+
+		if(slots[0].getItem() == ModItems.missile_carrier) {
+			EntityCarrier missile = new EntityCarrier(worldObj);
+			missile.posX = xCoord + 0.5F;
+			missile.posY = yCoord + 1F;
+			missile.posZ = zCoord + 0.5F;
+			if(slots[1] != null) {
+				missile.setPayload(slots[1]);
+				this.slots[1] = null;
+			}
+			worldObj.playSoundEffect(xCoord + 0.5, yCoord, zCoord + 0.5, "hbm:entity.rocketTakeoff", 100.0F, 1.0F);
+			return missile;
+		}
 		
 		Class<? extends EntityMissileBaseNT> clazz = TileEntityLaunchPadBase.missiles.get(new ComparableStack(slots[0]).makeSingular());
 		
@@ -436,11 +441,13 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	}
 	
 	public boolean needsDesignator(Item item) {
-		return item != ModItems.missile_anti_ballistic;
+		return item != ModItems.missile_anti_ballistic && item != ModItems.missile_carrier;
 	}
 	
 	/** Full launch condition, checks if the item is launchable, fuel and power are present and any additional checks based on launch pad type */
 	public boolean canLaunch() {
+		if(slots[0] != null && slots[0].getItem() == ModItems.missile_carrier && this.power > 75000) 
+			return true;
 		return this.isMissileValid() && this.hasFuel() && this.isReadyForLaunch();
 	}
 	
@@ -465,96 +472,6 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 		
 		return 0;
 	}
-	
-	/** Any extra conditions for launching in addition to the missile being valid and fueled */
-	public abstract boolean isReadyForLaunch();
-	public abstract double getLaunchOffset();
-
-	// do some opencomputer stuff
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String getComponentName() {
-		return "ntm_launch_pad";
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getEnergyInfo(Context context, Arguments args) {
-		return new Object[] {getPower(), getMaxPower()};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getFluid(Context context, Arguments args) {
-		return new Object[] {
-				this.tanks[0].getFill(), this.tanks[0].getMaxFill(), this.tanks[0].getTankType().getUnlocalizedName(),
-				this.tanks[1].getFill(), this.tanks[1].getMaxFill(), this.tanks[1].getTankType().getUnlocalizedName()
-		};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] canLaunch(Context context, Arguments args) {
-		return new Object[] {canLaunch()};
-	}
-
-	@Callback(direct = true)
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] getTier(Context context, Arguments args) {
-		if(!isMissileValid())
-			return new Object[] {};
-		ItemMissile missile = (ItemMissile) slots[0].getItem();
-		if(missile.tier == ItemMissile.MissileTier.TIER0)
-			return new Object[] {0};
-		if(missile.tier == ItemMissile.MissileTier.TIER1)
-			return new Object[] {1};
-		if(missile.tier == ItemMissile.MissileTier.TIER2)
-			return new Object[] {2};
-		if(missile.tier == ItemMissile.MissileTier.TIER3)
-			return new Object[] {3};
-		if(missile.tier == ItemMissile.MissileTier.TIER4)
-			return new Object[] {4};
-		return new Object[] {5}; // unknown tier
-	}
-
-	@Callback
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] launch(Context context, Arguments args) {
-		if(canLaunch()) {
-			return new Object[] {sendCommandPosition(args.checkInteger(0), -1 /*unused anyway*/, args.checkInteger(1))};
-		}
-		return new Object[] {false};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public String[] methods() {
-		return new String[] {
-				"getEnergyInfo",
-				"getFluid",
-				"canLaunch",
-				"getTier",
-				"launch"
-		};
-	}
-
-	@Override
-	@Optional.Method(modid = "OpenComputers")
-	public Object[] invoke(String method, Context context, Arguments args) throws Exception {
-		switch(method) {
-			case ("getEnergyInfo"):
-				return getEnergyInfo(context, args);
-			case ("getFluid"):
-				return getFluid(context, args);
-			case ("canLaunch"):
-				return canLaunch(context, args);
-			case ("getTier"):
-				return getTier(context, args);
-			case ("launch"):
-				return launch(context, args);
-		}
-	throw new NoSuchMethodException();
-	}
 
 	@Override
 	public int[] getFluidIDToCopy() {
@@ -565,4 +482,8 @@ public abstract class TileEntityLaunchPadBase extends TileEntityMachineBase impl
 	public FluidTank getTankToPaste() {
 		return null;
 	}
+	
+	/** Any extra conditions for launching in addition to the missile being valid and fueled */
+	public abstract boolean isReadyForLaunch();
+	public abstract double getLaunchOffset();
 }

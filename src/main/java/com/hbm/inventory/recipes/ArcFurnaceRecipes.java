@@ -24,6 +24,7 @@ import com.hbm.inventory.material.NTMMaterial.SmeltingBehavior;
 import com.hbm.inventory.material.Mats.MaterialStack;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.machine.ItemScraps;
 import com.hbm.items.special.ItemBedrockOreNew;
 import com.hbm.items.special.ItemBedrockOreNew.BedrockOreGrade;
@@ -53,6 +54,9 @@ public class ArcFurnaceRecipes extends SerializableRecipe {
 		recipes.put(new OreDictStack(ASBESTOS.ingot()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.nugget_silicon, 4))		.fluid(new MaterialStack(Mats.MAT_SILICON, MaterialShapes.INGOT.q(1, 2))));
 		recipes.put(new OreDictStack(ASBESTOS.dust()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.nugget_silicon, 4))		.fluid(new MaterialStack(Mats.MAT_SILICON, MaterialShapes.INGOT.q(1, 2))));
 		recipes.put(new OreDictStack(ASBESTOS.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.nugget_silicon, 40))	.fluid(new MaterialStack(Mats.MAT_SILICON, MaterialShapes.INGOT.q(9, 2))));
+		recipes.put(new OreDictStack(GRAPHITE.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems2.nugget_fuller, 3)));
+		recipes.put(new OreDictStack(COAL.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_ash, 3, 4)));
+		recipes.put(new OreDictStack(ANY_COKE.block()),	new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_ash, 1, 5)));
 
 		recipes.put(new ComparableStack(ModBlocks.sand_quartz), new ArcFurnaceRecipe().solid(new ItemStack(ModBlocks.glass_quartz)));
 		recipes.put(new OreDictStack(BORAX.dust()), new ArcFurnaceRecipe().solid(new ItemStack(ModItems.powder_boron_tiny, 3)).fluid(new MaterialStack(Mats.MAT_BORON, MaterialShapes.NUGGET.q(3))));
@@ -82,16 +86,14 @@ public class ArcFurnaceRecipes extends SerializableRecipe {
 			NTMMaterial convert = material.smeltsInto;
 			if(convert.smeltable == SmeltingBehavior.SMELTABLE) {
 				for(MaterialShapes shape : MaterialShapes.allShapes) {
-					if(!shape.noAutogen) {
-						String name = shape.name() + material.names[0];
-						if(!OreDictionary.getOres(name).isEmpty()) {
-							OreDictStack dict = new OreDictStack(name);
-							ArcFurnaceRecipe recipe = recipes.get(dict);
-							if(recipe == null) recipe = new ArcFurnaceRecipe();
-							if(recipe.fluidOutput == null) {
-								recipe.fluid(new MaterialStack(convert, (int) (shape.q(1) * out / in)));
-								recipes.put(dict, recipe);
-							}
+					String name = shape.name() + material.names[0];
+					if(!OreDictionary.getOres(name).isEmpty()) {
+						OreDictStack dict = new OreDictStack(name);
+						ArcFurnaceRecipe recipe = recipes.get(dict);
+						if(recipe == null) recipe = new ArcFurnaceRecipe();
+						if(recipe.fluidOutput == null) {
+							recipe.fluid(new MaterialStack(convert, (int) (shape.q(1) * out / in)));
+							recipes.put(dict, recipe);
 						}
 					}
 				}

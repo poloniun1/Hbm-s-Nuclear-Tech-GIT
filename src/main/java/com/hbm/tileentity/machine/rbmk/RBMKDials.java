@@ -30,7 +30,20 @@ public class RBMKDials {
 	public static final String KEY_REASIM_BOILER_SPEED = "dialReasimBoilerSpeed";
 	public static final String KEY_DISABLE_MELTDOWNS = "dialDisableMeltdowns";
 	public static final String KEY_ENABLE_MELTDOWN_OVERPRESSURE = "dialEnableMeltdownOverpressure";
-	
+	public static final String KEY_UNIQUE_ROD = "dialUniqueRod";
+	public static final String KEY_REASIM_COOLANT_BOILERS = "dialReasimCoolantBoilers";
+	public static final String KEY_GENERATOR_AMODE = "dialGeneratorAMode";
+	public static final String KEY_GENERATOR_BMODE = "dialGeneratorBMode";
+	public static final String KEY_GENERATOR_CMODE = "dialGeneratorCMode";
+	public static final String KEY_GENERATOR_DMODE = "dialGeneratorDMode";
+	public static final String KEY_GENERATOR_EMODE = "dialGeneratorEMode";
+	public static final String KEY_GENERATOR_FMODE = "dialGeneratorFMode";
+	public static final String KEY_GENERATOR_GMODE = "dialGeneratorGMode";
+	public static final String KEY_DFC_BABY_MODE = "dialDFCBabyMode";	
+	public static final String KEY_CRUCIBLE_BABY_MODE = "dialCrucibleBabyMode";	
+	public static final String KEY_HIGH_FLUX_MODE = "dialHighFluxMode";
+	public static final String KEY_LMSR_MODE = "dialLMSRMode";
+
 	public static void createDials(World world) {
 		GameRules rules = world.getGameRules();
 		
@@ -39,7 +52,7 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_COLUMN_HEAT_FLOW, "0.2");
 			rules.setOrCreateGameRule(KEY_FUEL_DIFFUSION_MOD, "1.0");
 			rules.setOrCreateGameRule(KEY_HEAT_PROVISION, "0.2");
-			rules.setOrCreateGameRule(KEY_COLUMN_HEIGHT, "4");
+			rules.setOrCreateGameRule(KEY_COLUMN_HEIGHT, "2");
 			rules.setOrCreateGameRule(KEY_PERMANENT_SCRAP, "true");
 			rules.setOrCreateGameRule(KEY_BOILER_HEAT_CONSUMPTION, "0.1");
 			rules.setOrCreateGameRule(KEY_CONTROL_SPEED_MOD, "1.0");
@@ -49,12 +62,26 @@ public class RBMKDials {
 			rules.setOrCreateGameRule(KEY_SURGE_MOD, "1.0");
 			rules.setOrCreateGameRule(KEY_FLUX_RANGE, "5");
 			rules.setOrCreateGameRule(KEY_REASIM_RANGE, "10");
-			rules.setOrCreateGameRule(KEY_REASIM_COUNT, "6");
+			rules.setOrCreateGameRule(KEY_REASIM_COUNT, "8");
 			rules.setOrCreateGameRule(KEY_REASIM_MOD, "1.0");
 			rules.setOrCreateGameRule(KEY_REASIM_BOILERS, "false");
 			rules.setOrCreateGameRule(KEY_REASIM_BOILER_SPEED, "0.05");
-			rules.setOrCreateGameRule(KEY_DISABLE_MELTDOWNS, "false");
+			rules.setOrCreateGameRule(KEY_DISABLE_MELTDOWNS, "true");
 			rules.setOrCreateGameRule(KEY_ENABLE_MELTDOWN_OVERPRESSURE, "false");
+			rules.setOrCreateGameRule(KEY_UNIQUE_ROD, "true");
+			rules.setOrCreateGameRule(KEY_REASIM_COOLANT_BOILERS, "false");
+			rules.setOrCreateGameRule(KEY_GENERATOR_AMODE, "true");//RBMK
+			rules.setOrCreateGameRule(KEY_GENERATOR_BMODE, "true");//PWR
+			rules.setOrCreateGameRule(KEY_GENERATOR_CMODE, "true");//REACTOR RESEACH
+			rules.setOrCreateGameRule(KEY_GENERATOR_DMODE, "true");//ZIRNOX
+			rules.setOrCreateGameRule(KEY_GENERATOR_EMODE, "true");//WATZ
+			rules.setOrCreateGameRule(KEY_GENERATOR_FMODE, "true");//FUSION
+			rules.setOrCreateGameRule(KEY_GENERATOR_GMODE, "true");//ICF
+			rules.setOrCreateGameRule(KEY_DFC_BABY_MODE, "true");
+			rules.setOrCreateGameRule(KEY_CRUCIBLE_BABY_MODE, "true");
+			rules.setOrCreateGameRule(KEY_HIGH_FLUX_MODE, "false");
+			rules.setOrCreateGameRule(KEY_LMSR_MODE, "false");
+
 		}
 	}
 	
@@ -229,4 +256,61 @@ public class RBMKDials {
 	public static boolean getOverpressure(World world) {
 		return world.getGameRules().getGameRuleBooleanValue(KEY_ENABLE_MELTDOWN_OVERPRESSURE);
 	}
+
+
+	public static boolean getRodUnique(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_UNIQUE_ROD);
+	}
+
+	/**
+	 * Whether or not all components should act like boilers with dedicated in/outlet blocks
+	 * @param world
+	 * @return
+	 */
+	public static boolean getReasimCoolantBoilers(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_REASIM_COOLANT_BOILERS) ;
+	}
+
+	public static boolean getGeneratorA(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_AMODE) ;
+	}
+
+	public static boolean getGeneratorB(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_BMODE) ;
+	}
+
+	public static boolean getGeneratorC(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_CMODE) ;
+	}
+
+	public static boolean getGeneratorD(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_DMODE) ;
+	}	
+
+
+	public static boolean getGeneratorE(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_EMODE) ;
+	}
+
+	public static boolean getGeneratorF(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_FMODE) ;
+	}
+
+	public static boolean getGeneratorG(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_GENERATOR_GMODE) ;
+	}
+
+	public static boolean getDFCBABY(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_DFC_BABY_MODE) ;
+	}
+	public static boolean getCrucibleBABY(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_CRUCIBLE_BABY_MODE) ;
+	}
+	public static boolean getHighFlux(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_HIGH_FLUX_MODE) ;
+	}
+	public static boolean getLMSR(World world) {
+		return world.getGameRules().getGameRuleBooleanValue(KEY_LMSR_MODE) ;
+	}
+
 }

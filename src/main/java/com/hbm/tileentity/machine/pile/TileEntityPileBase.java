@@ -24,24 +24,24 @@ public abstract class TileEntityPileBase extends TileEntity {
 		Random rand = worldObj.rand;
 		Vec3 vec = Vec3.createVectorHelper(1, 0, 0);
 		vec.rotateAroundZ((float)(rand.nextDouble() * Math.PI * 2D));
-		vec.rotateAroundY((float)(rand.nextDouble() * Math.PI * 2D));
+		//vec.rotateAroundY((float)(rand.nextDouble() * Math.PI * 2D));
 		vec.rotateAroundX((float)(rand.nextDouble() * Math.PI * 2D));
 		
 		int prevX = xCoord;
-		int prevY = yCoord;
+		//int prevY = yCoord;
 		int prevZ = zCoord;
 		
 		for(float i = 1; i <= range; i += 0.5F) {
 
 			int x = (int)Math.floor(xCoord + 0.5 + vec.xCoord * i);
-			int y = (int)Math.floor(yCoord + 0.5 + vec.yCoord * i);
+			//int y = (int)Math.floor(yCoord + 0.5 + vec.yCoord * i);
 			int z = (int)Math.floor(zCoord + 0.5 + vec.zCoord * i);
 			
-			if(x == prevX && y == prevY && z == prevZ)
+			if(x == prevX  && z == prevZ) //&& y == prevY
 				continue;
 
 			prevX = x;
-			prevY = y;
+			//prevY = y;
 			prevZ = z;
 			
 			/*if(i == range || i == 1) {
@@ -55,7 +55,7 @@ public abstract class TileEntityPileBase extends TileEntity {
 				MainRegistry.proxy.effectNT(data2);
 			}*/
 			
-			Block b = worldObj.getBlock(x, y, z);
+			Block b = worldObj.getBlock(x, yCoord, z);//y
 			
 			if(b == ModBlocks.concrete || b == ModBlocks.concrete_smooth || b == ModBlocks.concrete_asbestos || b == ModBlocks.concrete_colored || b == ModBlocks.brick_concrete)
 				flux *= 0.25;
@@ -63,12 +63,12 @@ public abstract class TileEntityPileBase extends TileEntity {
 			if(b == ModBlocks.block_boron)
 				return;
 			
-			int meta = worldObj.getBlockMetadata(x, y, z);
+			int meta = worldObj.getBlockMetadata(x, yCoord, z);//y
 			
 			if(b == ModBlocks.block_graphite_rod && (meta & 8) == 0)
 				return;
 			
-			TileEntity te = worldObj.getTileEntity(x, y, z);
+			TileEntity te = worldObj.getTileEntity(x, yCoord, z);//y
 			
 			if(te instanceof IPileNeutronReceiver) {
 				
@@ -84,13 +84,13 @@ public abstract class TileEntityPileBase extends TileEntity {
 					return;
 			}
 			
-			List<EntityLivingBase> entities = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(x + 0.5, y + 0.5, z + 0.5, x + 0.5, y + 0.5, z + 0.5));
+			/*List<EntityLivingBase> entities = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(x + 0.5, y + 0.5, z + 0.5, x + 0.5, y + 0.5, z + 0.5));
 			
 			if(entities != null)
 				for(EntityLivingBase e : entities) {
 					
 					ContaminationUtil.contaminate(e, HazardType.RADIATION, ContaminationType.CREATIVE, flux / 4F);
-				}
+				}*/
 		}
 	}
 }

@@ -9,8 +9,8 @@ import org.lwjgl.opengl.GL11;
 import com.hbm.inventory.container.ContainerPWR;
 import com.hbm.items.ModItems;
 import com.hbm.lib.RefStrings;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toserver.NBTControlPacket;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.render.util.GaugeUtil;
 import com.hbm.tileentity.machine.TileEntityPWRController;
 
@@ -65,7 +65,7 @@ public class GUIPWR extends GuiInfoContainer {
 		this.drawCustomInfoStat(x, y, guiLeft + 151, guiTop + 31, 18, 18, x, y, new String[] { "Hull: " + String.format(Locale.US, "%,d", controller.hullHeat) + " / " + String.format(Locale.US, "%,d", controller.hullHeatCapacityBase) + " TU" });
 
 		this.drawCustomInfoStat(x, y, guiLeft + 52, guiTop + 31, 36, 18, x, y, new String[] { ((int) (controller.progress * 100 / controller.processTime)) + "%" });
-		this.drawCustomInfoStat(x, y, guiLeft + 52, guiTop + 53, 54, 4, x, y, "Control rod level: " + (100 - (Math.round(controller.rodLevel * 100)/100)) + "%");
+		this.drawCustomInfoStat(x, y, guiLeft + 52, guiTop + 53, 54, 4, x, y, "Control rod level: " + (100 - controller.rodLevel) + "%");
 		
 		if(controller.typeLoaded != -1 && controller.amountLoaded > 0) {
 			ItemStack display = new ItemStack(ModItems.pwr_fuel, 1, controller.typeLoaded);
@@ -114,6 +114,7 @@ public class GUIPWR extends GuiInfoContainer {
 			drawTexturedModalRect(guiLeft + 147, guiTop, 176, 14, 26, 26);
 
 		int p = (int) (controller.progress * 33 / controller.processTime);
+		if(p > 33|| p < 0) p = 33;
 		drawTexturedModalRect(guiLeft + 54, guiTop + 33, 176, 0, p, 14);
 
 		int c = (int) (controller.rodLevel * 52 / 100);

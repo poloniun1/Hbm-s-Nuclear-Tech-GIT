@@ -18,6 +18,13 @@ import com.hbm.inventory.material.Mats;
 import com.hbm.inventory.material.NTMMaterial;
 import com.hbm.inventory.recipes.AssemblerRecipes;
 import com.hbm.inventory.recipes.AssemblerRecipes.AssemblerRecipe;
+import com.hbm.inventory.recipes.SolderingRecipes;
+import com.hbm.inventory.recipes.SolderingRecipes.SolderingRecipe;
+import com.hbm.inventory.recipes.ArcWelderRecipes;
+import com.hbm.inventory.recipes.ArcWelderRecipes.ArcWelderRecipe;
+import com.hbm.inventory.recipes.CustomMachineRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes.CustomMachineRecipe;
+import com.hbm.items.ItemAmmoEnums.*;
 import com.hbm.items.ItemEnums.EnumChunkType;
 import com.hbm.items.ModItems;
 import com.hbm.items.food.ItemFlask.EnumInfusion;
@@ -26,6 +33,7 @@ import com.hbm.items.machine.ItemCircuit.EnumCircuitType;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -192,7 +200,7 @@ public class AnvilRecipes {
 					new OreDictStack(key, 3),
 					new AnvilOutput(new ItemStack(ModItems.pipe, 1, mat.id))).setTier(1));
 		}
-		
+
 		constructionRecipes.add(new AnvilConstructionRecipe(
 				new ComparableStack(ModItems.coil_copper, 2),
 				new AnvilOutput(new ItemStack(ModItems.coil_copper_torus))).setTier(1).setOverlay(OverlayType.CONSTRUCTION));
@@ -559,6 +567,30 @@ public class AnvilRecipes {
 		constructionRecipes.add(new AnvilConstructionRecipe(new ComparableStack(ModItems.ingot_schrabidium, 1), new AnvilOutput(new ItemStack(ModItems.plate_fuel_sa326))).setTier(4));
 		constructionRecipes.add(new AnvilConstructionRecipe(new ComparableStack(ModItems.billet_ra226be, 1), new AnvilOutput(new ItemStack(ModItems.plate_fuel_ra226be))).setTier(4));
 		constructionRecipes.add(new AnvilConstructionRecipe(new ComparableStack(ModItems.billet_pu238be, 1), new AnvilOutput(new ItemStack(ModItems.plate_fuel_pu238be))).setTier(4));
+		for(ComparableStack result0: AssemblerRecipes.recipeList)
+			pullFromAssembler(result0, 5);
+		for(SolderingRecipe result1: SolderingRecipes.recipes){
+			List<AStack> inputItems = new ArrayList();
+			for(AStack items : result1.toppings)
+				inputItems.add(items);
+			for(AStack items : result1.pcb)
+				inputItems.add(items);
+			for(AStack items : result1.solder)
+				inputItems.add(items);
+			inputItems.add(new OreDictStack(Fluids.SOLVENT.getDict(1000),1));
+			//int size = inputItems.size();
+			//constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result1.output)).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(inputItems, new AnvilOutput(result1.output)).setTier(5));
+		}
+		for(ArcWelderRecipe result2: ArcWelderRecipes.recipes){
+			List<AStack> inputItems = new ArrayList();
+			for(AStack items : result2.ingredients)
+				inputItems.add(items);
+			inputItems.add(new OreDictStack(Fluids.SOLVENT.getDict(1000),1));
+			//int size = inputItems.size();		
+			//constructionRecipes.add(new AnvilConstructionRecipe((AStack[])inputItems.toArray(new AStack[size]), new AnvilOutput(result2.output)).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(inputItems, new AnvilOutput(result2.output)).setTier(5));
+		}			
 
 		for(int i = 0; i < 15; i += 3) {
 			constructionRecipes.add(new AnvilConstructionRecipe(new OreDictStack(IRON.plate(), 1), new AnvilOutput(new ItemStack(ModBlocks.fluid_duct_box, 1, i))).setTier(2).setOverlay(OverlayType.CONSTRUCTION));
@@ -587,7 +619,7 @@ public class AnvilRecipes {
 		constructionRecipes.add(new AnvilConstructionRecipe(new AStack[]{new ComparableStack(ModItems.mold_base), new OreDictStack(STEEL.ingot(), 4)}, new AnvilOutput(new ItemStack(ModItems.mold, 1, 26))).setTier(2));
 		constructionRecipes.add(new AnvilConstructionRecipe(new AStack[]{new ComparableStack(ModItems.mold_base), new OreDictStack(STEEL.ingot(), 4)}, new AnvilOutput(new ItemStack(ModItems.mold, 1, 27))).setTier(2));
 		constructionRecipes.add(new AnvilConstructionRecipe(new AStack[]{new ComparableStack(ModItems.mold_base), new OreDictStack(STEEL.ingot(), 4)}, new AnvilOutput(new ItemStack(ModItems.mold, 1, 28))).setTier(2));
-		
+
 		pullFromAssembler(new ComparableStack(ModItems.pellet_buckshot), 1);
 		pullFromAssembler(new ComparableStack(ModItems.pellet_canister), 1);
 	}
@@ -959,20 +991,34 @@ public class AnvilRecipes {
 							new AnvilOutput(new ItemStack(ModItems.circuit, 1, EnumCircuitType.BASIC.ordinal())),
 							new AnvilOutput(new ItemStack(ModItems.circuit, 1, EnumCircuitType.BASIC.ordinal()), 0.5F),
 					}).setTier(4));
+
 			constructionRecipes.add(new AnvilConstructionRecipe(
 					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
-							new AnvilOutput(new ItemStack(ModItems.billet_pu_mix, 2)),
-							new AnvilOutput(new ItemStack(ModItems.billet_uranium, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_plutonium, 2)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
 							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
 					}).setTier(2));
 			constructionRecipes.add(new AnvilConstructionRecipe(
 					new ComparableStack(ModItems.pile_rod_pu239), new AnvilOutput[] {
-							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)), //Might need to be cut to 3 nuggets, but a full billet is nice and round
-							new AnvilOutput(new ItemStack(ModItems.billet_pu_mix, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
 							new AnvilOutput(new ItemStack(ModItems.billet_uranium, 1)),
-							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2)),
+							new AnvilOutput(new ItemStack(ModItems.billet_u235, 1))
 					}).setTier(2));
-
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_plutonium, 1)),
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 1)),
+							new AnvilOutput(new ItemStack(ModItems.nugget_technetium, 4)),
+							new AnvilOutput(new ItemStack(ModItems.nugget_bismuth, 2)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
+			constructionRecipes.add(new AnvilConstructionRecipe(
+					new ComparableStack(ModItems.pile_rod_pu239), new AnvilOutput[] {
+							new AnvilOutput(new ItemStack(ModItems.billet_pu239, 2)),
+							new AnvilOutput(new ItemStack(ModItems.billet_u235, 1)),
+							new AnvilOutput(new ItemStack(ModItems.plate_iron, 2))
+					}).setTier(5));
 		} else {
 			constructionRecipes.add(new AnvilConstructionRecipe(
 					new ComparableStack(ModItems.pile_rod_plutonium), new AnvilOutput[] {
@@ -1016,6 +1062,129 @@ public class AnvilRecipes {
 						new AnvilOutput(new ItemStack(Items.bone, 1), 0.75F),
 						new AnvilOutput(new ItemStack(Items.experience_bottle, 1), 0.5F)
 				}).setTier(1));
+		constructionRecipes.add(new AnvilConstructionRecipe(
+				new ComparableStack(ModBlocks.ore_oil), 
+				new AnvilOutput[] {
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOURGAS.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.03F),					
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.XYLENE.getID()), 0.01F),				
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.REFORMGAS.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.02F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.02F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.RADIOSOLVENT.getID()), 0.01F),	
+					new AnvilOutput(new ItemStack(ModItems.ingot_mud), 0.01F)	
+				}
+		).setTier(3));
+		constructionRecipes.add(new AnvilConstructionRecipe(
+				new ComparableStack(ModBlocks.ore_oil_sand), 
+				new AnvilOutput[] {
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.02F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.02F),					
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.02F),			
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.01F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.01F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.01F)
+				}
+		).setTier(3));
+		constructionRecipes.add(new AnvilConstructionRecipe(
+				new ComparableStack(ModBlocks.ore_oil), 
+				new AnvilOutput[] {
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.09F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.09F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.09F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOURGAS.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.09F),					
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.09F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.XYLENE.getID()), 0.03F),				
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.REFORMGAS.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.06F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.06F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.RADIOSOLVENT.getID()), 0.03F),	
+					new AnvilOutput(new ItemStack(ModItems.ingot_mud), 0.01F)	
+				}
+		).setTier(6));
+		constructionRecipes.add(new AnvilConstructionRecipe(
+				new ComparableStack(ModBlocks.ore_oil_sand), 
+				new AnvilOutput[] {
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.CHLORINE.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NAPHTHA.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.LUBRICANT.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.GAS.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.PETROLEUM.getID()), 0.06F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.AROMATICS.getID()), 0.06F),					
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.UNSATURATEDS.getID()), 0.06F),			
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.KEROSENE.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.ETHANOL.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.FISHOIL.getID()), 0.03F),	
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.NITAN.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.BALEFIRE.getID()), 0.03F),
+					new AnvilOutput(new ItemStack(ModItems.fluid_tank_full, 1, Fluids.SOLVENT.getID()), 0.03F)
+				}
+		).setTier(6));
+			ComparableStack ex1 = new ComparableStack(ModItems.pile_rod_pu239);
+			ComparableStack ex2 = new ComparableStack(ModItems.pile_rod_plutonium);
+		for(CustomMachineRecipe result4: CustomMachineRecipes.recipes.get("simplefactory")){
+			if(result4.inputItems.length == 1 && result4.outputItems.length > 1){
+			if(result4.inputItems[0].compareTo(ex1) != 0 && result4.inputItems[0].compareTo(ex2) != 0 ){
+				List<AnvilOutput> output = new ArrayList();
+				for(int i = 0; i < result4.outputItems.length; i++)
+					output.add(new AnvilOutput(result4.outputItems[i].key.copy(),result4.outputItems[i].value/2));
+				constructionRecipes.add(new AnvilConstructionRecipe(result4.inputItems[0], output).setTier(2));
+			}
+			}
+		}
+		for(CustomMachineRecipe result5: CustomMachineRecipes.recipes.get("normalfactory")){
+ 			if(result5.inputItems.length == 1 && result5.outputItems.length > 1){
+			if(result5.inputItems[0].compareTo(ex1) != 0 && result5.inputItems[0].compareTo(ex2) != 0 ){
+				List<AnvilOutput> output = new ArrayList();
+				for(int i = 0; i < result5.outputItems.length; i++)
+					output.add(new AnvilOutput(result5.outputItems[i].key.copy(),result5.outputItems[i].value*0.9F));
+				constructionRecipes.add(new AnvilConstructionRecipe(result5.inputItems[0], output).setTier(5));
+			}
+			}
+		}
+		for(CustomMachineRecipe result6: CustomMachineRecipes.recipes.get("normalfactory")){
+			if(result6.inputItems.length > 1 && result6.outputItems.length == 1){
+				List<AStack> input = new ArrayList();
+				for(int i = 0; i < result6.inputItems.length; i++)
+					input.add(result6.inputItems[i]);
+				constructionRecipes.add(new AnvilConstructionRecipe(input,
+				new AnvilOutput(result6.outputItems[0].key.copy(),result6.outputItems[0].value)).setTier(5));
+			}
+		}
+		for(CustomMachineRecipe result7: CustomMachineRecipes.recipes.get("generator")){
+ 			if(result7.inputItems.length == 1 && result7.outputItems.length > 1){
+			if(result7.inputItems[0].compareTo(ex1) != 0 && result7.inputItems[0].compareTo(ex2) != 0 ){
+				List<AnvilOutput> output = new ArrayList();
+				for(int i = 0; i < result7.outputItems.length; i++)
+					output.add(new AnvilOutput(result7.outputItems[i].key.copy(),result7.outputItems[i].value*0.8F));
+				constructionRecipes.add(new AnvilConstructionRecipe(result7.inputItems[0], output).setTier(5));
+			}
+			}
+		}
 	}
 	
 	public static void pullFromAssembler(ComparableStack result, int tier) {
@@ -1053,8 +1222,20 @@ public class AnvilRecipes {
 			this.output.add(output);
 			this.setOverlay(OverlayType.CONSTRUCTION); //preferred overlay for many:1 conversions is construction
 		}
+
+		public AnvilConstructionRecipe(List<AStack> input, AnvilOutput output) {
+			for(AStack stack : input) this.input.add(stack);
+			this.output.add(output);
+			this.setOverlay(OverlayType.CONSTRUCTION); //preferred overlay for many:1 conversions is construction
+		}
 		
 		public AnvilConstructionRecipe(AStack input, AnvilOutput[] output) {
+			this.input.add(input);
+			for(AnvilOutput out : output) this.output.add(out);
+			this.setOverlay(OverlayType.RECYCLING); //preferred overlay for 1:many conversions is recycling
+		}
+
+		public AnvilConstructionRecipe(AStack input, List<AnvilOutput> output) {
 			this.input.add(input);
 			for(AnvilOutput out : output) this.output.add(out);
 			this.setOverlay(OverlayType.RECYCLING); //preferred overlay for 1:many conversions is recycling

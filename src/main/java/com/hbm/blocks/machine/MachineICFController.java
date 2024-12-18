@@ -11,8 +11,8 @@ import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.machine.BlockICF.TileEntityBlockICF;
 import com.hbm.blocks.machine.BlockICFLaserComponent.EnumICFPart;
 import com.hbm.lib.RefStrings;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.toclient.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.tileentity.machine.TileEntityICFController;
 import com.hbm.util.BobMathUtil;
 import com.hbm.util.I18nUtil;
@@ -20,6 +20,7 @@ import com.hbm.util.fauxpointtwelve.BlockPos;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.init.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -183,6 +184,10 @@ public class MachineICFController extends BlockContainer implements ILookOverlay
 		
 		if(validCasing) {
 			assembly.put(pos, meta);
+			return;
+		}
+
+		if(block == Blocks.air) {
 			return;
 		}
 		

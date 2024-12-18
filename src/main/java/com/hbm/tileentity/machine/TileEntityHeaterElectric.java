@@ -1,7 +1,6 @@
 package com.hbm.tileentity.machine;
 
 import com.hbm.blocks.BlockDummyable;
-import com.hbm.interfaces.ICopiable;
 import com.hbm.main.MainRegistry;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.INBTPacketReceiver;
@@ -13,14 +12,12 @@ import api.hbm.tile.IHeatSource;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IHeatSource, IEnergyReceiverMK2, INBTPacketReceiver, ICopiable, IInfoProviderEC {
+public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IHeatSource, IEnergyReceiverMK2, INBTPacketReceiver, IInfoProviderEC {
 	
 	public long power;
 	public int heatEnergy;
@@ -144,7 +141,7 @@ public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IH
 	public void toggleSetting() {
 		setting++;
 		
-		if(setting > 10)
+		if(setting > 20)
 			setting = 0;
 	}
 
@@ -163,7 +160,7 @@ public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IH
 	}
 	
 	public int getHeatGen() {
-		return this.setting * 100;
+		return this.setting * 500;
 	}
 
 	@Override
@@ -211,17 +208,5 @@ public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IH
 		data.setLong(CompatEnergyControl.D_CONSUMPTION_HE, getConsumption());
 		data.setLong(CompatEnergyControl.L_ENERGY_TU, getHeatStored());
 		data.setLong(CompatEnergyControl.D_OUTPUT_TU, getHeatGen());
-	}
-
-	@Override
-	public NBTTagCompound getSettings(World world, int x, int y, int z) {
-		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setInteger("setting", setting);
-		return nbt;
-	}
-
-	@Override
-	public void pasteSettings(NBTTagCompound nbt, int index, World world, EntityPlayer player, int x, int y, int z) {
-		this.setting = nbt.getInteger("setting");
 	}
 }

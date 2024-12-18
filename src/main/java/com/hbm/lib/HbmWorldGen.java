@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.blocks.generic.BlockNTMFlower.EnumFlowerType;
 import com.hbm.config.GeneralConfig;
 import com.hbm.config.MobConfig;
@@ -96,7 +97,7 @@ public class HbmWorldGen implements IWorldGenerator {
 				DungeonToolbox.generateFlowers(world, rand, i, j, ModBlocks.reeds, 0);
 			}
 		}
-
+		
 		if(WorldConfig.gasbubbleSpawn > 0 && rand.nextInt(WorldConfig.gasbubbleSpawn) == 0)
 			DungeonToolbox.generateOre(world, rand, i, j, 1, 32, 30, 10, ModBlocks.gas_flammable, 1);
 
@@ -157,6 +158,8 @@ public class HbmWorldGen implements IWorldGenerator {
 	
 					BedrockOre.generate(world, randPosX, randPosZ, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 				}
+				if ((i % 256 == 0 )&&( j % 256 == 0))
+					BedrockOre.generate(world, i, j, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 
 			} else {
 
@@ -175,7 +178,7 @@ public class HbmWorldGen implements IWorldGenerator {
 					BedrockOre.generate(world, randPosX, randPosZ, def.stack, def.acid, def.color, def.tier);
 				}
 			}
-			
+		
 			if(GeneralConfig.enable528ColtanSpawn) {
 				DungeonToolbox.generateOre(world, rand, i, j, GeneralConfig.coltanRate, 4, 15, 40, ModBlocks.ore_coltan);
 			}
@@ -218,6 +221,12 @@ public class HbmWorldGen implements IWorldGenerator {
 
 				if(randPosX <= -350 && randPosX >= -450 && randPosZ <= -350 && randPosZ >= -450)
 					(new WorldGenMinable(ModBlocks.ore_australium, 50)).generate(world, rand, randPosX, randPosY, randPosZ);
+			}
+			if((i % 64 == 0 )&&( j % 64 == 0)){
+				for(int PosX = i-1; PosX <= i+1; PosX++){
+					for(int PosZ = j-1; PosZ <= j+1; PosZ++)
+						world.setBlock(PosX, 35, PosZ, ModBlocks2.ore_vault);
+				}
 			}
 		}
 		
@@ -402,9 +411,9 @@ public class HbmWorldGen implements IWorldGenerator {
 						landmine.waitingForPlayer = true;
 						if(GeneralConfig.enableDebugMode) MainRegistry.logger.info("[Debug] Successfully spawned landmine at " + x + " " + g + " " + z);
 						break;
-					}
 				}
 			}
+		}
 
 			if(rand.nextInt(2000) == 0) {
 				int x = i + rand.nextInt(16);
