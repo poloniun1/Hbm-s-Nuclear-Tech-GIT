@@ -198,26 +198,26 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
 					plasma.getTankType() == Fluids.fromID(1015))) {
 					this.totalRuntime++;
-					int delay = 40;
+					int delay = 32;
 					if(delay > 0 && totalRuntime % delay == 0 && plasma.getFill() > 0) {
 						produceNewByproduct();						
 						}
 					if(delay > 0 && totalRuntime % delay == 0 && tanks[0].getFill() > 0) {				
 						doNewBreederStuff();
 						}
-					if(plasma.getFill() >= 100) {
-						power += 19900000;
-						plasma.setFill(plasma.getFill() - 100);
-						tanks[1].setFill(tanks[1].getFill() + 100);
-						if(tanks[0].getFill()>=100){
-							tanks[0].setFill(tanks[0].getFill() - 200);
-							tanks[1].setFill(tanks[1].getFill() + 200);
+					if(plasma.getFill() >= 125) {
+						power += 24900000;
+						plasma.setFill(plasma.getFill() - 125);
+						tanks[1].setFill(tanks[1].getFill() + 125);
+						if(tanks[0].getFill()>=250){
+							tanks[0].setFill(tanks[0].getFill() - 250);
+							tanks[1].setFill(tanks[1].getFill() + 250);
 						}
 					}
 	
 				Generate();
 				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
-				if(plasma.getFill() >= 50)  power += 100000;				
+				if(plasma.getFill() >= 125)  power += 100000;				
 					}			
 				for(DirPos pos : getConPos()) {
 					if(tanks[1].getFill() > 0) {
@@ -498,7 +498,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
-		return new int[] { 1, 2, 4 };
+		return new int[] { 2, 4 };
 	}
 
 	@Override
@@ -508,7 +508,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			return true;
 
 		if(i == 1 && (itemStack.getItem() == ModItems.billet_u235 || itemStack.getItem() == ModItems.billet_u233 || itemStack.getItem() == ModItems.billet_pu239 ||
-		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232))
+		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232 ||  itemStack.getItem() == ModItems.flourite))
 			return true;
 		
 		return false;
