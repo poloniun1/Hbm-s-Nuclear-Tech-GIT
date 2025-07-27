@@ -15,10 +15,13 @@ import com.hbm.inventory.container.ContainerRBMKRod;
 import com.hbm.inventory.gui.GUIRBMKRod;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemRBMKRod;
+import com.hbm.items.machine.ItemRBMKRod.EnumBurnFunc;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKConsole.ColumnType;
+import api.hbm.energymk2.IEnergyProviderMK2;
 import com.hbm.util.BufferUtil;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.ParticleUtil;
+import com.hbm.util.fauxpointtwelve.BlockPos;
 
 import api.hbm.tile.IInfoProviderEC;
 import com.hbm.util.fauxpointtwelve.BlockPos;
@@ -34,6 +37,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -43,7 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBMKFluxReceiver, IRBMKLoadable, IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent {
+public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBMKFluxReceiver, IRBMKLoadable, IEnergyProviderMK2 , IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent {
 
 	// New system!!
 	// Used for receiving flux (calculating outbound flux/burning rods)
@@ -53,6 +57,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 	public double lastFluxRatio;
 
 	public boolean hasRod;
+	public long power;
 
 	// Fuel rod item data client sync
 	private String fuelYield;
@@ -111,26 +116,56 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 
 					fluxQuantityOut = rod.burn(worldObj, slots[0], fluxIn);
 				} else {
+					double fluxIn;
 					NType rType = rod.rType;
 					if(rType == NType.SLOW)
 						fluxRatioOut = 0;
 					else
 						fluxRatioOut = 1;
+				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||
+				slots[0].getItem()== ModItems.rbmk_fuel_pu238be))
+				{	
+					rod.selfRate = 2000.0D;
+					if(slots[0].getItem()== ModItems.rbmk_fuel_pu238be)	rod.selfRate = 90000.0D;
+				}
+				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_balefire_gold || 
+				slots[0].getItem()== ModItems.rbmk_fuel_flashlead ||slots[0].getItem()== ModItems.rbmk_fuel_mes))
+					rod.selfRate = 10.0D;
+				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0 )	
+					rod.selfRate = 50.0D;
+				if(RBMKDials.getHighFlux(worldObj) && slots[0].getItem()== ModItems.rbmk_fuel_hen){
+					rod.setFunction(EnumBurnFunc.LINEAR);
+					rod.setStats(1);
+					}
+				fluxIn = fluxFromType(rod.nType);
+	
+				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ueu ||
+				slots[0].getItem()== ModItems.rbmk_fuel_meu || slots[0].getItem()== ModItems.rbmk_fuel_heu235 ||
+				slots[0].getItem()== ModItems.rbmk_fuel_thmeu || slots[0].getItem()== ModItems.rbmk_fuel_lep ||
+				slots[0].getItem()== ModItems.rbmk_fuel_mep || slots[0].getItem()== ModItems.rbmk_fuel_men ||
+				slots[0].getItem()== ModItems.rbmk_fuel_hen || slots[0].getItem()== ModItems.rbmk_fuel_leaus ||
+				slots[0].getItem()== ModItems.rbmk_fuel_heaus || slots[0].getItem()== ModItems.rbmk_fuel_mox ||
+				slots[0].getItem()== ModItems.rbmk_fuel_les || slots[0].getItem()== ModItems.rbmk_fuel_mes ||
+				slots[0].getItem()== ModItems.rbmk_fuel_balefire_gold || slots[0].getItem()== ModItems.rbmk_fuel_flashlead))
+					fluxQuantityOut = rod.burnnew(worldObj, slots[0], fluxIn);
 
-					double fluxIn = fluxFromType(rod.nType);
-					fluxQuantityOut = rod.burn(worldObj, slots[0], fluxIn);
+				else	fluxQuantityOut = rod.burn(worldObj, slots[0], fluxIn);
+	
+
 				}
 
 				rod.updateHeat(worldObj, slots[0], 1.0D);
 				this.heat += rod.provideHeat(worldObj, slots[0], heat, 1.0D);
 
-				if(!this.hasLid()) {
+				if(RBMKDials.getGeneratorA(worldObj)&&this.heat>20D)
+					Generate();			
+				/*if(!this.hasLid()) {
 					ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, (float) (this.fluxQuantity * 0.05F));
-				}
+				}*/
 
 				super.updateEntity();
 
-				if(this.heat > this.maxHeat()) {
+				/*if(this.heat > this.maxHeat()) {
 
 					if(RBMKDials.getMeltdownsDisabled(worldObj)) {
 						ParticleUtil.spawnGasFlame(worldObj, xCoord + 0.5, yCoord + RBMKDials.getColumnHeight(worldObj) + 0.5, zCoord + 0.5, 0, 0.2, 0);
@@ -141,20 +176,35 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 					this.lastFluxQuantity = 0;
 					this.fluxQuantity = 0;
 					return;
-				}
+				}*/
 
-				if(this.heat > 10_000) this.heat = 10_000;
+				//if(this.heat > 10_000) this.heat = 10_000;
 
 				//for spreading, we want the buffered flux to be 0 because we want to know exactly how much gets reflected back
 
 				this.lastFluxQuantity = this.fluxQuantity;
 				this.lastFluxRatio = this.fluxFastRatio;
 
+
 				this.fluxQuantity = 0;
 				this.fluxFastRatio = 0;
 
 				spreadFlux(fluxQuantityOut, fluxRatioOut);
 
+				if (RBMKDials.getGeneratorA(worldObj) ){
+					if((slots[0].getItem()== ModItems.rbmk_fuel_ueu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_hep239);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_thmeu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu233);						
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu233) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heu235);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_heu235) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_hen);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_leaus) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_heaus);
+					else if((slots[0].getItem()== ModItems.rbmk_fuel_meu) && rod.getYield(slots[0]) == 0)
+						slots[0] = new ItemStack(ModItems.rbmk_fuel_mep);
+					}
 				hasRod = true;
 
 			} else {
@@ -195,7 +245,6 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 	private BlockPos pos;
 
 	public void spreadFlux(double flux, double ratio) {
-
 		if(pos == null)
 			pos = new BlockPos(this);
 
@@ -214,11 +263,11 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 		}
 
 		for(ForgeDirection dir : fluxDirs) {
-
 			Vec3 neutronVector = Vec3.createVectorHelper(dir.offsetX, dir.offsetY, dir.offsetZ);
-
 			// Create new neutron streams
+
 			new RBMKNeutronHandler.RBMKNeutronStream(node, neutronVector, flux, ratio);
+
 		}
 	}
 
@@ -397,11 +446,78 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 		this.markDirty();
 	}
 
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack itemStack) {
+		return true;
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemStack, int j) {
+		return true;
+	}
+
+	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
+		return new int[] {0};
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
+		return true;
+	}
 	// do some opencomputer stuff
 	@Override
 	@Optional.Method(modid = "OpenComputers")
 	public String getComponentName() {
 		return "rbmk_fuel_rod";
+	}
+
+	/**
+	 * The Generator consume all heats to generatting
+	 */
+	private void Generate() {
+		this.power =( new Double(this.heat).longValue()-20) * 1800-36000;
+			this.tryProvide(worldObj, xCoord, yCoord-1, zCoord, ForgeDirection.DOWN);
+			for(int i = 0; i<2;i++){
+			for(int j = 1; j<2; j++){
+			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  +  j , ForgeDirection.EAST);
+			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  +  j , ForgeDirection.SOUTH);
+}
+}
+			for(int i = 1; i<2;i++){
+			for(int j = 0; j<2; j++){
+			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  -  j , ForgeDirection.EAST);
+			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  -  j , ForgeDirection.NORTH);
+}
+}
+			for(int i = 0; i<2;i++){
+			for(int j = 1; j<2; j++){
+			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord -  j , ForgeDirection.WEST);
+			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord -  j , ForgeDirection.NORTH);
+}
+}
+			for(int i = 1; i<2;i++){
+			for(int j = 0; j<2; j++){
+			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord +  j , ForgeDirection.WEST);
+			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord +  j , ForgeDirection.SOUTH);
+}
+}
+
+
+		this.heat = 0;
+
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+	public long getMaxPower() {
+		return power;
 	}
 
 	@Callback(direct = true)

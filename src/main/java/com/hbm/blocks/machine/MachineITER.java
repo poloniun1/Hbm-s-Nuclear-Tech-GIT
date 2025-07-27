@@ -5,12 +5,20 @@ import java.util.Random;
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.material.Mats;
+import com.hbm.inventory.fluid.FluidType;
+import com.hbm.items.machine.IItemFluidIdentifier;
+import com.hbm.inventory.fluid.trait.*;
+import com.hbm.inventory.fluid.trait.FluidTraitSimple.*;
 import com.hbm.items.ModItems;
 import com.hbm.main.MainRegistry;
 import com.hbm.tileentity.TileEntityProxyCombo;
 import com.hbm.tileentity.machine.TileEntityITER;
 import com.hbm.tileentity.machine.TileEntityITERStruct;
 
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -69,6 +77,13 @@ public class MachineITER extends BlockDummyable {
 			TileEntityITER entity = (TileEntityITER) world.getTileEntity(pos[0], pos[1], pos[2]);
 			if(entity != null)
 			{
+			if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof IItemFluidIdentifier) {
+					FluidType type = ((IItemFluidIdentifier) player.getHeldItem().getItem()).getType(world, pos[0], pos[1], pos[2], player.getHeldItem());
+				if(type.traits.containsKey(FT_Plasma.class))	{
+					entity.plasma.setTankType(type);
+					entity.markDirty();
+					player.addChatComponentMessage(new ChatComponentText("Changed type to ").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)).appendSibling(new ChatComponentTranslation(type.getConditionalName())).appendSibling(new ChatComponentText("!")));
+				}}
 				FMLNetworkHandler.openGui(player, MainRegistry.instance, 0, world, pos[0], pos[1], pos[2]);
 			}
 			return true;

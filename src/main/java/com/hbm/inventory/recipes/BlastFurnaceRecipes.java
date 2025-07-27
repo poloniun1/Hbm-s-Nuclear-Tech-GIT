@@ -31,7 +31,7 @@ import com.hbm.util.Tuple.Triplet;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.init.Items;
 /**
  * Magic!
  * 
@@ -50,6 +50,7 @@ public class BlastFurnaceRecipes extends SerializableRecipe {
 		addRecipe(IRON.ore(),	COAL,										new ItemStack(ModItems.ingot_steel, 2));
 		addRecipe(IRON.ore(),	ANY_COKE,									new ItemStack(ModItems.ingot_steel, 3));
 		addRecipe(IRON.ore(),	new ComparableStack(ModItems.powder_flux),	new ItemStack(ModItems.ingot_steel, 3));
+		addRecipe(IRON.ore(),	new ComparableStack(ModItems.ingot_graphite),	new ItemStack(ModItems.ingot_steel, 4));
 		
 		addRecipe(CU,									REDSTONE,										new ItemStack(ModItems.ingot_red_copper, 2));
 		addRecipe(STEEL,								MINGRADE,										new ItemStack(ModItems.ingot_advanced_alloy, 2));
@@ -63,6 +64,7 @@ public class BlastFurnaceRecipes extends SerializableRecipe {
 		addRecipe(CO,									ModBlocks.block_meteor,							new ItemStack(ModItems.ingot_meteorite));
 		addRecipe(ModItems.meteorite_sword_hardened,	CO,												new ItemStack(ModItems.meteorite_sword_alloyed));
 		addRecipe(ModBlocks.block_meteor,				CO,												new ItemStack(ModItems.ingot_meteorite));
+		addRecipe(Items.chicken,				ModItems.pellet_charged,												new ItemStack(ModItems.nugget));
 
 		if(GeneralConfig.enableLBSM && GeneralConfig.enableLBSMSimpleChemsitry) {
 			addRecipe(ModItems.canister_empty, COAL, new ItemStack(ModItems.canister_full, 1, Fluids.OIL.getID()));
