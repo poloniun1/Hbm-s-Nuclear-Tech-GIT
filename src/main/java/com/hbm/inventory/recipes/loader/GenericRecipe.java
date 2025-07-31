@@ -21,8 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
 public class GenericRecipe {
-	
+
 	protected final String name;
+	public String nameWrapper;
 	public AStack[] inputItem;
 	public FluidStack[] inputFluid;
 	public IOutput[] outputItem;
@@ -51,6 +52,7 @@ public class GenericRecipe {
 	public GenericRecipe setPower(long power) { this.power = power; return this; }
 	public GenericRecipe setup(int duration, long power) { return this.setDuration(duration).setPower(power); }
 	public GenericRecipe setupNamed(int duration, long power) { return this.setDuration(duration).setPower(power).setNamed(); }
+	public GenericRecipe setNameWrapper(String wrapper) { this.nameWrapper = wrapper; return this; }
 	public GenericRecipe setIcon(ItemStack icon) { this.icon = icon; this.writeIcon = true; return this; }
 	public GenericRecipe setIcon(Item item, int meta) { return this.setIcon(new ItemStack(item, 1, meta)); }
 	public GenericRecipe setIcon(Item item) { return this.setIcon(new ItemStack(item)); }
@@ -68,6 +70,14 @@ public class GenericRecipe {
 	public GenericRecipe outputItems(ItemStack... output) {
 		this.outputItem = new IOutput[output.length];
 		for(int i = 0; i < outputItem.length; i++) this.outputItem[i] = new ChanceOutput(output[i]);
+		return this;
+	}
+	
+	public GenericRecipe setIconToFirstIngredient() {
+		if(this.inputItem != null) {
+			List<ItemStack> stacks = this.inputItem[0].extractForNEI();
+			if(!stacks.isEmpty()) this.icon = stacks.get(0);
+		}
 		return this;
 	}
 	
@@ -93,8 +103,11 @@ public class GenericRecipe {
 	}
 	
 	public String getLocalizedName() {
-		if(customLocalization) return I18nUtil.resolveKey(name);
-		return this.getIcon().getDisplayName();
+		String name = null;
+		if(customLocalization) name = I18nUtil.resolveKey(this.name);
+		if(name == null) name = this.getIcon().getDisplayName();
+		if(this.nameWrapper != null) name = I18nUtil.resolveKey(this.nameWrapper, name);
+		return name;
 	}
 	
 	public List<String> print() {
