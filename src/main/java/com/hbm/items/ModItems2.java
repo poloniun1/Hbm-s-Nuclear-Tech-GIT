@@ -106,6 +106,7 @@ public class ModItems2 {
 	public static Item waste_sa326;
 	public static Item bred_lead;
 
+	public static Item ex_bismuth_pickaxe;
 	public static Item osmiridium_pickaxe;
 	public static Item missile_carrier;
 
@@ -186,8 +187,12 @@ public class ModItems2 {
 		plate_fuel_atbe = new ItemPlateFuel(2400000).setFunction(FunctionEnum.PASSIVE, 1000).setUnlocalizedName("plate_fuel_atbe").setMaxStackSize(1).setCreativeTab(MainRegistry.controlTab).setTextureName(RefStrings.MODID + ":plate_fuel_atbe");
 		waste_plate_atbe = new ItemDepletedFuel().setUnlocalizedName("waste_plate_atbe").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":waste_plate_atbe");
 
+		ToolMaterial matExBismuth = EnumHelper.addToolMaterial("HBM_EXBISMUTH", 4, 0, 50F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_bismuth,2));
+		ex_bismuth_pickaxe = new ItemToolAbility(35F, 0, matExBismuth, EnumToolType.MINER)
+				.addAbility(IToolAreaAbility.WORLD, 3)
+				.setDepthRockBreaker().setUnlocalizedName("ex_bismuth_pickaxe").setTextureName(RefStrings.MODID + ":bismuth_pickaxe");
 		ToolMaterial matOSMIRIDIUM = EnumHelper.addToolMaterial("HBM_OSMIRIDIUM", 4, 0, 200F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_osmiridium));
-		osmiridium_pickaxe = new ItemToolAbility(35F, 0, matOSMIRIDIUM, EnumToolType.PICKAXE)
+		osmiridium_pickaxe = new ItemToolAbility(35F, 0, matOSMIRIDIUM, EnumToolType.MINER)
 				.addAbility(IToolAreaAbility.GOD, 3)
 				.setDepthRockBreaker().setUnlocalizedName("osmiridium_pickaxe").setTextureName(RefStrings.MODID + ":mese_pickaxe");
 
@@ -232,6 +237,7 @@ public class ModItems2 {
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
 
+		GameRegistry.registerItem(ex_bismuth_pickaxe, ex_bismuth_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(osmiridium_pickaxe, osmiridium_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
 	}
