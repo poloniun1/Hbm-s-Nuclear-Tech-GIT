@@ -557,11 +557,175 @@ public interface IToolAreaAbility extends IBaseAbility {
 		}
 	};
 
+
+	public static final IToolAreaAbility WORLD = new IToolAreaAbility() {
+		@Override
+		public String getName() {
+			return "tool.ability.world";
+		}
+
+		@Override
+		public boolean isAllowed() {
+			return ToolConfig.abilityGod;
+		}
+
+		public final int[] radiusAtLevel = { 1, 2, 3, 5};
+
+		@Override
+		public int levels() {
+			return radiusAtLevel.length;
+		}
+
+		@Override
+		public String getExtension(int level) {
+			return " (" + radiusAtLevel[level] + ")";
+		}
+
+		@Override
+		public int sortOrder() {
+			return SORT_ORDER_BASE + 6;
+		}
+		// Note: if reusing it across different instatces of a tool
+		// is a problem here, then it had already been one before
+		// the refactor! The solution is to simply make this a local
+		// of the onDig method and pass it around as a parameter.
+		private Set<ThreeInts> pos = new HashSet<>();
+		private List<ItemStack> products = new ArrayList();
+			
+		@Override
+		public boolean onDig(int level, World world, int x, int y, int z, EntityPlayer player, ItemToolAbility tool) {
+			Block b = world.getBlock(x, y, z);
+			int meta = world.getBlockMetadata(x, y, z);
+			if(b == Blocks.stone && !ToolConfig.recursiveStone) {
+				return false;
+			}
+
+			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack) {
+				return false;
+			}
+			if(b == Blocks.dirt)
+				return false;
+			if(b == Blocks.grass)
+				return false;
+			if(b == Blocks.sand)
+				return false;
+			if(b == Blocks.sandstone)
+				return false;
+			pos.clear();
+			ItemStack stack = new ItemStack(b, 1, meta);
+			CustomMachineRecipe result = getMatchingRecipe(stack);
+			ItemStack stack1;			
+			if(result != null) {
+				for(int i = 0; i < result.outputItems.length; i++) {
+					if(world.rand.nextFloat() < result.outputItems[i].value){
+						stack1 = result.outputItems[i].key.copy();
+						if(stack1 != null)  products.add(stack1);
+					}
+				}
+			}
+
+		
+			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
+			if(products != null) {
+				player.getHeldItem().damageItem(1, player);
+				for(ItemStack product : products) 						
+					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
+				world.setBlockToAir(x, y, z);
+			}						
+			return false;
+		}
+
+		private final List<ThreeInts> offsets = new ArrayList<ThreeInts>(3 * 3 * 3 - 1) {
+			{
+				for(int dx = -1; dx <= 1; dx++) {
+					for(int dy = -1; dy <= 1; dy++) {
+						for(int dz = -1; dz <= 1; dz++) {
+							if(dx != 0 || dy != 0 || dz != 0) {
+								add(new ThreeInts(dx, dy, dz));
+							}
+						}
+					}
+				}
+			}
+		};
+
+		private void recurse(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			List<ThreeInts> shuffledOffsets = new ArrayList<>(offsets);
+			Collections.shuffle(shuffledOffsets);
+
+			for(ThreeInts offset : shuffledOffsets) {
+				breakExtra(world, x + offset.x, y + offset.y, z + offset.z, refX, refY, refZ, player, tool, depth, radius);
+			}
+		}
+
+		private void breakExtra(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			if(pos.contains(new ThreeInts(x, y, z)))
+				return;
+
+			depth += 1;
+
+			if(depth > ToolConfig.recursionDepth)
+				return;
+
+			pos.add(new ThreeInts(x, y, z));
+
+			// don't lose the ref block just yet
+			if(x == refX && y == refY && z == refZ)
+				return;
+
+			if(Vec3.createVectorHelper(x - refX, y - refY, z - refZ).lengthVector() > radius)
+				return;
+
+			Block b = world.getBlock(x, y, z);
+			Block ref = world.getBlock(refX, refY, refZ);
+			int meta = world.getBlockMetadata(x, y, z);
+			int refMeta = world.getBlockMetadata(refX, refY, refZ);
+
+			if(!isSameBlock(b, ref))
+				return;
+
+			if(meta != refMeta)
+				return;
+
+			if(player.getHeldItem() == null)
+				return;
+
+			if(products != null) {
+				player.getHeldItem().damageItem(1, player);
+				for(ItemStack product : products) 						
+					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
+			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+			world.setBlockToAir(x, y, z);	
+			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
+		}
+
+		private boolean isSameBlock(Block b1, Block b2) {
+			if(b1 == b2)
+				return true;
+			if((b1 == Blocks.redstone_ore && b2 == Blocks.lit_redstone_ore) || (b1 == Blocks.lit_redstone_ore && b2 == Blocks.redstone_ore))
+				return true;
+
+			return false;
+		}
+
+		public CustomMachineRecipe getMatchingRecipe(ItemStack stack) {
+			List<CustomMachineRecipe> recipes = CustomMachineRecipes.recipes.get("simplefactory");
+			if(recipes == null || recipes.isEmpty()) return null;
+
+			for(CustomMachineRecipe recipe : recipes) {
+				if(recipe.inputItems.length == 0) continue;
+				if(!recipe.inputItems[0].matchesRecipe(stack, true)) continue;
+				return recipe;
+			}
+
+			return null;
+		}
+	};
 	// endregion handlers
 
 
 
-	static final IToolAreaAbility[] abilities = { NONE, RECURSION, HAMMER, HAMMER_FLAT, EXPLOSION, GOD };
+	static final IToolAreaAbility[] abilities = { NONE, RECURSION, HAMMER, HAMMER_FLAT, EXPLOSION, GOD, WORLD };
 
 	static IToolAreaAbility getByName(String name) {
 		for(IToolAreaAbility ability : abilities) {
