@@ -102,7 +102,7 @@ public class YellowBarrel extends BlockDetonatable {
 		}
 		ExplosionNukeGeneric.waste(world, ix, iy, iz, 35);
 
-		for(int i = -5; i <= 5; i++) {
+		/*for(int i = -5; i <= 5; i++) {
 			for(int j = -5; j <= 5; j++) {
 				for(int k = -5; k <= 5; k++) {
 					
@@ -111,7 +111,7 @@ public class YellowBarrel extends BlockDetonatable {
 				}
 			}
 		}
-		ChunkRadiationManager.proxy.incrementRad(world, ix, iy, iz, 35);
+		ChunkRadiationManager.proxy.incrementRad(world, ix, iy, iz, 35);*/
 	}
 
 }

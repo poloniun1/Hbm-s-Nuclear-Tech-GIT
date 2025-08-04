@@ -6,6 +6,7 @@ import java.util.List;
 import api.hbm.tile.IHeatSource;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.machine.ReactorResearch;
+import com.hbm.blocks.machine.rbmk.RBMKRod;
 import com.hbm.config.CustomMachineConfigJSON;
 import com.hbm.config.CustomMachineConfigJSON.MachineConfiguration;
 import com.hbm.config.CustomMachineConfigJSON.MachineConfiguration.ComponentDefinition;
@@ -26,7 +27,8 @@ import com.hbm.util.BufferUtil;
 import com.hbm.util.Compat;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
-
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
@@ -48,7 +50,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 	public MachineConfiguration config;
 
 	public long power;
-	public int flux;
+	public long flux;
 	public int heat;
 	public int maxHeat;
 	public int progress;
@@ -142,7 +144,21 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 								if (tile instanceof TileEntityReactorResearch) {
 
 									TileEntityReactorResearch reactor = (TileEntityReactorResearch) tile;
-									this.flux = reactor.totalFlux;
+									this.flux += reactor.totalFlux;
+									this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
+								}
+							}
+						}
+						if (b instanceof RBMKRod) {
+							int[] source = ((RBMKRod)b).findCore(worldObj, pos.getX() + dir.offsetX, pos.getY(), pos.getZ() + dir.offsetZ);
+							if (source != null) {
+
+								TileEntity tile = worldObj.getTileEntity(source[0], source[1], source[2]);
+
+								if (tile instanceof TileEntityRBMKRod) {
+									double newflux = ((TileEntityRBMKRod)tile).lastFluxQuantity;
+									this.flux += (long)newflux;
+									this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
 								}
 							}
 						}
@@ -182,6 +198,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 						this.progress++;
 						this.power += powerReq;
 						this.heat -= cachedRecipe.heat;
+						this.flux -=cachedRecipe.flux;
 						if (power > config.maxPower) power = config.maxPower;
 						if (worldObj.getTotalWorldTime() % 20 == 0) {
 							pollution(cachedRecipe);
@@ -235,7 +252,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 
 		buf.writeLong(power);
 		buf.writeInt(progress);
-		buf.writeInt(flux);
+		buf.writeLong(flux);
 		buf.writeInt(heat);
 		buf.writeBoolean(structureOK);
 		buf.writeInt(maxProgress);
@@ -253,7 +270,7 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 
 		this.power = buf.readLong();
 		this.progress = buf.readInt();
-		this.flux = buf.readInt();
+		this.flux = buf.readLong();
 		this.heat = buf.readInt();
 		this.structureOK = buf.readBoolean();
 		this.maxProgress = buf.readInt();

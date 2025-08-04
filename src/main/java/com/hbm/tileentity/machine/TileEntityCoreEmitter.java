@@ -14,6 +14,7 @@ import com.hbm.inventory.gui.GUICoreEmitter;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 
 import cpw.mods.fml.common.Optional;
@@ -73,7 +74,8 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 			long demand = maxPower * watts / 2000;
 			
 			beam = 0;
-			
+			if(!RBMKDials.getDFCBABY(worldObj))	
+			{	
 			if(joules > 0 || prev > 0) {
 
 				if(tank.getFill() >= 20) {
@@ -82,23 +84,28 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 					worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava);
 					return;
 				}
-			}
+			}}
 			
 			if(isOn) {
 				
 				//i.e. 50,000,000 HE = 10,000 SPK
 				//1 SPK = 5,000HE
-				
+				if(!RBMKDials.getDFCBABY(worldObj)){				
 				if(power >= demand) {
 					power -= demand;
 					long add = watts * 100;
 					joules += add;
 				}
+				}
+				else{	
+					long add = watts * 100;
+					joules += add;
+					}
 				prev = joules;
 				
 				if(joules > 0) {
 					
-					long out = joules * 95 / 100;
+					long out = joules * 98 / 100;
 					
 					ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata());
 					for(int i = 1; i <= range; i++) {

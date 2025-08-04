@@ -26,6 +26,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.init.Blocks;
 
 import java.util.HashMap;
 import java.util.List;
@@ -111,10 +112,10 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 			errored = true;
 		}
 
-		if(sources.size() == 0) {
+		/*if(sources.size() == 0) {
 			sendError(world, x, y, z, "Neutron sources required", player);
 			errored = true;
-		}
+		}*/
 
 		TileEntityPWRController controller = (TileEntityPWRController) world.getTileEntity(x, y, z);
 
@@ -168,6 +169,10 @@ public class MachinePWRController extends BlockContainer implements ITooltipProv
 			return;
 		}
 
+		if(!isValidCasing(block) && !isValidCore(block)) {
+
+			return;
+		}
 		if(isValidCore(block)) {
 			assembly.put(pos, block);
 			if(block == ModBlocks.pwr_fuel) fuelRods.put(pos, block);

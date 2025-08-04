@@ -2,6 +2,7 @@ package com.hbm.tileentity.machine;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.machine.ReactorResearch;
+import com.hbm.blocks.machine.rbmk.RBMKRod;
 import com.hbm.handler.CompatHandler;
 import com.hbm.inventory.container.ContainerMachineReactorBreeding;
 import com.hbm.inventory.gui.GUIMachineReactorBreeding;
@@ -10,7 +11,8 @@ import com.hbm.inventory.recipes.BreederRecipes.BreederRecipe;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
-
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
@@ -33,9 +35,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
 public class TileEntityMachineReactorBreeding extends TileEntityMachineBase implements SimpleComponent, IGUIProvider, IInfoProviderEC, CompatHandler.OCComponent {
 
-	public int flux;
+	public long flux;
 	public float progress;
 	
+	public long totalflux = 0;
 	private static final int[] slots_io = new int[] { 0, 1 };
 
 	public TileEntityMachineReactorBreeding() {
@@ -54,12 +57,15 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 			this.flux = 0;
 			getInteractions();
 			
+			this.totalflux += this.flux;
+			this.totalflux = this.totalflux > 1000000000000L ? 1000000000000L : this.totalflux ;
 			if(canProcess()) {
 				
-				progress += 0.0025F * (this.flux / BreederRecipes.getOutput(slots[0]).flux);
+				progress = 0.0025F * (this.totalflux / BreederRecipes.getOutput(slots[0]).flux);
 				
 				if(this.progress >= 1.0F) {
-					this.progress = 0F;
+					this.totalflux = this.totalflux - BreederRecipes.getOutput(slots[0]).flux * 400;
+					this.progress -= 1.0F;
 					this.processItem();
 					this.markDirty();
 				}
@@ -74,14 +80,14 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 	@Override
 	public void serialize(ByteBuf buf) {
 		super.serialize(buf);
-		buf.writeInt(flux);
+		buf.writeLong(flux);
 		buf.writeFloat(progress);
 	}
 
 	@Override
 	public void deserialize(ByteBuf buf) {
 		super.deserialize(buf);
-		this.flux = buf.readInt();
+		this.flux = buf.readLong();
 		this.progress = buf.readFloat();
 	}
 	
@@ -103,6 +109,19 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 						this.flux += reactor.totalFlux;
 					}
 				}
+			}
+			if (b instanceof RBMKRod) {
+				int[] source = ((RBMKRod)b).findCore(worldObj, xCoord + dir.offsetX, yCoord, zCoord + dir.offsetZ);
+				if (source != null) {
+
+						TileEntity tile = worldObj.getTileEntity(source[0], source[1], source[2]);
+
+						if (tile instanceof TileEntityRBMKRod) {
+							double newflux = ((TileEntityRBMKRod)tile).lastFluxQuantity;
+							this.flux += (long)newflux;
+							this.flux = this.flux > 1000000000000L ? 1000000000000L : this.flux ;
+						}
+					}
 			}
 		}
 	}
@@ -182,7 +201,7 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
 		
-		flux = nbt.getInteger("flux");
+		flux = nbt.getLong("flux");
 		progress = nbt.getFloat("progress");
 	}
 
@@ -190,7 +209,7 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		
-		nbt.setInteger("flux", flux);
+		nbt.setLong("flux", flux);
 		nbt.setFloat("progress", progress);
 	}
 	
@@ -257,6 +276,6 @@ public class TileEntityMachineReactorBreeding extends TileEntityMachineBase impl
 
 	@Override
 	public void provideExtraInfo(NBTTagCompound data) {
-		data.setInteger(CompatEnergyControl.I_FLUX, flux);
+		data.setLong(CompatEnergyControl.I_FLUX, flux);
 	}
 }

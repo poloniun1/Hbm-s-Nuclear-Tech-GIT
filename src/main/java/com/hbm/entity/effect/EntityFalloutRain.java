@@ -165,10 +165,10 @@ public class EntityFalloutRain extends EntityExplosionChunkloading {
 				continue;
 			}
 			
-			Block ab = worldObj.getBlock(x, y + 1, z);
+			//Block ab = worldObj.getBlock(x, y + 1, z);
 			int meta = worldObj.getBlockMetadata(x, y, z);
 
-			if(depth == 0 && b != ModBlocks.fallout && (ab == Blocks.air || (ab.isReplaceable(worldObj, x, y + 1, z) && !ab.getMaterial().isLiquid()))) {
+			/*if(depth == 0 && b != ModBlocks.fallout && (ab == Blocks.air || (ab.isReplaceable(worldObj, x, y + 1, z) && !ab.getMaterial().isLiquid()))) {
 
 				double d = dist / 100;
 
@@ -176,7 +176,7 @@ public class EntityFalloutRain extends EntityExplosionChunkloading {
 
 				if(chance >= rand.nextDouble() && ModBlocks.fallout.canPlaceBlockAt(worldObj, x, y + 1, z))
 					setBlock(x, y + 1, z, ModBlocks.fallout);
-			}
+			}*/
 
 			if(dist < 65 && b.isFlammable(worldObj, x, y, z, ForgeDirection.UP)) {
 				if(rand.nextInt(5) == 0 && worldObj.getBlock(x, y + 1, z).isAir(worldObj, x, y + 1, z))

@@ -148,7 +148,7 @@ public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IH
 	public void toggleSetting() {
 		setting++;
 
-		if(setting > 10)
+		if(setting > 20)
 			setting = 0;
 	}
 
@@ -167,7 +167,7 @@ public class TileEntityHeaterElectric extends TileEntityLoadedBase implements IH
 	}
 
 	public int getHeatGen() {
-		return this.setting * 100;
+		return this.setting * 500;
 	}
 
 	@Override

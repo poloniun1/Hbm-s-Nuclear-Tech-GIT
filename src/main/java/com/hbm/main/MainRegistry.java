@@ -3,6 +3,7 @@ package com.hbm.main;
 import com.google.common.collect.ImmutableList;
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.blocks.generic.BlockToolConversion;
 import com.hbm.commands.*;
 import com.hbm.config.*;
@@ -25,6 +26,7 @@ import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.hazard.HazardRegistry;
 import com.hbm.inventory.FluidContainerRegistry;
 import com.hbm.inventory.OreDictManager;
+import com.hbm.inventory.OreDictManager2;
 import com.hbm.inventory.OreDictManager.DictFrame;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.material.Mats;
@@ -33,6 +35,7 @@ import com.hbm.inventory.recipes.anvil.AnvilRecipes;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ItemEnums.EnumAchievementType;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.tool.ItemFertilizer;
 import com.hbm.items.weapon.ItemGenericGrenade;
 import com.hbm.items.weapon.sedna.mods.WeaponModManager;
@@ -300,6 +303,9 @@ public class MainRegistry {
 		OreDictManager.registerGroups(); //important to run first
 		OreDictManager.registerOres();
 
+		ModBlocks2.mainRegistry();
+		ModItems2.mainRegistry();
+		OreDictManager2.registerOres();
 		if(WorldConfig.enableCraterBiomes) BiomeGenCraterBase.initDictionary();
 		//BiomeGenNoMansLand.initDictionary();
 
@@ -1678,7 +1684,6 @@ public class MainRegistry {
 		ignoreMappings.add("hbm:item.bobmazon_machines");
 		ignoreMappings.add("hbm:item.bobmazon_weapons");
 		ignoreMappings.add("hbm:item.bobmazon_tools");
-		ignoreMappings.add("hbm:item.missile_carrier");
 		ignoreMappings.add("hbm:item.magnet_circular");
 		ignoreMappings.add("hbm:item.mechanism_revolver_1");
 		ignoreMappings.add("hbm:item.mechanism_revolver_2");

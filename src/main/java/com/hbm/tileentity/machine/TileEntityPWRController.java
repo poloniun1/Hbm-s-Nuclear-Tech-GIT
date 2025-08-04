@@ -21,10 +21,12 @@ import com.hbm.items.machine.ItemPWRFuel.EnumPWRFuel;
 import com.hbm.main.MainRegistry;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IGUIProvider;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.redstoneoverradio.IRORInteractive;
 import api.hbm.redstoneoverradio.IRORValueProvider;
@@ -46,14 +48,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityPWRController extends TileEntityMachineBase implements IGUIProvider, IControlReceiver, SimpleComponent, IFluidStandardTransceiver, CompatHandler.OCComponent, IRORValueProvider, IRORInteractive {
+public class TileEntityPWRController extends TileEntityMachineBase implements IGUIProvider, IControlReceiver, SimpleComponent, IFluidStandardTransceiver, CompatHandler.OCComponent, IRORValueProvider, IRORInteractive, IEnergyProviderMK2 {
 
 	public FluidTank[] tanks;
 	public long coreHeat;
-	public static final long coreHeatCapacityBase = 10_000_000;
-	public long coreHeatCapacity = 10_000_000;
+	public static final long coreHeatCapacityBase = 2_000_000_000;
+	public long coreHeatCapacity = 2_000_000_000;
 	public long hullHeat;
-	public static final long hullHeatCapacityBase = 10_000_000;
+	public static final long hullHeatCapacityBase = 2_000_000_000;
 	public double flux;
 
 	public double rodLevel = 100;
@@ -72,6 +74,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 	public int channelCount;
 	public int sourceCount;
 
+	public long power;
 	public int unloadDelay = 0;
 	public boolean assembled;
 
@@ -129,14 +132,25 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					Block atPos = partMap.get(checkPos);
 					if(atPos == null || atPos == ModBlocks.pwr_casing) break;
 					if(atPos == ModBlocks.pwr_control) controlled = true;
-					if(atPos == ModBlocks.pwr_fuel) {
-						if(controlled) {
+					if(RBMKDials.getGeneratorB(worldObj)){
+							if(atPos == ModBlocks.pwr_fuel || atPos == ModBlocks.pwr_reflector || atPos == ModBlocks.pwr_controller) {
+								if(controlled) {
+									connectionsControlledDouble += 4;
+								} else {
+									connectionsDouble += 4;
+								}
+								break;
+							}
+						}
+					else{	
+						if(atPos == ModBlocks.pwr_fuel) {
+							if(controlled) {
 							connectionsControlledDouble++;
 						} else {
 							connectionsDouble++;
 						}
 						break;
-					}
+					}}
 					if(atPos == ModBlocks.pwr_reflector) {
 						if(controlled) {
 							connectionsControlledDouble += 2;
@@ -211,7 +225,8 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					if(diff < 1 && diff > -1) this.rodLevel = this.rodTarget;
 					if(this.rodTarget > this.rodLevel) this.rodLevel++;
 					if(this.rodTarget < this.rodLevel) this.rodLevel--;
-
+					
+					if(this.flux <= 20 ) this.flux = 20;
 					int newFlux = this.sourceCount * 20;
 
 					if(typeLoaded != -1 && amountLoaded > 0) {
@@ -222,19 +237,37 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						double outputPerRod = fuel.function.effonix(fluxPerRod);
 						double totalOutput = outputPerRod * amountLoaded * usedRods;
 						double totalHeatOutput = totalOutput * fuel.heatEmission;
-
+						if(!RBMKDials.getGeneratorB(worldObj)){
 						this.coreHeat += totalHeatOutput;
+							this.progress += totalOutput;
+							}
+						else{ 
+							this.power += totalHeatOutput * totalHeatOutput * 40000 + 80000;
+							this.progress += totalOutput * totalOutput * 40000 + 80000;					
+						}
 						newFlux += totalOutput;
 
 						this.processTime = (int) fuel.yield;
-						this.progress += totalOutput;
 
 						if(this.progress >= this.processTime) {
-							this.progress -= this.processTime;
+							this.progress = 0;
 
 							if(slots[1] == null) {
-								slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
+								if(RBMKDials.getGeneratorB(worldObj) && typeLoaded == 1 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 14 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 7);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 2 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 4);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 11 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 12);
+								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 0 )
+									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 6);
+								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
+								slots[1].stackSize++;
+							}else if(slots[1].getItem() == ModItems.pwr_fuel && (slots[1].getItemDamage() == 2 || slots[1].getItemDamage() == 4||
+							slots[1].getItemDamage() == 7 || slots[1].getItemDamage() == 12 || slots[1].getItemDamage() == 6) && slots[1].stackSize < slots[1].getMaxStackSize()) {
 								slots[1].stackSize++;
 							}
 
@@ -248,7 +281,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					}
 
 					if(amountLoaded > rodCount) amountLoaded = rodCount;
-
+					if(!RBMKDials.getGeneratorB(worldObj)){
 					/* CORE COOLING */
 					double coreCoolingApproachNum = getXOverE((double) this.heatexCount * 5 / (double) getRodCountForCoolant(), 2) / 2D;
 					long averageCoreHeat = (this.coreHeat + this.hullHeat) / 2;
@@ -259,7 +292,8 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 
 					this.coreHeat *= 0.999D;
 					this.hullHeat *= 0.999D;
-
+					}
+					else Generate();
 					this.flux = newFlux;
 
 					if(tanks[0].getTankType().hasTrait(FT_PWRModerator.class) && tanks[0].getFill() > 0) {
@@ -272,6 +306,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 				} else {
 					this.hullHeat = 0;
 					this.coreHeat = 0;
+					this.power = 0;
 				}
 			}
 
@@ -551,6 +586,33 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 			this.rodTarget = MathHelper.clamp_int(data.getInteger("control"), 0, 100);
 			this.markChanged();
 		}
+	}
+
+	private void Generate() {
+		for(BlockPos pos : ports) {
+			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			BlockPos portPos = pos.offset(dir);
+						
+			this.tryProvide(worldObj, portPos.getX(), portPos.getY(), portPos.getZ(), dir);
+			}
+			}
+		for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord+ dir.offsetY, zCoord + dir.offsetZ, dir);
+			}
+
+	}
+
+	@Override
+	public void setPower(long i) {
+		this.power = i;
+	}
+
+	@Override
+	public long getPower() {
+		return power;
+	}
+	public long getMaxPower() {
+		return power;
 	}
 
 
