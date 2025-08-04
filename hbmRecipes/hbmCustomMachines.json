@@ -2529,7 +2529,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalTitanium",1]],
           "outputFluids": [
@@ -2545,7 +2545,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalManganese",1]],
           "outputFluids": [
@@ -2561,7 +2561,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalIron",1]],
           "outputFluids": [
@@ -2578,7 +2578,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalCoal",1]],
           "outputFluids": [
@@ -2594,7 +2594,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalRedstone",1]],
           "outputFluids": [
@@ -2610,7 +2610,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalSulfur",1]],
           "outputFluids": [
@@ -2627,7 +2627,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalBeryllium",1]],
           "outputFluids": [
@@ -2643,7 +2643,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalLithium",1]],
           "outputFluids": [
@@ -2659,7 +2659,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalEmerald",1]],
           "outputFluids": [
@@ -2677,7 +2677,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalAsbestos",1]],
           "outputFluids": [
@@ -2693,7 +2693,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalNetherQuartz",1]],
           "outputFluids": [
@@ -2709,7 +2709,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalBoron",1]],
           "outputFluids": [
@@ -2726,7 +2726,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalGold",1]],
           "outputFluids": [
@@ -2743,7 +2743,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalCopper",1]],
           "outputFluids": [
@@ -2760,9 +2760,9 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
-          "inputItems": [["item","hbm:item.crystal_cinnebar",1]],
+          "inputItems": [["dict","crystalMercury",1]],
           "outputFluids": [
           ],
           "outputItems": [
@@ -2778,7 +2778,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalVolcanic",1]],
           "outputFluids": [
@@ -2794,7 +2794,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalDiamond",1]],
           "outputFluids": [
@@ -2810,7 +2810,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalAlexandrite",1]],
           "outputFluids": [
@@ -2827,7 +2827,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalAluminum",1]],
           "outputFluids": [
@@ -2843,7 +2843,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalTungsten",1]],
           "outputFluids": [
@@ -2859,7 +2859,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalLead",1]],
           "outputFluids": [
@@ -2876,7 +2876,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalSaltpeter",1]],
           "outputFluids": [
@@ -2893,7 +2893,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalArsenic",1]],
           "outputFluids": [
@@ -2911,7 +2911,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalWhitePhosphorus",1]],
           "outputFluids": [
@@ -2929,7 +2929,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalGlowstone",1]],
           "outputFluids": [
@@ -2945,7 +2945,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalFluorite",1]],
           "outputFluids": [
@@ -2961,7 +2961,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalCalcium",1]],
           "outputFluids": [
@@ -2978,7 +2978,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalSodium",1]],
           "outputFluids": [
@@ -2994,7 +2994,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalNiobium",1]],
           "outputFluids": [
@@ -3010,7 +3010,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalLapis",1]],
           "outputFluids": [
@@ -3027,7 +3027,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalZirconium",1]],
           "outputFluids": [
@@ -3043,7 +3043,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalWorkersAlloy",1]],
           "outputFluids": [
@@ -3059,7 +3059,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalNeodymium",1]],
           "outputFluids": [
@@ -3076,7 +3076,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalThorium",1]],
           "outputFluids": [
@@ -3094,7 +3094,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalUranium",1]],
           "outputFluids": [
@@ -3112,7 +3112,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalPlutonium",1]],
           "outputFluids": [
@@ -3131,7 +3131,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalTikite",1]],
           "outputFluids": [
@@ -3149,7 +3149,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalStarmetal",1]],
           "outputFluids": [
@@ -3167,7 +3167,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalCobalt",1]],
           "outputFluids": [
@@ -3185,7 +3185,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalOsmiridium",1]],
           "outputFluids": [
@@ -3201,7 +3201,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalAustralium",1]],
           "outputFluids": [
@@ -3216,7 +3216,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalColtan",1]],
           "outputFluids": [
@@ -3232,7 +3232,7 @@
          {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalSchrabidium",1]],
           "outputFluids": [
@@ -3247,7 +3247,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalEuphemium",1]],
           "outputFluids": [
@@ -3263,7 +3263,7 @@
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
-	["SOLVENT",300]
+	["SOLVENT",50]
           ],
           "inputItems": [["dict","crystalBismuth",1]],
           "outputFluids": [
@@ -3275,7 +3275,158 @@
           "duration": 1,
           "consumptionPerTick": 2500
         },
+	
 
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalRareEarth",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",2, 0.5],
+	  ["RotaryCraft:rotarycraft_item_compacts",4, 5, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalTin",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",5, 1.0],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 5, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalPlatinum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",4, 43, 1.0],
+	  ["RotaryCraft:rotarycraft_item_modingots",2, 4, 0.5],
+	  ["RotaryCraft:rotarycraft_item_modingots",2, 3, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalSilver",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",1, 43, 0.5],
+	  ["RotaryCraft:rotarycraft_item_modingots",5, 4, 1.0],
+	  ["RotaryCraft:rotarycraft_item_modingots",2, 3, 0.75]
+	  ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalNickel",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",1, 43, 0.5],
+	  ["RotaryCraft:rotarycraft_item_modingots",2, 4, 0.5],
+	  ["RotaryCraft:rotarycraft_item_modingots",6, 3, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalBauxite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_tungsten",1, 0.2],
+	  ["hbm:item.powder_aluminium",3, 1.0],
+	  ["hbm:item.powder_lead",1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalHematite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.powder_titanium",1,0, 0.2],
+	  ["hbm:item.powder_iron",3,0, 1.0],
+	  ["shincolle:AbyssMetal",1,1, 0.3]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },	
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalMalachite",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.1],
+	  ["hbm:item.powder_cadmium",1, 0.1],	  
+	  ["hbm:item.powder_gold",1, 0.2],
+	  ["hbm:item.powder_copper",3, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },		
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["SOLVENT",50]
+          ],
+          "inputItems": [["dict","crystalCadmium",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["hbm:item.nugget_mercury",1, 0.2],
+	  ["hbm:item.powder_cadmium",1, 1.0],	  
+	  ["hbm:item.powder_gold",1, 0.3],
+	  ["hbm:item.powder_copper",1, 0.4]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },			
+		
+		
+		
+		
 		
 		
 

@@ -8,7 +8,7 @@
 //     They indicate where calls should be placed, so that MineTweaker does them in the correct order.
 //     Removes come first, then stuff is added.
 // ================================================================================
-//
+//CHEM
 import mods.minechem.Chemicals;
 import mods.minechem.Synthesiser;
 Chemicals.addElement(252,"Dn","Dineutronium","Transition metal","Solid","stable");
@@ -52,7 +52,50 @@ recipes.addShapeless(<hbm:item.gem_volcanic> * 9, [<ore:blockVolcanic>]);
 recipes.addShapeless(<hbm:item.gem_alexandrite> * 9, [<ore:blockAlexandrite>]);
 recipes.addShapeless(<hbm:item.powder_sodium> * 9, [<ore:blockSodium>]);
 
+recipes.addShapeless(<hbm:item.powder_flux>*10, [<ore:dustCalcium>, <ore:dustIron>]);
+
+recipes.addShapeless(<hbm:item.billet_ra226be>*3, [<ore:dustRa226>, <ore:dustBeryllium>]);
+recipes.addShapeless(<hbm:item.billet_po210be>*3, [<ore:dustPolonium>, <ore:dustBeryllium>]);
+
+
+recipes.addShapeless(<hbm:item.pwr_fuel:13>, [<hbm:item.plate_polymer>,<ore:ingotEuphemium>,
+<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
+recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:billetUranium>,
+<ore:billetUranium>]);
+
+recipes.addShapeless(<hbm:item.rod_zirnox:11>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_neptunium>,
+<hbm:item.billet_neptunium>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:12>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_pu239>,
+<hbm:item.billet_pu239>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:13>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>]);
+recipes.addShapeless(<hbm:item.rod_zirnox:14>, [<hbm:item.rod_zirnox_empty>,<ore:ingotLead>,
+<ore:ingotLead>]);
+
+recipes.addShapeless(<hbm:item.rbmk_fuel_euph>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotEuphemium>,
+<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,
+<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
+recipes.addShapeless(<hbm:item.rbmk_fuel_dnt>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotDineutronium>,
+<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,
+<ore:nuggetDineutronium>,<ore:nuggetDineutronium>,<ore:nuggetDineutronium>]);
+recipes.addShapeless(<hbm:item.rbmk_fuel_pobi>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_polonium>,
+<hbm:item.billet_beryllium>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,
+<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>]);
+recipes.addShapeless(<hbm:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,
+<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>]);
+
+recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:billetUranium>,
+<ore:billetUranium>]);
+
+recipes.addShapeless(<hbm:item.missile_carrier>, [<hbm:item.missile_doomsday>]);
+recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
+<hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
+
+
 //#MARKER ADD SHAPED
+
+
 recipes.addShaped(<hbm:tile.block_sodium>, [[<ore:dustSodium>, <ore:dustSodium>,
  <ore:dustSodium>], [<ore:dustSodium>, <ore:dustSodium>, <ore:dustSodium>],
  [<ore:dustSodium>, <ore:dustSodium>, <ore:dustSodium>]]);
@@ -119,40 +162,6 @@ recipes.addShaped(<hbm:item.powder_astatine>, [[<hbm:item.powder_astatine_tiny>,
 <ore:dustTinyAstatine>], [<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>], 
 [<ore:dustTinyAstatine>, <ore:dustTinyAstatine>, <ore:dustTinyAstatine>]]);
 
-//import mods.ic2.Canner;
-//import mods.ic2.Compressor;
-//import mods.ic2.Extractor;
-//import mods.ic2.Macerator;
-//import mods.ic2.MetalFormer;
-//import mods.ic2.OreWasher;
-//import mods.ic2.ThermalCentrifuge;
-//<ore:oreBeryllium>.add(<RotaryCraft:rotarycraft_item_customingot:4>);
-
-<ore:oreManganese>.add(<shincolle:BlockPolymetalOre>);
-<ore:oreManganese>.add(<shincolle:BlockPolymetalGravel>);
-<ore:ingotManganese>.add(<shincolle:AbyssMetal>);
-
-<ore:ingotOsmium>.add(<hbm:item.ingot_osmiridium>);
-recipes.addShapeless(<hbm:item.powder_flux>*10, [<ore:dustCalcium>, <ore:dustIron>]);
-
-recipes.addShapeless(<hbm:item.billet_ra226be>*3, [<ore:dustRa226>, <ore:dustBeryllium>]);
-recipes.addShapeless(<hbm:item.billet_po210be>*3, [<ore:dustPolonium>, <ore:dustBeryllium>]);
-
-
-recipes.addShapeless(<hbm:item.pwr_fuel:13>, [<hbm:item.plate_polymer>,<ore:ingotEuphemium>,
-<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
-recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:billetUranium>,
-<ore:billetUranium>]);
-
-recipes.addShapeless(<hbm:item.rod_zirnox:11>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_neptunium>,
-<hbm:item.billet_neptunium>]);
-recipes.addShapeless(<hbm:item.rod_zirnox:12>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_pu239>,
-<hbm:item.billet_pu239>]);
-recipes.addShapeless(<hbm:item.rod_zirnox:13>, [<hbm:item.rod_zirnox_empty>,<hbm:item.billet_schrabidium>,
-<hbm:item.billet_schrabidium>]);
-recipes.addShapeless(<hbm:item.rod_zirnox:14>, [<hbm:item.rod_zirnox_empty>,<ore:ingotLead>,
-<ore:ingotLead>]);
-
 recipes.addShaped(<hbm:item.watz_pellet:7>, [[null,<ore:ingotEuphemium>,null],
 [<ore:ingotEuphemium>,<ore:ingotGraphite>,<ore:ingotEuphemium>],[null,<ore:ingotEuphemium>,null]]);
 recipes.addShaped(<hbm:item.watz_pellet:11>, [[null,<ore:ingotUranium>,null],
@@ -161,22 +170,6 @@ recipes.addShaped(<hbm:item.watz_pellet:12>, [[null,<ore:ingotingotU235>,null],
 [<ore:ingotU235>,<ore:ingotGraphite>,<ore:ingotU235>],[null,<ore:ingotU235>,null]]);
 recipes.addShaped(<hbm:item.watz_pellet:13>, [[null,<ore:ingotPu239>,null],
 [<ore:ingotPu239>,<ore:ingotGraphite>,<ore:ingotPu239>],[null,<ore:ingotPu239>,null]]);
-
-recipes.addShapeless(<hbm:item.rbmk_fuel_euph>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotEuphemium>,
-<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,<ore:ingotEuphemium>,
-<ore:nuggetEuphemium>,<ore:nuggetEuphemium>,<ore:nuggetEuphemium>]);
-recipes.addShapeless(<hbm:item.rbmk_fuel_dnt>, [<hbm:item.rbmk_fuel_empty>,<ore:ingotDineutronium>,
-<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,<ore:ingotDineutronium>,
-<ore:nuggetDineutronium>,<ore:nuggetDineutronium>,<ore:nuggetDineutronium>]);
-recipes.addShapeless(<hbm:item.rbmk_fuel_pobi>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_polonium>,
-<hbm:item.billet_beryllium>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,
-<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>,<hbm:item.billet_bismuth>]);
-recipes.addShapeless(<hbm:item.rbmk_fuel_sa326>, [<hbm:item.rbmk_fuel_empty>,<hbm:item.billet_schrabidium>,
-<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,
-<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>,<hbm:item.billet_schrabidium>]);
-
-recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
-<hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
 
 recipes.addShaped(<hbm:item.pile_rod_plutonium>*2, [[<hbm:item.plate_iron>,<hbm:item.billet_pu239>,<hbm:item.plate_iron>],
 [<hbm:item.ingot_pu239>,<hbm:item.pellet_charged>,<hbm:item.ingot_pu239>],
@@ -199,14 +192,81 @@ recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<h
 [<ore:ingotOsmiridium>,<hbm:item.mese_pickaxe>,<ore:ingotOsmiridium>],
 [<hbm:item.motor_bismuth>,<ore:ingotOsmiridium>,null]]);
 
-recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:billetUranium>,
-<ore:billetUranium>]);
+//OREDICT
 
-recipes.addShapeless(<hbm:item.missile_carrier>, [<hbm:item.missile_doomsday>]);
+<ore:oreManganese>.add(<shincolle:BlockPolymetalOre>);
+<ore:oreManganese>.add(<shincolle:BlockPolymetalGravel>);
+<ore:ingotManganese>.add(<shincolle:AbyssMetal>);
+
+<ore:ingotOsmium>.add(<hbm:item.ingot_osmiridium>);
+
+<ore:oreSodalite>.add(<hbm:tile.ore_sodium>);
+
+<ore:crystalCoal>.add(<RotaryCraft:rotarycraft_item_extracts:24>);
+<ore:crystalIron>.add(<RotaryCraft:rotarycraft_item_extracts:25>);
+<ore:crystalGold>.add(<RotaryCraft:rotarycraft_item_extracts:26>);
+<ore:crystalRedstone>.add(<RotaryCraft:rotarycraft_item_extracts:27>);
+<ore:crystalLapis>.add(<RotaryCraft:rotarycraft_item_extracts:28>);
+<ore:crystalDiamond>.add(<RotaryCraft:rotarycraft_item_extracts:29>);
+<ore:crystalEmerald>.add(<RotaryCraft:rotarycraft_item_extracts:30>);
+<ore:crystalNetherQuartz>.add(<RotaryCraft:rotarycraft_item_extracts:31>);
+<ore:crystalRareEarth>.add(<RotaryCraft:rotarycraft_item_extracts:33>);
+<ore:crystalTin>.add(<RotaryCraft:rotarycraft_item_modextracts:3>);
+<ore:crystalCopper>.add(<RotaryCraft:rotarycraft_item_modextracts:7>);
+<ore:crystalLead>.add(<RotaryCraft:rotarycraft_item_modextracts:11>);
+<ore:crystalNickel>.add(<RotaryCraft:rotarycraft_item_modextracts:15>);
+<ore:crystalSilver>.add(<RotaryCraft:rotarycraft_item_modextracts:19>);
+<ore:crystalAluminum>.add(<RotaryCraft:rotarycraft_item_modextracts:27>);
+<ore:crystalSilicon>.add(<RotaryCraft:rotarycraft_item_modextracts:39>);
+<ore:crystalUranium>.add(<RotaryCraft:rotarycraft_item_modextracts:43>);
+<ore:crystalMercury>.add(<RotaryCraft:rotarycraft_item_modextracts:47>);
+<ore:crystalMercury>.add(<hbm:item.crystal_cinnebar>);
+<ore:crystalSaltpeter>.add(<RotaryCraft:rotarycraft_item_modextracts:83>);
+<ore:crystalTungsten>.add(<RotaryCraft:rotarycraft_item_modextracts:87>);
+<ore:crystalCobalt>.add(<RotaryCraft:rotarycraft_item_modextracts:167>);
+<ore:crystalPlatinum>.add(<RotaryCraft:rotarycraft_item_modextracts:175>);
+<ore:crystalSulfur>.add(<RotaryCraft:rotarycraft_item_modextracts:195>);
+<ore:crystalCadmium>.add(<RotaryCraft:rotarycraft_item_modextracts:203>);
+<ore:crystalFlourite>.add(<RotaryCraft:rotarycraft_item_modextracts:211>);
+<ore:crystalBauxite>.add(<RotaryCraft:rotarycraft_item_modextracts:215>);
+<ore:crystalSodium>.add(<RotaryCraft:rotarycraft_item_modextracts:219>);
+<ore:crystalTitanium>.add(<RotaryCraft:rotarycraft_item_modextracts:255>);
+<ore:crystalUranium>.add(<RotaryCraft:rotarycraft_item_modextracts:275>);
+<ore:crystalSulfur>.add(<RotaryCraft:rotarycraft_item_modextracts:307>);
+<ore:crystalSilicon>.add(<RotaryCraft:rotarycraft_item_modextracts:315>);
+<ore:crystalThorium>.add(<RotaryCraft:rotarycraft_item_modextracts:339>);
+<ore:crystalAlexandrite>.add(<RotaryCraft:rotarycraft_item_customextract:3>);
+<ore:crystalArsenic>.add(<RotaryCraft:rotarycraft_item_customextract:7>);
+<ore:crystalAsbestos>.add(<RotaryCraft:rotarycraft_item_customextract:11>);
+<ore:crystalAustralium>.add(<RotaryCraft:rotarycraft_item_customextract:15>);
+<ore:crystalBeryllium>.add(<RotaryCraft:rotarycraft_item_customextract:19>);
+<ore:crystalBismuth>.add(<RotaryCraft:rotarycraft_item_customextract:23>);
+<ore:crystalBoron>.add(<RotaryCraft:rotarycraft_item_customextract:27>);
+<ore:crystalCalcium>.add(<RotaryCraft:rotarycraft_item_customextract:31>);
+<ore:crystalColtan>.add(<RotaryCraft:rotarycraft_item_customextract:35>);
+<ore:crystalEuphemium>.add(<RotaryCraft:rotarycraft_item_customextract:39>);
+<ore:crystalGlowstone>.add(<RotaryCraft:rotarycraft_item_customextract:43>);
+<ore:crystalLithium>.add(<RotaryCraft:rotarycraft_item_customextract:47>);
+<ore:crystalManganese>.add(<RotaryCraft:rotarycraft_item_customextract:51>);
+<ore:crystalNeodymium>.add(<RotaryCraft:rotarycraft_item_customextract:55>);
+<ore:crystalNiobium>.add(<RotaryCraft:rotarycraft_item_customextract:59>);
+<ore:crystalOsmiridium>.add(<RotaryCraft:rotarycraft_item_customextract:63>);
+<ore:crystalPlutonium>.add(<RotaryCraft:rotarycraft_item_customextract:67>);
+<ore:crystalSchrabidium>.add(<RotaryCraft:rotarycraft_item_customextract:71>);
+<ore:crystalStarmetal>.add(<RotaryCraft:rotarycraft_item_customextract:75>);
+<ore:crystalTikite>.add(<RotaryCraft:rotarycraft_item_customextract:79>);
+<ore:crystalVolcanic>.add(<RotaryCraft:rotarycraft_item_customextract:83>);
+<ore:crystalWhitePhosphorus>.add(<RotaryCraft:rotarycraft_item_customextract:87>);
+<ore:crystalWorkersAlloy>.add(<RotaryCraft:rotarycraft_item_customextract:91>);
+<ore:crystalZirconium>.add(<RotaryCraft:rotarycraft_item_customextract:95>);
+<ore:crystalHematite>.add(<RotaryCraft:rotarycraft_item_customextract:99>);
+<ore:crystalMalachite>.add(<RotaryCraft:rotarycraft_item_customextract:103>);
 
 
 
 
+
+//FURNACE
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:11>);
 //furnace.addRecipe(<hbm:item.nugget_mercury>,<RotaryCraft:rotarycraft_item_modextracts:47>);
 //furnace.remove(<RotaryCraft:rotarycraft_item_modingots:63>);
