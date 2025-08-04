@@ -16,12 +16,12 @@ import java.io.IOException;
 public class TileEntityConverterRfHe extends TileEntityLoadedBase implements IEnergyProviderMK2, IEnergyHandler, IConfigurableMachine {
 
 	public long power;
-	public final long maxPower = 200_000_000;
+	public final long maxPower = 1_000_000_000;
 	public static long rfInput = 1;
 	public static long heOutput = 4;
 	public static double inputDecay = 0.0;
 
-	public EnergyStorage storage = new EnergyStorage(800_000_000, 800_000_000, 800_000_000);
+	public EnergyStorage storage = new EnergyStorage(2_000_000_000, 2_000_000_000, 2_000_000_000);
 
 	@Override
 	public void updateEntity() {
