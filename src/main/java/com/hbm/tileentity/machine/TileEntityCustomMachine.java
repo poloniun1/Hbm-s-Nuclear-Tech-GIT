@@ -181,7 +181,14 @@ public class TileEntityCustomMachine extends TileEntityMachinePolluting implemen
 			}
 
 			if (this.structureOK) {
-
+			if (this.machineType.equals("minicomplex") ){
+				this.power = 16000000;
+				this.flux = 2000000000;
+				for(int k = 0; k < this.inputTanks.length; k++){
+					if(this.inputTanks[k].getTankType() != Fluids.NONE)
+						this.inputTanks[k].setFill(24000);
+				}
+				}
 				if (config.generatorMode) {
 					if (this.cachedRecipe == null) {
 						CustomMachineRecipe recipe = this.getMatchingRecipe();
