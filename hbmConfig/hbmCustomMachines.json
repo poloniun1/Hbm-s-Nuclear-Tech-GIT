@@ -139,7 +139,30 @@
         {"block":"hbm:tile.cm_flux", "x":0,"y":1,"z":0,"metas":[0]}
       ]
     },
+    {
+      "recipeKey": "normalfactory",
+      "unlocalizedName": "minicomplex",
+      "localizedName": "Minimum complex",
+      "fluidInCount": 3,
+      "fluidInCap": 32000,
+      "itemInCount": 6,
+      "fluidOutCount": 3,
+      "fluidOutCap": 32000,
+      "itemOutCount": 6,
+      "generatorMode": false,
+	  "fluxMode":true,
+      "recipeSpeedMult": 2.0,
+      "recipeConsumptionMult": 1.0,
+      "maxPower": 20000000,
+      "recipeShape": [
 
+      ],
+      "recipeParts": [
+      ],
+      "components": [
+      ]
+    },
+	
     {
       "recipeKey": "simplefactory",
       "unlocalizedName": "simplefactory",

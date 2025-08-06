@@ -3287,6 +3287,8 @@
           ],
           "outputItems": [
 	  ["RotaryCraft:rotarycraft_item_modingots",2, 0.5],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 12, 0.3],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 12, 0.2],
 	  ["RotaryCraft:rotarycraft_item_compacts",4, 5, 1.0]
           ],
           "duration": 1,
@@ -3302,6 +3304,8 @@
           ],
           "outputItems": [
 	  ["RotaryCraft:rotarycraft_item_modingots",5, 1.0],
+  	  ["RotaryCraft:rotarycraft_item_compacts",1, 9, 0.3],
+  	  ["RotaryCraft:rotarycraft_item_compacts",1, 3, 0.1],
 	  ["RotaryCraft:rotarycraft_item_compacts",1, 5, 0.3]
           ],
           "duration": 1,
@@ -3831,7 +3835,29 @@
           "duration": 450,
           "consumptionPerTick": 8000
         },			
+	        {
+          "inputFluids": [		
+          ],
+          "inputItems": [
+	["dict","plateSextupleCMBSteel",6],
+	["dict","ingotPb209"],
+	["item","hbm:item.battery_sc_lead",2],
+	["item","hbm:tile.barrel_antimatter_ex",3],
+	["item","hbm:item.circuit", 1, 14]
+		  ],
+          "outputFluids": [
 
+          ],
+          "outputItems": [
+	["hbm:tile.custom_machine",1, 105, 1.0]
+          ],
+          "duration": 450,
+          "consumptionPerTick": 8000
+        },	
+		
+		
+		
+		
         {
           "inputFluids": [
           ],
@@ -4540,6 +4566,22 @@
         },
         {
           "inputFluids": [
+          ],
+          "inputItems": [
+	["item","hbm:item.filter_coal"]	  
+],
+          "outputFluids": [
+	["XENON",400],
+	["HYDROGEN",100]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 100,
+          "consumptionPerTick": 2000
+        },
+        {
+          "inputFluids": [
 	["CRYOGEL",200]
           ],
           "inputItems": [
@@ -4912,7 +4954,8 @@
 
           ],
           "outputItems": [
-	["hbm:item.ingot_silicon",3, 1.0]
+	["hbm:item.ingot_silicon",3, 1.0],
+	["RotaryCraft:rotarycraft_item_powders",3 ,14 , 1.0]
           ],
           "duration": 5,
           "consumptionPerTick": 50000
@@ -5440,30 +5483,6 @@
       "outputFluids": [
         ["HYDROGEN",400],
         ["OXYGEN",400]
-      ],
-      "outputItems": [],
-      "duration": 10,
-      "consumptionPerTick": 1000
-    },
-    {
-      "inputFluids": [
-        ["NONE",0]
-      ],
-      "inputItems": [],
-      "outputFluids": [
-        ["XENON",50]
-      ],
-      "outputItems": [],
-      "duration": 10,
-      "consumptionPerTick": 1000
-    },
-    {
-      "inputFluids": [
-        ["OXYGEN",250]
-      ],
-      "inputItems": [],
-      "outputFluids": [
-        ["XENON",50]
       ],
       "outputItems": [],
       "duration": 10,
@@ -8202,6 +8221,7 @@
           "inputFluids": [
           ],
           "inputItems": [
+		  ["item","hbm:item.powder_ice"]
 ],
           "outputFluids": [
 	["NITROGEN",2000],
@@ -8212,6 +8232,22 @@
           ],
           "duration": 120,
           "consumptionPerTick": 5000
+        },
+        {
+          "inputFluids": [
+          ],
+          "inputItems": [  
+		  ["item","minecraft:ice"]
+],
+          "outputFluids": [
+	["XENON",200],
+	["HYDROGEN",50]
+          ],
+          "outputItems": [
+
+          ],
+          "duration": 100,
+          "consumptionPerTick": 8000
         }
   ]
 }
