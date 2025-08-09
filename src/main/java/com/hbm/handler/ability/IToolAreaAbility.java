@@ -15,8 +15,10 @@ import com.hbm.explosion.ExplosionNT;
 import com.hbm.explosion.ExplosionNT.ExAttrib;
 import com.hbm.handler.ThreeInts;
 import com.hbm.items.tool.ItemToolAbility;
+import com.hbm.util.EnchantmentUtil;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -26,6 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.entity.item.EntityItem;
+
 
 public interface IToolAreaAbility extends IBaseAbility {
 	// Should call tool.breakExtraBlock on a bunch of blocks.
@@ -107,6 +110,8 @@ public interface IToolAreaAbility extends IBaseAbility {
 			pos.clear();
 
 			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
+			ItemStack stack = player.getHeldItem();
+			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
 
 			return false;
 		}
@@ -165,8 +170,13 @@ public interface IToolAreaAbility extends IBaseAbility {
 
 			if(player.getHeldItem() == null)
 				return;
+			ItemStack stack = player.getHeldItem();
+
+			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
 
 			tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+
+			EnchantmentUtil.removeEnchantment(stack, Enchantment.silkTouch);
 
 			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
 		}
