@@ -11,18 +11,6 @@
     "texture": "custom_water",
     "temperature": 20
   },
-    "GLUCOSE": {
-    "name": "Glucose",
-    "id": 1001,
-    "color": 15654382,
-    "tint": 15654382,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_water",
-    "temperature": 20
-  },
     "HELIUM": {
     "name": "Helium",
     "id": 1002,

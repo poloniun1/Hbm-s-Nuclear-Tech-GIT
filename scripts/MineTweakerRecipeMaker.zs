@@ -91,7 +91,7 @@ recipes.addShapeless(<hbm:item.pwr_fuel:14>, [<hbm:item.plate_polymer>,<ore:bill
 recipes.addShapeless(<hbm:item.missile_carrier>, [<hbm:item.missile_doomsday>]);
 recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
 <hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
-
+recipes.addShapeless(<hbm:item.fluid_tank_full:59>, [<hbm:item.fluid_tank_empty>,<RotaryCraft:rotarycraft_item_ethanol>]);
 
 //#MARKER ADD SHAPED
 
@@ -199,7 +199,6 @@ recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<h
 <ore:ingotManganese>.add(<shincolle:AbyssMetal>);
 
 <ore:ingotOsmium>.add(<hbm:item.ingot_osmiridium>);
-
 <ore:oreSodalite>.add(<hbm:tile.ore_sodium>);
 
 <ore:crystalCoal>.add(<RotaryCraft:rotarycraft_item_extracts:24>);
