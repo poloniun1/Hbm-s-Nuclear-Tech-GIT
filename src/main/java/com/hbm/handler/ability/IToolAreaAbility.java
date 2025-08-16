@@ -119,6 +119,9 @@ public interface IToolAreaAbility extends IBaseAbility {
 				return false;				
 			}
 
+			if(tool == ModItems.mese_pickaxe) {
+				level = 6;		
+			}
 			pos.clear();
 
 			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
