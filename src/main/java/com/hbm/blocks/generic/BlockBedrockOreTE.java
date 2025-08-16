@@ -6,12 +6,16 @@ import java.util.Random;
 
 import com.hbm.blocks.IBlockMultiPass;
 import com.hbm.blocks.ILookOverlay;
+import com.hbm.handler.ability.AvailableAbilities;
+import com.hbm.handler.ability.IBaseAbility;
+import com.hbm.handler.ability.IToolAreaAbility;
 import com.hbm.inventory.FluidContainerRegistry;
 import com.hbm.inventory.FluidStack;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemDrillbit.EnumDrillType;
+import com.hbm.items.tool.ItemToolAbility;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.render.block.RenderBlockMultipass;
@@ -27,6 +31,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -75,9 +80,30 @@ public class BlockBedrockOreTE extends BlockContainer implements ILookOverlay, I
 		
 		ItemStack stack = player.getHeldItem();
 		if(stack == null) return false;
-		if(!player.capabilities.isCreativeMode) return false;
+		Item helditem = stack.getItem();
+		if(!player.capabilities.isCreativeMode){ 
+			if(!(helditem instanceof ItemToolAbility)) 
+			return false;
+			else if ( helditem != ModItems.mese_pickaxe
+			&& !(((ItemToolAbility)helditem).getAvailableAbilities().getToolAreaAbilities().containsKey(IToolAreaAbility.WORLD)) 
+			&& !(((ItemToolAbility)helditem).getAvailableAbilities().getToolAreaAbilities().containsKey(IToolAreaAbility.GOD)))
+				return false;
+		}
 		if(world.isRemote) return true;
-
+		if(helditem != null && helditem instanceof ItemToolAbility){
+			if(helditem == ModItems.mese_pickaxe){
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base)));
+				return true;
+			}
+			if(((ItemToolAbility)helditem).getAvailableAbilities().getToolAreaAbilities().containsKey(IToolAreaAbility.WORLD)){
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base, 2)));
+				return true;
+			}
+			if(((ItemToolAbility)helditem).getAvailableAbilities().getToolAreaAbilities().containsKey(IToolAreaAbility.GOD)){
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base, 3)));
+				return true;
+			}
+		}
 		TileEntity te = world.getTileEntity(x, y, z);
 		
 		if(te instanceof TileEntityBedrockOre) {
