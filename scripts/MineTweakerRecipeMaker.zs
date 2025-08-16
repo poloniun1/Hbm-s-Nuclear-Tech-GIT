@@ -93,6 +93,7 @@ recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny
 <hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
 recipes.addShapeless(<hbm:item.fluid_tank_full:59>, [<hbm:item.fluid_tank_empty>,<RotaryCraft:rotarycraft_item_ethanol>]);
 recipes.addShapeless(<RotaryCraft:rotarycraft_item_compacts:8>, [<ore:fuelCoke>]);
+recipes.addShapeless(<hbm:item.coke>, [<RotaryCraft:rotarycraft_item_compacts:8>]);
 //#MARKER ADD SHAPED
 
 
