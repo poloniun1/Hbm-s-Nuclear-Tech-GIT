@@ -1355,9 +1355,9 @@
 		  ["CHLORINE",800]
           ],
           "outputItems": [
-			["hbm:item.powder_beryllium",6, 1.0],
-			["hbm:item.powder_calcium",6,1.0],
-			["hbm:item.powder_sodium",6, 1.0]
+			["hbm:item.powder_beryllium",9, 1.0],
+			["hbm:item.powder_calcium",9,1.0],
+			["hbm:item.powder_sodium",9, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -1372,9 +1372,9 @@
 		  ["CHLORINE",1200]
           ],
           "outputItems": [
-			["hbm:item.powder_beryllium",9, 1.0],
-			["hbm:item.powder_calcium",9,1.0],
-			["hbm:item.powder_sodium",9, 1.0]
+			["RotaryCraft:rotarycraft_item_modingots",9, 1.0],
+			["RotaryCraft:rotarycraft_item_compacts",6,6,1.0],
+			["RotaryCraft:rotarycraft_item_modingots",9,3, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -1406,7 +1406,7 @@
           "outputItems": [
 			["hbm:item.powder_gold",9, 1.0],
 			["hbm:item.powder_cadmium",9,1.0],
-			["hbm:item.nugget_mercury",3, 1.0]
+			["hbm:item.nugget_mercury",9, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -1421,7 +1421,7 @@
           ],
           "outputItems": [
 			["hbm:item.powder_australium",9, 1.0],
-			["hbm:item.nugget_mercury",9,1.0],
+			["RotaryCraft:rotarycraft_item_compacts",9,5,1.0],
 			["hbm:item.ingot_starmetal",9, 1.0]
           ],
           "duration": 1,
@@ -1453,6 +1453,7 @@
           ],
           "outputItems": [
 			["hbm:item.powder_desh",18, 1.0],
+			["RotaryCraft:rotarycraft_item_modingots",9,4,1.0],
 			["hbm:item.powder_niobium",9,1.0]
           ],
           "duration": 1,
@@ -1483,8 +1484,8 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.powder_neodymium",6, 1.0],
-			["hbm:item.powder_caesium",6,1.0],
+			["hbm:item.powder_neodymium",9, 1.0],
+			["RotaryCraft:rotarycraft_item_modingots",9,43,1.0],
 			["hbm:item.powder_nitan_mix",9, 1.0]
           ],
           "duration": 1,
@@ -1499,7 +1500,7 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.powder_neodymium",9, 1.0],
+			["RotaryCraft:rotarycraft_item_compacts",6,3,1.0],
 			["hbm:item.powder_caesium",9,1.0],
 			["hbm:item.powder_spark_mix",6, 1.0]
           ],
@@ -1661,7 +1662,7 @@
           "outputItems": [
 			["hbm:item.powder_diamond",9, 1.0],
 			["hbm:item.powder_emerald",9,1.0],
-			["hbm:item.ingot_silicon",6, 1.0]
+			["hbm:item.ingot_silicon",9, 1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
@@ -1675,8 +1676,8 @@
           "outputFluids": [
           ],
           "outputItems": [
-			["hbm:item.ingot_silicon",9, 1.0],
-			["hbm:item.powder_diamond",9,1.0],
+			["RotaryCraft:rotarycraft_item_powders",9,14, 1.0],
+			["hbm:item.gem_alexandrite",6, 1.0],			
 			["hbm:item.ingot_phosphorus",9, 1.0]
           ],
           "duration": 1,
@@ -1692,13 +1693,78 @@
           ],
           "outputItems": [
 			["hbm:item.gem_volcanic",6, 1.0],
-			["hbm:item.gem_alexandrite",6, 1.0]
+			["hbm:item.powder_chlorophyte",6, 1.0],
+			["hbm:item.ingot_cft",9,1.0]
           ],
           "duration": 1,
           "consumptionPerTick": 10000
         },
 
+
 	
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["PEROXIDE",200]
+          ],
+          "inputItems": [["dict","oreTin",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalRareEarth",1, 0.2],
+	  ["aobd:crystalTin",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },	
+        {
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["PEROXIDE",200]
+          ],
+          "inputItems": [["dict","oreSilver",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSilver",1, 1.0],
+	  ["aobd:crystalNickel",1, 0.4],
+	  ["aobd:crystalPlatinum",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+		{
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["PEROXIDE",200]
+          ],
+          "inputItems": [["dict","oreNickel",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSilver",1, 0.4],
+	  ["aobd:crystalNickel",1, 1.0],
+	  ["aobd:crystalPlatinum",1, 0.2]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+		{
+          "inputFluids": [
+	["SULFURIC_ACID", 300],
+	["PEROXIDE",200]
+          ],
+          "inputItems": [["dict","orePlatinum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["aobd:crystalSilver",1, 0.5],
+	  ["aobd:crystalNickel",1, 0.3],
+	  ["aobd:crystalPlatinum",1, 1.0]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
         {
           "inputFluids": [
 	["SULFURIC_ACID", 300],
@@ -3287,7 +3353,7 @@
           ],
           "outputItems": [
 	  ["RotaryCraft:rotarycraft_item_modingots",2, 0.5],
-	  ["RotaryCraft:rotarycraft_item_compacts",1, 9, 0.3],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 6, 0.3],
 	  ["RotaryCraft:rotarycraft_item_compacts",1, 3, 0.2],
 	  ["RotaryCraft:rotarycraft_item_compacts",4, 5, 1.0]
           ],
@@ -3304,7 +3370,7 @@
           ],
           "outputItems": [
 	  ["RotaryCraft:rotarycraft_item_modingots",5, 1.0],
-  	  ["RotaryCraft:rotarycraft_item_compacts",1, 9, 0.3],
+  	  ["RotaryCraft:rotarycraft_item_compacts",1, 6, 0.3],
   	  ["RotaryCraft:rotarycraft_item_compacts",1, 3, 0.1],
 	  ["RotaryCraft:rotarycraft_item_compacts",1, 5, 0.3]
           ],
@@ -3839,10 +3905,10 @@
           "inputFluids": [		
           ],
           "inputItems": [
-	["dict","plateSextupleCMBSteel",6],
+	["dict","plateSextupleCMBSteel",16],
 	["dict","ingotPb209"],
-	["item","hbm:item.battery_sc_lead",2],
-	["item","hbm:tile.barrel_antimatter_ex",3],
+	["item","hbm:item.battery_sc_lead",8],
+	["item","hbm:tile.barrel_antimatter_ex",2],
 	["item","hbm:item.circuit", 1, 14]
 		  ],
           "outputFluids": [
@@ -4976,7 +5042,8 @@
           ],
           "duration": 5,
           "consumptionPerTick": 10000
-        },
+        },	
+			
         {
           "inputFluids": [
 	["NITRIC_ACID",1500],
@@ -7499,6 +7566,67 @@
           "consumptionPerTick": 1000
         },
 	          {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","oreTin",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots", 3, 1.0],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 6 ,0.2],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 5 ,0.2],
+	  ["RotaryCraft:rotarycraft_item_compacts",1, 3 ,0.05]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+	          {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","oreSilver",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots", 1,43, 0.2],
+	  ["RotaryCraft:rotarycraft_item_modingots", 3, 4, 1],
+	  ["RotaryCraft:rotarycraft_item_modingots",1,3, 0.7]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+	          {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","oreNickel",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",1,43, 0.2],
+	  ["RotaryCraft:rotarycraft_item_modingots",1,4,0.4],
+	  ["RotaryCraft:rotarycraft_item_modingots",3,3, 1]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+	          {
+          "inputFluids": [
+	["SULFURIC_ACID", 300]
+          ],
+          "inputItems": [["dict","orePlatinum",1]],
+          "outputFluids": [
+          ],
+          "outputItems": [
+	  ["RotaryCraft:rotarycraft_item_modingots",3,43, 1],
+	  ["RotaryCraft:rotarycraft_item_modingots",1,4,0.5],
+	  ["RotaryCraft:rotarycraft_item_modingots",1,3, 0.5]
+          ],
+          "duration": 1,
+          "consumptionPerTick": 2500
+        },
+	    {
           "inputFluids": [
 	["SULFURIC_ACID", 300]
           ],

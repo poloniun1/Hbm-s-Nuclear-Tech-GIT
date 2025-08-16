@@ -9,20 +9,20 @@
 //     Removes come first, then stuff is added.
 // ================================================================================
 //CHEM
-import mods.minechem.Chemicals;
-import mods.minechem.Synthesiser;
-Chemicals.addElement(252,"Dn","Dineutronium","Transition metal","Solid","stable");
-Chemicals.addElement(188,"Ep","Euphemium","Transition metal","Solid","stable");
-Chemicals.addElement(126,"Sa","Schrabidium","Transition metal","Solid","extremelyRadioactive");
-Chemicals.addElement(128,"Gh","Ghiorsium","Transition metal","Solid","slightlyRadioactive");
-Chemicals.addElement(136,"Aus","Australium","Transition metal","Solid","stable");
+//import mods.minechem.Chemicals;
+//import mods.minechem.Synthesiser;
+//Chemicals.addElement(252,"Dn","Dineutronium","Transition metal","Solid","stable");
+//Chemicals.addElement(188,"Ep","Euphemium","Transition metal","Solid","stable");
+//Chemicals.addElement(126,"Sa","Schrabidium","Transition metal","Solid","extremelyRadioactive");
+//Chemicals.addElement(128,"Gh","Ghiorsium","Transition metal","Solid","slightlyRadioactive");
+//Chemicals.addElement(136,"Aus","Australium","Transition metal","Solid","stable");
 
-Synthesiser.addRecipe([<minechem:minechemElement:126>*16],<hbm:item.ingot_schrabidium>,false,500);
-Synthesiser.addRecipe([<minechem:minechemElement:188>*16],<hbm:item.ingot_euphemium>,false,500);
-Synthesiser.addRecipe([<minechem:minechemElement:128>*16],<hbm:item.ingot_gh336>,false,500);
-Synthesiser.addRecipe([<minechem:minechemElement:136>*16],<hbm:item.ingot_australium>,false,500);
-Synthesiser.addRecipe([<minechem:minechemMolecule:69>*8],<hbm:item.ingot_cft>,false,1000);
-Synthesiser.addRecipe([<minechem:minechemElement:252>*16],<hbm:item.ingot_dineutronium>,false,10000);
+//Synthesiser.addRecipe([<minechem:minechemElement:126>*16],<hbm:item.ingot_schrabidium>,false,500);
+//Synthesiser.addRecipe([<minechem:minechemElement:188>*16],<hbm:item.ingot_euphemium>,false,500);
+//Synthesiser.addRecipe([<minechem:minechemElement:128>*16],<hbm:item.ingot_gh336>,false,500);
+//Synthesiser.addRecipe([<minechem:minechemElement:136>*16],<hbm:item.ingot_australium>,false,500);
+//Synthesiser.addRecipe([<minechem:minechemMolecule:69>*8],<hbm:item.ingot_cft>,false,1000);
+//Synthesiser.addRecipe([<minechem:minechemElement:252>*16],<hbm:item.ingot_dineutronium>,false,10000);
 // ================================================================================
 //#MARKER REMOVE
 
@@ -92,7 +92,7 @@ recipes.addShapeless(<hbm:item.missile_carrier>, [<hbm:item.missile_doomsday>]);
 recipes.addShapeless(<hbm:item.plate_fuel_atbe>, [<hbm:item.powder_astatine_tiny>,<hbm:item.powder_astatine_tiny>,
 <hbm:item.powder_astatine_tiny>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>,<hbm:item.nugget_beryllium>]);
 recipes.addShapeless(<hbm:item.fluid_tank_full:59>, [<hbm:item.fluid_tank_empty>,<RotaryCraft:rotarycraft_item_ethanol>]);
-
+recipes.addShapeless(<RotaryCraft:rotarycraft_item_compacts:8>, [<ore:fuelCoke>]);
 //#MARKER ADD SHAPED
 
 
