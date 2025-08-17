@@ -216,6 +216,7 @@ recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<h
 <ore:crystalLead>.add(<RotaryCraft:rotarycraft_item_modextracts:11>);
 <ore:crystalNickel>.add(<RotaryCraft:rotarycraft_item_modextracts:15>);
 <ore:crystalSilver>.add(<RotaryCraft:rotarycraft_item_modextracts:19>);
+<ore:crystalSilver>.add(<RotaryCraft:rotarycraft_item_extracts:32>);
 <ore:crystalAluminum>.add(<RotaryCraft:rotarycraft_item_modextracts:27>);
 <ore:crystalSilicon>.add(<RotaryCraft:rotarycraft_item_modextracts:39>);
 <ore:crystalUranium>.add(<RotaryCraft:rotarycraft_item_modextracts:43>);
@@ -256,6 +257,7 @@ recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<h
 <ore:crystalStarmetal>.add(<RotaryCraft:rotarycraft_item_customextract:75>);
 <ore:crystalTikite>.add(<RotaryCraft:rotarycraft_item_customextract:79>);
 <ore:crystalVolcanic>.add(<RotaryCraft:rotarycraft_item_customextract:83>);
+<ore:crystalVolcanic>.add(<RotaryCraft:rotarycraft_item_modextracts:99>);
 <ore:crystalWhitePhosphorus>.add(<RotaryCraft:rotarycraft_item_customextract:87>);
 <ore:crystalWorkersAlloy>.add(<RotaryCraft:rotarycraft_item_customextract:91>);
 <ore:crystalZirconium>.add(<RotaryCraft:rotarycraft_item_customextract:95>);
