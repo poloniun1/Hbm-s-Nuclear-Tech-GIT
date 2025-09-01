@@ -73,7 +73,7 @@ public class TileEntityICF extends TileEntityMachineBase implements IEnergyProvi
 		if(!worldObj.isRemote) {
 
 
-			if(RBMKDials.getGeneratorG(worldObj)){
+			if(RBMKDials.getICFBaby(worldObj)){
 			this.laser = 500000000;
 			this.maxLaser = 500000000;
 			}
@@ -135,7 +135,7 @@ public class TileEntityICF extends TileEntityMachineBase implements IEnergyProvi
 
 			this.consumption = 0;
 			this.output = 0;
-			if(!RBMKDials.getGeneratorG(worldObj)){
+			if(!RBMKDials.getICFBaby(worldObj)){
 			if(tanks[0].getTankType().hasTrait(FT_Heatable.class)) {
 				FT_Heatable trait = tanks[0].getTankType().getTrait(FT_Heatable.class);
 				HeatingStep step = trait.getFirstStep();

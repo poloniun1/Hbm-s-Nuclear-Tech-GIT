@@ -100,7 +100,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 
 		if(!worldObj.isRemote) {
 
-			if(!RBMKDials.getGeneratorF(worldObj))	{
+			if(!RBMKDials.getITERBaby(worldObj))	{
 			this.updateConnections();
 			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
 			}
@@ -110,10 +110,10 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				}
 			/// START Processing part ///
 
-			if(!isOn && !RBMKDials.getGeneratorF(worldObj)) {
+			if(!isOn && !RBMKDials.getITERBaby(worldObj)) {
 				plasma.setFill(0);	//jettison plasma if the thing is turned off
 			}
-			if(!RBMKDials.getGeneratorF(worldObj)){	
+			if(!RBMKDials.getITERBaby(worldObj)){	
 			//explode either if there's plasma that is too hot or if the reactor is turned on but the magnets have no power
 			if(plasma.getFill() > 0 && (this.plasma.getTankType().temperature >= this.getShield() || (this.isOn && this.power < this.powerReq))) {
 				this.explode();
@@ -170,9 +170,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				}
 			}
-			}else if(!RBMKDials.getLMSR(worldObj) || (Fluids.fromID(1015)==Fluids.NONE))
+			}else if(!RBMKDials.getLMSR(worldObj) || (Fluids.fromID(1010)==Fluids.NONE))
 			{
-				duration = 8;
 				if(isOn ) {
 
 				if(plasma.getFill() >=300) {					
@@ -194,36 +193,25 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 					
 	
 				}
-			else if((Fluids.fromID(1010)!=Fluids.NONE)&&(Fluids.fromID(1011)!=Fluids.NONE)&&(Fluids.fromID(1012)!=Fluids.NONE)&&
-				(Fluids.fromID(1013)!=Fluids.NONE)&&(Fluids.fromID(1014)!=Fluids.NONE)){
-				if(slots[1] != null && (slots[1].getItem() instanceof IItemFluidIdentifier)){
-				this.tanks[0].setType(1, slots);
-				setupTanks();
-				}
+			else if((Fluids.fromID(1010)!=Fluids.NONE)&&(Fluids.fromID(1011)!=Fluids.NONE)&&(Fluids.fromID(1012)!=Fluids.NONE)&& (Fluids.fromID(1015)!=Fluids.NONE)){
 				Recycling();
+				tanks[1].setTankType(Fluids.fromID(1010));
 				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
 					plasma.getTankType() == Fluids.fromID(1015))) {
 					this.totalRuntime++;
-					int delay = 32;
+					int delay = 40;
 					if(delay > 0 && totalRuntime % delay == 0 && plasma.getFill() > 0) {
 						produceNewByproduct();						
-						}
-					if(delay > 0 && totalRuntime % delay == 0 && tanks[0].getFill() > 0) {				
-						doNewBreederStuff();
-						}
-					if(plasma.getFill() >= 125) {
-						power += 24900000;
-						plasma.setFill(plasma.getFill() - 125);
-						tanks[1].setFill(tanks[1].getFill() + 125);
-						if(tanks[0].getFill()>=250){
-							tanks[0].setFill(tanks[0].getFill() - 250);
-							tanks[1].setFill(tanks[1].getFill() + 250);
-						}
+						}		
+					if(plasma.getFill() >= 100) {
+						power += 19900000;
+						plasma.setFill(plasma.getFill() - 100);
+						tanks[1].setFill(tanks[1].getFill() + 100);
 					}
-	
+				doBreederStuff();	
 				Generate();
 				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
-				if(plasma.getFill() >= 125)  power += 100000;				
+				if(plasma.getFill() >= 100)  power += 100000;				
 					}			
 				for(DirPos pos : getConPos()) {
 					if(tanks[1].getFill() > 0) {
@@ -371,17 +359,15 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			this.progress = 0;
 			return;
 		}
-
+		/*
 		int level = FusionRecipes.getBreedingLevel(plasma.getTankType());
 
 		if(out.flux > level) {
 			this.progress = 0;
 			return;
-		}
+		}*/
 
-		progress++;
-		if(slots[1] != null && (slots[1].getItem() == ModItems.billet_u238 || slots[1].getItem() == ModItems.billet_th232))	
-				progress += 3;
+		progress += 10;
 		if(progress > this.duration) {
 
 			this.progress = 0;
@@ -401,64 +387,15 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		}
 	}
 
-	private void doNewBreederStuff() {
-		
-		if(plasma.getFill() == 0) {
-			return;
-		}
-		
-		
-		if(slots[2] != null && slots[2].stackSize >= slots[2].getMaxStackSize()) {
-			return;
-		}
-		
-		ItemStack out = tanks[0].getTankType() == Fluids.fromID(1013) ? new ItemStack(ModItems.billet_pu239,4):
-		tanks[0].getTankType() == Fluids.fromID(1014) ? new ItemStack(ModItems.billet_u233,4): null; 
-			
-		if(slots[2] != null && out != null) {
-			slots[2].stackSize += out.stackSize;
-		} else {
-			slots[2] = out;
-		}
-			
-		this.markDirty();
-		
-	}
 
 	private void Recycling() {
-		
-		if(slots[1] != null && slots[1].getItem() == ModItems.billet_th232 && tanks[0].getTankType() == Fluids.fromID(1014)
-			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
-				slots[1].stackSize--;		
-				if(slots[1].stackSize <= 0)
-					slots[1] = null;
-				tanks[0].setFill(tanks[0].getFill() + 2000);
-				tanks[1].setFill(tanks[1].getFill() - 3000);
-			}		
-
-		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u238 && tanks[0].getTankType() == Fluids.fromID(1013)
-			&& tanks[0].getFill() < tanks[0].getMaxFill()-2000 && tanks[1].getFill() > 2500){
-				slots[1].stackSize--;		
-				if(slots[1].stackSize <= 0)
-					slots[1] = null;
-				tanks[0].setFill(tanks[0].getFill() + 2000);
-				tanks[1].setFill(tanks[1].getFill() - 3000);
-			}
-
-		if(slots[1] != null && slots[1].getItem() == ModItems.fluorite && tanks[1].getTankType() == Fluids.fromID(1010)
-			&& tanks[1].getFill() < tanks[1].getMaxFill()-500){
-				slots[1].stackSize--;		
-				if(slots[1].stackSize <= 0)
-					slots[1] = null;
-				tanks[1].setFill(tanks[1].getFill() + 500);
-			}
 		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u233 && plasma.getTankType() == Fluids.fromID(1011)
 			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
 				slots[1].stackSize--;		
 				if(slots[1].stackSize <= 0)
 					slots[1] = null;
 				plasma.setFill(plasma.getFill() + 2000);
-				tanks[1].setFill(tanks[1].getFill() - 3000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
 			}		
 
 		if(slots[1] != null && slots[1].getItem() == ModItems.billet_pu239 && plasma.getTankType() == Fluids.fromID(1012)
@@ -467,7 +404,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(slots[1].stackSize <= 0)
 					slots[1] = null;
 				plasma.setFill(plasma.getFill() + 2000);
-				tanks[1].setFill(tanks[1].getFill() - 3000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
 			}
 		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u235 && plasma.getTankType() == Fluids.fromID(1015)
 			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
@@ -475,7 +412,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(slots[1].stackSize <= 0)
 					slots[1] = null;
 				plasma.setFill(plasma.getFill() + 2000);
-				tanks[1].setFill(tanks[1].getFill() - 3000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
 			}		
 		this.markDirty();
 		
@@ -502,11 +439,12 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			return true;
 		return false;
 	}
+	
 	private void produceNewByproduct() {
 		
-		ItemStack by = plasma.getTankType() == Fluids.fromID(1011) ? new ItemStack(ModItems.rbmk_pellet_hen,1,4):
-		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.rbmk_pellet_hep239,2,4): 
-		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.rbmk_pellet_hen,2,4): 	null;
+		ItemStack by = plasma.getTankType() == Fluids.fromID(1011) ? new ItemStack(ModItems.pwr_fuel_hot,1,4):
+		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.pwr_fuel_hot,2,7): 
+		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.pwr_fuel_hot,2,4): 	null;
 		
 		if(by == null)
 			return;
@@ -704,16 +642,6 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		}
 	}
 
-	protected void setupTanks() {
-		
-		if(tanks[0].getTankType()!=Fluids.fromID(1013)&&tanks[0].getTankType()!=Fluids.fromID(1014)) {
-			tanks[0].setTankType(Fluids.NONE);
-			tanks[1].setTankType(Fluids.NONE);
-			return;
-		}
-		
-		tanks[1].setTankType(Fluids.fromID(1010));
-	}
 	@Override
 	public FluidTank[] getSendingTanks() {
 		return new FluidTank[] {tanks[1]};

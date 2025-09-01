@@ -3,6 +3,8 @@ package com.hbm.tileentity.machine.albion;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
+
 import com.hbm.util.BobMathUtil;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
@@ -35,34 +37,34 @@ public abstract class TileEntityCooledBase extends TileEntityMachineBase impleme
 	public void updateEntity() {
 		
 		if(!worldObj.isRemote) {
+			if(RBMKDials.getAlbionBaby(worldObj)) this.temperature = this.temperature_target;
+			else {
+				for(DirPos pos : this.getConPos()) {
+					this.trySubscribe(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+					this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+				}
+			
+				this.temperature += this.temp_passive_heating;
+				if(this.temperature > KELVIN + 20) this.temperature = KELVIN + 20;
+			
+				if(this.temperature > this.temperature_target) {
+					int cyclesTemp = (int) Math.ceil((Math.min(this.temperature - temperature_target, temp_change_max)) / temp_change_per_mb);
+					int cyclesCool = tanks[0].getFill();
+					int cyclesHot = tanks[1].getMaxFill() - tanks[1].getFill();
+					int cycles = BobMathUtil.min(cyclesTemp, cyclesCool, cyclesHot);
 
-			for(DirPos pos : this.getConPos()) {
-				this.trySubscribe(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
-				this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
-				this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+					tanks[0].setFill(tanks[0].getFill() - cycles);
+					tanks[1].setFill(tanks[1].getFill() + cycles);
+					this.temperature -= this.temp_change_per_mb * cycles;
+				}
 			}
-			
-			this.temperature += this.temp_passive_heating;
-			if(this.temperature > KELVIN + 20) this.temperature = KELVIN + 20;
-			
-			if(this.temperature > this.temperature_target) {
-				int cyclesTemp = (int) Math.ceil((Math.min(this.temperature - temperature_target, temp_change_max)) / temp_change_per_mb);
-				int cyclesCool = tanks[0].getFill();
-				int cyclesHot = tanks[1].getMaxFill() - tanks[1].getFill();
-				int cycles = BobMathUtil.min(cyclesTemp, cyclesCool, cyclesHot);
-
-				tanks[0].setFill(tanks[0].getFill() - cycles);
-				tanks[1].setFill(tanks[1].getFill() + cycles);
-				this.temperature -= this.temp_change_per_mb * cycles;
-			}
-			
 			this.networkPackNT(50);
 		}
 	}
 	
 	public boolean isCool() {
-		return true;
-		//return this.temperature <= this.temperature_target;
+		return this.temperature <= this.temperature_target;
 	}
 	
 	public abstract DirPos[] getConPos();

@@ -133,7 +133,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					Block atPos = partMap.get(checkPos);
 					if(atPos == null || atPos == ModBlocks.pwr_casing) break;
 					if(atPos == ModBlocks.pwr_control) controlled = true;
-					if(RBMKDials.getGeneratorB(worldObj)){
+					if(RBMKDials.getPWRBaby(worldObj)){
 							if(atPos == ModBlocks.pwr_fuel || atPos == ModBlocks.pwr_reflector || atPos == ModBlocks.pwr_controller) {
 								if(controlled) {
 									connectionsControlledDouble += 4;
@@ -238,7 +238,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 						double outputPerRod = fuel.function.effonix(fluxPerRod);
 						double totalOutput = outputPerRod * amountLoaded * usedRods;
 						double totalHeatOutput = totalOutput * fuel.heatEmission;
-						if(!RBMKDials.getGeneratorB(worldObj)){
+						if(!RBMKDials.getPWRBaby(worldObj)){
 						this.coreHeat += totalHeatOutput;
 							this.progress += totalOutput;
 							}
@@ -254,15 +254,15 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 							this.progress = 0;
 
 							if(slots[1] == null) {
-								if(RBMKDials.getGeneratorB(worldObj) && typeLoaded == 1 )
+								if(RBMKDials.getPWRBaby(worldObj) && typeLoaded == 1 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 2);
-								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 14 )
+								else if (RBMKDials.getPWRBaby(worldObj) && typeLoaded == 14 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 7);
-								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 2 )
+								else if (RBMKDials.getPWRBaby(worldObj) && typeLoaded == 2 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 4);
-								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 11 )
+								else if (RBMKDials.getPWRBaby(worldObj) && typeLoaded == 11 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 12);
-								else if (RBMKDials.getGeneratorB(worldObj) && typeLoaded == 0 )
+								else if (RBMKDials.getPWRBaby(worldObj) && typeLoaded == 0 )
 									slots[1] = new ItemStack(ModItems.pwr_fuel, 1, 6);
 								else slots[1] = new ItemStack(ModItems.pwr_fuel_hot, 1, typeLoaded);
 							} else if(slots[1].getItem() == ModItems.pwr_fuel_hot && slots[1].getItemDamage() == typeLoaded && slots[1].stackSize < slots[1].getMaxStackSize()) {
@@ -282,7 +282,7 @@ public class TileEntityPWRController extends TileEntityMachineBase implements IG
 					}
 
 					if(amountLoaded > rodCount) amountLoaded = rodCount;
-					if(!RBMKDials.getGeneratorB(worldObj)){
+					if(!RBMKDials.getPWRBaby(worldObj)){
 					/* CORE COOLING */
 					double coreCoolingApproachNum = getXOverE((double) this.heatexCount * 5 / (double) getRodCountForCoolant(), 2) / 2D;
 					long averageCoreHeat = (this.coreHeat + this.hullHeat) / 2;

@@ -223,7 +223,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 					}
 				}
 			}
-			if(!RBMKDials.getGeneratorD(worldObj))	{
+			if(!RBMKDials.getZIRNOXBaby(worldObj))	{
 			//2(fill) + (x * fill%)
 			this.pressure = (this.carbonDioxide.getFill() * 2) + (int)((float)this.heat * ((float)this.carbonDioxide.getFill() / (float)this.carbonDioxide.getMaxFill()));
 
@@ -327,7 +327,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 			decay++;
 
 		for(int i = 0; i < decay; i++) {
-			if(!RBMKDials.getGeneratorD(worldObj)){		
+			if(!RBMKDials.getZIRNOXBaby(worldObj)){		
 			this.heat += num.heat;
 			ItemZirnoxRod.incrementLifeTime(slots[id]);
 
@@ -337,7 +337,7 @@ public class TileEntityReactorZirnox extends TileEntityMachineBase implements IC
 			ItemZirnoxRod.incrementLongLifeTime(slots[id]);
 			}
 			if(ItemZirnoxRod.getLifeTime(slots[id]) > num.maxLife) {
-				if(!RBMKDials.getGeneratorD(worldObj))
+				if(!RBMKDials.getZIRNOXBaby(worldObj))
 				slots[id] = fuelMap.get(new ComparableStack(getStackInSlot(id))).copy();
 				else	slots[id] = newfuelMap.get(new ComparableStack(getStackInSlot(id))).copy();
 				break;

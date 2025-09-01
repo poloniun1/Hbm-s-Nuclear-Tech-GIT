@@ -63,7 +63,7 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
 			
 			if(joules > 0) {
-				if(!RBMKDials.getDFCBABY(worldObj)){	
+				if(!RBMKDials.getDFCBaby(worldObj)){	
 				if(tank.getFill() >= 20) {
 					tank.setFill(tank.getFill() - 20);
 				} else {

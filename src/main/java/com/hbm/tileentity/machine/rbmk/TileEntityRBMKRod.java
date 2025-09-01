@@ -122,13 +122,13 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 						fluxRatioOut = 0;
 					else
 						fluxRatioOut = 1;
-				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||
+				if(RBMKDials.getRBMKBaby(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ra226be||slots[0].getItem()== ModItems.rbmk_fuel_po210be||
 				slots[0].getItem()== ModItems.rbmk_fuel_pu238be))
 				{	
 					rod.selfRate = 2000.0D;
 					if(slots[0].getItem()== ModItems.rbmk_fuel_pu238be)	rod.selfRate = 90000.0D;
 				}
-				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_balefire_gold || 
+				if(RBMKDials.getRBMKBaby(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_balefire_gold || 
 				slots[0].getItem()== ModItems.rbmk_fuel_flashlead ||slots[0].getItem()== ModItems.rbmk_fuel_mes))
 					rod.selfRate = 10.0D;
 				if(RBMKDials.getRodUnique(worldObj) && rod.selfRate == 0 )	
@@ -139,7 +139,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 					}
 				fluxIn = fluxFromType(rod.nType);
 	
-				if(RBMKDials.getGeneratorA(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ueu ||
+				if(RBMKDials.getRBMKBaby(worldObj) && (slots[0].getItem()== ModItems.rbmk_fuel_ueu ||
 				slots[0].getItem()== ModItems.rbmk_fuel_meu || slots[0].getItem()== ModItems.rbmk_fuel_heu235 ||
 				slots[0].getItem()== ModItems.rbmk_fuel_thmeu || slots[0].getItem()== ModItems.rbmk_fuel_lep ||
 				slots[0].getItem()== ModItems.rbmk_fuel_mep || slots[0].getItem()== ModItems.rbmk_fuel_men ||
@@ -157,7 +157,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 				rod.updateHeat(worldObj, slots[0], 1.0D);
 				this.heat += rod.provideHeat(worldObj, slots[0], heat, 1.0D);
 
-				if(RBMKDials.getGeneratorA(worldObj)&&this.heat>20D)
+				if(RBMKDials.getRBMKBaby(worldObj)&&this.heat>20D)
 					Generate();			
 				/*if(!this.hasLid()) {
 					ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, (float) (this.fluxQuantity * 0.05F));
@@ -191,7 +191,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 
 				spreadFlux(fluxQuantityOut, fluxRatioOut);
 
-				if (RBMKDials.getGeneratorA(worldObj) ){
+				if (RBMKDials.getRBMKBaby(worldObj) ){
 					if((slots[0].getItem()== ModItems.rbmk_fuel_ueu) && rod.getYield(slots[0]) == 0)
 						slots[0] = new ItemStack(ModItems.rbmk_fuel_hep239);
 					else if((slots[0].getItem()== ModItems.rbmk_fuel_thmeu) && rod.getYield(slots[0]) == 0)

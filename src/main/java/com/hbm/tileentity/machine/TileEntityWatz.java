@@ -134,7 +134,7 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 				segment.updateReaction(above, sharedTanks, turnedOn);
 			}
 			
-			if(RBMKDials.getGeneratorE(worldObj))	
+			if(RBMKDials.getWatzBaby(worldObj))	
 			Generate();
 			/* send sync packets (order doesn't matter) */
 			for(TileEntityWatz segment : segments) {
@@ -243,7 +243,7 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					ItemWatzPellet.setYield(stack, ItemWatzPellet.getYield(stack) - burn);
 					addedFlux += burn;
 					addedHeat += type.heatEmission * burn;
-					if(!RBMKDials.getGeneratorE(worldObj))	
+					if(!RBMKDials.getWatzBaby(worldObj))	
 					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * burn));
 				}
 			}
@@ -256,11 +256,11 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 					double absorb = absorbFunc.effonix(baseFlux + fluxLastReaction);
 					addedHeat += absorb;
 					ItemWatzPellet.setYield(stack, ItemWatzPellet.getYield(stack) - absorb);
-					if(!RBMKDials.getGeneratorE(worldObj))
+					if(!RBMKDials.getWatzBaby(worldObj))
 					tanks[2].setFill(tanks[2].getFill() + (int) Math.round(type.mudContent * absorb));
 				}
 			}
-			if(!RBMKDials.getGeneratorE(worldObj))			
+			if(!RBMKDials.getWatzBaby(worldObj))			
 			this.heat += addedHeat;
 			else{ 
 			this.power += addedHeat;
@@ -279,11 +279,11 @@ public class TileEntityWatz extends TileEntityMachineBase implements IFluidStand
 			
 			/* deplete */
 			if(stack != null && stack.getItem() == ModItems.watz_pellet && ItemWatzPellet.getEnrichment(stack) <= 0) {
-				if(slots[i].getItemDamage() == 12 && RBMKDials.getGeneratorE(worldObj))
+				if(slots[i].getItemDamage() == 12 && RBMKDials.getWatzBaby(worldObj))
 					slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, 4);
-				else if(slots[i].getItemDamage() == 11 && RBMKDials.getGeneratorE(worldObj))
+				else if(slots[i].getItemDamage() == 11 && RBMKDials.getWatzBaby(worldObj))
 					slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, 13);
-				else if(slots[i].getItemDamage() == 5 && RBMKDials.getGeneratorE(worldObj))
+				else if(slots[i].getItemDamage() == 5 && RBMKDials.getWatzBaby(worldObj))
 					slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, 6);
 				else slots[i] = new ItemStack(ModItems.watz_pellet_depleted, 1, stack.getItemDamage());
 				continue; // depleted pellets may persist for one tick

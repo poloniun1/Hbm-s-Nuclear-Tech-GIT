@@ -42,17 +42,18 @@ public class RBMKDials {
 		KEY_DISABLE_XENON("dialDisableXenon", false),
 		KEY_UNIQUE_ROD ("dialUniqueRod", true),
 		KEY_REASIM_COOLANT_BOILERS ("dialReasimCoolantBoilers", false),
-		KEY_GENERATOR_AMODE ("dialGeneratorAMode", true),//RBMK
-		KEY_GENERATOR_BMODE ("dialGeneratorBMode", true),//PWR
-		KEY_GENERATOR_CMODE ("dialGeneratorCMode", true),//Reactor research
-		KEY_GENERATOR_DMODE ("dialGeneratorDMode", true),//ZIRNOX
-		KEY_GENERATOR_EMODE ("dialGeneratorEMode", true),//WATZ
-		KEY_GENERATOR_FMODE ("dialGeneratorFMode", true),//FUSION
-		KEY_GENERATOR_GMODE ("dialGeneratorGMode", true),//ICF
-		KEY_DFC_BABY_MODE ("dialDFCBabyMode", true),	
-		KEY_CRUCIBLE_BABY_MODE ("dialCrucibleBabyMode", true),	
+		KEY_RBMK_BABY_MODE ("dialRBMKBabyMode", true),//RBMK
+		KEY_PWR_BABY_MODE ("dialPWRBabyMode", true),//PWR
+		KEY_RR_BABY_MODE ("dialResearchBabyMode", true),//Reactor research
+		KEY_ZIRNOX_BABY_MODE ("dialZIRNOXBabyMode", true),//ZIRNOX
+		KEY_WATZ_BABY_MODE ("dialWatzBabyMode", true),//WATZ
+		KEY_ITER_BABY_MODE ("dialITERBabyMode", true),//FUSION
+		KEY_ICF_BABY_MODE ("dialICFBabyMode", true),//ICF
+		KEY_DFC_BABY_MODE ("dialDFCBabyMode", true),//DFC	
+		KEY_CRUCIBLE_BABY_MODE ("dialCrucibleBabyMode", true),//CRUCIBLE
 		KEY_HIGH_FLUX_MODE ("dialHighFluxMode", false),
-		KEY_LMSR_MODE ("dialLMSRMode", false);
+		KEY_LMSR_MODE ("dialLMSRMode", true),//LMSR
+		KEY_ALBION_BABY_MODE ("dialAlbionBabyMode", false);//ALBION
 
 		public final String keyString;
 		public final Object defValue;
@@ -127,16 +128,17 @@ public class RBMKDials {
 		gameRules.get(RBMKKeys.KEY_DISABLE_XENON).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_DISABLE_XENON.keyString)));
 		gameRules.get(RBMKKeys.KEY_UNIQUE_ROD).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_UNIQUE_ROD.keyString)));
 		gameRules.get(RBMKKeys.KEY_REASIM_COOLANT_BOILERS).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_REASIM_COOLANT_BOILERS.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_AMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_AMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_BMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_BMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_CMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_CMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_DMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_DMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_EMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_EMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_FMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_FMODE.keyString)));
-		gameRules.get(RBMKKeys.KEY_GENERATOR_GMODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_GENERATOR_GMODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_RBMK_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_RBMK_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_PWR_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_PWR_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_RR_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_RR_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ZIRNOX_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ZIRNOX_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_WATZ_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_WATZ_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ITER_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ITER_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ICF_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ICF_BABY_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_DFC_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_DFC_BABY_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_CRUCIBLE_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_CRUCIBLE_BABY_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_HIGH_FLUX_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_HIGH_FLUX_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ALBION_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ALBION_BABY_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_LMSR_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_LMSR_MODE.keyString)));
 
 	}
@@ -414,43 +416,46 @@ public class RBMKDials {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_REASIM_COOLANT_BOILERS);
 	}
 
-	public static boolean getGeneratorA(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_AMODE);
+	public static boolean getRBMKBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_RBMK_BABY_MODE);
 	}
 
-	public static boolean getGeneratorB(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_BMODE);
+	public static boolean getPWRBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_PWR_BABY_MODE);
 	}
 
-	public static boolean getGeneratorC(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_CMODE);
+	public static boolean getResearchBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_RR_BABY_MODE);
 	}
 
-	public static boolean getGeneratorD(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_EMODE);
+	public static boolean getZIRNOXBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ZIRNOX_BABY_MODE);
 	}	
 
 
-	public static boolean getGeneratorE(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_EMODE);
+	public static boolean getWatzBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_WATZ_BABY_MODE);
 	}
 
-	public static boolean getGeneratorF(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_FMODE);
+	public static boolean getITERBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ITER_BABY_MODE);
 	}
 
-	public static boolean getGeneratorG(World world) {
-		return (boolean) getGameRule(world, RBMKKeys.KEY_GENERATOR_GMODE);
+	public static boolean getICFBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ICF_BABY_MODE);
 	}
 
-	public static boolean getDFCBABY(World world) {
+	public static boolean getDFCBaby(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_DFC_BABY_MODE);
 	}
-	public static boolean getCrucibleBABY(World world) {
+	public static boolean getCrucibleBaby(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_CRUCIBLE_BABY_MODE);
 	}
 	public static boolean getHighFlux(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_HIGH_FLUX_MODE);
+	}
+	public static boolean getAlbionBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ALBION_BABY_MODE);
 	}
 	public static boolean getLMSR(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_LMSR_MODE);

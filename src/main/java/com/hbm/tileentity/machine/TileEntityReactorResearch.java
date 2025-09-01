@@ -290,10 +290,10 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 			
 			if(slots[i].getItem() instanceof ItemPlateFuel) {
 				ItemPlateFuel rod = (ItemPlateFuel) slots[i].getItem();
-				if(RBMKDials.getGeneratorC(worldObj)&& (slots[i].getItem()==ModItems.plate_fuel_pu238be||slots[i].getItem()==ModItems.plate_fuel_ra226be))	rod.reactivity = 800;
+				if(RBMKDials.getResearchBaby(worldObj)&& (slots[i].getItem()==ModItems.plate_fuel_pu238be||slots[i].getItem()==ModItems.plate_fuel_ra226be))	rod.reactivity = 800;
 				
 				int outFlux = rod.react(worldObj, slots[i], slotFlux[i]);
-				if(!RBMKDials.getGeneratorC(worldObj))
+				if(!RBMKDials.getResearchBaby(worldObj))
 				this.heat += outFlux * 2;
 				slotFlux[i] = 0;
 				totalFlux += outFlux;
@@ -301,7 +301,7 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 				int[] neighborSlots = getNeighboringSlots(i);
 				
 				if(ItemPlateFuel.getLifeTime(slots[i]) > rod.lifeTime) {
-					if(!RBMKDials.getGeneratorC(worldObj))
+					if(!RBMKDials.getResearchBaby(worldObj))
 					slots[i] = fuelMap.get(new ComparableStack(slots[i])).copy();
 					else	slots[i] = newfuelMap.get(new ComparableStack(slots[i])).copy();
 				}
