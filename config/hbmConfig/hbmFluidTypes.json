@@ -144,30 +144,6 @@
     "texture": "custom_lava",
     "temperature": 600
   },
-    "U238_SALT": {
-    "name": "U238_molten_salt",
-    "id": 1013,
-    "color": 13749950,
-    "tint": 13749950,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 600
-  },
-    "TH232_SALT": {
-    "name": "TH232_molten_salt",
-    "id": 1014,
-    "color": 4077097,
-    "tint": 4077097,
-    "p": 1,
-    "f": 2,
-    "r": 0,
-    "symbol": "NONE",
-    "texture": "custom_lava",
-    "temperature": 600
-  },
     "U235_SALT": {
     "name": "U235_molten_salt",
     "id": 1015,
