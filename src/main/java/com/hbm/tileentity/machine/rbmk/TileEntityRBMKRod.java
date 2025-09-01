@@ -313,9 +313,12 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 			ItemRBMKRod rod = ((ItemRBMKRod)slots[0].getItem());
 			BufferUtil.writeString(buf, ItemRBMKRod.getYield(slots[0]) + " / " + rod.yield + " (" + (ItemRBMKRod.getEnrichment(slots[0]) * 100) + "%)");
 			BufferUtil.writeString(buf, ItemRBMKRod.getPoison(slots[0]) + "%");
-			BufferUtil.writeString(buf, ItemRBMKRod.getCoreHeat(slots[0]) + " / " + ItemRBMKRod.getHullHeat(slots[0])  + " / " + rod.meltingPoint);
-		}
+			//Heat is too long! Reduce it to 6 numbers is enough.
+			BufferUtil.writeString(buf, String.format("%.6f", ItemRBMKRod.getCoreHeat(slots[0]))
+				+ " / " + String.format("%.6f", ItemRBMKRod.getHullHeat(slots[0]))
+				+ " / " + String.format("%.2f", rod.meltingPoint));		}
 	}
+	
 
 	@Override
 	public void deserialize(ByteBuf buf) {
@@ -475,36 +478,41 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 	 * The Generator consume all heats to generatting
 	 */
 	private void Generate() {
-		this.power =( new Double(this.heat).longValue()-20) * 1800-36000;
-			this.tryProvide(worldObj, xCoord, yCoord-1, zCoord, ForgeDirection.DOWN);
-			for(int i = 0; i<2;i++){
-			for(int j = 1; j<2; j++){
-			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  +  j , ForgeDirection.EAST);
-			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  +  j , ForgeDirection.SOUTH);
-}
-}
-			for(int i = 1; i<2;i++){
-			for(int j = 0; j<2; j++){
-			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  -  j , ForgeDirection.EAST);
-			this.tryProvide(worldObj, xCoord +  i , yCoord, zCoord  -  j , ForgeDirection.NORTH);
-}
-}
-			for(int i = 0; i<2;i++){
-			for(int j = 1; j<2; j++){
-			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord -  j , ForgeDirection.WEST);
-			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord -  j , ForgeDirection.NORTH);
-}
-}
-			for(int i = 1; i<2;i++){
-			for(int j = 0; j<2; j++){
-			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord +  j , ForgeDirection.WEST);
-			this.tryProvide(worldObj, xCoord -  i , yCoord, zCoord +  j , ForgeDirection.SOUTH);
-}
-}
-
-
+		this.power =(new Double(this.heat).longValue() - 20) * 1800 - 36000;
+		this.tryProvide(worldObj, xCoord, yCoord-1, zCoord, ForgeDirection.DOWN);
+		if(this.power == 0){
+			this.heat = 0;
+			return;
+		}
+		for(int i = 0; i<2;i++){
+			this.tryProvide(worldObj, xCoord +  i, yCoord, zCoord  + 1, ForgeDirection.EAST);
+			this.tryProvide(worldObj, xCoord +  i, yCoord, zCoord  + 1, ForgeDirection.SOUTH);
+			if(this.power == 0){
+				this.heat = 0;
+				return;
+			}
+		}
+		for(int j = 0; j<2; j++){
+			this.tryProvide(worldObj, xCoord + 1, yCoord, zCoord  -  j, ForgeDirection.EAST);
+			this.tryProvide(worldObj, xCoord + 1, yCoord, zCoord  -  j, ForgeDirection.NORTH);
+			if(this.power == 0){
+				this.heat = 0;
+				return;
+			}
+		}
+		for(int i = 0; i<2;i++){
+			this.tryProvide(worldObj, xCoord - i, yCoord, zCoord - 1, ForgeDirection.WEST);
+			this.tryProvide(worldObj, xCoord - i, yCoord, zCoord - 1, ForgeDirection.NORTH);
+			if(this.power == 0){
+				this.heat = 0;
+				return;
+			}
+		}
+		for(int i = 1; i<2;i++){
+			this.tryProvide(worldObj, xCoord - i, yCoord, zCoord + 1, ForgeDirection.WEST);
+			this.tryProvide(worldObj, xCoord - i, yCoord, zCoord + 1, ForgeDirection.SOUTH);
+		}
 		this.heat = 0;
-
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.interfaces.Spaghetti;
 import com.hbm.items.weapon.sedna.factory.GunFactory.EnumAmmoSecret;
 import com.hbm.blocks.ModBlocks2;
 
@@ -19,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+@Spaghetti("this is implemented in the most braindead fucking way imaginable") // TODO: rework this unholy abomination using configurable loot pools
 public class BlockCrate extends BlockFalling {
 
 	List<ItemStack> crateList;

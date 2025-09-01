@@ -356,6 +356,12 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		if(slots[1] != null && slots[1].getItem() == ModItems.meteorite_sword_fused)
 			out = new BreederRecipe(ModItems.meteorite_sword_baleful, 4000);
 
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_th232)
+			out = new BreederRecipe(ModItems.billet_u233, 1000);
+		
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u238)
+			out = new BreederRecipe(ModItems.billet_pu239, 1000);
+		
 		if(out == null) {
 			this.progress = 0;
 			return;
@@ -374,7 +380,8 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		}
 
 		progress++;
-
+		if(slots[1] != null && (slots[1].getItem() == ModItems.billet_u238 || slots[1].getItem() == ModItems.billet_th232))	
+				progress += 3;
 		if(progress > this.duration) {
 
 			this.progress = 0;
