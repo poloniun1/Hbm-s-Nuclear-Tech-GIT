@@ -14,6 +14,7 @@ import com.hbm.util.i18n.I18nUtil;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.init.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -186,6 +187,10 @@ public class MachineICFController extends BlockContainer implements ILookOverlay
 			return;
 		}
 
+		if(block == Blocks.air) {
+			return;
+		}
+		
 		if(validCore) {
 			assembly.put(pos, meta);
 			floodFill(world, x + 1, y, z, player);

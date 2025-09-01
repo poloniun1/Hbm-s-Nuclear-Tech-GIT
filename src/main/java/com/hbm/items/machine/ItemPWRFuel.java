@@ -19,19 +19,21 @@ public class ItemPWRFuel extends ItemEnumMulti {
 	}
 	
 	public static enum EnumPWRFuel {
-		MEU(		05.0D,	new FunctionLogarithmic(20 * 30).withDiv(2_500)),
+		MEU(		05.0D,	new FunctionSqrt(20)),
 		HEU233(		07.5D,	new FunctionSqrt(25)),
-		HEU235(		07.5D,	new FunctionSqrt(22.5)),
+		HEU235(		07.5D,	new FunctionSqrt(25)),
 		MEN(		07.5D,	new FunctionLogarithmic(22.5 * 30).withDiv(2_500)),
 		HEN237(		07.5D,	new FunctionSqrt(27.5)),
-		MOX(		07.5D,	new FunctionLogarithmic(20 * 30).withDiv(2_500)),
-		MEP(		07.5D,	new FunctionLogarithmic(22.5 * 30).withDiv(2_500)),
-		HEP239(		10.0D,	new FunctionSqrt(22.5)),
+		MOX(		07.5D,	new FunctionSqrt(22.5)),
+		MEP(		07.5D,	new FunctionSqrt(22.5)),
+		HEP239(		10.0D,	new FunctionSqrt(25)),
 		HEP241(		10.0D,	new FunctionSqrt(25)),
-		MEA(		07.5D,	new FunctionLogarithmic(25 * 30).withDiv(2_500)),
+		MEA(		07.5D,	new FunctionSqrt(22.5)),
 		HEA242(		10.0D,	new FunctionSqrt(25)),
-		HES326(		12.5D,	new FunctionSqrt(27.5)),
-		HES327(		12.5D,	new FunctionSqrt(30)),
+		HES326(		10.0D,	new FunctionSqrt(30)),
+		HES327(		12.0D,	new FunctionSqrt(40)),
+		EUPH(		15.0D,	new FunctionSqrt(80)),
+		UEU(		04.0D,	new FunctionSqrt(15)), 
 		BFB_AM_MIX(	2.5D,	new FunctionSqrt(15), 250_000_000),
 		BFB_PU241(	2.5D,	new FunctionSqrt(15), 250_000_000);
 

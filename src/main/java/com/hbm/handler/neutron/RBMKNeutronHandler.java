@@ -5,7 +5,8 @@ import com.hbm.handler.neutron.NeutronNodeWorld.StreamWorld;
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.tileentity.machine.rbmk.*;
 import com.hbm.util.fauxpointtwelve.BlockPos;
-
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
+import com.hbm.items.machine.ItemRBMKRod;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
@@ -258,8 +259,27 @@ public class RBMKNeutronHandler {
 				streamWorld.addNode(new RBMKNeutronNode(originTE, originTE.getRBMKType(), originTE.hasLid()));
 			}
 
+				
 			int moderatedCount = 0;
-
+			if(RBMKDials.getRodUnique(worldObj)){
+				if (originTE instanceof TileEntityRBMKRod){
+					TileEntityRBMKRod rod = (TileEntityRBMKRod)originTE;
+					moderateStream();
+					if (rod.slots[0] != null && rod.slots[0].getItem() instanceof ItemRBMKRod){
+					ItemRBMKRod fuel = (ItemRBMKRod)(rod.slots[0].getItem());					
+					if( fuel.function.name()!="CONSTANT"  && fuel.getYield(rod.slots[0]) > 0){
+					this.fluxQuantity *= 1.02D;
+					this.fluxQuantity += fuel.selfRate;
+					rod.receiveFlux(this);
+					}
+					else if (fuel.getYield(rod.slots[0]) > 0){
+					this.fluxQuantity = fuel.selfRate ;
+					rod.receiveFlux(this);	
+					}
+					else this.fluxQuantity = 0 ;
+					}
+				}			
+			}
 			Iterator<BlockPos> iterator = getBlocks(fluxRange);
 
 			while(iterator.hasNext()) {
@@ -299,8 +319,8 @@ public class RBMKNeutronHandler {
 				// no issue with casting here!
 				TileEntityRBMKBase nodeTE = (TileEntityRBMKBase) targetNode.tile;
 
-				if(!(boolean) targetNode.data.get("hasLid"))
-					ChunkRadiationManager.proxy.incrementRad(worldObj, targetPos.getX(), targetPos.getY(), targetPos.getZ(), (float) (this.fluxQuantity * 0.05F));
+				//if(!(boolean) targetNode.data.get("hasLid"))
+					//ChunkRadiationManager.proxy.incrementRad(worldObj, targetPos.getX(), targetPos.getY(), targetPos.getZ(), (float) (this.fluxQuantity * 0.05F));
 
 				if(type == RBMKType.MODERATOR || nodeTE.isModerated()) {
 					moderatedCount++;
@@ -312,7 +332,8 @@ public class RBMKNeutronHandler {
 
 					if(type == RBMKType.ROD) {
 						TileEntityRBMKRod rod = (TileEntityRBMKRod) column;
-
+						if(RBMKDials.getRodUnique(worldObj))
+						return;
 						if(rod.hasRod) {
 							rod.receiveFlux(this);
 							return;
@@ -321,15 +342,16 @@ public class RBMKNeutronHandler {
 					} else if(type == RBMKType.OUTGASSER) {
 						TileEntityRBMKOutgasser outgasser = ((TileEntityRBMKOutgasser) column);
 
-						if(outgasser.canProcess()) {
+						//if(outgasser.canProcess()) {
 							column.receiveFlux(this);
 							return;
-						}
+						//}
 					}
 
 				} else if(type == RBMKType.CONTROL_ROD) {
 					TileEntityRBMKControl rod = (TileEntityRBMKControl) nodeTE;
-
+					if(RBMKDials.getRodUnique(worldObj))
+					return;
 					if(rod.level > 0.0D) {
 
 						this.fluxQuantity *= rod.getMult();
@@ -337,7 +359,8 @@ public class RBMKNeutronHandler {
 					}
 					return;
 				} else if(type == RBMKType.REFLECTOR) {
-
+					if(RBMKDials.getRodUnique(worldObj))
+					return;
 					if(((TileEntityRBMKBase) this.origin.tile).isModerated())
 						moderatedCount++;
 

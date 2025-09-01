@@ -1,7 +1,9 @@
 package com.hbm.lib;
 
+
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.blocks.generic.BlockNTMFlower.EnumFlowerType;
 import com.hbm.config.GeneralConfig;
 import com.hbm.config.MobConfig;
@@ -140,6 +142,8 @@ public class HbmWorldGen implements IWorldGenerator {
 
 					BedrockOre.generate(world, randPosX, randPosZ, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 				}
+				if ((i % 256 == 0 )&&( j % 256 == 0))
+					BedrockOre.generate(world, i, j, new ItemStack(ModItems.bedrock_ore_base), null, 0xD78A16, 1);
 
 			} else {
 
@@ -201,6 +205,13 @@ public class HbmWorldGen implements IWorldGenerator {
 
 				if(randPosX <= -350 && randPosX >= -450 && randPosZ <= -350 && randPosZ >= -450)
 					(new WorldGenMinable(ModBlocks.ore_australium, 50)).generate(world, rand, randPosX, randPosY, randPosZ);
+			}
+			if((i % 64 == 0 )&&( j % 64 == 0)){
+				for(int PosX = i-1; PosX <= i+1; PosX++){
+					for(int PosZ = j-1; PosZ <= j+1; PosZ++)
+						world.setBlock(PosX, 35, PosZ, ModBlocks2.ore_vault);
+				}
+
 			}
 		}
 

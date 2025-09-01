@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.MainRegistry;
 
@@ -184,24 +185,39 @@ public class EntityRADBeast extends EntityMob implements IRadiationImmune {
 		if(beenHit) {
 
 			if(looting > 0) {
-				this.dropItem(ModItems.nugget_polonium, looting);
+				float ra = this.rand.nextFloat();	
+				int num =  (int)(Math.sqrt(1.0D + looting) +1);
+				if(ra <0.25 ) {
+					this.dropItem(ModItems.nugget_uranium, num);
+				} else if (ra < 0.5) {
+					this.dropItem(ModItems.nugget_th232, num);
+				} else if (ra < 0.75) {
+					this.dropItem(ModItems.nugget_plutonium, num);
+				} else if (ra < 0.85) {
+					this.dropItem(ModItems.nugget_ra226, num);
+				} else if (ra < 0.95) {
+					this.dropItem(ModItems.nugget_polonium, num);
+				} else if (ra < 0.99) {
+					this.dropItem(ModItems.nugget_technetium, num);
+				} else {
+					this.dropItem(ModItems.nugget_bismuth, num);
+				}
 			}
 
-			int count = this.rand.nextInt(3) + 1;
+			int count = (int)(Math.log(2.5D + looting) + 1);
 
 			for(int i = 0; i < count; i++) {
 
-				int r = this.rand.nextInt(3);
+				int r = this.rand.nextInt(20);
 
-				if(r == 0) {
-					this.dropItem(this.isWet() ? ModItems.waste_uranium : ModItems.rod_zirnox_uranium_fuel_depleted, this.isWet() ? 2 : 1);
-
-				} else if(r == 1) {
-					this.dropItem(this.isWet() ? ModItems.waste_mox : ModItems.rod_zirnox_mox_fuel_depleted, this.isWet() ? 2 : 1);
-
-				} else if(r == 2) {
-					this.dropItem(this.isWet() ? ModItems.waste_plutonium : ModItems.rod_zirnox_plutonium_fuel_depleted, this.isWet() ? 2 : 1);
-
+				if(r < 9) {
+					this.dropItem(ModItems2.rod_zirnox_np237_fuel_depleted, 1);
+				} else if(r < 18) {
+					this.dropItem(ModItems2.rod_zirnox_pu239_fuel_depleted, 1);
+				} else if(r < 19) {
+					this.dropItem(ModItems2.rod_zirnox_sa326_fuel_depleted, 1);
+				} else {
+					this.dropItem(ModItems2.rod_zirnox_bred_lead, 1);				
 				}
 			}
 		}

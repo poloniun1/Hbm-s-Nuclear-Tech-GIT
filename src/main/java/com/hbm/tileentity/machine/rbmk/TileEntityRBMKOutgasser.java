@@ -52,10 +52,11 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		
 		if(!worldObj.isRemote) {
 			
-			if(!canProcess()) {
-				this.progress = 0;
-			}
-			
+		if(canProcess()) {			
+			if(progress > duration) {
+				process();
+				this.markDirty();
+			}}			
 			for(DirPos pos : getOutputPos()) {
 				if(this.gas.getFill() > 0) this.sendFluid(gas, worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 			}
@@ -95,11 +96,12 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 	@Override
 	public void receiveFlux(NeutronStream stream) {
 		
+			double efficiency = Math.min(1 - stream.fluxRatio * 0.8, 1);
+			progress += stream.fluxQuantity * efficiency * RBMKDials.getOutgasserMod(worldObj);
+			progress = progress > 1000000000000.0D ? 1000000000000.0D : progress ;
 		if(canProcess()) {
 
-			double efficiency = Math.min(1 - stream.fluxRatio * 0.8, 1);
 
-			progress += stream.fluxQuantity * efficiency * RBMKDials.getOutgasserMod(worldObj);
 			
 			if(progress > duration) {
 				process();
@@ -138,7 +140,7 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		
 		Pair<ItemStack, FluidStack> output = OutgasserRecipes.getOutput(slots[0]);
 		this.decrStackSize(0, 1);
-		this.progress = 0;
+		this.progress -= 10000;
 		
 		if(output.getValue() != null) {
 			gas.setFill(gas.getFill() + output.getValue().fill);

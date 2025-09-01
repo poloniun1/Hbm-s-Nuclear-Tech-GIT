@@ -62,7 +62,7 @@ public class EntityHunterChopper extends EntityFlying implements IMob, IBossDisp
 		if(!(source == ModDamageSource.shrapnel || source == ModDamageSource.nuclearBlast || source == ModDamageSource.blackhole || source.isExplosion() || ModDamageSource.getIsTau(source) || ModDamageSource.getIsSubatomic(source) || ModDamageSource.getIsDischarge(source)))
 			amount *= 0.1F;
 
-		if(this.isEntityInvulnerable() || source instanceof EntityDamageSource || this.getHealth() <= 0.1F) {
+		if(this.isEntityInvulnerable()|| this.getHealth() <= 0.1F) { //|| source instanceof EntityDamageSource 
 			return false;
 		} else if(amount >= this.getHealth()) {
 			this.initDeath();

@@ -34,6 +34,14 @@ public class ItemZirnoxRod extends ItemEnumMulti {
 		
 		stack.stackTagCompound.setInteger("life", time + 1);
 	}
+	public static void incrementLongLifeTime(ItemStack stack) {
+		
+		if(!stack.hasTagCompound())
+			stack.stackTagCompound = new NBTTagCompound();
+		
+		int time = stack.stackTagCompound.getInteger("life");
+		stack.stackTagCompound.setInteger("life", time + 20);
+	}
 	
 	public static void setLifeTime(ItemStack stack, int time) {
 		
@@ -109,7 +117,11 @@ public class ItemZirnoxRod extends ItemEnumMulti {
 		U235_FUEL(165_000, 85),
 		LES_FUEL(150_000, 150),
 		LITHIUM(20_000, 0, true),
-		ZFB_MOX(50_000, 35);
+		ZFB_MOX(50_000, 35),
+		NP237_FUEL(150_000, 120),
+		PU239_FUEL(120_000, 180),
+		SA326_FUEL(100_000, 300),
+		LEAD(1_000_000, 0, true),;
 		
 		public final int maxLife;
 		public final int heat;

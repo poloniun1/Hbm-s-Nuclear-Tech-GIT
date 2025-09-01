@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.machine.FoundryCastingBase;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
 import com.hbm.handler.threading.PacketThreading;
@@ -33,6 +34,7 @@ import com.hbm.util.ItemStackUtil;
 import com.hbm.util.fauxpointtwelve.DirPos;
 import com.hbm.util.i18n.I18nUtil;
 
+import api.hbm.block.ICrucibleAcceptor;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
@@ -42,11 +44,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.block.Block;
 
 public class TileEntityMachineArcFurnaceLarge extends TileEntityMachineBase implements IEnergyReceiverMK2, IControlReceiver, IGUIProvider, IUpgradeInfoProvider {
 
@@ -79,7 +83,7 @@ public class TileEntityMachineArcFurnaceLarge extends TileEntityMachineBase impl
 		return upgrade == 0 ? 1 : upgrade == 1 ? 4 : upgrade == 2 ? 8 : 16;
 	}
 
-	public static final int maxLiquid = MaterialShapes.BLOCK.q(128);
+	public static final int maxLiquid = MaterialShapes.BLOCK.q(1024);
 	public List<MaterialStack> liquids = new ArrayList();
 
 	public TileEntityMachineArcFurnaceLarge() {
@@ -160,9 +164,29 @@ public class TileEntityMachineArcFurnaceLarge extends TileEntityMachineBase impl
 			if(!this.liquids.isEmpty() && this.lid > 0F) {
 
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - 10);
-
+				int pov = 0;
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 3, yCoord - pov, zCoord + dir.offsetZ * 3);
+				for (int range =0;range < 5; range++){
+					if(b instanceof ICrucibleAcceptor)
+						break;
+					b = worldObj.getBlock(xCoord + dir.offsetX * 3, yCoord - range, zCoord + dir.offsetZ * 3);
+					pov = range;
+				}	
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 2.875D, yCoord + 1.25D, zCoord + 0.5D + dir.offsetZ * 2.875D, 6, true, this.liquids, MaterialShapes.INGOT.q(1), impact);
+				List<MaterialStack> newCast = new ArrayList();
+				for(MaterialStack stack : this.liquids) {
+					if(b instanceof FoundryCastingBase) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 3, yCoord - pov, zCoord + dir.offsetZ * 3);
+						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+						if(stack.amount >= tile1.getCapacity()){
+							newCast.add(stack);
+						}	
+					}
+					if(b instanceof ICrucibleAcceptor && !(b instanceof FoundryCastingBase)) {
+						newCast.add(stack);
+					}
+				}
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 2.875D, yCoord + 1.25D, zCoord + 0.5D + dir.offsetZ * 2.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();

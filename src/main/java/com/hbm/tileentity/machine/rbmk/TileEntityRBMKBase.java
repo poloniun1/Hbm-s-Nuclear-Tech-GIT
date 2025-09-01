@@ -107,10 +107,16 @@ public abstract class TileEntityRBMKBase extends TileEntityLoadedBase {
 		if(!worldObj.isRemote) {
 
 			this.worldObj.theProfiler.startSection("rbmkBase_heat_movement");
+
+			if 	(!RBMKDials.getReasimCoolantBoilers(worldObj))
 			moveHeat();
 			if(RBMKDials.getReasimBoilers(worldObj)) {
 				this.worldObj.theProfiler.endStartSection("rbmkBase_reasim_boilers");
 				boilWater();
+			}
+			else if 	(RBMKDials.getReasimCoolantBoilers(worldObj)&&!RBMKDials.getReasimBoilers(worldObj)) {
+				this.worldObj.theProfiler.endStartSection("rbmkBase_reasim_boilers");
+				boilCoolant();
 			}
 
 			this.worldObj.theProfiler.endStartSection("rbmkBase_rpassive_cooling");
@@ -143,6 +149,23 @@ public abstract class TileEntityRBMKBase extends TileEntityLoadedBase {
 		this.heat -= processedWater * heatConsumption;
 	}
 
+	private void boilCoolant() {
+		
+		if(heat <= 500D)
+			return;
+		
+		//double heatConsumption = RBMKDials.getBoilerHeatConsumption(worldObj);
+		double availableHeat = (this.heat - 20D)/500D;
+		double availableWater = this.reasimWater;
+		double availableSpace = maxSteam - this.reasimSteam;
+		
+		int processedWater = (int)Math.floor(Math.min(availableHeat,Math.min(availableWater, availableSpace)));
+		
+		this.reasimWater -= processedWater;
+		this.reasimSteam += processedWater;
+		this.heat -= processedWater*500;
+	}
+
 	public static final ForgeDirection[] neighborDirs = new ForgeDirection[] {
 			ForgeDirection.NORTH,
 			ForgeDirection.EAST,
@@ -156,7 +179,7 @@ public abstract class TileEntityRBMKBase extends TileEntityLoadedBase {
 	 * Moves heat to neighboring parts, if possible, in a relatively fair manner
 	 */
 	private void moveHeat() {
-
+		
 		boolean reasim = RBMKDials.getReasimBoilers(worldObj);
 
 		List<TileEntityRBMKBase> rec = new ArrayList<>();
@@ -209,7 +232,7 @@ public abstract class TileEntityRBMKBase extends TileEntityLoadedBase {
 
 			for(TileEntityRBMKBase rbmk : rec) {
 				double delta = targetHeat - rbmk.heat;
-				rbmk.heat += delta * stepSize;
+				rbmk.heat += delta;// * stepSize;
 
 				//set to the averages, rounded down
 				if(reasim) {

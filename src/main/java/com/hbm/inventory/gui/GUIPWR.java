@@ -114,6 +114,7 @@ public class GUIPWR extends GuiInfoContainer {
 			drawTexturedModalRect(guiLeft + 147, guiTop, 176, 14, 26, 26);
 
 		int p = (int) (controller.progress * 33 / controller.processTime);
+		if(p > 33|| p < 0) p = 33;
 		drawTexturedModalRect(guiLeft + 54, guiTop + 33, 176, 0, p, 14);
 
 		int c = (int) (controller.rodLevel * 52 / 100);
