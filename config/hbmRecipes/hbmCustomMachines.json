@@ -6010,16 +6010,16 @@
 		
         {
           "inputFluids": [
-	["U233_SALT",2000]	
+	["U233_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetUranium238",2]
+	["dict","billetUranium238",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_pu239",2,1],
+	["hbm:item.billet_pu239",4,1],
 	["hbm:item.pwr_fuel_hot",1,4,0.5]
           ],
           "duration": 1,
@@ -6027,16 +6027,16 @@
         },		
         {
           "inputFluids": [
-	["U233_SALT",2000]	
+	["U233_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetTh232",2]
+	["dict","billetTh232",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_u233",2,1],
+	["hbm:item.billet_u233",4,1],
 	["hbm:item.pwr_fuel_hot",1,4,0.5]
           ],
           "duration": 1,
@@ -6044,16 +6044,16 @@
         },
         {
           "inputFluids": [
-	["U235_SALT",2000]	
+	["U235_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetTh232",2]
+	["dict","billetTh232",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_u233",2,1],
+	["hbm:item.billet_u233",4,1],
 	["hbm:item.pwr_fuel_hot",1,4,1]
           ],
           "duration": 1,
@@ -6061,16 +6061,16 @@
         },
         {
           "inputFluids": [
-	["U235_SALT",2000]	
+	["U235_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetUranium238",2]
+	["dict","billetUranium238",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_pu239",2,1],
+	["hbm:item.billet_pu239",4,1],
 	["hbm:item.pwr_fuel_hot",1,4,1]
           ],
           "duration": 1,
@@ -6078,16 +6078,16 @@
         },
         {
           "inputFluids": [
-	["PU239_SALT",2000]	
+	["PU239_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetTh232",2]
+	["dict","billetTh232",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_u233",2,1],
+	["hbm:item.billet_u233",4,1],
 	["hbm:item.pwr_fuel_hot",1,7,1]
           ],
           "duration": 1,
@@ -6095,16 +6095,16 @@
         },
         {
           "inputFluids": [
-	["PU239_SALT",2000]	
+	["PU239_SALT",4000]	
           ],
           "inputItems": [
-	["dict","billetUranium238",2]
+	["dict","billetUranium238",4]
 ],
           "outputFluids": [
-	["MOLTEN_SALT",2000]	
+	["MOLTEN_SALT",4000]	
           ],
           "outputItems": [
-	["hbm:item.billet_pu239",2,1],
+	["hbm:item.billet_pu239",4,1],
 	["hbm:item.pwr_fuel_hot",1,7,1]
           ],
           "duration": 1,
