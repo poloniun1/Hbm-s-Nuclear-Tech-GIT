@@ -74,7 +74,7 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 			long demand = maxPower * watts / 2000;
 			
 			beam = 0;
-			if(!RBMKDials.getDFCBABY(worldObj))	
+			if(!RBMKDials.getDFCBaby(worldObj))	
 			{	
 			if(joules > 0 || prev > 0) {
 
@@ -90,7 +90,7 @@ public class TileEntityCoreEmitter extends TileEntityMachineBase implements IEne
 				
 				//i.e. 50,000,000 HE = 10,000 SPK
 				//1 SPK = 5,000HE
-				if(!RBMKDials.getDFCBABY(worldObj)){				
+				if(!RBMKDials.getDFCBaby(worldObj)){				
 				if(power >= demand) {
 					power -= demand;
 					long add = watts * 100;

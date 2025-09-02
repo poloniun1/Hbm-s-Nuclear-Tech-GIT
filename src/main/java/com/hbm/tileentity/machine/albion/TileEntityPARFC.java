@@ -6,6 +6,7 @@ import com.hbm.lib.Library;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.PAState;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.Particle;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
@@ -20,7 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class TileEntityPARFC extends TileEntityCooledBase implements IGUIProvider, IParticleUser {
 	
 	public static final long usage = 250_000;
-	public static final int momentumGain = 100;
+	public static int momentumGain = 100;		
 	public static final int defocusGain = 100;
 	
 	public TileEntityPARFC() {
@@ -48,14 +49,15 @@ public class TileEntityPARFC extends TileEntityCooledBase implements IGUIProvide
 	public void onEnter(Particle particle, ForgeDirection dir) {
 
 		if(!isCool())				particle.crash(PAState.CRASH_NOCOOL);
-		if(this.power < this.usage)	particle.crash(PAState.CRASH_NOPOWER);
+		if(!RBMKDials.getAlbionBaby(worldObj) && this.power < this.usage)	particle.crash(PAState.CRASH_NOPOWER);
 		
 		if(particle.invalid) return;
 
 		particle.addDistance(9);
+		if(RBMKDials.getAlbionBaby(worldObj)) this.momentumGain = 10000;
 		particle.momentum += this.momentumGain;
 		particle.defocus(defocusGain);
-		this.power -= this.usage;
+		if(!RBMKDials.getAlbionBaby(worldObj)) this.power -= this.usage;
 	}
 
 	@Override

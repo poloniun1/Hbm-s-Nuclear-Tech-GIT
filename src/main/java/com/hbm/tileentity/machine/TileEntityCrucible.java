@@ -110,7 +110,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			tryPullHeat();
 
 
-			if(RBMKDials.getCrucibleBABY(worldObj))
+			if(RBMKDials.getCrucibleBaby(worldObj))
  				this.heat = this.maxHeat;
 			/* collect items */
 			if(worldObj.getTotalWorldTime() % 5 == 0) {
@@ -405,7 +405,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		delta *= 0.05;
 
 		this.progress += delta;
-		if(!RBMKDials.getCrucibleBABY(worldObj))	this.heat -= delta;
+		if(!RBMKDials.getCrucibleBaby(worldObj))	this.heat -= delta;
 
 		if(this.progress >= processTime) {
 			this.progress = 0;

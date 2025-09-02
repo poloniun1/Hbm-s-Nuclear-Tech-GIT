@@ -8,6 +8,7 @@ import com.hbm.lib.Library;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.PAState;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.Particle;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
@@ -57,7 +58,8 @@ public class TileEntityPAQuadrupole extends TileEntityCooledBase implements IGUI
 		}
 
 		if(!isCool())											particle.crash(PAState.CRASH_NOCOOL);
-		if(this.power < this.usage * mult)						particle.crash(PAState.CRASH_NOPOWER);
+		if(!RBMKDials.getAlbionBaby(worldObj) && this.power < this.usage * mult)						
+			particle.crash(PAState.CRASH_NOPOWER);
 		if(type == null)										particle.crash(PAState.CRASH_NOCOIL);
 		if(type != null && type.quadMax < particle.momentum)	particle.crash(PAState.CRASH_OVERSPEED);
 		
@@ -65,7 +67,7 @@ public class TileEntityPAQuadrupole extends TileEntityCooledBase implements IGUI
 
 		particle.addDistance(3);
 		particle.focus(focusGain);
-		this.power -= this.usage * mult;
+		if(!RBMKDials.getAlbionBaby(worldObj)) this.power -= this.usage * mult;
 	}
 
 	@Override

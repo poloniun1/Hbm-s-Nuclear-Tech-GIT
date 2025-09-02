@@ -102,7 +102,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 						break;
 					}
 				}
-				if(!RBMKDials.getDFCBABY(worldObj)){					
+				if(!RBMKDials.getDFCBaby(worldObj)){					
 				if(canExplode) {
 					
 					EntityNukeExplosionMK3 ex = new EntityNukeExplosionMK3(worldObj);
@@ -138,7 +138,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 			else
 				color = 0;
 			
-			if(!RBMKDials.getDFCBABY(worldObj)){	
+			if(!RBMKDials.getDFCBaby(worldObj)){	
 			if(heat > 0)
 				radiation();
 			}
@@ -242,7 +242,7 @@ public class TileEntityCore extends TileEntityMachineBase implements IGUIProvide
 		heat += (int)Math.ceil((double)joules / 10000D);	
 		
 		//check if the reaction has enough valid fuel
-		if(!RBMKDials.getDFCBABY(worldObj)){	
+		if(!RBMKDials.getDFCBaby(worldObj)){	
 		if(tanks[0].getFill() < demand || tanks[1].getFill() < demand)
 			return joules;
 		

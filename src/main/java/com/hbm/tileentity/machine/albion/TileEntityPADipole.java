@@ -10,6 +10,7 @@ import com.hbm.lib.Library;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.PAState;
 import com.hbm.tileentity.machine.albion.TileEntityPASource.Particle;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
@@ -78,7 +79,8 @@ public class TileEntityPADipole extends TileEntityCooledBase implements IGUIProv
 		}
 
 		if(!isCool())										particle.crash(PAState.CRASH_NOCOOL);
-		if(this.power < this.usage * mult)					particle.crash(PAState.CRASH_NOPOWER);
+		if(!RBMKDials.getAlbionBaby(worldObj) && this.power < this.usage * mult)
+			particle.crash(PAState.CRASH_NOPOWER);
 		if(type == null)									particle.crash(PAState.CRASH_NOCOIL);
 		if(type != null && type.diMax < particle.momentum)	particle.crash(PAState.CRASH_OVERSPEED);
 
@@ -90,7 +92,7 @@ public class TileEntityPADipole extends TileEntityCooledBase implements IGUIProv
 			particle.resetDistance();
 		}
 
-		this.power -= this.usage * mult;
+		if(!RBMKDials.getAlbionBaby(worldObj))	this.power -= this.usage * mult;
 	}
 
 	@Override
