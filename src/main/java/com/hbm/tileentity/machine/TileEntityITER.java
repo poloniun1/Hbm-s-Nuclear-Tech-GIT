@@ -199,7 +199,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
 					plasma.getTankType() == Fluids.fromID(1015))) {
 					this.totalRuntime++;
-					int delay = 40;
+					int delay = 80;
 					if(delay > 0 && totalRuntime % delay == 0 && plasma.getFill() > 0) {
 						produceNewByproduct();						
 						}		
@@ -641,6 +641,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 			player.triggerAchievement(MainRegistry.achMeltdown);
 		}
 	}
+
 
 	@Override
 	public FluidTank[] getSendingTanks() {
