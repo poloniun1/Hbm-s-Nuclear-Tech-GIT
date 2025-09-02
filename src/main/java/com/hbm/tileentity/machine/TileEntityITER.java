@@ -194,9 +194,12 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 	
 				}
 			else if((Fluids.fromID(1010)!=Fluids.NONE)&&(Fluids.fromID(1011)!=Fluids.NONE)&&(Fluids.fromID(1012)!=Fluids.NONE)&& (Fluids.fromID(1015)!=Fluids.NONE)){
-				tanks[0].setTankType(Fluids.NONE);
-				tanks[1].setTankType(Fluids.fromID(1010));
+				if(tanks[0].getTankType() != Fluids.NONE || tanks[1].getTankType() != Fluids.fromID(1010)){
+					tanks[0].setTankType(Fluids.NONE);
+					tanks[1].setTankType(Fluids.fromID(1010));
+				}
 				Recycling();
+				tanks[1].setTankType(Fluids.fromID(1010));
 				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
 					plasma.getTankType() == Fluids.fromID(1015))) {
 					this.totalRuntime++;
@@ -643,7 +646,6 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		}
 	}
 
-
 	@Override
 	public FluidTank[] getSendingTanks() {
 		return new FluidTank[] {tanks[1]};
@@ -830,4 +832,3 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		return null;
 	}
 }
-
