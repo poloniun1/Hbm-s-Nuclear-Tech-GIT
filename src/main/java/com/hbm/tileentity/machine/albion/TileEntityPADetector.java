@@ -114,7 +114,7 @@ public class TileEntityPADetector extends TileEntityCooledBase implements IGUIPr
 		//particle will crash if not perfectly focused
 		if(particle.defocus > 0) { particle.crash(PAState.CRASH_DEFOCUS); return; }
 		if(!RBMKDials.getAlbionBaby(worldObj) && this.power < usage) { particle.crash(PAState.CRASH_NOPOWER); return; }
-		if(!isCool()) { particle.crash(PAState.CRASH_NOCOOL); return; }
+		if(!isCool() && !RBMKDials.getAlbionBaby(worldObj)) { particle.crash(PAState.CRASH_NOCOOL); return; }
 		if(!RBMKDials.getAlbionBaby(worldObj))		this.power -= usage;
 
 		for(ParticleAcceleratorRecipe recipe : ParticleAcceleratorRecipes.recipes) {
