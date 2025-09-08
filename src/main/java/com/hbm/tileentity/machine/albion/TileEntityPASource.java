@@ -123,6 +123,7 @@ public class TileEntityPASource extends TileEntityCooledBase implements IGUIProv
 		ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - 10);
 		ForgeDirection rot = dir.getRotation(ForgeDirection.DOWN);
 		this.particle = new Particle(this, xCoord + rot.offsetX * 5, yCoord, zCoord + rot.offsetZ * 5, rot, slots[1], slots[2]);
+		if(RBMKDials.getAlbionBaby(worldObj))	this.particle.momentum = 70000;
 		this.slots[1] = null;
 		this.slots[2] = null;
 		this.markDirty();
