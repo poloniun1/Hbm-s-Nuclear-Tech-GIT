@@ -421,10 +421,10 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyProv
 		this.markDirty();
 		
 	}
+
 	@Override
-	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
-		if (i != 1)return true;
-		return false;
+	public boolean canExtractItem(int slot, ItemStack stack, int side) {
+		return slot == 2 || slot == 4; // only allow removing breeder outputs <- ?????
 	}
 
 	@Override

@@ -179,7 +179,7 @@ public class EntityFalloutRain extends EntityExplosionChunkloading {
 			}*/
 
 			if(dist < 65 && b.isFlammable(worldObj, x, y, z, ForgeDirection.UP)) {
-				if(rand.nextInt(5) == 0 && worldObj.getBlock(x, y + 1, z).isAir(worldObj, x, y + 1, z))
+				if(rand.nextInt(200) == 0 && worldObj.getBlock(x, y + 1, z).isAir(worldObj, x, y + 1, z))
 					setBlock(x, y + 1, z, Blocks.fire);
 			}
 			
@@ -187,7 +187,7 @@ public class EntityFalloutRain extends EntityExplosionChunkloading {
 			
 			for(FalloutEntry entry : FalloutConfigJSON.entries) {
 				
-				if(entry.eval(worldObj, x, y, z, b, meta, dist, b, meta)) {
+				if(entry.eval(worldObj, x, y, z, b, meta, dist)) {
 					if(entry.isSolid()) {
 						depth++;
 					}

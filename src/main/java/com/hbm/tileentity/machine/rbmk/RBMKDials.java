@@ -52,7 +52,7 @@ public class RBMKDials {
 		KEY_DFC_BABY_MODE ("dialDFCBabyMode", true),//DFC	
 		KEY_CRUCIBLE_BABY_MODE ("dialCrucibleBabyMode", true),//CRUCIBLE
 		KEY_HIGH_FLUX_MODE ("dialHighFluxMode", false),
-		KEY_LMSR_MODE ("dialLMSRMode", true),//LMSR
+		KEY_LMSR_MODE ("dialLMSRMode", false),//LMSR
 		KEY_ALBION_BABY_MODE ("dialAlbionBabyMode", false);//ALBION
 
 		public final String keyString;
