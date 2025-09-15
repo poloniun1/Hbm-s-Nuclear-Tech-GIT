@@ -31,14 +31,14 @@ public class TileEntityHeaterOven extends TileEntityFireboxBase implements IConf
 			.setCokeTimeMod(1.25)
 			.setSolidTimeMod(1.5)
 			.setRocketTimeMod(1.5)
-			.setBalefireTimeMod(0.5)
+			.setBalefireTimeMod(0.01)
 
 			.setLigniteHeatMod(2)
 			.setCoalHeatMod(2)
 			.setCokeHeatMod(2)
 			.setSolidHeatMod(3)
 			.setRocketHeatMod(5)
-			.setBalefireHeatMod(15);
+			.setBalefireHeatMod(1000);
 
 	public TileEntityHeaterOven() {
 		super();

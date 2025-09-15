@@ -569,4 +569,8 @@ public class ItemToolAbility extends ItemTool implements IDepthRockTool, IGUIPro
 	public void handleKeybindClient(EntityPlayer player, ItemStack stack, EnumKeybind keybind, boolean state) {
 		if(state) player.openGui(MainRegistry.instance, 0, player.worldObj, 0, 0, 0);
 	}
+
+	public AvailableAbilities getAvailableAbilities(){
+		return this.availableAbilities;
+	}
 }

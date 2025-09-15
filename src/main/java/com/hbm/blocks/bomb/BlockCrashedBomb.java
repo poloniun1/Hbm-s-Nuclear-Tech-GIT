@@ -17,6 +17,7 @@ import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.particle.helper.ExplosionCreator;
 import com.hbm.tileentity.bomb.TileEntityCrashedBomb;
 import com.hbm.util.EnumUtil;
+import com.hbm.inventory.fluid.Fluids;
 
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.block.ITileEntityProvider;
@@ -51,28 +52,14 @@ public class BlockCrashedBomb extends BlockEnumMulti implements ITileEntityProvi
 		if(world.isRemote) return true;
 
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.defuser) {
-			
-			EnumDudType type = EnumUtil.grabEnumSafely(EnumDudType.class, world.getBlockMetadata(x, y, z));
 
 			//TODO: make this less scummy
-			if(type == type.BALEFIRE) {
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.egg_balefire_shard)));
-			}
-			if(type == type.CONVENTIONAL) {
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.ball_tnt, 16)));
-			}
-			if(type == type.NUKE) {
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.ball_tnt, 8)));
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.billet_plutonium, 4)));
-			}
-			if(type == type.SALTED) {
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.ball_tnt, 8)));
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.billet_plutonium, 2)));
-				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.ingot_cobalt, 12)));
-			}
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.egg_balefire_shard, 6)));
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.fluid_barrel_full, 5, Fluids.AMAT.getID())));
+				world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.fluid_barrel_full, 1, Fluids.ASCHRAB.getID())));
 			
-			world.func_147480_a(x, y, z, false);
-			return true;
+				world.func_147480_a(x, y, z, false);
+				return true;
 		}
 
 		return false;

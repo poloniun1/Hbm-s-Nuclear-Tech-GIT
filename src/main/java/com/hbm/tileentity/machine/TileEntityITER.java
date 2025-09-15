@@ -19,6 +19,7 @@ import com.hbm.inventory.recipes.BreederRecipes;
 import com.hbm.inventory.recipes.BreederRecipes.BreederRecipe;
 import com.hbm.inventory.recipes.FusionRecipes;
 import com.hbm.items.ModItems;
+import com.hbm.items.machine.IItemFluidIdentifier;
 import com.hbm.items.special.ItemFusionShield;
 import com.hbm.lib.Library;
 import com.hbm.main.MainRegistry;
@@ -26,10 +27,13 @@ import com.hbm.packet.toclient.AuxParticlePacketNT;
 import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.IGUIProvider;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
+import api.hbm.energymk2.IBatteryItem;
+import api.hbm.energymk2.IEnergyProviderMK2;
 import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import api.hbm.redstoneoverradio.IRORInteractive;
@@ -52,18 +56,19 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers")})
-public class TileEntityITER extends TileEntityMachineBase implements IEnergyReceiverMK2, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent, IFluidCopiable, IRORValueProvider, IRORInteractive {
+public class TileEntityITER extends TileEntityMachineBase implements IEnergyProviderMK2, IEnergyReceiverMK2, IFluidStandardTransceiver, IGUIProvider, IInfoProviderEC, SimpleComponent, CompatHandler.OCComponent, IFluidCopiable, IRORValueProvider, IRORInteractive {
 
 	public long power;
-	public static final long maxPower = 10000000;
+	public static final long maxPower = 5000000000000L;
 	public static final int powerReq = 100000;
 	public FluidTank[] tanks;
 	public FluidTank plasma;
 
 	public int progress;
-	public static final int duration = 100;
+	public int duration = 100;
 	public long totalRuntime;
 
 	@SideOnly(Side.CLIENT)
@@ -95,15 +100,20 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 		if(!worldObj.isRemote) {
 
+			if(!RBMKDials.getITERBaby(worldObj))	{
 			this.updateConnections();
 			power = Library.chargeTEFromItems(slots, 0, power, maxPower);
-
+			}
+			else {	
+				for(DirPos pos : getConPos()) 
+					this.trySubscribe(plasma.getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+				}
 			/// START Processing part ///
 
-			if(!isOn) {
+			if(!isOn && !RBMKDials.getITERBaby(worldObj)) {
 				plasma.setFill(0);	//jettison plasma if the thing is turned off
 			}
-
+			if(!RBMKDials.getITERBaby(worldObj)){	
 			//explode either if there's plasma that is too hot or if the reactor is turned on but the magnets have no power
 			if(plasma.getFill() > 0 && (this.plasma.getTankType().temperature >= this.getShield() || (this.isOn && this.power < this.powerReq))) {
 				this.explode();
@@ -160,6 +170,59 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 					this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 				}
 			}
+			}else if(!RBMKDials.getLMSR(worldObj) || (Fluids.fromID(1010)==Fluids.NONE))
+			{
+				if(isOn ) {
+
+				if(plasma.getFill() >=300) {					
+					this.totalRuntime++;
+					int delay = FusionRecipes.getByproductDelay(plasma.getTankType())/15;
+					if(delay > 0 && totalRuntime % delay == 0) produceByproduct();
+				}
+				int prod = FusionRecipes.getSteamProduction(plasma.getTankType())*375000-100000;				
+					
+					if(plasma.getFill() >= 300) {
+						power += prod;
+						plasma.setFill(plasma.getFill() - 300);
+					}
+				doBreederStuff();	
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 300)  power += 100000;				
+					}	
+					
+	
+				}
+			else if((Fluids.fromID(1010)!=Fluids.NONE)&&(Fluids.fromID(1011)!=Fluids.NONE)&&(Fluids.fromID(1012)!=Fluids.NONE)&& (Fluids.fromID(1015)!=Fluids.NONE)){
+				if(tanks[0].getTankType() != Fluids.NONE || tanks[1].getTankType() != Fluids.fromID(1010)){
+					tanks[0].setTankType(Fluids.NONE);
+					tanks[1].setTankType(Fluids.fromID(1010));
+				}
+				Recycling();
+				tanks[1].setTankType(Fluids.fromID(1010));
+				if(isOn &&(plasma.getTankType() == Fluids.fromID(1011) || plasma.getTankType() == Fluids.fromID(1012) ||
+					plasma.getTankType() == Fluids.fromID(1015))) {
+					this.totalRuntime++;
+					int delay = 80;
+					if(delay > 0 && totalRuntime % delay == 0 && plasma.getFill() > 0) {
+						produceNewByproduct();						
+						}		
+					if(plasma.getFill() >= 100) {
+						power += 19900000;
+						plasma.setFill(plasma.getFill() - 100);
+						tanks[1].setFill(tanks[1].getFill() + 100);
+					}
+				doBreederStuff();	
+				Generate();
+				power = Library.chargeItemsFromTE(slots, 0, power, maxPower);
+				if(plasma.getFill() >= 100)  power += 100000;				
+					}			
+				for(DirPos pos : getConPos()) {
+					if(tanks[1].getFill() > 0) {
+						this.sendFluid(tanks[1], worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+					}
+				}
+				}
 
 			this.networkPackNT(250);
 			/// END Notif packets ///
@@ -211,6 +274,13 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			this.trySubscribe(tanks[0].getTankType(), worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
 		}
 	}
+
+	private void Generate() {
+		
+		for(DirPos pos : getConPos()) {
+			this.tryProvide(worldObj, pos.getX(), pos.getY(), pos.getZ(), pos.getDir());
+		}
+	}	
 
 	protected List<DirPos> getConPos() {
 		if(connections != null && !connections.isEmpty())
@@ -278,6 +348,12 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		if(slots[1] != null && slots[1].getItem() == ModItems.meteorite_sword_fused)
 			out = new BreederRecipe(ModItems.meteorite_sword_baleful, 4000);
 
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_th232)
+			out = new BreederRecipe(ModItems.billet_u233, 1000);
+		
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u238)
+			out = new BreederRecipe(ModItems.billet_pu239, 1000);
+		
 		if(out == null) {
 			this.progress = 0;
 			return;
@@ -287,16 +363,15 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			this.progress = 0;
 			return;
 		}
-
+		/*
 		int level = FusionRecipes.getBreedingLevel(plasma.getTankType());
 
 		if(out.flux > level) {
 			this.progress = 0;
 			return;
-		}
+		}*/
 
-		progress++;
-
+		progress += 10;
 		if(progress > this.duration) {
 
 			this.progress = 0;
@@ -316,23 +391,76 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 		}
 	}
 
+
+	private void Recycling() {
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u233 && plasma.getTankType() == Fluids.fromID(1011)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
+			}		
+
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_pu239 && plasma.getTankType() == Fluids.fromID(1012)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
+			}
+		if(slots[1] != null && slots[1].getItem() == ModItems.billet_u235 && plasma.getTankType() == Fluids.fromID(1015)
+			&& plasma.getFill() < plasma.getMaxFill()-2000 && tanks[1].getFill() > 2500){
+				slots[1].stackSize--;		
+				if(slots[1].stackSize <= 0)
+					slots[1] = null;
+				plasma.setFill(plasma.getFill() + 2000);
+				tanks[1].setFill(tanks[1].getFill() - 2500);
+			}		
+		this.markDirty();
+		
+	}
+
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		return slot == 2 || slot == 4; // only allow removing breeder outputs <- ?????
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int side) {
+	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
 		return new int[] { 1, 2, 4 };
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int i, ItemStack stack) {
+	public boolean isItemValidForSlot(int i, ItemStack itemStack) {
 
-		if(i == 1 && BreederRecipes.getOutput(stack) != null)
+		if(i == 1 && BreederRecipes.getOutput(itemStack) != null)
 			return true;
 
+		if(i == 1 && (itemStack.getItem() == ModItems.billet_u235 || itemStack.getItem() == ModItems.billet_u233 || itemStack.getItem() == ModItems.billet_pu239 ||
+		 itemStack.getItem() == ModItems.billet_u238 ||  itemStack.getItem() == ModItems.billet_th232 ||  itemStack.getItem() == ModItems.fluorite))
+			return true;
 		return false;
+	}
+	
+	private void produceNewByproduct() {
+		
+		ItemStack by = plasma.getTankType() == Fluids.fromID(1011) ? new ItemStack(ModItems.pwr_fuel_hot,1,4):
+		plasma.getTankType() == Fluids.fromID(1012) ? new ItemStack(ModItems.pwr_fuel_hot,2,7): 
+		plasma.getTankType() == Fluids.fromID(1015) ? new ItemStack(ModItems.pwr_fuel_hot,2,4): 	null;
+		
+		if(by == null)
+			return;
+		
+		if(slots[4] == null) {
+			slots[4] = by;
+			return;
+		}
+		
+		if(slots[4].getItem() == by.getItem() && slots[4].getItemDamage() == by.getItemDamage() && slots[4].stackSize < slots[4].getMaxStackSize()) {
+			slots[4].stackSize += by.stackSize;
+		}
 	}
 
 	private void produceByproduct() {
@@ -381,6 +509,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 			buf.writeInt(4);
 		}
 	}
+
 
 	@Override
 	public void deserialize(ByteBuf buf) {
@@ -524,7 +653,7 @@ public class TileEntityITER extends TileEntityMachineBase implements IEnergyRece
 
 	@Override
 	public FluidTank[] getReceivingTanks() {
-		return new FluidTank[] {tanks[0]};
+		return new FluidTank[] {tanks[0],plasma};
 	}
 
 	@Override

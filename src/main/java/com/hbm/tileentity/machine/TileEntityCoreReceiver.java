@@ -7,6 +7,7 @@ import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.gui.GUICoreReceiver;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.CompatEnergyControl;
 
 import api.hbm.block.ILaserable;
@@ -54,13 +55,15 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 			
 			this.subscribeToAllAround(tank.getTankType(), this);
 			
+			if( joules > 1_840_000_000_000_000L ) 
+			power = Long.MAX_VALUE;
 			power = joules * 5000;
 			
 			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
 				this.tryProvide(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
 			
 			if(joules > 0) {
-
+				if(!RBMKDials.getDFCBaby(worldObj)){	
 				if(tank.getFill() >= 20) {
 					tank.setFill(tank.getFill() - 20);
 				} else {
@@ -68,6 +71,7 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 					return;
 				}
 			}
+		}
 
 			this.networkPackNT(50);
 			
@@ -108,7 +112,7 @@ public class TileEntityCoreReceiver extends TileEntityMachineBase implements IEn
 
 	@Override
 	public long getMaxPower() {
-		return this.power;
+		return Long.MAX_VALUE;
 	}
 
 	@Override

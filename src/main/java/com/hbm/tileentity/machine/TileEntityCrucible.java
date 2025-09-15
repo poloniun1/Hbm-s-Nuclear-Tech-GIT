@@ -7,6 +7,8 @@ import java.util.List;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import com.hbm.blocks.BlockDummyable;
+import com.hbm.blocks.machine.FoundryCastingBase;
+import com.hbm.blocks.ModBlocks;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
 import com.hbm.handler.threading.PacketThreading;
@@ -26,7 +28,7 @@ import com.hbm.tileentity.IMetalCopiable;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.BobMathUtil;
 import com.hbm.util.CrucibleUtil;
-
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import api.hbm.block.ICrucibleAcceptor;
 import api.hbm.tile.IHeatSource;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
@@ -45,6 +47,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.block.Block;
 
 public class TileEntityCrucible extends TileEntityMachineBase implements IGUIProvider, ICrucibleAcceptor, IConfigurableMachine, IMetalCopiable {
 
@@ -106,6 +109,9 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		if(!worldObj.isRemote) {
 			tryPullHeat();
 
+
+			if(RBMKDials.getCrucibleBaby(worldObj))
+ 				this.heat = this.maxHeat;
 			/* collect items */
 			if(worldObj.getTotalWorldTime() % 5 == 0) {
 				List<EntityItem> list = worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord - 0.5, yCoord + 0.5, zCoord - 0.5, xCoord + 1.5, yCoord + 1, zCoord + 1.5));
@@ -160,8 +166,29 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 			if(!this.wasteStack.isEmpty()) {
 
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset).getOpposite();
+				int pov = 0;
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+				for (int range =0;range < 6; range++){
+					if(b instanceof ICrucibleAcceptor)
+						break;
+					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
+					pov = range;
+				}	
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
-				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, this.wasteStack, MaterialShapes.NUGGET.q(3), impact);
+				List<MaterialStack> newCast = new ArrayList();
+				for(MaterialStack stack : this.wasteStack) {
+					if(b instanceof FoundryCastingBase) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+						if(stack.amount >= tile1.getCapacity()){
+							newCast.add(stack);
+						}	
+					}
+					if(b instanceof ICrucibleAcceptor && !(b instanceof FoundryCastingBase)) {
+						newCast.add(stack);
+					}
+				}
+				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, newCast, MaterialShapes.BLOCK.q(1), impact);
 
 				if(didPour != null) {
 					NBTTagCompound data = new NBTTagCompound();
@@ -184,22 +211,50 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 				List<MaterialStack> toCast = new ArrayList();
 
+				int pov = 0;
+				Block b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+				for (int range =0;range < 6; range++){
+					if(b instanceof ICrucibleAcceptor)
+						break;
+					b = worldObj.getBlock(xCoord + dir.offsetX * 2, yCoord - range, zCoord + dir.offsetZ * 2);
+					pov = range;
+				}	
 				CrucibleRecipe recipe = this.getLoadedRecipe();
 				//if no recipe is loaded, everything from the recipe stack will be drainable
 				if(recipe == null) {
-					toCast.addAll(this.recipeStack);
+					if(b instanceof FoundryCastingBase) {
+						TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+						TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+						for(MaterialStack stack : this.recipeStack) {
+							if(stack.amount >= tile1.getCapacity()){
+								toCast.add(stack);
+							}
+						}	
+					}	
+					if(b instanceof ICrucibleAcceptor && !(b instanceof FoundryCastingBase)) {
+						toCast.addAll(this.recipeStack);		
+					}
 				} else {
 
 					for(MaterialStack stack : this.recipeStack) {
 						for(MaterialStack output : recipe.output) {
-							if(stack.material == output.material) {
-								toCast.add(stack);
-								break;
+							if(stack.material == output.material && (b instanceof FoundryCastingBase)) {
+								TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX * 2, yCoord - pov, zCoord + dir.offsetZ * 2);
+								TileEntityFoundryCastingBase tile1 = tile instanceof TileEntityFoundryMold ? (TileEntityFoundryMold) tile :  (TileEntityFoundryBasin) tile;
+								if(stack.amount >= tile1.getCapacity()){
+									toCast.add(stack);
+									break;
+
 							}
 						}
+							if(stack.material == output.material && (b instanceof ICrucibleAcceptor) && !(b instanceof FoundryCastingBase)) {
+								toCast.add(stack);
+								break;
 					}
 				}
 
+					}
+				}
 				Vec3 impact = Vec3.createVectorHelper(0, 0, 0);
 				MaterialStack didPour = CrucibleUtil.pourFullStack(worldObj, xCoord + 0.5D + dir.offsetX * 1.875D, yCoord + 0.25D, zCoord + 0.5D + dir.offsetZ * 1.875D, 6, true, toCast, MaterialShapes.NUGGET.q(3), impact);
 
@@ -350,7 +405,7 @@ public class TileEntityCrucible extends TileEntityMachineBase implements IGUIPro
 		delta *= 0.05;
 
 		this.progress += delta;
-		this.heat -= delta;
+		if(!RBMKDials.getCrucibleBaby(worldObj))	this.heat -= delta;
 
 		if(this.progress >= processTime) {
 			this.progress = 0;

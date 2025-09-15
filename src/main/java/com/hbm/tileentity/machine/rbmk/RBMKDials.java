@@ -20,7 +20,7 @@ public class RBMKDials {
 		KEY_COLUMN_HEAT_FLOW("dialColumnHeatFlow", 0.2),
 		KEY_FUEL_DIFFUSION_MOD("dialDiffusionMod", 1.0),
 		KEY_HEAT_PROVISION("dialHeatProvision", 0.2),
-		KEY_COLUMN_HEIGHT("dialColumnHeight", 4),
+		KEY_COLUMN_HEIGHT("dialColumnHeight", 2),
 		KEY_PERMANENT_SCRAP("dialEnablePermaScrap", true),
 		KEY_BOILER_HEAT_CONSUMPTION("dialBoilerHeatConsumption", 0.1),
 		KEY_CONTROL_SPEED_MOD("dialControlSpeed", 1.0),
@@ -29,17 +29,31 @@ public class RBMKDials {
 		KEY_SURGE_MOD("dialControlSurgeMod", 1.0),
 		KEY_FLUX_RANGE("dialFluxRange", 5),
 		KEY_REASIM_RANGE("dialReasimRange", 10),
-		KEY_REASIM_COUNT("dialReasimCount", 6),
+		KEY_REASIM_COUNT("dialReasimCount", 8),
 		KEY_REASIM_MOD("dialReasimOutputMod", 1.0),
 		KEY_REASIM_BOILERS("dialReasimBoilers", false),
 		KEY_REASIM_BOILER_SPEED("dialReasimBoilerSpeed", 0.05),
-		KEY_DISABLE_MELTDOWNS("dialDisableMeltdowns", false),
+		KEY_DISABLE_MELTDOWNS("dialDisableMeltdowns", true),
 		KEY_ENABLE_MELTDOWN_OVERPRESSURE("dialEnableMeltdownOverpressure", false),
 		KEY_MODERATOR_EFFICIENCY("dialModeratorEfficiency", 1.0),
 		KEY_ABSORBER_EFFICIENCY("dialAbsorberEfficiency", 1.0),
 		KEY_REFLECTOR_EFFICIENCY("dialReflectorEfficiency", 1.0),
 		KEY_DISABLE_DEPLETION("dialDisableDepletion", false),
-		KEY_DISABLE_XENON("dialDisableXenon", false);
+		KEY_DISABLE_XENON("dialDisableXenon", false),
+		KEY_UNIQUE_ROD ("dialUniqueRod", true),
+		KEY_REASIM_COOLANT_BOILERS ("dialReasimCoolantBoilers", false),
+		KEY_RBMK_BABY_MODE ("dialRBMKBabyMode", true),//RBMK
+		KEY_PWR_BABY_MODE ("dialPWRBabyMode", true),//PWR
+		KEY_RR_BABY_MODE ("dialResearchBabyMode", true),//Reactor research
+		KEY_ZIRNOX_BABY_MODE ("dialZIRNOXBabyMode", true),//ZIRNOX
+		KEY_WATZ_BABY_MODE ("dialWatzBabyMode", true),//WATZ
+		KEY_ITER_BABY_MODE ("dialITERBabyMode", true),//FUSION
+		KEY_ICF_BABY_MODE ("dialICFBabyMode", true),//ICF
+		KEY_DFC_BABY_MODE ("dialDFCBabyMode", true),//DFC	
+		KEY_CRUCIBLE_BABY_MODE ("dialCrucibleBabyMode", true),//CRUCIBLE
+		KEY_HIGH_FLUX_MODE ("dialHighFluxMode", false),
+		KEY_LMSR_MODE ("dialLMSRMode", false),//LMSR
+		KEY_ALBION_BABY_MODE ("dialAlbionBabyMode", false);//ALBION
 
 		public final String keyString;
 		public final Object defValue;
@@ -112,6 +126,21 @@ public class RBMKDials {
 		gameRules.get(RBMKKeys.KEY_REFLECTOR_EFFICIENCY).add(new Tuple.Pair<>(world, GameRuleHelper.getClampedDouble(world, RBMKKeys.KEY_REFLECTOR_EFFICIENCY, 0.0D, 1.0D)));
 		gameRules.get(RBMKKeys.KEY_DISABLE_DEPLETION).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_DISABLE_DEPLETION.keyString)));
 		gameRules.get(RBMKKeys.KEY_DISABLE_XENON).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_DISABLE_XENON.keyString)));
+		gameRules.get(RBMKKeys.KEY_UNIQUE_ROD).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_UNIQUE_ROD.keyString)));
+		gameRules.get(RBMKKeys.KEY_REASIM_COOLANT_BOILERS).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_REASIM_COOLANT_BOILERS.keyString)));
+		gameRules.get(RBMKKeys.KEY_RBMK_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_RBMK_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_PWR_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_PWR_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_RR_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_RR_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ZIRNOX_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ZIRNOX_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_WATZ_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_WATZ_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ITER_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ITER_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ICF_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ICF_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_DFC_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_DFC_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_CRUCIBLE_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_CRUCIBLE_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_HIGH_FLUX_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_HIGH_FLUX_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_ALBION_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ALBION_BABY_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_LMSR_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_LMSR_MODE.keyString)));
+
 	}
 
 	/**
@@ -372,5 +401,63 @@ public class RBMKDials {
 	 */
 	public static boolean getXenon(World world) {
 		return !((boolean) getGameRule(world, RBMKKeys.KEY_DISABLE_XENON));
+	}
+	
+	public static boolean getRodUnique(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_UNIQUE_ROD);
+	}
+
+	/**
+	 * Whether or not all components should act like boilers with dedicated in/outlet blocks
+	 * @param world
+	 * @return
+	 */
+	public static boolean getReasimCoolantBoilers(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_REASIM_COOLANT_BOILERS);
+	}
+
+	public static boolean getRBMKBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_RBMK_BABY_MODE);
+	}
+
+	public static boolean getPWRBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_PWR_BABY_MODE);
+	}
+
+	public static boolean getResearchBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_RR_BABY_MODE);
+	}
+
+	public static boolean getZIRNOXBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ZIRNOX_BABY_MODE);
+	}	
+
+
+	public static boolean getWatzBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_WATZ_BABY_MODE);
+	}
+
+	public static boolean getITERBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ITER_BABY_MODE);
+	}
+
+	public static boolean getICFBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ICF_BABY_MODE);
+	}
+
+	public static boolean getDFCBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_DFC_BABY_MODE);
+	}
+	public static boolean getCrucibleBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_CRUCIBLE_BABY_MODE);
+	}
+	public static boolean getHighFlux(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_HIGH_FLUX_MODE);
+	}
+	public static boolean getAlbionBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_ALBION_BABY_MODE);
+	}
+	public static boolean getLMSR(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_LMSR_MODE);
 	}
 }

@@ -149,7 +149,7 @@ public class TileEntityMachineSatDock extends TileEntity implements ISidedInvent
 
 				Satellite sat = data.getSatFromFreq(freq);
 
-				int delay = 10 * 60 * 1000;
+				int delay = 3 * 60 * 1000;
 
 				if(sat instanceof SatelliteMiner) {
 					SatelliteMiner miner = (SatelliteMiner) sat;

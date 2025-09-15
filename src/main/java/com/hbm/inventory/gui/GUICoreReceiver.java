@@ -40,7 +40,7 @@ public class GUICoreReceiver extends GuiInfoContainer {
 		this.fontRendererObj.drawString("Input:", 40, 25, 0xFF7F7F);
 		this.fontRendererObj.drawString(BobMathUtil.getShortNumber(receiver.joules) + "Spk", 50, 35, 0xFF7F7F);
 		this.fontRendererObj.drawString("Output:", 40, 45, 0xFF7F7F);
-		this.fontRendererObj.drawString(BobMathUtil.getShortNumber(receiver.joules * 5000) + "HE", 50, 55, 0xFF7F7F);
+		this.fontRendererObj.drawString(BobMathUtil.getShortNumber(receiver.joules>1840000000000000L ?Long.MAX_VALUE:receiver.joules*5000) + "HE", 50, 55, 0xFF7F7F);
 		
 		this.fontRendererObj.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
 	}

@@ -7,6 +7,7 @@ import com.hbm.inventory.gui.GUIPASource;
 import com.hbm.lib.Library;
 import com.hbm.tileentity.IConditionalInvAccess;
 import com.hbm.tileentity.IGUIProvider;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.util.fauxpointtwelve.DirPos;
@@ -80,6 +81,9 @@ public class TileEntityPASource extends TileEntityCooledBase implements IGUIProv
 				} else if(this.power >= this.usage && slots[1] != null && slots[2] != null) {
 					tryRun();
 					break;
+				} else if(RBMKDials.getAlbionBaby(worldObj) && slots[1] != null && slots[2] != null) {
+					tryRun();
+					break;
 				}
 			}
 		}
@@ -115,10 +119,11 @@ public class TileEntityPASource extends TileEntityCooledBase implements IGUIProv
 		if(slots[1].getItem().hasContainerItem(slots[1])) slots[3] = slots[1].getItem().getContainerItem(slots[1]).copy();
 		if(slots[2].getItem().hasContainerItem(slots[2])) slots[4] = slots[2].getItem().getContainerItem(slots[2]).copy();
 
-		this.power -= usage;
+		if(!RBMKDials.getAlbionBaby(worldObj))	this.power -= usage;
 		ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - 10);
 		ForgeDirection rot = dir.getRotation(ForgeDirection.DOWN);
 		this.particle = new Particle(this, xCoord + rot.offsetX * 5, yCoord, zCoord + rot.offsetZ * 5, rot, slots[1], slots[2]);
+		if(RBMKDials.getAlbionBaby(worldObj))	this.particle.momentum = 70000;
 		this.slots[1] = null;
 		this.slots[2] = null;
 		this.markDirty();
