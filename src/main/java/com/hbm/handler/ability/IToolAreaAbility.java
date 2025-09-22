@@ -19,6 +19,11 @@ import com.hbm.handler.ThreeInts;
 import com.hbm.items.tool.ItemToolAbility;
 import com.hbm.util.EnchantmentUtil;
 
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -99,6 +104,8 @@ public interface IToolAreaAbility extends IBaseAbility {
 
 		@Override
 		public boolean onDig(int level, World world, int x, int y, int z, EntityPlayer player, ItemToolAbility tool) {
+			ItemStack stack = player.getHeldItem();
+			EnchantmentUtil.removeEnchantment(stack, Enchantment.silkTouch);	
 			Block b = world.getBlock(x, y, z);
 
 			if(b == Blocks.stone && !ToolConfig.recursiveStone) {
@@ -125,7 +132,7 @@ public interface IToolAreaAbility extends IBaseAbility {
 			pos.clear();
 
 			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
-			ItemStack stack = player.getHeldItem();
+			stack = player.getHeldItem();
 			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
 
 			return false;
@@ -501,6 +508,8 @@ public interface IToolAreaAbility extends IBaseAbility {
 				for(ItemStack product : products) 						
 					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
 				world.setBlockToAir(x, y, z);
+			}else{
+				player.addChatComponentMessage(new ChatComponentText("This block has no Normal Factory recipes.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 			}
 			products.clear();
 			return false;
@@ -565,7 +574,10 @@ public interface IToolAreaAbility extends IBaseAbility {
 				player.getHeldItem().damageItem(1, player);
 				for(ItemStack product : products) 						
 					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
-			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+			}else{
+				 tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+				player.addChatComponentMessage(new ChatComponentText("This block has no Normal Factory recipes.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
+			}
 			world.setBlockToAir(x, y, z);	
 			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
 		}
@@ -677,6 +689,8 @@ public interface IToolAreaAbility extends IBaseAbility {
 				for(ItemStack product : products) 						
 					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
 				world.setBlockToAir(x, y, z);
+			}else{
+				player.addChatComponentMessage(new ChatComponentText("This block has no Simple Factory recipes.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 			}
 			products.clear();					
 			return false;
@@ -741,7 +755,10 @@ public interface IToolAreaAbility extends IBaseAbility {
 				player.getHeldItem().damageItem(1, player);
 				for(ItemStack product : products) 						
 					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, product.copy()));
-			}else tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+			}else{
+				 tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+				player.addChatComponentMessage(new ChatComponentText("This block has no Simple Factory recipes.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
+			}
 			world.setBlockToAir(x, y, z);	
 			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
 		}

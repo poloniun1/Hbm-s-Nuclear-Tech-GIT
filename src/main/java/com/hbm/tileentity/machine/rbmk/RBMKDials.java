@@ -53,7 +53,8 @@ public class RBMKDials {
 		KEY_CRUCIBLE_BABY_MODE ("dialCrucibleBabyMode", true),//CRUCIBLE
 		KEY_HIGH_FLUX_MODE ("dialHighFluxMode", false),
 		KEY_LMSR_MODE ("dialLMSRMode", false),//LMSR
-		KEY_ALBION_BABY_MODE ("dialAlbionBabyMode", false);//ALBION
+		KEY_ALBION_BABY_MODE ("dialAlbionBabyMode", true),//ALBION
+		KEY_MINING_BABY_MODE ("dialMiningBabyMode", true);//MINING
 
 		public final String keyString;
 		public final Object defValue;
@@ -140,6 +141,7 @@ public class RBMKDials {
 		gameRules.get(RBMKKeys.KEY_HIGH_FLUX_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_HIGH_FLUX_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_ALBION_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_ALBION_BABY_MODE.keyString)));
 		gameRules.get(RBMKKeys.KEY_LMSR_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_LMSR_MODE.keyString)));
+		gameRules.get(RBMKKeys.KEY_MINING_BABY_MODE).add(new Tuple.Pair<>(world, world.getGameRules().getGameRuleBooleanValue(RBMKKeys.KEY_MINING_BABY_MODE.keyString)));
 
 	}
 
@@ -456,6 +458,9 @@ public class RBMKDials {
 	}
 	public static boolean getAlbionBaby(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_ALBION_BABY_MODE);
+	}
+	public static boolean getMiningBaby(World world) {
+		return (boolean) getGameRule(world, RBMKKeys.KEY_MINING_BABY_MODE);
 	}
 	public static boolean getLMSR(World world) {
 		return (boolean) getGameRule(world, RBMKKeys.KEY_LMSR_MODE);
