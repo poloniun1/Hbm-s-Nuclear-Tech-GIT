@@ -4442,22 +4442,6 @@
 
           ],
           "inputItems": [
-	["dict","ingotU238"]
-],
-          "outputFluids": [
-          ],
-          "outputItems": [
-	["hbm:item.ingot_plutonium",1]	
-          ],
-          "duration": 1,
-		  "flux":100000,
-          "consumptionPerTick": 0
-        },
-        {
-          "inputFluids": [		
-
-          ],
-          "inputItems": [
 	["dict","ingotNeptunium"]
 ],
           "outputFluids": [
