@@ -200,7 +200,12 @@ recipes.addShaped(<hbm:item.osmiridium_pickaxe>, [[null,<ore:ingotOsmiridium>,<h
 <ore:ingotManganese>.add(<shincolle:AbyssMetal>);
 
 <ore:ingotOsmium>.add(<hbm:item.ingot_osmiridium>);
+
 <ore:oreSodalite>.add(<hbm:tile.ore_sodium>);
+<ore:oreIron>.add(<hbm:tile.ore_meteor>);
+<ore:oreCopper>.add(<hbm:tile.ore_meteor:1>);
+<ore:oreAluminum>.add(<hbm:tile.ore_meteor:2>);
+
 
 <ore:crystalCoal>.add(<RotaryCraft:rotarycraft_item_extracts:24>);
 <ore:crystalIron>.add(<RotaryCraft:rotarycraft_item_extracts:25>);
