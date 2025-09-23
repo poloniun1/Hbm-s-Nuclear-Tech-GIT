@@ -104,8 +104,6 @@ public interface IToolAreaAbility extends IBaseAbility {
 
 		@Override
 		public boolean onDig(int level, World world, int x, int y, int z, EntityPlayer player, ItemToolAbility tool) {
-			ItemStack stack = player.getHeldItem();
-			EnchantmentUtil.removeEnchantment(stack, Enchantment.silkTouch);	
 			Block b = world.getBlock(x, y, z);
 
 			if(b == Blocks.stone && !ToolConfig.recursiveStone) {
@@ -118,7 +116,7 @@ public interface IToolAreaAbility extends IBaseAbility {
 
 
 			if(b == ModBlocks2.ore_vault && tool == ModItems.mese_pickaxe) {
-				if(world.rand.nextFloat() < 0.025){
+				if(world.rand.nextFloat() < 0.02){
 					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base)));
 					world.setBlockToAir(x, y, z);
 				}
@@ -126,14 +124,9 @@ public interface IToolAreaAbility extends IBaseAbility {
 				return false;				
 			}
 
-			if(tool == ModItems.mese_pickaxe) {
-				level = 6;		
-			}
 			pos.clear();
 
 			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
-			stack = player.getHeldItem();
-			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
 
 			return false;
 		}
@@ -191,14 +184,9 @@ public interface IToolAreaAbility extends IBaseAbility {
 				return;
 
 			if(player.getHeldItem() == null)
-				return;
-			ItemStack stack = player.getHeldItem();
+				return;			
 
-			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
-			
 			tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
-
-			EnchantmentUtil.removeEnchantment(stack, Enchantment.silkTouch);
 
 			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
 		}
@@ -785,11 +773,288 @@ public interface IToolAreaAbility extends IBaseAbility {
 			return null;
 		}
 	};
+
+
+	public static final IToolAreaAbility RECURSIONSILK = new IToolAreaAbility() {
+		@Override
+		public String getName() {
+			return "tool.ability.recursionsilk";
+		}
+
+		@Override
+		public boolean isAllowed() {
+			return ToolConfig.abilityVein;
+		}
+
+		public final int[] radiusAtLevel = { 3, 4, 5, 6, 7, 9, 10 };
+
+		@Override
+		public int levels() {
+			return radiusAtLevel.length;
+		}
+
+		@Override
+		public String getExtension(int level) {
+			return " (" + radiusAtLevel[level] + ")";
+		}
+
+		@Override
+		public int sortOrder() {
+			return SORT_ORDER_BASE + 7;
+		}
+
+		// Note: if reusing it across different instatces of a tool
+		// is a problem here, then it had already been one before
+		// the refactor! The solution is to simply make this a local
+		// of the onDig method and pass it around as a parameter.
+		private Set<ThreeInts> pos = new HashSet<>();
+
+		@Override
+		public boolean onDig(int level, World world, int x, int y, int z, EntityPlayer player, ItemToolAbility tool) {
+			Block b = world.getBlock(x, y, z);
+
+			if(b == Blocks.stone && !ToolConfig.recursiveStone) {
+				return false;
+			}
+
+			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack) {
+				return false;
+			}
+
+
+			if(b == ModBlocks2.ore_vault) {
+				if(world.rand.nextFloat() < 0.025){
+					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base)));
+					world.setBlockToAir(x, y, z);
+				}
+				else world.setBlockToAir(x, y, z);
+				return false;				
+			}
+			pos.clear();
+
+			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
+
+			return false;
+		}
+
+		private final List<ThreeInts> offsets = new ArrayList<ThreeInts>(3 * 3 * 3 - 1) {
+			{
+				for(int dx = -1; dx <= 1; dx++) {
+					for(int dy = -1; dy <= 1; dy++) {
+						for(int dz = -1; dz <= 1; dz++) {
+							if(dx != 0 || dy != 0 || dz != 0) {
+								add(new ThreeInts(dx, dy, dz));
+							}
+						}
+					}
+				}
+			}
+		};
+
+		private void recurse(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			List<ThreeInts> shuffledOffsets = new ArrayList<>(offsets);
+			Collections.shuffle(shuffledOffsets);
+
+			for(ThreeInts offset : shuffledOffsets) {
+				breakExtra(world, x + offset.x, y + offset.y, z + offset.z, refX, refY, refZ, player, tool, depth, radius);
+			}
+		}
+
+		private void breakExtra(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			if(pos.contains(new ThreeInts(x, y, z)))
+				return;
+
+			depth += 1;
+
+			if(depth > ToolConfig.recursionDepth)
+				return;
+
+			pos.add(new ThreeInts(x, y, z));
+
+			// don't lose the ref block just yet
+			if(x == refX && y == refY && z == refZ)
+				return;
+
+			if(Vec3.createVectorHelper(x - refX, y - refY, z - refZ).lengthVector() > radius)
+				return;
+
+			Block b = world.getBlock(x, y, z);
+			Block ref = world.getBlock(refX, refY, refZ);
+			int meta = world.getBlockMetadata(x, y, z);
+			int refMeta = world.getBlockMetadata(refX, refY, refZ);
+
+			if(!isSameBlock(b, ref))
+				return;
+
+			if(meta != refMeta)
+				return;
+
+			if(player.getHeldItem() == null)
+				return;
+			ItemStack stack = player.getHeldItem();
+
+			EnchantmentUtil.addEnchantment(stack, Enchantment.silkTouch, 1);
+			
+			tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+
+			EnchantmentUtil.removeEnchantment(stack, Enchantment.silkTouch);
+
+			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
+		}
+
+		private boolean isSameBlock(Block b1, Block b2) {
+			if(b1 == b2)
+				return true;
+			if((b1 == Blocks.redstone_ore && b2 == Blocks.lit_redstone_ore) || (b1 == Blocks.lit_redstone_ore && b2 == Blocks.redstone_ore))
+				return true;
+
+			return false;
+		}
+	};
+
+
+	public static final IToolAreaAbility RECURSIONLUCK = new IToolAreaAbility() {
+		@Override
+		public String getName() {
+			return "tool.ability.recursionluck";
+		}
+
+		@Override
+		public boolean isAllowed() {
+			return ToolConfig.abilityVein;
+		}
+
+		public final int[] radiusAtLevel = { 3, 4, 5, 6, 7, 9, 10 };
+
+		@Override
+		public int levels() {
+			return radiusAtLevel.length;
+		}
+
+		@Override
+		public String getExtension(int level) {
+			return " (" + radiusAtLevel[level] + ")";
+		}
+
+		@Override
+		public int sortOrder() {
+			return SORT_ORDER_BASE + 8;
+		}
+
+		// Note: if reusing it across different instatces of a tool
+		// is a problem here, then it had already been one before
+		// the refactor! The solution is to simply make this a local
+		// of the onDig method and pass it around as a parameter.
+		private Set<ThreeInts> pos = new HashSet<>();
+
+		@Override
+		public boolean onDig(int level, World world, int x, int y, int z, EntityPlayer player, ItemToolAbility tool) {
+			Block b = world.getBlock(x, y, z);
+
+			if(b == Blocks.stone && !ToolConfig.recursiveStone) {
+				return false;
+			}
+
+			if(b == Blocks.netherrack && !ToolConfig.recursiveNetherrack) {
+				return false;
+			}
+
+
+			if(b == ModBlocks2.ore_vault) {
+				if(world.rand.nextFloat() < 0.075){
+					world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, new ItemStack(ModItems.bedrock_ore_base)));
+					world.setBlockToAir(x, y, z);
+				}
+				else world.setBlockToAir(x, y, z);
+				return false;				
+			}
+
+			pos.clear();
+
+			recurse(world, x, y, z, x, y, z, player, tool, 0, radiusAtLevel[level]);
+
+			return false;
+		}
+
+		private final List<ThreeInts> offsets = new ArrayList<ThreeInts>(3 * 3 * 3 - 1) {
+			{
+				for(int dx = -1; dx <= 1; dx++) {
+					for(int dy = -1; dy <= 1; dy++) {
+						for(int dz = -1; dz <= 1; dz++) {
+							if(dx != 0 || dy != 0 || dz != 0) {
+								add(new ThreeInts(dx, dy, dz));
+							}
+						}
+					}
+				}
+			}
+		};
+
+		private void recurse(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			List<ThreeInts> shuffledOffsets = new ArrayList<>(offsets);
+			Collections.shuffle(shuffledOffsets);
+
+			for(ThreeInts offset : shuffledOffsets) {
+				breakExtra(world, x + offset.x, y + offset.y, z + offset.z, refX, refY, refZ, player, tool, depth, radius);
+			}
+		}
+
+		private void breakExtra(World world, int x, int y, int z, int refX, int refY, int refZ, EntityPlayer player, ItemToolAbility tool, int depth, int radius) {
+			if(pos.contains(new ThreeInts(x, y, z)))
+				return;
+
+			depth += 1;
+
+			if(depth > ToolConfig.recursionDepth)
+				return;
+
+			pos.add(new ThreeInts(x, y, z));
+
+			// don't lose the ref block just yet
+			if(x == refX && y == refY && z == refZ)
+				return;
+
+			if(Vec3.createVectorHelper(x - refX, y - refY, z - refZ).lengthVector() > radius)
+				return;
+
+			Block b = world.getBlock(x, y, z);
+			Block ref = world.getBlock(refX, refY, refZ);
+			int meta = world.getBlockMetadata(x, y, z);
+			int refMeta = world.getBlockMetadata(refX, refY, refZ);
+
+			if(!isSameBlock(b, ref))
+				return;
+
+			if(meta != refMeta)
+				return;
+
+			if(player.getHeldItem() == null)
+				return;
+			ItemStack stack = player.getHeldItem();
+
+			EnchantmentUtil.addEnchantment(stack, Enchantment.fortune, radius - 1);
+			
+			tool.breakExtraBlock(world, x, y, z, player, refX, refY, refZ);
+
+			EnchantmentUtil.removeEnchantment(stack, Enchantment.fortune);
+
+			recurse(world, x, y, z, refX, refY, refZ, player, tool, depth, radius);
+		}
+
+		private boolean isSameBlock(Block b1, Block b2) {
+			if(b1 == b2)
+				return true;
+			if((b1 == Blocks.redstone_ore && b2 == Blocks.lit_redstone_ore) || (b1 == Blocks.lit_redstone_ore && b2 == Blocks.redstone_ore))
+				return true;
+
+			return false;
+		}
+	};
 	// endregion handlers
 
 
 
-	static final IToolAreaAbility[] abilities = { NONE, RECURSION, HAMMER, HAMMER_FLAT, EXPLOSION, GOD, WORLD };
+	static final IToolAreaAbility[] abilities = { NONE, RECURSION, HAMMER, HAMMER_FLAT, EXPLOSION, GOD, WORLD, RECURSIONSILK, RECURSIONLUCK };
 
 	static IToolAreaAbility getByName(String name) {
 		for(IToolAreaAbility ability : abilities) {

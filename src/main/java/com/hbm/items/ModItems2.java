@@ -190,10 +190,14 @@ public class ModItems2 {
 		ToolMaterial matExBismuth = EnumHelper.addToolMaterial("HBM_EXBISMUTH", 4, 0, 50F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_bismuth,2));
 		ex_bismuth_pickaxe = new ItemToolAbility(35F, 0, matExBismuth, EnumToolType.MINER)
 				.addAbility(IToolAreaAbility.WORLD, 3)
+				.addAbility(IToolAreaAbility.RECURSIONLUCK, 4)
+				.addAbility(IToolAreaAbility.RECURSIONSILK, 4)
 				.setDepthRockBreaker().setUnlocalizedName("ex_bismuth_pickaxe").setTextureName(RefStrings.MODID + ":bismuth_pickaxe");
 		ToolMaterial matOSMIRIDIUM = EnumHelper.addToolMaterial("HBM_OSMIRIDIUM", 4, 0, 200F, 0.0F, 200).setRepairItem(new ItemStack(ModItems.ingot_osmiridium));
-		osmiridium_pickaxe = new ItemToolAbility(35F, 0, matOSMIRIDIUM, EnumToolType.MINER)
+		osmiridium_pickaxe = new ItemToolAbility(2000F, 0, matOSMIRIDIUM, EnumToolType.MINER)
 				.addAbility(IToolAreaAbility.GOD, 3)
+				.addAbility(IToolAreaAbility.RECURSIONLUCK, 5)
+				.addAbility(IToolAreaAbility.RECURSIONSILK, 5)
 				.setDepthRockBreaker().setUnlocalizedName("osmiridium_pickaxe").setTextureName(RefStrings.MODID + ":mese_pickaxe");
 
 		missile_carrier = new Item().setUnlocalizedName("missile_carrier").setMaxStackSize(1).setCreativeTab(MainRegistry.missileTab).setTextureName(RefStrings.MODID + ":missile_carrier");		
