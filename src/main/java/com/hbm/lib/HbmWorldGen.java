@@ -209,7 +209,7 @@ public class HbmWorldGen implements IWorldGenerator {
 			if((i % 64 == 0 )&&( j % 64 == 0)){
 				for(int PosX = i-1; PosX <= i+1; PosX++){
 					for(int PosZ = j-1; PosZ <= j+1; PosZ++)
-						world.setBlock(PosX, 35, PosZ, ModBlocks2.ore_vault);
+						world.setBlock(PosX, 20, PosZ, ModBlocks2.ore_vault);
 				}
 
 			}
@@ -738,3 +738,4 @@ public class HbmWorldGen implements IWorldGenerator {
 	}
 
 }
+
