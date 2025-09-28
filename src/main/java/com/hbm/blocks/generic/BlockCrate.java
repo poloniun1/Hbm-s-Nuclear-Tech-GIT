@@ -97,12 +97,10 @@ public class BlockCrate extends BlockFalling {
 		BlockCrate.addToListWithWeight(crateList, ModItems.ams_core_eyeofharmony, 5);
 
 		// Weapon Crate
-		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_legs, 3);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_boots, 3);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_plate, 3);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.dns_helmet, 3);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.meteorite_sword_baleful, 5);
-		BlockCrate.addToListWithWeight(weaponList, ModItems.schrabidium_shovel, 5);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.euphemium_legs, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.euphemium_boots, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.euphemium_plate, 3);
+		BlockCrate.addToListWithWeight(weaponList, ModItems.euphemium_helmet, 3);
 		BlockCrate.addToListWithWeight(weaponList, ModItems2.osmiridium_pickaxe, 3);
 
 		BlockCrate.addToListWithWeight(weaponList, ModItems.missile_strong, 25);
