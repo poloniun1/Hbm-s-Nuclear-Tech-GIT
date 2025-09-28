@@ -18,7 +18,7 @@ public class ToolConfig {
 	public static boolean abilityCrystallizer = true;
 	public static boolean abilityMercury = true;
 	public static boolean abilityExplosion = true;
-	
+	public static boolean abilityGod = true;	
 	public static void loadFromConfig(Configuration config) {
 
 		final String CATEGORY_TOOLS = CommonConfig.CATEGORY_TOOLS;
@@ -36,5 +36,6 @@ public class ToolConfig {
 		abilityCrystallizer = config.get(CATEGORY_TOOLS, "11.10_abilityCrystallizer", true, "Allow auto-crystallizer ability").getBoolean(true);
 		abilityMercury = config.get(CATEGORY_TOOLS, "11.11_abilityMercury", true, "Allow mercury touch ability (digging redstone gives mercury)").getBoolean(true);
 		abilityExplosion = config.get(CATEGORY_TOOLS, "11.12_abilityExplosion", true, "Allow explosion ability").getBoolean(true);
+		abilityGod = config.get(CATEGORY_TOOLS, "11.13_abilityGod", true, "Allow god ability").getBoolean(true);
 	}
 }

@@ -2,6 +2,7 @@ package com.hbm.tileentity.machine;
 
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.blocks.ModBlocks;
@@ -16,6 +17,8 @@ import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.inventory.gui.GUIMachineExcavator;
 import com.hbm.inventory.recipes.ShredderRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes.CustomMachineRecipe;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemDrillbit;
 import com.hbm.items.machine.ItemDrillbit.EnumDrillType;
@@ -26,6 +29,7 @@ import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.IUpgradeInfoProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.Compat;
 import com.hbm.util.EnumUtil;
 import com.hbm.util.InventoryUtil;
@@ -276,7 +280,7 @@ public class TileEntityMachineExcavator extends TileEntityMachineBase implements
 							this.enableDrill = false;
 						}
 
-						if(shouldIgnoreBlock(b, x, y, z)) continue;
+						if(shouldIgnoreBlock(b, x, y ,z)) continue;
 
 						ignoreAll = false;
 
@@ -487,7 +491,49 @@ public class TileEntityMachineExcavator extends TileEntityMachineBase implements
 	}
 
 	protected void breakSingleBlock(Block b, int x ,int y, int z) {
+		if(RBMKDials.getMiningBaby(worldObj)){
+		List<ItemStack> products = new ArrayList();
+		if(b == Blocks.lit_redstone_ore)
+			b = Blocks.redstone_ore;
+		int meta = worldObj.getBlockMetadata(x, y, z);
+		ItemStack stack = new ItemStack(b, 1, meta);
 
+		if(stack != null && stack.getItem() != null) {
+				CustomMachineRecipe result = getMatchingRecipe(stack);
+				ItemStack stack1;
+				CustomMachineRecipe result1;
+				ItemStack st;
+			if(result != null) {
+				for(int i = 0; i < result.outputItems.length; i++) {
+					if(worldObj.rand.nextFloat() < result.outputItems[i].value){
+						stack1 = result.outputItems[i].key.copy();
+						result1 = getMatchingRecipe(stack1);
+							if(result1 != null) {								
+								for(int j = 0; j < result1.outputItems.length;j++) {
+									if(worldObj.rand.nextFloat() < result1.outputItems[j].value){
+										st= result1.outputItems[j].key.copy();
+										if(st != null)  products.add(st);
+								}
+							}
+						}
+					}
+				}
+			}
+			products = products.stream()
+        // 表示id为key， 接着如果有重复的，那么从BillsNums对象o1与o2中筛选出一个，这里选择o1，
+        // 并把id重复，需要将nums和sums与o1进行合并的o2, 赋值给o1，最后返回o1
+			.collect(Collectors.toMap(ItemStack::getItem, a -> a, (o1,o2)-> {
+				o1.stackSize += o2.stackSize;
+				return o1;
+			})).values().stream().collect(Collectors.toList());
+			if(products != null) {
+				for(ItemStack product : products) 				
+					worldObj.spawnEntityInWorld(new EntityItem(worldObj, x + 0.5, y + 0.5, z + 0.5, product.copy()));	
+				worldObj.func_147480_a(x, y, z, false);
+				return;
+			}		
+		}
+		}
 		List<ItemStack> items = b.getDrops(worldObj, x, y, z, worldObj.getBlockMetadata(x, y, z), this.getFortuneLevel());
 
 		if(this.canSilkTouch()) {
@@ -891,5 +937,18 @@ public class TileEntityMachineExcavator extends TileEntityMachineBase implements
 	@Override
 	public FluidTank getTankToPaste() {
 		return tank;
+	}
+
+	public CustomMachineRecipe getMatchingRecipe(ItemStack stack) {
+		List<CustomMachineRecipe> recipes = CustomMachineRecipes.recipes.get("normalfactory");
+		if(recipes == null || recipes.isEmpty()) return null;
+
+		for(CustomMachineRecipe recipe : recipes) {
+			if(recipe.inputItems.length == 0) continue;
+			if(!recipe.inputItems[0].matchesRecipe(stack, true)) continue;
+			return recipe;
+		}
+
+		return null;
 	}
 }

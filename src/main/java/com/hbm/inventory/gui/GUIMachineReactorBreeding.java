@@ -62,6 +62,7 @@ public class GUIMachineReactorBreeding extends GuiInfoContainer {
 		 */
 				
 		int i = breeder.getProgressScaled(70);
+		if (i>70|| i < 0 ) i =70;
 		drawTexturedModalRect(guiLeft + 53, guiTop + 32, 176, 0, i, 20);
 		
 		this.drawInfoPanel(guiLeft - 16, guiTop + 16, 16, 16, 3);

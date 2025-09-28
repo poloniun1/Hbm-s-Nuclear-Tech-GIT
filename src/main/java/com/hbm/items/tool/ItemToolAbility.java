@@ -583,6 +583,10 @@ public class ItemToolAbility extends ItemTool implements IDepthRockTool, IGUIPro
 		if(state) player.openGui(MainRegistry.instance, 0, player.worldObj, 0, 0, 0);
 	}
 
+	public AvailableAbilities getAvailableAbilities(){
+		return this.availableAbilities;
+	}
+
 	private static final Map<IBaseAbility, Pair<Integer, Integer>> abilityGui = new HashMap<>();
 
 	static {

@@ -40,7 +40,7 @@ public class ArmorEuphemium extends ItemArmor {
 			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 5, 127, true));
 			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 5, 127, true));
 			player.addPotionEffect(new PotionEffect(Potion.field_76443_y.id, 5, 127, true));
-		 
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 15 * 20, 0));				 
 			if(player.motionY < -0.25D)
 			{
 				player.motionY = -0.25D;

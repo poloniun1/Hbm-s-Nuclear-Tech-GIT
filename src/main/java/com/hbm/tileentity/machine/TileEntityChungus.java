@@ -17,6 +17,10 @@ import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IBufPacketReceiver;
 import com.hbm.tileentity.IFluidCopiable;
 import com.hbm.tileentity.IConfigurableMachine;
+import com.hbm.blocks.machine.rbmk.RBMKBase;
+import com.hbm.blocks.ModBlocks2;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.tileentity.TileEntityLoadedBase;
 import com.hbm.util.CompatEnergyControl;
 import com.hbm.util.fauxpointtwelve.BlockPos;
@@ -34,6 +38,7 @@ import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -54,7 +59,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 	private float audioDesync;
 
 	//Configurable values
-	public static long maxPower = 100000000000L;
+	public static long maxPower = 50000000000000000L;
 	public static int inputTankSize = 1_000_000_000;
 	public static int outputTankSize = 1_000_000_000;
 	public static double efficiency = 0.85D;
@@ -102,9 +107,38 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 			boolean operational = false;
 			FluidType in = tanks[0].getTankType();
 			boolean valid = false;
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&& worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_chungus){
+			if (Fluids.fromName("SUPERCOOLANT_HOT")!=Fluids.NONE)
+				tanks[0].setTankType(Fluids.fromName("SUPERCOOLANT_HOT"));
+			else tanks[0].setTankType(Fluids.fromName("SUPERHOTSTEAM"));
+			for(int i = 0; i < 15; i++) {
+				for(int j = 0; j <15; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 7, yCoord, zCoord + j - 7);
+				
+				if(b instanceof RBMKBase) {
+
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 7, yCoord, zCoord + j - 7);
+					
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+							
+							int prov = Math.min(tanks[0].getMaxFill() -tanks[0].getFill(), rbmk.reasimSteam);
+							rbmk.reasimSteam -= prov;
+							tanks[0].setFill(tanks[0].getFill() + prov);
+							}
+						}
+					}
+				}
+			}
+		}
+
 			if(in.hasTrait(FT_Coolable.class)) {
 				FT_Coolable trait = in.getTrait(FT_Coolable.class);
 				double eff = trait.getEfficiency(CoolingType.TURBINE) * efficiency; //85% efficiency by default
+				if(in!=Fluids.HOTSTEAM||in!=Fluids.SUPERHOTSTEAM||in!=Fluids.ULTRAHOTSTEAM)     eff = trait.getEfficiency(CoolingType.TURBINE) *0.95D;//but coolant is 95% efficient
 				if(eff > 0) {
 					tanks[1].setTankType(trait.coolsTo);
 					int inputOps = tanks[0].getFill() / trait.amountReq;
@@ -112,7 +146,7 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 					int ops = Math.min(inputOps, outputOps);
 					tanks[0].setFill(tanks[0].getFill() - ops * trait.amountReq);
 					tanks[1].setFill(tanks[1].getFill() + ops * trait.amountProduced);
-					this.power += (ops * trait.heatEnergy * eff);
+					this.power += ops * eff * trait.heatEnergy ;
 					info[0] = ops * trait.amountReq;
 					info[1] = ops * trait.amountProduced;
 					info[2] = ops * trait.heatEnergy * eff;
@@ -123,7 +157,29 @@ public class TileEntityChungus extends TileEntityLoadedBase implements IEnergyPr
 
 			if(!valid) tanks[1].setTankType(Fluids.NONE);
 			if(power > maxPower) power = maxPower;
+			if((RBMKDials.getReasimCoolantBoilers(worldObj)||RBMKDials.getReasimBoilers(worldObj))&&  worldObj.getBlock(xCoord, yCoord, zCoord)==ModBlocks2.rbmk_chungus){	
+			for(int i = 0; i < 15; i++) {
+				for(int j = 0; j <15; j++ ){
+				Block b = worldObj.getBlock(xCoord + i - 7, yCoord, zCoord + j - 7);				
+				if(b instanceof RBMKBase) {		
+					int[] pos = ((RBMKBase)b).findCore(worldObj, xCoord + i - 7, yCoord, zCoord + j - 7);
+			
+					if(pos != null) {
+						TileEntity te = worldObj.getTileEntity(pos[0], pos[1], pos[2]);
+						
+						if(te instanceof TileEntityRBMKBase) {
+							TileEntityRBMKBase rbmk = (TileEntityRBMKBase) te;
+							
+							int prov = Math.min(rbmk.maxWater - rbmk.reasimWater, tanks[1].getFill());
+							rbmk.reasimWater += prov;
+							tanks[1].setFill(tanks[1].getFill() - prov);
 
+								}
+							}	
+						}
+					}
+				}
+			}			
 			ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 			this.tryProvide(worldObj, xCoord - dir.offsetX * 11, yCoord, zCoord - dir.offsetZ * 11, dir.getOpposite());
 

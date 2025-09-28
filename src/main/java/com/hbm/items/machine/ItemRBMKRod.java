@@ -33,7 +33,7 @@ public class ItemRBMKRod extends Item {
 	public double heat = 1D;				//heat produced per outFlux
 	public double yield;					//total potential inFlux the rod can take in its lifetime
 	public double meltingPoint = 1000D;		//the maximum heat of the rod's hull before shit hits the fan. the core can be as hot as it wants to be
-	public double diffusion = 0.02D;		//the speed at which the core heats the hull
+	public double diffusion = 0.25D;		//the speed at which the core heats the hull
 	public NType nType = NType.SLOW;		//neutronType, the most efficient neutron type for fission
 	public NType rType = NType.FAST;		//releaseType, the type of neutrons released by this fuel
 
@@ -164,8 +164,29 @@ public class ItemRBMKRod extends Item {
 			if(y < 0D) y = 0D;
 
 			setYield(stack, y);
+			}
+
+		double coreHeat = this.getCoreHeat(stack);
+		coreHeat += outFlux * heat;
+		
+		this.setCoreHeat(stack, rectify(coreHeat));
+
+		return outFlux;
 		}
 
+//AMode
+	public double burnnew(World world, ItemStack stack, double inFlux) {
+		
+		inFlux += selfRate;
+			
+		double outFlux = reactivityFunc(inFlux, getEnrichment(stack)) * RBMKDials.getReactivityMod(world) * 100.0D;
+		
+		double y = getYield(stack);
+		y -= inFlux;
+		
+		if(y < 0D) y = 0D;
+		
+		setYield(stack, y);
 		double coreHeat = this.getCoreHeat(stack);
 		coreHeat += outFlux * heat;
 
@@ -176,8 +197,8 @@ public class ItemRBMKRod extends Item {
 
 	private double rectify(double num) {
 
-		if(num > 1_000_000D) num = 1_000_000D;
-		if(num < 20D || Double.isNaN(num)) num = 20D;
+		//if(num > 1_000_000D) num = 1_000_000D;
+		if(num < 100D || Double.isNaN(num)) num = 20D;
 
 		return num;
 	}
@@ -215,20 +236,20 @@ public class ItemRBMKRod extends Item {
 		//metldown! the hull melts so the entire structure stops making sense
 		//hull and core heats are instantly equalized into 33% of their sum each,
 		//the rest is sent to the component which is always fatal
-		if(hullHeat > this.meltingPoint) {
-			double coreHeat = this.getCoreHeat(stack);
-			double avg = (heat + hullHeat + coreHeat) / 3D;
-			this.setCoreHeat(stack, avg);
-			this.setHullHeat(stack, avg);
-			return avg - heat;
-		}
+		//if(hullHeat > this.meltingPoint) {
+		//	double coreHeat = this.getCoreHeat(stack);
+		//	double avg = (heat + hullHeat + coreHeat) / 3D;
+		//	this.setCoreHeat(stack, avg);
+		//	this.setHullHeat(stack, avg);
+		//	return avg - heat;
+		//}
 
 		if(hullHeat <= heat)
 			return 0;
 
 		double ret = (hullHeat - heat) / 2;
 
-		ret *= RBMKDials.getFuelHeatProvision(world) * mod;
+		//ret *= RBMKDials.getFuelHeatProvision(world) * mod;
 
 		hullHeat -= ret;
 		this.setHullHeat(stack, hullHeat);
@@ -240,6 +261,7 @@ public class ItemRBMKRod extends Item {
 		PASSIVE(EnumChatFormatting.DARK_GREEN + "SAFE / PASSIVE"),			//const, no reactivity
 		LOG_TEN(EnumChatFormatting.YELLOW + "MEDIUM / LOGARITHMIC"),		//log10(x + 1) * reactivity * 50
 		PLATEU(EnumChatFormatting.GREEN + "SAFE / EULER"),					//(1 - e^(-x/25)) * reactivity * 100
+		CONSTANT(EnumChatFormatting.GREEN + "SAFE / CONST"),	
 		ARCH(EnumChatFormatting.RED + "DANGEROUS / NEGATIVE-QUADRATIC"),	//x-(x²/1000) * reactivity
 		SIGMOID(EnumChatFormatting.GREEN + "SAFE / SIGMOID"),				//100 / (1 + e^(-(x - 50) / 10)) <- tiny amount of reactivity at x=0 !
 		SQUARE_ROOT(EnumChatFormatting.YELLOW + "MEDIUM / SQUARE ROOT"),	//sqrt(x) * 10 * reactivity
@@ -283,6 +305,8 @@ public class ItemRBMKRod extends Item {
 
 		switch(this.function) {
 		case PASSIVE: function = EnumChatFormatting.RED + "" + selfRate;
+			break;
+		case CONSTANT: function = EnumChatFormatting.RED + "" + selfRate;
 			break;
 		case LOG_TEN: function = "log10(%1$s + 1) * 0.5 * %2$s";
 			break;
@@ -443,8 +467,8 @@ public class ItemRBMKRod extends Item {
 			list.add(EnumChatFormatting.YELLOW + I18nUtil.resolveKey("trait.rbmx.xenonBurn", EnumChatFormatting.WHITE + "x² / " + xBurn));
 			list.add(EnumChatFormatting.GOLD + I18nUtil.resolveKey("trait.rbmx.heat", heat + "°C"));
 			list.add(EnumChatFormatting.GOLD + I18nUtil.resolveKey("trait.rbmx.diffusion", diffusion + "¹/²"));
-			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmx.skinTemp", ((int)(getHullHeat(stack) * 10D) / 10D) + "m"));
-			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmx.coreTemp", ((int)(getCoreHeat(stack) * 10D) / 10D) + "m"));
+			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmx.skinTemp", (long)getHullHeat(stack) + "m"));
+			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmx.coreTemp", (long)getCoreHeat(stack) + "m"));
 			list.add(EnumChatFormatting.DARK_RED + I18nUtil.resolveKey("trait.rbmx.melt", meltingPoint + "m"));
 
 		} else {
@@ -467,8 +491,8 @@ public class ItemRBMKRod extends Item {
 			list.add(EnumChatFormatting.YELLOW + I18nUtil.resolveKey("trait.rbmk.xenonBurn", EnumChatFormatting.WHITE + "x² / " + xBurn));
 			list.add(EnumChatFormatting.GOLD + I18nUtil.resolveKey("trait.rbmk.heat", heat + "°C"));
 			list.add(EnumChatFormatting.GOLD + I18nUtil.resolveKey("trait.rbmk.diffusion", diffusion + "¹/²"));
-			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmk.skinTemp", ((int)(getHullHeat(stack) * 10D) / 10D) + "°C"));
-			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmk.coreTemp", ((int)(getCoreHeat(stack) * 10D) / 10D) + "°C"));
+			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmk.skinTemp", (long)getHullHeat(stack) + "°C"));
+			list.add(EnumChatFormatting.RED + I18nUtil.resolveKey("trait.rbmk.coreTemp", (long)getCoreHeat(stack) + "°C"));
 			list.add(EnumChatFormatting.DARK_RED + I18nUtil.resolveKey("trait.rbmk.melt", meltingPoint + "°C"));
 		}
 

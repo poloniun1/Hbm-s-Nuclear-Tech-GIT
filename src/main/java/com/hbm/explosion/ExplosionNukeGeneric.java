@@ -19,6 +19,7 @@ import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.ModBlocks2;
 import com.hbm.config.VersatileConfig;
 import com.hbm.entity.grenade.EntityGrenadeASchrab;
 import com.hbm.entity.grenade.EntityGrenadeNuclear;
@@ -320,7 +321,146 @@ public class ExplosionNukeGeneric {
 					world.setBlock(x, y, z, ModBlocks.ore_gneiss_uranium_scorched);
 				}
 			}
+			else if (b == Blocks.coal_block) {
+				rand = random.nextInt(100);
+				if (rand > 97) {
+					world.setBlock(x, y, z, Blocks.emerald_block);
+				} else if (rand > 93) {
+					world.setBlock(x, y, z, Blocks.diamond_block);
+				}else if (rand > 87) {
+					world.setBlock(x, y, z, ModBlocks.block_graphite);
+		}
+	}
+			else if (b == Blocks.iron_block) {
+				rand = random.nextInt(100);
+				if (rand > 97) {
+					world.setBlock(x, y, z, ModBlocks.block_tantalium);
+				}
+			}
+			else if (b == Blocks.gold_block) {
+				rand = random.nextInt(100);
+				if (rand > 96) {
+					world.setBlock(x, y, z, ModBlocks.block_australium);
+				} else if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks2.block_au198);
+				}
+			}
+			else if (b == ModBlocks.block_lead) {
+				rand = random.nextInt(200);
+				if (rand > 196) {
+					world.setBlock(x, y, z, ModBlocks2.block_pb209);
+				} else if (rand > 195) {
+					world.setBlock(x, y, z, ModBlocks.block_bismuth);
+				}
+			}
+			else if (b == ModBlocks.block_uranium || b == ModBlocks.block_plutonium) {
+				rand = random.nextInt(200);
+				if (rand > 196) {
+					world.setBlock(x, y, z, ModBlocks.block_schrabidium);
+				} else if (rand > 192) {
+					world.setBlock(x, y, z, ModBlocks2.block_technetium);
+				} else if (rand > 191) {
+					world.setBlock(x, y, z, ModBlocks.block_bismuth);
+				}
+			}
+			else if (b == ModBlocks.block_thorium) {
+				rand = random.nextInt(100);
+				if (rand > 97) {
+					world.setBlock(x, y, z, ModBlocks.block_u235);
+				}
+			}
 
+			else if (b == ModBlocks.stone_porous || b == ModBlocks.stone_cracked) {
+				rand = random.nextInt(100);
+				if (rand > 97) {
+					world.setBlock(x, y, z, ModBlocks2.block_arsenic);
+				}
+			}
+			else if (b == ModBlocks.sand_dirty || b == ModBlocks.sand_dirty_red) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks.block_white_phosphorus);
+				}
+			}
+			else if (b == ModBlocks.dirt_dead || b == ModBlocks.dirt_oily) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks.block_cadmium);
+				}
+			}
+			else if (b == ModBlocks.ore_oil_sand) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks.block_polymer);
+				}
+			}
+			else if (b == ModBlocks.block_schrabidium) {
+				rand = random.nextInt(100);
+				if (rand > 98) {
+					world.setBlock(x, y, z, ModBlocks.block_euphemium);
+				}
+			}
+			else if (b == ModBlocks.block_euphemium) {
+				rand = random.nextInt(100);
+				if (rand > 98) {
+					world.setBlock(x, y, z, ModBlocks.block_dineutronium);
+				}
+			}
+			else if (b == ModBlocks.block_tantalium) {
+				rand = random.nextInt(500);
+				if (rand > 498) {
+					world.setBlock(x, y, z, ModBlocks2.block_osmiridium);
+				}
+			}
+
+			else if (b == ModBlocks.block_beryllium) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, Blocks.emerald_block);
+				}
+			}
+			else if (b == Blocks.emerald_block) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks2.block_alexandrite);
+				}
+			}
+			else if (b == Blocks.diamond_block) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks2.block_volcanic);
+				}
+			}
+			else if (b == ModBlocks.ore_rare || b == ModBlocks.ore_gneiss_rare) {
+				rand = random.nextInt(500);
+				if (rand > 498) {
+					world.setBlock(x, y, z, ModBlocks2.block_neodymium);
+				} else if (rand > 496) {
+					world.setBlock(x, y, z, ModBlocks.block_niobium);
+				} else if (rand > 494) {
+					world.setBlock(x, y, z, ModBlocks.block_zirconium);
+				} else if (rand > 489) {
+					world.setBlock(x, y, z, ModBlocks.block_desh);
+				}
+			}
+			else if (b == ModBlocks.block_cobalt) {
+				rand = random.nextInt(100);
+				if (rand > 96) {
+					world.setBlock(x, y, z, ModBlocks.block_starmetal);
+				}
+			}
+			else if (b == ModBlocks.block_lithium) {
+				rand = random.nextInt(100);
+				if (rand > 95) {
+					world.setBlock(x, y, z, ModBlocks.block_tritium);
+				}
+			}
+			else if (b == Blocks.quartz_block) {
+				rand = random.nextInt(100);
+				if (rand > 98) {
+					world.setBlock(x, y, z, ModBlocks2.block_silicon);
+				}
+			}
 		}
 	}
 

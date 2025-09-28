@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.main.ResourceManager;
 
 import net.minecraft.client.Minecraft;
@@ -31,6 +32,7 @@ public class ItemRenderMissileGeneric implements IItemRenderer {
 		TYPE_STEALTH,
 		TYPE_ABM,
 		TYPE_NUCLEAR,
+		TYPE_CARRIER,
 		TYPE_ROBIN
 	}
 	
@@ -74,6 +76,7 @@ public class ItemRenderMissileGeneric implements IItemRenderer {
 		case TYPE_STEALTH: guiScale = 1.75D; guiOffset = 4.75D; break;
 		case TYPE_ABM: guiScale = 2.25D; guiOffset = 7D; break;
 		case TYPE_NUCLEAR: guiScale = 1.375D; guiOffset = 1.5D; break;
+		case TYPE_CARRIER: guiScale = 0.625D; guiOffset = -17D; break;
 		case TYPE_ROBIN: guiScale = 1.25D; guiOffset = 2D; break;
 		}
 
@@ -164,6 +167,24 @@ public class ItemRenderMissileGeneric implements IItemRenderer {
 		renderers.put(new ComparableStack(ModItems.missile_volcano), generateStandard(ResourceManager.missileVolcano_tex, ResourceManager.missileNuclear));
 		renderers.put(new ComparableStack(ModItems.missile_doomsday), generateStandard(ResourceManager.missileDoomsday_tex, ResourceManager.missileNuclear));
 		renderers.put(new ComparableStack(ModItems.missile_doomsday_rusted), generateStandard(ResourceManager.missileDoomsdayRusted_tex, ResourceManager.missileNuclear));
+
+		renderers.put(new ComparableStack(ModItems2.missile_carrier), x -> {
+			GL11.glScalef(2F, 2F, 2F);
+			x.bindTexture(ResourceManager.missileCarrier_tex);
+			ResourceManager.missileCarrier.renderAll();
+			GL11.glTranslated(0.0D, 0.5D, 0.0D);
+			GL11.glTranslated(1.25D, 0.0D, 0.0D);
+			x.bindTexture(ResourceManager.missileBooster_tex);
+			ResourceManager.missileBooster.renderAll();
+			GL11.glTranslated(-2.5D, 0.0D, 0.0D);
+			ResourceManager.missileBooster.renderAll();
+			GL11.glTranslated(1.25D, 0.0D, 0.0D);
+			GL11.glTranslated(0.0D, 0.0D, 1.25D);
+			ResourceManager.missileBooster.renderAll();
+			GL11.glTranslated(0.0D, 0.0D, -2.5D);
+			ResourceManager.missileBooster.renderAll();
+			GL11.glTranslated(0.0D, 0.0D, 1.25D);
+		});
 
 		renderers.put(new ComparableStack(ModItems.missile_shuttle), generateStandard(ResourceManager.missileShuttle_tex, ResourceManager.missileShuttle));
 	}

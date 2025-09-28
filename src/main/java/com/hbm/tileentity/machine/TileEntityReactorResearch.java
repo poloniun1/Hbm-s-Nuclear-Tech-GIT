@@ -12,11 +12,13 @@ import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.container.ContainerReactorResearch;
 import com.hbm.inventory.gui.GUIReactorResearch;
 import com.hbm.items.ModItems;
+import com.hbm.items.ModItems2;
 import com.hbm.items.machine.ItemPlateFuel;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.BufferUtil;
 import com.hbm.util.CompatEnergyControl;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
@@ -63,6 +65,17 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 		super(12);
 	}
 	
+	private static final HashMap<ComparableStack, ItemStack> newfuelMap = new HashMap<ComparableStack, ItemStack>();
+	static {
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_u233), new ItemStack(ModItems.plate_fuel_u235, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_u235), new ItemStack(ModItems.waste_plate_u235, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_mox), new ItemStack(ModItems.waste_plate_mox, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_pu239), new ItemStack(ModItems.waste_plate_pu239, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_sa326), new ItemStack(ModItems.waste_plate_sa326, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_ra226be), new ItemStack(ModItems.waste_plate_ra226be, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems.plate_fuel_pu238be), new ItemStack(ModItems.waste_plate_pu238be, 1, 1));
+		newfuelMap.put(new ComparableStack(ModItems2.plate_fuel_atbe), new ItemStack(ModItems2.waste_plate_atbe, 1, 1));
+	}
 	private static final HashMap<ComparableStack, ItemStack> fuelMap = new HashMap<ComparableStack, ItemStack>();
 	static {
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_u233), new ItemStack(ModItems.waste_plate_u233, 1, 1));
@@ -72,6 +85,7 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_sa326), new ItemStack(ModItems.waste_plate_sa326, 1, 1));
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_ra226be), new ItemStack(ModItems.waste_plate_ra226be, 1, 1));
 		fuelMap.put(new ComparableStack(ModItems.plate_fuel_pu238be), new ItemStack(ModItems.waste_plate_pu238be, 1, 1));
+		fuelMap.put(new ComparableStack(ModItems2.plate_fuel_atbe), new ItemStack(ModItems2.waste_plate_atbe, 1, 1));
 	}
 	
 	public String getName() {
@@ -276,8 +290,10 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 			
 			if(slots[i].getItem() instanceof ItemPlateFuel) {
 				ItemPlateFuel rod = (ItemPlateFuel) slots[i].getItem();
+				if(RBMKDials.getResearchBaby(worldObj)&& (slots[i].getItem()==ModItems.plate_fuel_pu238be||slots[i].getItem()==ModItems.plate_fuel_ra226be))	rod.reactivity = 800;
 				
 				int outFlux = rod.react(worldObj, slots[i], slotFlux[i]);
+				if(!RBMKDials.getResearchBaby(worldObj))
 				this.heat += outFlux * 2;
 				slotFlux[i] = 0;
 				totalFlux += outFlux;
@@ -285,7 +301,9 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 				int[] neighborSlots = getNeighboringSlots(i);
 				
 				if(ItemPlateFuel.getLifeTime(slots[i]) > rod.lifeTime) {
+					if(!RBMKDials.getResearchBaby(worldObj))
 					slots[i] = fuelMap.get(new ComparableStack(slots[i])).copy();
+					else	slots[i] = newfuelMap.get(new ComparableStack(slots[i])).copy();
 				}
 				
 				for(byte j = 0; j < neighborSlots.length; j++) {

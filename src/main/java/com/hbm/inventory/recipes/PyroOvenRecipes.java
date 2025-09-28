@@ -119,6 +119,20 @@ public class PyroOvenRecipes extends SerializableRecipe {
 		recipes.add(new PyroOvenRecipe(60)
 				.in(new FluidStack(Fluids.GAS, 12_000))
 				.out(new FluidStack(Fluids.HYDROGEN, 8_000)).out(new ItemStack(ModItems.ingot_graphite, 1)));
+
+		recipes.add(new PyroOvenRecipe(40)
+				.in(new ComparableStack(ModItems.powder_ash, 3, 4))
+				.in(new FluidStack(RADIOSOLVENT, 600))
+				.out(new ItemStack(ModItems.powder_ash, 1, 5)));
+		recipes.add(new PyroOvenRecipe(40)
+				.in(new ComparableStack(ModItems.powder_ash, 3, 5))
+				.in(new FluidStack(XYLENE, 1200))
+
+				.out(new ItemStack(ModItems.ingot_cft)));
+		recipes.add(new PyroOvenRecipe(240)
+				.in(new ComparableStack(ModItems.powder_ash, 9, 4))
+				.in(new FluidStack(BALEFIRE, 300))
+				.out(new ItemStack(ModItems.ingot_cft)));
 	}
 
 	public static void registerSFAuto(FluidType fluid) {

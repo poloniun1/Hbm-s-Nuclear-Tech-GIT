@@ -38,7 +38,7 @@ public class BlockOutgas extends BlockOre {
 	}
 	
 	protected Block getGas() {
-		if(this == ModBlocks.ore_uranium || this == ModBlocks.ore_uranium_scorched || 
+		/*if(this == ModBlocks.ore_uranium || this == ModBlocks.ore_uranium_scorched || 
 				this == ModBlocks.ore_gneiss_uranium || this == ModBlocks.ore_gneiss_uranium_scorched || 
 				this == ModBlocks.ore_nether_uranium || this == ModBlocks.ore_nether_uranium_scorched) {
 			return ModBlocks.gas_radon;
@@ -59,7 +59,7 @@ public class BlockOutgas extends BlockOre {
 				this == ModBlocks.brick_asbestos || this == ModBlocks.tile_lab ||
 				this == ModBlocks.tile_lab_cracked || this == ModBlocks.tile_lab_broken) {
 			return ModBlocks.gas_asbestos;
-		}
+		}*/
 		
 		return Blocks.air;
 	}

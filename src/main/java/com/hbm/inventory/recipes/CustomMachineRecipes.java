@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Map;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,7 +17,12 @@ import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ModItems;
+import com.hbm.items.special.ItemBedrockOre.EnumBedrockOre;
+import com.hbm.items.special.ItemBedrockOreNew.BedrockOreType;
+import com.hbm.items.special.ItemBedrockOreNew.BedrockOreGrade;
+import com.hbm.items.special.ItemBedrockOreNew;
 import com.hbm.util.Tuple.Pair;
+import com.hbm.blocks.ModBlocks2;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -27,22 +33,60 @@ public class CustomMachineRecipes extends SerializableRecipe {
 
 	@Override
 	public void registerDefaults() {
-
-		recipes.put("paperPress", new ArrayList() {{
+		recipes.put("normalfactory", new ArrayList() {{
+		for(EnumBedrockOre ore : EnumBedrockOre.values()) {
+			int i = ore.ordinal();
 			CustomMachineRecipe recipe = new CustomMachineRecipe();
-			recipe.inputFluids = new FluidStack[] {new FluidStack(Fluids.WATER, 250)};
-			recipe.inputItems = new AStack[] {new ComparableStack(ModItems.powder_sawdust)};
+			recipe.inputFluids = new FluidStack[] {new FluidStack(Fluids.NITRIC_ACID, 2000),new FluidStack(Fluids.SOLVENT,1000)};
+			recipe.inputItems = new AStack[] {new ComparableStack(ModItems.ore_bedrock, 1, i)};
 			recipe.outputFluids = new FluidStack[0];
-			recipe.outputItems = new Pair[] {new Pair(new ItemStack(Items.paper, 3), 1F)};
-			recipe.duration = 60;
-			recipe.consumptionPerTick = 10;
-			recipe.pollutionType = "SOOT";
-			recipe.pollutionAmount = 0.03F;
-			recipe.radiationAmount = 0;
-			recipe.flux = 0;
-			recipe.heat = 0;
+			recipe.outputItems = new Pair[] {new Pair(new ItemStack(ModItems.ore_enriched, 64, i), 1F)};
+			recipe.duration = 10;
+			recipe.consumptionPerTick = 1000;
 			add(recipe);
-		}});
+		}
+			CustomMachineRecipe recipe1 = new CustomMachineRecipe();
+			recipe1.inputFluids = new FluidStack[] {new FluidStack(Fluids.NITRIC_ACID, 1000),new FluidStack(Fluids.WATER,1000)};
+			recipe1.inputItems = new AStack[] {new ComparableStack(ModItems.bedrock_ore_base)};
+			recipe1.outputFluids = new FluidStack[]{new FluidStack(Fluids.SLOP, 2000)};
+			recipe1.outputItems = new Pair[] {new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.LIGHT_METAL,3), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.HEAVY_METAL,3), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.RARE_EARTH,3), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.ACTINIDE,3), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.NON_METAL,3), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.CRYSTALLINE,3), 1F)};
+			recipe1.duration = 10;
+			recipe1.consumptionPerTick = 1000;
+			add(recipe1);
+		for(BedrockOreType type: BedrockOreType.values()) {
+			CustomMachineRecipe recipe2 = new CustomMachineRecipe();
+			recipe2.inputFluids = new FluidStack[] {new FluidStack(Fluids.SULFURIC_ACID, 200),
+				new FluidStack(Fluids.SOLVENT,200),new FluidStack(Fluids.RADIOSOLVENT,200)};
+			recipe2.inputItems = new AStack[] {new ComparableStack(ItemBedrockOreNew.make(BedrockOreGrade.BASE, type))};
+			recipe2.outputFluids = new FluidStack[]{new FluidStack(Fluids.VITRIOL, 100)};
+			recipe2.outputItems = new Pair[] {new Pair(ItemBedrockOreNew.make(BedrockOreGrade.PRIMARY_SECOND, type,4), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.SULFURIC_WASHED,type,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.SOLVENT_WASHED,type), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.RAD_WASHED,type), 1F)};
+			recipe2.duration = 10;
+			recipe2.consumptionPerTick = 1000;
+			add(recipe2);
+		}
+			CustomMachineRecipe recipe3 = new CustomMachineRecipe();
+			recipe3.inputFluids = new FluidStack[] {new FluidStack(Fluids.NITRIC_ACID, 1000),new FluidStack(Fluids.WATER,1000)};
+			recipe3.inputItems = new AStack[] {new ComparableStack(ModBlocks2.ore_vault,64)};
+			recipe3.outputFluids = new FluidStack[]{new FluidStack(Fluids.SLOP, 2000)};
+			recipe3.outputItems = new Pair[] {new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.LIGHT_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.HEAVY_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.RARE_EARTH,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.ACTINIDE,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.NON_METAL,2), 1F),
+				new Pair(ItemBedrockOreNew.make(BedrockOreGrade.BASE,BedrockOreType.CRYSTALLINE,2), 1F)};
+			recipe3.duration = 10;
+			recipe3.consumptionPerTick = 1000;
+			add(recipe3);	
+		}		
+	});
 	}
 
 	@Override

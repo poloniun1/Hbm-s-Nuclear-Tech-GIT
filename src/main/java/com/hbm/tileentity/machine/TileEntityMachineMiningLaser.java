@@ -3,6 +3,8 @@ package com.hbm.tileentity.machine;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 import com.google.common.collect.Sets;
 import com.hbm.blocks.ModBlocks;
@@ -15,6 +17,8 @@ import com.hbm.inventory.recipes.CentrifugeRecipes;
 import com.hbm.inventory.recipes.CrystallizerRecipes;
 import com.hbm.inventory.recipes.CrystallizerRecipes.CrystallizerRecipe;
 import com.hbm.inventory.recipes.ShredderRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes;
+import com.hbm.inventory.recipes.CustomMachineRecipes.CustomMachineRecipe;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemMachineUpgrade;
 import com.hbm.items.machine.ItemMachineUpgrade.UpgradeType;
@@ -22,6 +26,7 @@ import com.hbm.lib.Library;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.IUpgradeInfoProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.util.BobMathUtil;
 import com.hbm.util.InventoryUtil;
 import com.hbm.util.i18n.I18nUtil;
@@ -253,7 +258,41 @@ public class TileEntityMachineMiningLaser extends TileEntityMachineBase implemen
 		ItemStack stack = new ItemStack(b, 1, meta);
 
 		if(stack != null && stack.getItem() != null) {
-			if(hasCrystallizer()) {
+			if(RBMKDials.getMiningBaby(worldObj)){
+				List<ItemStack> products = new ArrayList();
+				CustomMachineRecipe result = getMatchingRecipe(stack);
+				ItemStack stack1;
+				CustomMachineRecipe result1;
+				ItemStack st;
+			if(result != null) {
+				for(int i = 0; i < result.outputItems.length; i++) {
+					if(worldObj.rand.nextFloat() < result.outputItems[i].value){
+						stack1 = result.outputItems[i].key.copy();
+						result1 = getMatchingRecipe(stack1);
+							if(result1 != null) {								
+								for(int j = 0; j < result1.outputItems.length;j++) {
+									if(worldObj.rand.nextFloat() < result1.outputItems[j].value){
+										st= result1.outputItems[j].key.copy();
+										if(st != null)  products.add(st);
+								}
+							}
+						}
+					}
+				}
+			}
+			products = products.stream()
+        // 表示id为key， 接着如果有重复的，那么从BillsNums对象o1与o2中筛选出一个，这里选择o1，
+        // 并把id重复，需要将nums和sums与o1进行合并的o2, 赋值给o1，最后返回o1
+			.collect(Collectors.toMap(ItemStack::getItem, a -> a, (o1,o2)-> {
+				o1.stackSize += o2.stackSize;
+				return o1;
+			})).values().stream().collect(Collectors.toList());
+			if(products != null) {
+				for(ItemStack product : products) 				
+					worldObj.spawnEntityInWorld(new EntityItem(worldObj, targetX + 0.5, targetY + 0.5, targetZ + 0.5, product.copy()));
+				normal = false;
+			}
+			}else if(hasCrystallizer()) {
 
 				CrystallizerRecipe result = CrystallizerRecipes.getOutput(stack, Fluids.PEROXIDE);
 				if(result == null) result = CrystallizerRecipes.getOutput(stack, Fluids.SULFURIC_ACID);
@@ -688,5 +727,17 @@ public class TileEntityMachineMiningLaser extends TileEntityMachineBase implemen
 		upgrades.put(UpgradeType.FORTUNE, 3);
 		upgrades.put(UpgradeType.OVERDRIVE, 9);
 		return upgrades;
+	}
+	public CustomMachineRecipe getMatchingRecipe(ItemStack stack) {
+		List<CustomMachineRecipe> recipes = CustomMachineRecipes.recipes.get("normalfactory");
+		if(recipes == null || recipes.isEmpty()) return null;
+
+		for(CustomMachineRecipe recipe : recipes) {
+			if(recipe.inputItems.length == 0) continue;
+			if(!recipe.inputItems[0].matchesRecipe(stack, true)) continue;
+			return recipe;
+		}
+
+		return null;
 	}
 }
