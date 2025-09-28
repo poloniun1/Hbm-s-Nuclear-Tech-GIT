@@ -222,10 +222,10 @@ public class HbmWorldGen implements IWorldGenerator {
 		if(enableDungeons && world.provider.dimensionId == 0) {
 			
 			if((i % 400 == 0 )&&( j % 400 == 0))  {
-				int x = i + rand.nextInt(8);
-				int z = j + rand.nextInt(8);	
+				int x = i + 8;
+				int z = j + 8;	
 				int y = world.getHeightValue(x, z);
-				new ResourcePoint().generate(world, rand.nextInt(1), x, y, z);
+				new ResourcePoint().generate(world, rand, x, y, z);
 			}
 			
 			if(MobConfig.enableHives && rand.nextInt(MobConfig.hiveSpawn) == 0) {
@@ -745,3 +745,4 @@ public class HbmWorldGen implements IWorldGenerator {
 	}
 
 }
+
