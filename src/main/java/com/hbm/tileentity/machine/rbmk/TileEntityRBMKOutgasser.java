@@ -140,7 +140,7 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		
 		Pair<ItemStack, FluidStack> output = OutgasserRecipes.getOutput(slots[0]);
 		this.decrStackSize(0, 1);
-		this.progress -= 10000;
+		this.progress -= 100000;
 		
 		if(output.getValue() != null) {
 			gas.setFill(gas.getFill() + output.getValue().fill);
@@ -275,6 +275,15 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 		return new Object[] {progress};
 	}
 
+	@Callback(direct = true, doc = "Returns the unlocalized name and size of the stack that the outgasser is crafting (the input), or nil, nil if there is no stack")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] getCrafting(Context context, Arguments args) {
+		if (slots[0] == null)
+			return new Object[] { "", 0 };
+		else
+			return new Object[]{slots[0].getUnlocalizedName(), slots[0].stackSize };
+	}
+
 	@Callback(direct = true)
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getCoordinates(Context context, Arguments args) {
@@ -284,7 +293,11 @@ public class TileEntityRBMKOutgasser extends TileEntityRBMKSlottedBase implement
 	@Callback(direct = true)
 	@Optional.Method(modid = "OpenComputers")
 	public Object[] getInfo(Context context, Arguments args) {
-		return new Object[] {gas.getFill(), gas.getMaxFill(), progress, gas.getTankType().getID(), xCoord, yCoord, zCoord};
+		ItemStack input = slots[0];
+		if (input != null)
+			return new Object[] {gas.getFill(), gas.getMaxFill(), progress, gas.getTankType().getID(), xCoord, yCoord, zCoord, input.getUnlocalizedName(), input.stackSize };
+		else
+			return new Object[] {gas.getFill(), gas.getMaxFill(), progress, gas.getTankType().getID(), xCoord, yCoord, zCoord, "", 0 };
 	}
 
 	@Override

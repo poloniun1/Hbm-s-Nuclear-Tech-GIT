@@ -61,7 +61,7 @@ public class BlastFurnaceRecipes extends SerializableRecipe {
 		addRecipe(STEEL,								TC99.nugget(),									new ItemStack(ModItems.ingot_tcalloy));
 		addRecipe(GOLD.plate(),							ModItems.plate_mixed,							new ItemStack(ModItems.plate_paa, 2));
 		addRecipe(BIGMT,								ModItems.ingot_meteorite,						new ItemStack(ModItems.ingot_starmetal, 2));
-		addRecipe(CO,									ModItems.powder_meteorite,							new ItemStack(ModItems.ingot_meteorite));
+		addRecipe(CO,									ModItems.powder_meteorite,						new ItemStack(ModItems.ingot_meteorite));
 		addRecipe(ModItems.meteorite_sword_hardened,	CO,												new ItemStack(ModItems.meteorite_sword_alloyed));
 		addRecipe(Items.chicken,				ModItems.pellet_charged,												new ItemStack(ModItems.nugget));
 

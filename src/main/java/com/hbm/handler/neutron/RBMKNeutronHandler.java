@@ -4,6 +4,7 @@ import com.hbm.blocks.machine.rbmk.RBMKBase;
 import com.hbm.handler.neutron.NeutronNodeWorld.StreamWorld;
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.tileentity.machine.rbmk.*;
+import com.hbm.util.Compat;
 import com.hbm.util.fauxpointtwelve.BlockPos;
 import com.hbm.tileentity.machine.rbmk.RBMKDials;
 import com.hbm.items.machine.ItemRBMKRod;
@@ -36,7 +37,7 @@ public class RBMKNeutronHandler {
 	}
 
 	private static TileEntity blockPosToTE(World worldObj, BlockPos pos) {
-		return worldObj.getTileEntity(pos.getX(), pos.getY(), pos.getZ());
+		return Compat.getTileStandard(worldObj, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	public static RBMKNeutronNode makeNode(StreamWorld streamWorld, TileEntityRBMKBase tile) {

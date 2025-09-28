@@ -1,6 +1,5 @@
 package com.hbm.lib;
 
-
 import com.hbm.blocks.BlockEnums.EnumStoneType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.ModBlocks2;
@@ -211,7 +210,6 @@ public class HbmWorldGen implements IWorldGenerator {
 					for(int PosZ = j-1; PosZ <= j+1; PosZ++)
 						world.setBlock(PosX, 20, PosZ, ModBlocks2.ore_vault);
 				}
-
 			}
 		}
 
@@ -221,9 +219,9 @@ public class HbmWorldGen implements IWorldGenerator {
 
 		if(enableDungeons && world.provider.dimensionId == 0) {
 			
-			if((i % 400 == 0 )&&( j % 400 == 0))  {
-				int x = i + 8;
-				int z = j + 8;	
+			if((i % 640 == 0 )&&( j % 640 == 0))  {
+				int x = i + 5;
+				int z = j + 5;	
 				int y = world.getHeightValue(x, z);
 				new ResourcePoint().generate(world, rand, x, y, z);
 			}
@@ -308,13 +306,13 @@ public class HbmWorldGen implements IWorldGenerator {
 				}
 			}
 
-			if(WorldConfig.factoryStructure > 0 && rand.nextInt(WorldConfig.factoryStructure) == 0) {
-				int x = i + rand.nextInt(16);
-				int z = j + rand.nextInt(16);
-				int y = world.getHeightValue(x, z);
-
-				new Factory().generate(world, rand, x, y, z);
-			}
+//			if(WorldConfig.factoryStructure > 0 && rand.nextInt(WorldConfig.factoryStructure) == 0) {
+//				int x = i + rand.nextInt(16);
+//				int z = j + rand.nextInt(16);
+//				int y = world.getHeightValue(x, z);
+//
+//				new Factory().generate(world, rand, x, y, z);
+//			}
 
 			if(WorldConfig.dudStructure > 0 && rand.nextInt(WorldConfig.dudStructure) == 0) {
 				int x = i + 8 + rand.nextInt(16);

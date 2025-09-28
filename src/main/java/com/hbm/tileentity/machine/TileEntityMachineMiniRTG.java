@@ -37,7 +37,7 @@ public class TileEntityMachineMiniRTG extends TileEntityLoadedBase implements IE
 
 	@Override
 	public long getMaxPower() {
-		if(this.getBlockType() == ModBlocks.machine_powerrtg) return 40000;
+		if(this.getBlockType() == ModBlocks.machine_powerrtg) return 100000;
 		return 8000;
 	}
 
