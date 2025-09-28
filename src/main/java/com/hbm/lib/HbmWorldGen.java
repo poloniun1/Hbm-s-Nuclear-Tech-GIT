@@ -745,4 +745,3 @@ public class HbmWorldGen implements IWorldGenerator {
 	}
 
 }
-

@@ -132,7 +132,7 @@ public class ResourcePoint extends WorldGenerator
 		
 		for(int i = x; i <= x + 2; i++){
 			for(int j = z - 2; j <= z + 2; j++){
-				world.setBlock(i, y + 1, j, ModBlocks.crate_steel, 0, 3);
+				world.setBlock(i, y, j, ModBlocks.crate_steel, 0, 3);
 				if(world.getBlock(i, y , j) == ModBlocks.crate_steel)
 				{
 					WeightedRandomChestContent.generateChestContents(rand, ItemPool.getPool(ItemPoolsLegacy.POOL_SPACESHIP), (TileEntityCrateSteel)world.getTileEntity(i, y, j), 18);
