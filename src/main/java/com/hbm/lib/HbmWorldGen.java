@@ -225,7 +225,7 @@ public class HbmWorldGen implements IWorldGenerator {
 				int x = i + rand.nextInt(8);
 				int z = j + rand.nextInt(8);	
 				int y = world.getHeightValue(x, z);
-				new ResourcePoint().generate(world, rand, x, y, z);
+				new ResourcePoint().generate(world, rand.nextInt(1), x, y, z);
 			}
 			
 			if(MobConfig.enableHives && rand.nextInt(MobConfig.hiveSpawn) == 0) {
