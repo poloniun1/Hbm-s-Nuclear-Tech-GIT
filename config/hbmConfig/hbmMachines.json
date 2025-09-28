@@ -21,16 +21,15 @@
     "D:inputDecay2": 0.0
   },
   "RFToHEConverter": {
-    "L:RF_Used2": 2,
-    "L:HE_Created2": 5,
+    "L:RF_Used2": 1,
+    "L:HE_Created2": 4,
     "D:inputDecay2": 0.0
   },
   "dieselgen": {
     "L:powerCap": 50000,
     "I:fuelCap": 16000,
     "INFO": "Fuel grades in order: LOW MEDIUM HIGH AERO GAS",
-    "D[:efficiency": [0.0,0.5,0.75,0.1,0.0],
-    "B:shutUp": false
+    "D[:efficiency": [0.0,0.5,0.75,0.1,0.0]
   },
   "radar": {
     "L:powerCap": 100000,
@@ -42,6 +41,37 @@
   },
   "radar_large": {
     "I:radarLargeRange": 3000
+  },
+  "forcefield": {
+    "L:powerCap": 1000000,
+    "I:baseConsumption": 1000,
+    "I:radiusConsumption": 500,
+    "I:shieldConsumption": 250,
+    "I:baseRadius": 16,
+    "I:radiusUpgrade": 16,
+    "I:shieldUpgrade": 50,
+    "D:cooldownModifier": 1.0,
+    "D:healthRegenModifier": 1.0
+  },
+  "rotaryfurnace": {
+    "M:burnModule": {
+      "D:timeLog": 1.0,
+      "D:timeWood": 1.0,
+      "D:timeCoal": 1.0,
+      "D:timeLignite": 1.0,
+      "D:timeCoke": 1.25,
+      "D:timeSolid": 1.5,
+      "D:timeRocket": 1.5,
+      "D:timeBalefire": 1.5,
+      "D:heatLog": 1.0,
+      "D:heatWood": 1.0,
+      "D:heatCoal": 1.0,
+      "D:heatLignite": 1.0,
+      "D:heatCoke": 1.0,
+      "D:heatSolid": 1.5,
+      "D:heatRocket": 3.0,
+      "D:heatBalefie": 10.0
+    }
   },
   "firebox": {
     "I:baseHeat": 100,
@@ -159,6 +189,7 @@
     "L:maxPower": 100000000000000,
     "I:inputTankSize": 12800000,
     "I:outputTankSize": 12800000,
+    "I:maxSteamPerTick": 1600000,
     "D:efficiency": 0.85
   },
   "steamturbineIndustrial": {
