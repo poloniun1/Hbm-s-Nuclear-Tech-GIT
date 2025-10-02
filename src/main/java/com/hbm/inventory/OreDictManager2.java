@@ -105,12 +105,12 @@ public class OreDictManager2 {
 	public static void registerOres() {
 
 		MANGANESE	.ore(ModBlocks2.ore_manganese)		.ingot(ModItems2.ingot_manganese);
-		COAL	.ingot(Items.coal);
+		COAL	.ingot(ModItems2.ingot_coal);
 		IRON	.ore(ModBlocks.cluster_iron, ModBlocks.cluster_depth_iron);
-		LAPIS	.ingot(ModItems.powder_lapis);
-		NETHERQUARTZ	.ingot(Items.quartz);
-		DIAMOND	.ingot(ModItems.powder_diamond);
-		EMERALD	.ingot(ModItems.powder_emerald);	
+		LAPIS	.ingot(ModItems2.ingot_lapis);
+		NETHERQUARTZ	.ingot(ModItems2.ingot_quartz);
+		DIAMOND	.ingot(ModItems2.ingot_diamond);
+		EMERALD	.ingot(ModItems2.ingot_emerald);	
 		GLOWSTONE	.ingot(Items.glowstone_dust)	.ore(Blocks.glowstone);
 
 		TI	.ore(ModBlocks.cluster_titanium,ModBlocks.cluster_depth_titanium);
@@ -127,7 +127,7 @@ public class OreDictManager2 {
 		EUPH	.ore(ModBlocks.block_euphemium_cluster);
 		ASBESTOS	.asbestos(1F)	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.ASBESTOS));
 		OSMIRIDIUM	.ore(ModBlocks.ore_tektite_osmiridium)	.block(ModBlocks2.block_osmiridium);
-        		REDSTONE	.ingot(Items.redstone);
+        		REDSTONE	.ingot(ModItems2.ingot_redstone);
 		DESH	.ore(ModBlocks.ore_rare, ModBlocks.ore_gneiss_rare);
 
 		TC99	.block(ModBlocks2.block_technetium);
@@ -135,20 +135,20 @@ public class OreDictManager2 {
 		PB209	.block(ModBlocks2.block_pb209);
 		GH336	.block(ModBlocks2.block_gh336);
 
-		S	.ingot(ModItems.sulfur)	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.SULFUR));
-		KNO	.ingot(ModItems.niter);
-		F	.ingot(ModItems.fluorite);
-		CINNABAR	.ingot(ModItems.cinnebar);
+		S	.ingot(ModItems2.ingot_sulfur)	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.SULFUR));
+		KNO	.ingot(ModItems2.ingot_niter);
+		F	.ingot(ModItems2.ingot_fluorite);
+		CINNABAR	.ingot(ModItems2.ingot_cinnebar);
 		HG	.ingot(ModItems.ingot_mercury)	.nugget(ModItems.nugget_mercury)	.block(ModItems.bottle_mercury);
 		BAUXITE	.ore(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.BAUXITE));
-		ALEXANDRITE	.ingot(ModItems.gem_alexandrite )	.gem(ModItems.gem_alexandrite )	.ore(ModBlocks.ore_alexandrite )	.block(ModBlocks2.block_alexandrite );
-		VOLCANIC						.ingot(ModItems.gem_volcanic)	.block(ModBlocks2.block_volcanic);													
+		ALEXANDRITE	.ingot(ModItems2.ingot_alexandrite )	.gem(ModItems.gem_alexandrite )	.ore(ModBlocks.ore_alexandrite )	.block(ModBlocks2.block_alexandrite );
+		VOLCANIC						.ingot(ModItems2.ingot_volcanic)	.block(ModBlocks2.block_volcanic);													
 
 
 		NA	.hydro(1F)		.ore(ModBlocks2.ore_sodium)	.block(ModBlocks2.block_sodium);											
 		P_WHITE	.hot(5)	.ore(ModBlocks.ore_nether_fire);
-		ND	.ingot(ModItems.powder_neodymium)	.block(ModBlocks2.block_neodymium);
-		TIKITE	.ingot(ModItems.powder_spark_mix )	.dust(ModItems.powder_nitan_mix )	.ore(ModBlocks.ore_tikite );
+		ND	.ingot(ModItems2.ingot_neodymium)	.block(ModBlocks2.block_neodymium);
+		TIKITE	.ingot(ModItems2.ingot_spark_mix )	.dust(ModItems.powder_nitan_mix )	.ore(ModBlocks.ore_tikite );
 
 		I	.dustSmall(ModItems2.powder_iodine_tiny);
 		AT	.dustSmall(ModItems2.powder_astatine_tiny);

@@ -92,6 +92,22 @@ public class ModItems2 {
 	public static Item nugget_star;
 
 	public static Item ingot_manganese;
+	public static Item ingot_coal;
+	public static Item ingot_lapis;
+	public static Item ingot_quartz;
+	public static Item ingot_diamond;
+	public static Item ingot_emerald;
+	public static Item ingot_glowstone;
+	public static Item ingot_redstone;
+	public static Item ingot_sulfur;
+	public static Item ingot_niter;
+	public static Item ingot_fluorite;
+	public static Item ingot_cinnebar;
+	public static Item ingot_alexandrite;
+	public static Item ingot_volcanic;
+	public static Item ingot_neodymium;
+	public static Item ingot_spark_mix;
+
 
 	public static Item rod_zirnox_pu239_fuel_depleted;
 	public static Item rod_zirnox_np237_fuel_depleted;
@@ -157,8 +173,23 @@ public class ModItems2 {
 				.setUnlocalizedName("rbmk_fuel_pobi").setTextureName(RefStrings.MODID + ":rbmk_fuel_pobi");
 
 
-		ingot_manganese = new Item().setUnlocalizedName("ingot_manganese").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_manganese");
-		
+		ingot_manganese = new Item().setUnlocalizedName("ingot_manganese").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_coal = new Item().setUnlocalizedName("ingot_coal").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_lapis = new Item().setUnlocalizedName("ingot_lapis").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_quartz = new Item().setUnlocalizedName("ingot_quartz").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_diamond = new Item().setUnlocalizedName("ingot_diamond").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_emerald = new Item().setUnlocalizedName("ingot_emerald").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_glowstone = new Item().setUnlocalizedName("ingot_glowstone").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_redstone = new Item().setUnlocalizedName("ingot_redstone").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_sulfur = new Item().setUnlocalizedName("ingot_sulfur").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_niter = new Item().setUnlocalizedName("ingot_niter").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_fluorite = new Item().setUnlocalizedName("ingot_fluorite").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_cinnebar = new Item().setUnlocalizedName("ingot_cinnebar").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_volcanic = new Item().setUnlocalizedName("ingot_volcanic").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_alexandrite = new Item().setUnlocalizedName("ingot_alexandrite").setTextureName(RefStrings.MODID + ":ingot_manganese");
+		ingot_neodymium = new Item().setUnlocalizedName("ingot_neodymium").setTextureName(RefStrings.MODID + ":ingot_manganese");		
+		ingot_spark_mix = new Item().setUnlocalizedName("ingot_spark_mix").setTextureName(RefStrings.MODID + ":ingot_manganese");
+
 
 		nugget_electronium = new Item().setUnlocalizedName("nugget_electronium").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_electronium");
 		nugget_fuller= new Item().setUnlocalizedName("nugget_fuller").setCreativeTab(MainRegistry.partsTab).setTextureName(RefStrings.MODID + ":nugget_fuller");
@@ -240,7 +271,22 @@ public class ModItems2 {
 		GameRegistry.registerItem(bred_lead, bred_lead.getUnlocalizedName());
 
 		GameRegistry.registerItem(ingot_manganese, ingot_manganese.getUnlocalizedName());
-
+		GameRegistry.registerItem(ingot_coal, ingot_coal.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_lapis, ingot_lapis.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_quartz, ingot_quartz.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_diamond, ingot_diamond.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_emerald, ingot_emerald.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_redstone, ingot_redstone.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_glowstone, ingot_glowstone.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_niter, ingot_niter.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_fluorite, ingot_fluorite.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_sulfur, ingot_sulfur.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_cinnebar, ingot_cinnebar.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_volcanic, ingot_volcanic.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_alexandrite, ingot_alexandrite.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_neodymium, ingot_neodymium.getUnlocalizedName());
+		GameRegistry.registerItem(ingot_spark_mix, ingot_spark_mix.getUnlocalizedName());
+		
 		GameRegistry.registerItem(ex_bismuth_pickaxe, ex_bismuth_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(osmiridium_pickaxe, osmiridium_pickaxe.getUnlocalizedName());
 		GameRegistry.registerItem(missile_carrier, missile_carrier.getUnlocalizedName());
